@@ -1,0 +1,44 @@
+﻿@{
+    Layout = "_LayoutRegistrar";
+}
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="~/js/registro/registro.js"></script>
+}
+
+<!-- Main Section -->
+<main class="container my-5" style="padding:50px 20px;">
+    <div class="container mt-5">
+        <h1 class="text-center">Registro de Cliente</h1>
+        <form id="registroForm" class="mt-4">
+            <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="nombre" name="nombre" required>
+            </div>
+            <div class="mb-3">
+                <label for="edad" class="form-label">Edad</label>
+                <input type="number" class="form-control" id="edad" name="edad" required>
+            </div>
+            <div class="mb-3">
+                <label for="telefono" class="form-label">Teléfono</label>
+                <input type="tel" class="form-control" id="telefono" name="telefono" required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <!-- Menú desplegable para seleccionar el tipo de plan -->
+            <div class="mb-3">
+                <label for="tipoPlan" class="form-label">Tipo de Suscripción</label>
+                <select class="form-select" id="tipoPlan" name="tipoPlan" required>
+                    <option value="">Selecciona un tipo de suscripción</option>
+                    <option value="premium">Premium</option>
+                    <option value="standard">Estándar</option>
+                    <option value="pase_dia">Pase por el Día</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Registrar Cliente</button>
+        </form>
+    </div>
+</main>

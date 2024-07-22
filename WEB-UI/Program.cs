@@ -1,7 +1,30 @@
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+// Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddHttpContextAccessor();
+
+builder.Services.AddSession(session =>
+{
+    session.Cookie.Name = "simepci-cookie";
+    session.IdleTimeout = TimeSpan.FromSeconds(60);
+    session.Cookie.HttpOnly = true;
+    session.Cookie.IsEssential = false;
+});
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: "Demo_Policy",
+        policy =>
+        {
+            policy.AllowAnyOrigin();
+            policy.AllowAnyHeader();
+            policy.AllowAnyMethod();
+        }
+        );
+});
 
 var app = builder.Build();
 
@@ -23,5 +46,9 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+app.UseSession();
+
+app.UseCors();
 
 app.Run();

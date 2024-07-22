@@ -1,0 +1,109 @@
+﻿@{
+    Layout = "_LayoutActualizarDatos";
+}
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/ag-grid-community/dist/ag-grid-community.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    @*<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>*@
+
+
+    @*      <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/js/usermenu/menufunctions.js"></script>
+        <script src="~/js/adminusuarios/griddefinition.js"></script>
+        <script src="~/js/adminusuarios/listausuarios.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script> *@
+
+    <script src="~/js/AdminList/GridDefinition.js"></script>
+    <script src="~/js/AdminList/ListaUsuarios.js"></script>
+}
+
+<body>
+
+    <section class="hero">
+        <h1>Lista de Usuarios FitAPP</h1>
+    </section>
+    <div class="position-relative ">
+        <div class="container">
+            <ul id="other-options-list" class="list-unstyled position-absolute end-0 " style="display:none;">
+                <li><a asp-controller="Administrador" asp-action="DatosPersonales">Mi perfil</a></li>
+                <li><a asp-controller="Login" asp-action="Logout">Cerrar Sesión</a></li>
+            </ul>
+        </div>
+    </div>
+
+
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Contenido de la página -->
+            <div class="col">
+                <div class="col text-left" id="menu-quick-access">
+                    <div class="row align-items-center justify-content-between mt-3 mb-4">
+                        <div class="col-md-3 mt-3">
+                            @* <p class="ml-1">Buscar Usuario</p>
+                            </div>
+                            <div class="col-md-9">
+                            <form class="d-flex mr-4" action="/buscar" method="GET">
+                            <input class="form-control me-2 flex-grow-1" type="text" name="q" placeholder="Buscar...">
+                            <button class="btn btn-outline-success " type="submit">Buscar</button>
+                            </form> *@
+                        </div>
+                    </div>
+                    <div class="text-center align-content-center">
+                        <div class="container tabla-usuarios">
+                            <div id="myGrid" style="height: 430px; width: 1225px;" class="ag-theme-alpine justify-content-center"></div>
+                            <form action="ListUsers">
+                                <div class="mb-3 text-left">
+                                    <label for="txtIdentificacion">Identificación</label>
+                                    <input id="txtIdentificacion" type="text" readonly="readonly" class="form-control " />
+                                </div>
+                                <div class="mb-3 text-left">
+                                    <label for="txtNombre">Nombre</label>
+                                    <input id="txtNombre" type="text" readonly="readonly" class="form-control" />
+                                </div>
+                                <div class="mb-3 text-left">
+                                    <label for="txtApellidos">Apellidos</label>
+                                    <input id="txtApellidos" type="text" readonly="readonly" class="form-control" />
+                                </div>
+                                <div class="mb-3 text-left">
+                                    <label for="txtCorreo">Correo</label>
+                                    <input id="txtCorreo" type="text" readonly="readonly" class="form-control" />
+                                </div>
+                                <div class="mb-3 text-left">
+                                    <form action="">
+                                        <label for="txtRol">Rol</label>
+                                        <select class="form-select" name="rolselect" id="rolselect">
+                                            <option value="" disabled selected>---------------------</option>
+                                            <option value="Administrador">Administrador</option>
+                                            <option value="Recepcionista">Recepcionista</option>
+                                            <option value="Entrenador">Entrenador</option>
+                                            <option value="ClientePremium">Cliente Premium</option>
+                                            <option value="ClienteStandard">Cliente Standard</option>
+                                            <option value="Cliente1dia">Cliente 1 día</option>
+                                        </select>
+                                    </form>
+                                </div>
+
+                                <div class="mb-3 text-left">
+                                    <label for="txtContrasena">Cambiar Constraseña</label>
+                                    <input id="txtContrasena" type="text" readonly="readonly" class="form-control" />
+                                </div>
+
+                                <div class="mb-3">
+                                    <button type="button" class="btn btn-success" id="btnActRol">Guardar rol</button>
+                                </div>
+
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+</body>
+</html>

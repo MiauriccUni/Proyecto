@@ -4,29 +4,74 @@ using WEB_UI.Models;
 
 namespace WEB_UI.Controllers
 {
-    public class HomeController : Controller
+    namespace WEB_UI.Controllers
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        public class HomeController : Controller
         {
-            _logger = logger;
-        }
+            private readonly ILogger<HomeController> _logger;
 
-        public IActionResult Index()
-        {
-            return View();
-        }
+            public HomeController(ILogger<HomeController> logger)
+            {
+                _logger = logger;
+            }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
+            public IActionResult Index()
+            {
+                return View();
+            }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            public IActionResult AdminActualizacionUsuario()
+            {
+                return View();
+            }
+
+            public IActionResult AdminPanelPrincipal()
+            {
+                return View();
+            }
+
+            public IActionResult AdminRecuperacionContrasenna()
+            {
+                return View();
+            }
+
+            public IActionResult Recepcion()
+            {
+                return View();
+            }
+
+            public IActionResult Registrar()
+            {
+                return View();
+            }
+
+            public IActionResult Entrenador()
+            {
+                return View();
+            }
+
+            public IActionResult OTP()
+            {
+                return View();
+            }
+
+            public IActionResult Rutinas()
+            {
+                return View();
+            }
+
+            public IActionResult ActualizarDatosUsuarios()
+            {
+                return View();
+            }
+
+            [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+            public IActionResult Error()
+            {
+                return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            }
         }
     }
+
 }
+

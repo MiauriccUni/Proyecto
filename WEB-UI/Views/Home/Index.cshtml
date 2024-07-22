@@ -1,8 +1,210 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "";
 }
+@section Scripts{
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="~/js/registro/registro.js"></script>
+    <script src="~/js/login/login.js"></script>
+}
+<!-- Main Section -->
+<section class="hero">
+    <h1>Optimiza tu Entrenamiento</h1>
+    <p>Con FitApp, alcanza tus metas más rápido.</p>
+    <a href="#" class="cta-button" data-bs-toggle="modal" data-bs-target="#registerModal">Únete Ahora</a>
+</section>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<main class="container my-2" style="padding:30px 20px;">
+    <div class="row">
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">Entrenamientos Eficientes</h3>
+                    <hr />
+                    <p class="card-text"> <small>Diseñamos programas de entrenamiento que maximicen tu tiempo y esfuerzo, ayudándote a alcanzar tus objetivos de manera rápida y efectiva.</small></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">Dietas Personalizadas</h3>
+                    <hr />
+                    <p class="card-text"><small>Nuestros nutricionistas crean planes alimenticios adaptados a tus necesidades y metas específicas, garantizando una nutrición óptima para tu rendimiento y salud.</small></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">Entrenadores Certificados</h3>
+                    <hr />
+                    <p class="card-text"><small>Contamos con un equipo de entrenadores altamente calificados y certificados, dedicados a guiarte y motivarte en cada paso de tu camino hacia una mejor forma física.</small></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">Cita de medición</h3>
+                    <hr />
+                    <p class="card-text"> <small>Ofrecemos citas de medición para evaluar tu composición corporal y progreso, permitiéndonos ajustar tu programa de entrenamiento y dieta según tus necesidades.</small></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">Horarios accesibles</h3>
+                    <hr />
+                    <p class="card-text"><small>Entendemos lo importante que es la flexibilidad, por lo que ofrecemos una amplia gama de horarios para que puedas entrenar cuando más te convenga</small></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<section class="container my-2 sectionTarifas" id="section2">
+    <div class="row">
+        <div class="col-md-4 mb-4">
+            <div class="card" style="width:400px">
+                <div class="card-body tarifa-card">
+                    <ul class="list-group list-group-horizontal">
+                        <li class="list-group-item">Premium</li>
+                        <li class="list-group-item">$150</li>
+                        <li class="list-group-item"><i class="fa-regular fa-star"></i></li>
+                    </ul>
+                    <br />
+                    <ul class="list-group">
+                        <li class="list-group-item">Medición física.</li>
+                        <li class="list-group-item">Cita de nutrición.</li>
+                        <li class="list-group-item">Uso de las instalaciones en cualquier momento.</li>
+                        <li class="list-group-item">2 clases de yoga por semana</li>
+                        <li class="list-group-item">Entrenador personal</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card" style="width:400px">
+                <div class="card-body tarifa-card">
+                    <ul class="list-group list-group-horizontal">
+                        <li class="list-group-item">Standard</li>
+                        <li class="list-group-item">$80</li>
+                        <li class="list-group-item"><i class="fa-solid fa-universal-access"></i></li>
+                    </ul>
+                    <br />
+                    <ul class="list-group">
+                        <li class="list-group-item">Medición física.</li>
+                        <li class="list-group-item">Uso de las instalaciones 4 días a la semana.</li>
+                        <li class="list-group-item">1 clases de yoga por semana</li>
+                        <li class="list-group-item">Entrenador personal</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card" style="width:400px">
+                <div class="card-body tarifa-card">
+                    <ul class="list-group list-group-horizontal">
+                        <li class="list-group-item">Cita por día</li>
+                        <li class="list-group-item">$15</li>
+                        <li class="list-group-item"><i class="fa-solid fa-person-walking"></i></li>
+                    </ul>
+                    <br />
+                    <ul class="list-group">
+                        <li class="list-group-item">Uso de instalaciones por 3 horas</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Modal de Registro -->
+<div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-custom text-white">
+                <h5 class="modal-title" id="registerModalLabel">Regístrate</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="registerForm">
+                    <div class="mb-3">
+                        <label for="registerName" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="registerName" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="registerLastName" class="form-label">Apellidos</label>
+                        <input type="text" class="form-control" id="registerLastName" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="BirthDay" class="form-label">Fecha de Nacimiento</label>
+                        <input type="date" class="form-control text" id="BirthDay" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="registerEmail" class="form-label">Correo Electrónico</label>
+                        <input type="email" class="form-control" id="registerEmail" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="Phone" class="form-label">Número Celular</label>
+                        <input type="number" class="form-control" id="Phone" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="TxT" class="form-label">La contraseña debe ser de 8 digitos.</label>
+                    </div>
+                    <div class="mb-3">
+                        <label for="registerPassword" class="form-label">Contraseña</label>
+                        <input type="password" class="form-control" id="registerPassword" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="confirPassword" class="form-label">Confirmar contraseña</label>
+                        <input type="password" class="form-control text" id="confirPassword" required>
+                    </div>
+                    <div class="mb-3">
+                        <div>
+                        <label for="Sexo" class="form-label">Sexo</label>
+                        <select class="text" select-direccion required="required" id="Sexo">
+                            <option value="" disabled selected>Seleccione el Sexo</option>
+                            <option value="Femenino">Femenino</option>
+                            <option value="Masculino">Masculino</option>
+                        </select>
+                        </div>
+                    </div>
+                    <!--</><button type="submit" class="btn btn-primary" id="registro">Registrarse</button>-->
+                    <button type="button" class="btn btn-primary" id="registro">Registrarse</button>
+
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
+
+<!-- Modal de Inicio de Sesi�n -->
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-custom text-white">
+                <h5 class="modal-title" id="loginModalLabel">Iniciar Sesión</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="loginForm">
+                    <div class="mb-3">
+                        <label for="loginEmail" class="form-label">Correo Electrónico</label>
+                        <input type="email" class="form-control" id="loginEmail" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="loginPassword" class="form-label">Contraseña</label>
+                        <input type="password" class="form-control" id="loginPassword" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary sa" id="login">Iniciar Sesión</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
