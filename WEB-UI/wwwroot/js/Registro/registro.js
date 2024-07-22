@@ -74,6 +74,13 @@
                 title: 'Error'
             });
             return;
+        } else if (edad > 68) {
+            Swal.fire({
+                icon: 'error',
+                text: "La edad maxima para matricular debe ser 68 años, " + "la edad indicada fue: " + edad,
+                title: 'Error'
+            });
+            return;
         }
 
         if (usuario.nacimiento == "") {
@@ -214,12 +221,12 @@
 
     this.EmailService = function () {
         cuerpo = "Hola " + nombreCompleto + "<br><br>" +
-            "Gracias por registrarte. Para activar tu cuenta, por favor ingresa el siguiente código de verificación en la página: " + + "." + "<br><br>" +
+            "Gracias por registrarte. Para activar tu cuenta, por favor ingresa el siguiente código de verificación en la página: " + gotp + "." + "<br><br>" +
             "Ten en cuenta que el código expirará en un minuto." + "<br><br>" +
             "Gimnasio Rambon's Gym."
 
-        var apiUrl = "https://localhost:7253/api/Email/SendEmail?correo=" + email + "&cuerpo=" + cuerpo + "&otp=" + gotp + "&asunto=Verificación de cuenta";
-
+        var apiUrl = "https://localhost:7253/api/Email/SendEmail?correo=" + email + "&cuerpo=" + cuerpo + "&asunto=Verificación de cuenta";
+        
         $.ajax({
             url: apiUrl,
             method: "POST",
