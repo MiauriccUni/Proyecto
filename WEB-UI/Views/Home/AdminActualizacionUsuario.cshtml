@@ -1,0 +1,159 @@
+﻿@{
+    Layout = "_LayoutAdmin";
+}
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!--<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>-->
+    <script src="~/js/registro/registro.js"></script>
+}
+<section class="hero">
+    <h1>Gestion de usuarios.</h1>
+    <p class="card-text Admin-text"><small>Aqui se puede crear, visualizar, modificar, eliminar usuarios y roles(admin, recepcionista, entrenador, cliente).</small></p>
+    <hr />
+</section>
+
+<!-- <div class="col-sm-12 mb-12"> -->
+<div class="container">
+    <div class="row">
+        <div class="col input-User-Space">
+            <div class="input-group">
+                <span class="input-group-text">Buscar Correo</span>
+                <input type="text" class="form-control" placeholder="ingrese su correo electronico">
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-6 col-info-usuario">
+            <div id="myGrid" style="height: 20px; width: 1225px;" class="ag-theme-alpine justify-content-center"></div>
+            <form action="ListUsers">
+                <div class="mb-3 text-left">
+                    <label for="txtIdentificacion">Identificación</label>
+                    <input id="txtIdentificacion" type="text" readonly="readonly" class="form-control " />
+                </div>
+
+                <div class="mb-3 text-left">
+                    <label for="txtNombre">Nombre</label>
+                    <input id="txtNombre" type="text" readonly="readonly" class="form-control" />
+                </div>
+
+                <div class="mb-3 text-left">
+                    <label for="txtApellidos">Apellidos</label>
+                    <input id="txtApellidos" type="text" readonly="readonly" class="form-control" />
+                </div>
+
+                <div class="mb-3">
+                    <label for="BirthDay" class="form-label">Fecha de Nacimiento</label>
+                    <input type="date" class="form-control text" id="BirthDay" required>
+                </div>
+
+                <div class="mb-3 text-left">
+                    <label for="txtCorreo">Correo Electrónico</label>
+                    <input id="txtCorreo" type="text" readonly="readonly" class="form-control" />
+                </div>
+
+                <div class="mb-3">
+                    <label for="Phone">Número de Teléfono</label>
+                    <input type="tel" class="form-control" id="Phone" pattern="^\d{8}$" required>
+                    <small class="form-text text-muted">Ingresa un número de teléfono de 8 dígitos.</small>
+                </div>
+
+                <div class="mb-3 text-left">
+                    <form action="">
+                        <label for="txtRol">Rol</label>
+                        <select class="form-select" name="rolselect" id="rolselect">
+                            <option value="" disabled selected>---------------------</option>
+                            <option value="Administrador">Administrador</option>
+                            <option value="Recepcionista">Recepcionista</option>
+                            <option value="Entrenador">Entrenador</option>
+                            <option value="ClientePremium">Cliente Premium</option>
+                            <option value="ClienteStandard">Cliente Standard</option>
+                            <option value="Cliente1dia">Cliente 1 día</option>
+                        </select>
+                    </form>
+                </div>
+
+                <div class="mb-3">
+                    <label for="registerPassword" class="form-label">Contraseña</label>
+                    <input type="password" class="form-control" id="registerPassword" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="confirPassword" class="form-label">Confirmar contraseña</label>
+                    <input type="password" class="form-control text" id="confirPassword" required>
+                </div>
+
+
+            </form>
+        </div>
+        <div class="col-6 col-nueva-usuario">
+            <div id="myGrid" style="height: 20px; width: 1225px;" class="ag-theme-alpine justify-content-center"></div>
+            <form action="ListUsers">
+                <div class="mb-3 text-left">
+                    <label for="txtIdentificacion">Identificación</label>
+                    <input id="txtIdentificacion" type="text" readonly="readonly" class="form-control " />
+                </div>
+
+                <div class="mb-3 text-left">
+                    <label for="txtNombre">Nombre</label>
+                    <input id="txtNombre" type="text" readonly="readonly" class="form-control" />
+                </div>
+
+                <div class="mb-3 text-left">
+                    <label for="txtApellidos">Apellidos</label>
+                    <input id="txtApellidos" type="text" readonly="readonly" class="form-control" />
+                </div>
+
+                <div class="mb-3">
+                    <label for="BirthDay" class="form-label">Fecha de Nacimiento</label>
+                    <input type="date" class="form-control text" id="BirthDay" required>
+                </div>
+
+                <div class="mb-3 text-left">
+                    <label for="txtCorreo">Correo Electrónico</label>
+                    <input id="txtCorreo" type="text" readonly="readonly" class="form-control" />
+                </div>
+
+                <div class="mb-3">
+                    <label for="Phone">Número de Teléfono</label>
+                    <input type="tel" class="form-control" id="Phone" pattern="^\d{8}$" required>
+                    <small class="form-text text-muted">Ingresa un número de teléfono de 8 dígitos.</small>
+                </div>
+
+                <div class="mb-3 text-left">
+                    <form action="">
+                        <label for="txtRol">Rol</label>
+                        <select class="form-select" name="rolselect" id="rolselect">
+                            <option value="" disabled selected>---------------------</option>
+                            <option value="Administrador">Administrador</option>
+                            <option value="Recepcionista">Recepcionista</option>
+                            <option value="Entrenador">Entrenador</option>
+                            <option value="ClientePremium">Cliente Premium</option>
+                            <option value="ClienteStandard">Cliente Standard</option>
+                            <option value="Cliente1dia">Cliente 1 día</option>
+                        </select>
+                    </form>
+                </div>
+
+                <div class="mb-3">
+                    <label for="registerPassword" class="form-label">Contraseña</label>
+                    <input type="password" class="form-control" id="registerPassword" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="confirPassword" class="form-label">Confirmar contraseña</label>
+                    <input type="password" class="form-control text" id="confirPassword" required>
+                </div>
+
+                <div class="mb-3">
+                    <button type="button" class="btn btn-success" id="btnActRol">Guardar/Actualizar</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+</div>
+    </div>
+
+</div>
