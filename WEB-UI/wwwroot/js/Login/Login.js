@@ -50,6 +50,12 @@
                     title: "Error",
                     text: "La contraseña y el correo no coinciden."
                 });
+            } else if (user.verificar === "Incompleta") {
+                Swal.fire({
+                    icon: "error",
+                    title: "Error",
+                    text: "La cuenta no esta verificada."
+                });
             } else if ((user.correo === email) && (user.contrasenna === pass)) {
                 Swal.fire({
                     icon: "success",
