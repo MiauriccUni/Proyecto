@@ -4,7 +4,7 @@
 @section Scripts {
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="~/js/registro/registro.js"></script>
+    <script src="~/js/verificacion/verificarcuenta.js"></script>
 }
 
 <!-- Main Section -->
@@ -19,13 +19,13 @@
                     <form id="otpForm">
                         <div class="mb-3">
                             <label for="email" class="form-label">Correo Electrónico</label>
-                            <input type="email" class="form-control" id="email" name="email" required>
+                            <input type="email" class="form-control" id="email" name="email" readonly>
                         </div>
                         <div class="mb-3">
                             <label for="otp" class="form-label">Código OTP</label>
-                            <input type="text" class="form-control" id="otp" name="otp" required>
+                            <input type="number" class="form-control" id="otp" name="otp" required>
                         </div>
-                        <button type="submit" class="btn btn-primary w-100">Verificar</button>
+                        <button type="submit" class="btn btn-primary w-100" id="verificar">Verificar</button>
                     </form>
                 </div>
             </div>

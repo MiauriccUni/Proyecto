@@ -48,6 +48,7 @@
         var fechaActual = new Date(fechaActualString);
 
         var edad = fechaActual.getFullYear() - fechaNacimiento.getFullYear();
+        localStorage.setItem('correo', usuario.correo);
 
         if (usuario.nombre == "") {
             Swal.fire({
@@ -186,6 +187,11 @@
                                     var view = new CrearUsuario();
                                     view.LimpiarFormulario();
                                     view.EmailService();
+                                    
+                                    sessionStorage.setItem('correo', email);
+                                    sessionStorage.setItem('timestamp', time);
+
+                                    window.location = "/Home/OTP"
                                 }
                             )
                         }).fail(function (error) {
@@ -245,7 +251,7 @@
             if (xhr.responseText === "OK") {
                 Swal.fire({
                     icon: 'success',
-                    text: "Correo de verificación enviado con éxito",
+                    text: "Correo de verificación enviado con éxito, por favor revise su correo para realizar la validación",
                     title: 'Success',
                 });
             } else {

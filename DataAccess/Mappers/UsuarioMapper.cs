@@ -82,6 +82,7 @@ namespace DataAccess.Mappers
             return operation;
 
         }
+
         public SqlOperation GetRetrieveByEmail(string email)
         {
             SqlOperation operation = new SqlOperation();
@@ -89,6 +90,7 @@ namespace DataAccess.Mappers
             operation.AddVarCharParam("correo", email);
             return operation;
         }
+
         public SqlOperation GetRetrieveByPhone(string phone)
         {
             SqlOperation operation = new SqlOperation();
@@ -97,6 +99,14 @@ namespace DataAccess.Mappers
             return operation;
         }
 
+        public SqlOperation UpdateVerificacion(string correo, string verificacion)
+        {
+            SqlOperation operation = new SqlOperation();
+            operation.ProcedureName = "SP_UPDATE_USUARIOS";
+            operation.AddVarCharParam("correo", correo);
+            operation.AddVarCharParam("verificar", verificacion);
+            return operation;
+        }
 
         public SqlOperation GetRetrieveByIdStatement(string id)
         {
