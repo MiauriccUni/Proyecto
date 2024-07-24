@@ -37,5 +37,12 @@ namespace API.Controllers
             UsuarioManager usuarioManager = new UsuarioManager();
             return usuarioManager.GetRetrievePhone(phone);
         }
+
+        [HttpPut]
+        public void Validacion(string correo, string verificar)
+        {
+            UsuarioManager updater = new UsuarioManager();
+            updater.UpdateValidacion(correo, verificar);
+        }
     }
 }

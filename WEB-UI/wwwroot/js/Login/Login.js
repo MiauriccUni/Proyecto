@@ -37,7 +37,6 @@
             dataType: "json"
         }).done(function (result) {
             var user = result[0];
-            console.log("Resultado", user);
             if (!user) {
                 Swal.fire({
                     icon: "error",
@@ -50,13 +49,23 @@
                     title: "Error",
                     text: "La contraseña y el correo no coinciden."
                 });
+            } else if (user.verificar === "Incompleta") {
+                Swal.fire({
+                    icon: "error",
+                    title: "Error",
+                    text: "La cuenta no esta verificada."
+                });
             } else if ((user.correo === email) && (user.contrasenna === pass)) {
                 Swal.fire({
                     icon: "success",
                     title: "Excelente",
                     text: "Bienvenido"
+                }).then(function () {
+                    window.location = "/Home/AdminPanelPrincipal";
+                    //window.location = "/Home/Entrenador;"
+                    //window.location = "Recepcion";  
                 });
-            }
+            }          
         }).fail(function (error) {
             console.log("Error", error);
             Swal.fire({
