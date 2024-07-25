@@ -27,5 +27,10 @@ namespace AppLogic
             UsuarioCrud usuario = new UsuarioCrud();
             return usuario.RetrieveByPhone<Usuario>(phone);
         }
+        public void UpdateValidacion(string correo, string verificacion)
+        {
+            UsuarioCrud crud = new UsuarioCrud();
+            crud.UpdateVerficar(correo, verificacion);
+        }
     }
 }
