@@ -52,9 +52,10 @@
                     <input id="txtCorreo" type="text" readonly="readonly" class="form-control" />
                 </div>
 
+               <!--aqui solo numeros pueden ingresar-->
                 <div class="mb-3">
                     <label for="Phone">Número de Teléfono</label>
-                    <input type="tel" class="form-control" id="Phone" pattern="^\d{8}$" required>
+                    <input type="tel" class="form-control" id="Phone" pattern="^\d{8}$" inputmode="numeric" required>
                     <small class="form-text text-muted">Ingresa un número de teléfono de 8 dígitos.</small>
                 </div>
 
@@ -116,7 +117,7 @@
 
                 <div class="mb-3">
                     <label for="Phone">Número de Teléfono</label>
-                    <input type="tel" class="form-control" id="Phone" pattern="^\d{8}$" required>
+                    <input type="tel" class="form-control" id="Phone" pattern="^\d{8}$" inputmode="numeric" required>
                     <small class="form-text text-muted">Ingresa un número de teléfono de 8 dígitos.</small>
                 </div>
 
