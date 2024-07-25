@@ -100,5 +100,11 @@ namespace DataAccess.Crud
             return resultList;
 
         }
+
+        public void UpdateVerficar(string correo, string verificacion)
+        {
+            SqlOperation operation = usuarioMapper.UpdateVerificacion(correo, verificacion);
+            dao.ExecuteStoreProcedure(operation);
+        }
     }
 }
