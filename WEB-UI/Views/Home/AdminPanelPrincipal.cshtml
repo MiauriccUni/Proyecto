@@ -14,14 +14,20 @@
 <div class="col-sm-12 mb-12">
     <div class="card">
         <div class="card-body">
-            <h3 class="card-title">Recuperación de contraseñas.</h3>
+            <a href="@Url.Action("AdminRecuperacionContrasenna", "Home")" style="color: #2C3E50; text-decoration: none;">
+                <h3 class="card-title">Recuperación de contraseñas.</h3>
+            </a>
             <p class="card-text"><small>Si algun usuario necesita cambiar contraseñas, aqui aparecen las solicitudes</small></p>
             <hr />
 
-            <h3 class="card-title">Gestion de usuarios.</h3>
+            <a href="@Url.Action("AdminActualizacionUsuario", "Home")" style="color: #2C3E50; text-decoration: none;">
+                <h3 class="card-title">Gestion de usuarios.</h3>
+            </a>
             <p class="card-text"><small>Aqui se puede crear, visualizar, modificar, eliminar usuarios y roles(admin, recepcionista, entrenador, cliente).</small></p>
             <hr />
+            <!--lo siguiente no se va mostrar al profesor por que no hay nada creado o conectado-->
 
+            <!--
             <h3 class="card-title">Gestión de Tarifas.</h3>
             <p class="card-text"><small>Aqui se puede crear, visualizar, modificar, eliminar las tarifas</small></p>
             <hr />
@@ -32,6 +38,7 @@
 
             <h3 class="card-title">Soporte técnico</h3>
             <p class="card-text"><small>Si necesitas asistencia,ayuda o tienes preguntas solo envianos tus preguntas y te solucionamos lo mas pronto posible</small></p>
+             -->
         </div>
     </div>
 </div>
