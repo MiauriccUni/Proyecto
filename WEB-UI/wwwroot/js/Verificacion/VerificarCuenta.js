@@ -26,6 +26,8 @@ function VerificarCuenta() {
 
         usuario.correo = $("#email").val();
         usuario.otp = $("#otp").val();
+
+        var email = usuario.correo
         var ot = usuario.otp
 
         if (usuario.otp === "") {
@@ -53,47 +55,34 @@ function VerificarCuenta() {
 
         if (dif < 60) {
             $.ajax({
-                url: "https://localhost:7253/api/Usuario/GetUserByEmail?correo=" + usuario.correo,
+                url: "https://localhost:7253/api/Usuario/GetUserByEmail?correo=" + email,
                 method: "GET",
                 contentType: "application/json;charset=utf-8",
                 dataType: "json"
             }).done(function (result) {
                 var user = result[0];
-                if (user.otp === ot) {
-                    $.ajax({
-                        url: "https://localhost:7253/api/Usuario/Validacion?correo=" + usuario.correo + "&verificar=Validado",
-                        method: "PUT",
-                        contentType: "application/json;charset=utf-8",
-                        dataType: "json"
-                    }).done(function (data) {
-                        Swal.fire({
-                            icon: 'success',
-                            text: "Se ha validado su correo, ahora puede inidicar sesión.",
-                            title: 'Success',
-                            timer: 5000,
-                            showConfirmButton: true
-                        }).then((result) => {
-                            if (result.isConfirmed) {
-                                window.location = "Home/Index";
-                            }
-                        });
-                    }).fail(function (error) {
-                        Swal.fire({
-                            icon: 'error',
-                            text: "Error al validar",
-                            title: 'Error',
-                            timer: 5000,
-                            showConfirmButton: true
-                        });
-
-                    })
-                }else {
+                if (user.otp != ot) {
                     Swal.fire({
                         icon: 'error',
                         text: "El Número indicado no corresponde con el enviado al correo.",
                         title: 'Error',
                         timer: 5000,
                         showConfirmButton: true
+                    });
+                } else {
+                    $.ajax({
+                        url: "https://localhost:7253/api/Usuario/Validacion?correo=" + email + "&verificar=Validado",
+                        method: "PUT",
+                        contentType: "application/json;charset=utf-8",
+                        dataType: "json"
+                    }).done(function (error) {
+                        Swal.fire({
+                            icon: 'success',
+                            text: "Se ha validado su correo, ahora puede iniciar sesión.",
+                            title: 'Success',
+                            timer: 5000,
+                            showConfirmButton: true
+                        });
                     });
                 }
             }).fail(function (error) {
@@ -102,27 +91,27 @@ function VerificarCuenta() {
                     text: message,
                     title: 'Error'
                 });
-            })
-        } else {
+            });
+        } else{
             Swal.fire({
                 icon: 'error',
-                text: "Ha pasado mas de un minuto, por favor solicitar nuevamente el codigo para realizar las validaciones.",
+                text: "Ha pasado más de un minuto, por favor solicitar nuevamente el codigo para realizar las validaciones.",
                 title: 'Error',
                 timer: 5000,
                 showConfirmButton: true
             });
         }
     }
-}
 
+
+}
 
 limpiarOtp = function () {
     $("#otp").val("");
 }
 
 $(document).ready(function () {
-    console.log(sessionStorage.getItem("correo"));
     setCorreoValue();
     var view = new VerificarCuenta();
     view.InitView();
-})
+});

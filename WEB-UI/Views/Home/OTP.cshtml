@@ -1,6 +1,4 @@
-﻿@{
-    Layout = "_LayoutOTP";
-}
+﻿
 @section Scripts {
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -23,9 +21,10 @@
                         </div>
                         <div class="mb-3">
                             <label for="otp" class="form-label">Código OTP</label>
-                            <input type="number" class="form-control" id="otp" name="otp" required>
+                            <input type="number" class="form-control" id="otp" name="otp" >
                         </div>
-                        <button type="submit" class="btn btn-primary w-100" id="verificar">Verificar</button>
+                        <button type="button" class="btn btn-primary" id="verificar">Verificar</button>
+                        <button type="button" class="btn btn-primary" id="reenviar">Reenviar Codigo</button>
                     </form>
                 </div>
             </div>
