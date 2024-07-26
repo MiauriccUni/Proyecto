@@ -229,7 +229,7 @@
         cuerpo = "Hola " + nombreCompleto + "<br><br>" +
             "Gracias por registrarte. Para activar tu cuenta, por favor ingresa el siguiente código de verificación en la página: " + gotp + "." + "<br><br>" +
             "Ten en cuenta que el código expirará en un minuto." + "<br><br>" +
-            "Gimnasio Rambon's Gym."
+            "Gimnasio Rambo's Gym."
 
         var apiUrl = "https://localhost:7253/api/Email/SendEmail?correo=" + email + "&cuerpo=" + cuerpo + "&asunto=Verificación de cuenta";
         
