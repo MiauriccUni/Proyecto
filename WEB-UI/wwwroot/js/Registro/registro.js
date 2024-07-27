@@ -48,6 +48,7 @@
         var fechaActual = new Date(fechaActualString);
 
         var edad = fechaActual.getFullYear() - fechaNacimiento.getFullYear();
+        localStorage.setItem('correo', usuario.correo);
 
         if (usuario.nombre == "") {
             Swal.fire({
@@ -71,6 +72,13 @@
             Swal.fire({
                 icon: 'error',
                 text: "La edad minima para matricular debe ser 16 años, " + "la edad indicada fue: " + edad,
+                title: 'Error'
+            });
+            return;
+        } else if (edad > 68) {
+            Swal.fire({
+                icon: 'error',
+                text: "La edad maxima para matricular debe ser 68 años, " + "la edad indicada fue: " + edad,
                 title: 'Error'
             });
             return;
@@ -179,6 +187,11 @@
                                     var view = new CrearUsuario();
                                     view.LimpiarFormulario();
                                     view.EmailService();
+                                    
+                                    sessionStorage.setItem('correo', email);
+                                    sessionStorage.setItem('timestamp', time);
+
+                                    window.location = "/Home/OTP"
                                 }
                             )
                         }).fail(function (error) {
@@ -214,12 +227,12 @@
 
     this.EmailService = function () {
         cuerpo = "Hola " + nombreCompleto + "<br><br>" +
-            "Gracias por registrarte. Para activar tu cuenta, por favor ingresa el siguiente código de verificación en la página: " + + "." + "<br><br>" +
+            "Gracias por registrarte. Para activar tu cuenta, por favor ingresa el siguiente código de verificación en la página: " + gotp + "." + "<br><br>" +
             "Ten en cuenta que el código expirará en un minuto." + "<br><br>" +
-            "Gimnasio Rambon's Gym."
+            "Gimnasio Rambo's Gym."
 
-        var apiUrl = "https://localhost:7253/api/Email/SendEmail?correo=" + email + "&cuerpo=" + cuerpo + "&otp=" + gotp + "&asunto=Verificación de cuenta";
-
+        var apiUrl = "https://localhost:7253/api/Email/SendEmail?correo=" + email + "&cuerpo=" + cuerpo + "&asunto=Verificación de cuenta";
+        
         $.ajax({
             url: apiUrl,
             method: "POST",
@@ -238,7 +251,7 @@
             if (xhr.responseText === "OK") {
                 Swal.fire({
                     icon: 'success',
-                    text: "Correo de verificación enviado con éxito",
+                    text: "Correo de verificación enviado con éxito, por favor revise su correo para realizar la validación",
                     title: 'Success',
                 });
             } else {
