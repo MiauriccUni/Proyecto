@@ -117,5 +117,19 @@ namespace DataAccess.Mappers
         {
             throw new NotImplementedException();
         }
+
+        /* Intento de update usuario 1 */
+
+        public SqlOperation GetUpdateStatement(BaseClass dto)
+        {
+            Usuario user = (Usuario)dto;
+            SqlOperation operation = new SqlOperation
+            {
+                ProcedureName = "SP_UPDATE_USUARIO_ROLE"
+            };
+            operation.AddIntegerParam("id_usuarios", user.Id);
+            operation.AddVarCharParam("rol", user.Rol);
+            return operation;
+        }
     }
 }

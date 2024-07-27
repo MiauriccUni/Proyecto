@@ -44,5 +44,22 @@ namespace API.Controllers
             UsuarioManager updater = new UsuarioManager();
             updater.UpdateValidacion(correo, verificar);
         }
+
+        /* Intento de actualizar usuario 1 */
+
+        [HttpPut("UpdateUserRole")]
+        public IActionResult UpdateUserRole(int userId, string newRole)
+        {
+            try
+            {
+                UsuarioManager manager = new UsuarioManager();
+                manager.UpdateUserRole(userId, newRole);
+                return Ok(new { success = true });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { success = false, message = ex.Message });
+            }
+        }
     }
 }

@@ -32,5 +32,18 @@ namespace AppLogic
             UsuarioCrud crud = new UsuarioCrud();
             crud.UpdateVerficar(correo, verificacion);
         }
+
+        /* Intento de Update de usuarios 1 */
+
+        public void UpdateUserRole(int userId, string newRole)
+        {
+            UsuarioCrud crud = new UsuarioCrud();
+            Usuario user = crud.RetrieveById<Usuario>(userId);
+            if (user != null)
+            {
+                user.Rol = newRole;
+                crud.UpdateUserRole(user);
+            }
+        }
     }
 }

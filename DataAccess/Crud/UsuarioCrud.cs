@@ -106,5 +106,14 @@ namespace DataAccess.Crud
             SqlOperation operation = usuarioMapper.UpdateVerificacion(correo, verificacion);
             dao.ExecuteStoreProcedure(operation);
         }
+
+        /* Intento de update usuarios 1 */
+
+        public void UpdateUserRole(Usuario usuario)
+        {
+            UsuarioMapper mapper = new UsuarioMapper();
+            var sqlOperation = mapper.GetUpdateStatement(usuario);
+            dao.ExecuteProcedure(sqlOperation);
+        }
     }
 }
