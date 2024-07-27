@@ -108,6 +108,15 @@ namespace DataAccess.Mappers
             return operation;
         }
 
+        public SqlOperation UpdateRol(int id, string rol)
+        {
+            SqlOperation operation = new SqlOperation();
+            operation.ProcedureName = "SP_UPDATE_USUARIO_ROLE";
+            operation.AddIntegerParam("id_usuarios", id);
+            operation.AddVarCharParam("rol", rol);
+            return operation;
+        }
+
         public SqlOperation GetRetrieveByIdStatement(string id)
         {
             throw new NotImplementedException();
