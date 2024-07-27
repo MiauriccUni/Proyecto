@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Mappers
 {
-    public class RegistroRutinaMapper : IObjectMapper,ICrudStatements
+    public class RegistroRutinaMapper : IObjectMapper, ICrudStatements
     {
         private readonly EncrypMapper _pass = new EncrypMapper();
         public BaseClass BuildObject(Dictionary<string, object> row)
@@ -18,8 +18,8 @@ namespace DataAccess.Mappers
 
             Regis.Id = int.Parse(row["id_entrenamiento"].ToString());
             Regis.Repeticiones = int.Parse(row["repeticiones"].ToString());
-            Regis.Peso =int.Parse (row["peso"].ToString());
-            Regis.tiempo =DateTime.Parse (row["tiempo"].ToString());
+            Regis.Peso = int.Parse(row["peso"].ToString());
+            Regis.tiempo = DateTime.Parse(row["tiempo"].ToString());
             Regis.Series = int.Parse(row["series"].ToString());
             return Regis;
         }
@@ -41,7 +41,7 @@ namespace DataAccess.Mappers
             operation.ProcedureName = "SP_INSERT_REGISTRORUTINA";
             RegistroRutina user = (RegistroRutina)dto;
             operation.AddIntegerParam("id_maquina", user.Id);
-            operation.AddIntergerParam("repeticiones", user.Repeticiones);
+            operation.AddIntegerParam("repeticiones", user.Repeticiones);
             operation.AddIntegerParam("peso", user.Peso);
             operation.AddDatetimeParam("tiempo", user.tiempo);
             operation.AddIntegerParam("series", user.Series);
@@ -69,28 +69,28 @@ namespace DataAccess.Mappers
             return operation;
 
         }
-        public SqlOperation GetRetrieveByRepeticiones(int Repeticiones )
+        public SqlOperation GetRetrieveByRepeticiones(int Repeticiones)
         {
             SqlOperation operation = new SqlOperation();
             operation.ProcedureName = "GET_USER_BY_REPETICIONES";
-            operation.AddIntergerParam("repetiociones", Repeticiones);
+            operation.AddIntegerParam("repetiociones", Repeticiones);
             return operation;
         }
         public SqlOperation GetRetrieveByPeso(int Peso)
         {
             SqlOperation operation = new SqlOperation();
             operation.ProcedureName = "GET_USER_BY_PESO";
-            operation.AddIntergerParam("peso", Peso);
+            operation.AddIntegerParam("peso", Peso);
             return operation;
         }
         public SqlOperation GetRetrieveBySerie(int Series)
         {
             SqlOperation operation = new SqlOperation();
             operation.ProcedureName = "GET_USER_BY_SERIES";
-            operation.AddIntergerParam("series", Series);
+            operation.AddIntegerParam("series", Series);
             return operation;
         }
-         public SqlOperation GetRetrieveByTiempo(DateTime Tiempo)
+        public SqlOperation GetRetrieveByTiempo(DateTime Tiempo)
         {
             SqlOperation operation = new SqlOperation();
             operation.ProcedureName = "c";
@@ -110,4 +110,4 @@ namespace DataAccess.Mappers
         }
     }
 }
-    
+
