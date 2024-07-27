@@ -118,18 +118,29 @@ namespace DataAccess.Mappers
             throw new NotImplementedException();
         }
 
-        /* Intento de update usuario 1 */
+        ///* Intento de update usuario 1 */
 
-        public SqlOperation GetUpdateStatement(BaseClass dto)
-        {
-            Usuario user = (Usuario)dto;
-            SqlOperation operation = new SqlOperation
-            {
-                ProcedureName = "SP_UPDATE_USUARIO_ROLE"
-            };
-            operation.AddIntegerParam("id_usuarios", user.Id);
-            operation.AddVarCharParam("rol", user.Rol);
-            return operation;
-        }
+        //public SqlOperation GetUpdateUserPassword(string correo, string nuevaClave)
+        //{
+        //    SqlOperation operation = new SqlOperation();
+        //    operation.ProcedureName = "SP_PUT_PASSWORD";
+        //    operation.AddVarCharParam("Correo", correo);
+        //    operation.AddVarCharParam("nuevaClave", nuevaClave);
+        //    return operation;
+        //}
+
+        //public SqlOperation GetUpdateUserRol(string correo, string nuevoRol)
+        //{
+        //    SqlOperation operation = new SqlOperation();
+        //    operation.ProcedureName = "SP_UPDATE_ROL";
+        //    operation.AddVarCharParam("Correo", correo);
+        //    operation.AddVarCharParam("nuevoRol", nuevoRol);
+        //    return operation;
+        //}
+
+        //public SqlOperation GetUpdateStatement(BaseClass dto)
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }

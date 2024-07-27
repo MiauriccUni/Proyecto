@@ -33,17 +33,18 @@ namespace AppLogic
             crud.UpdateVerficar(correo, verificacion);
         }
 
-        /* Intento de Update de usuarios 1 */
+        ///* Intento de Update de usuarios 1 */
 
-        public void UpdateUserRole(int userId, string newRole)
-        {
-            UsuarioCrud crud = new UsuarioCrud();
-            Usuario user = crud.RetrieveById<Usuario>(userId);
-            if (user != null)
-            {
-                user.Rol = newRole;
-                crud.UpdateUserRole(user);
-            }
-        }
+        //public void UpdatePassword(string correo, string nuevaClave)
+        //{
+        //    UsuarioCrud crud = new UsuarioCrud();
+        //    crud.UpdatePassword(correo, nuevaClave);
+        //}
+
+        //public void UpdateRol(string correo, string nuevoRol)
+        //{
+        //    UsuarioCrud crud = new UsuarioCrud();
+        //    crud.UpdateRol(correo, nuevoRol);
+        //}
     }
 }

@@ -107,13 +107,27 @@ namespace DataAccess.Crud
             dao.ExecuteStoreProcedure(operation);
         }
 
-        /* Intento de update usuarios 1 */
+        ///* Intento de update usuarios 1 */
 
-        public void UpdateUserRole(Usuario usuario)
-        {
-            UsuarioMapper mapper = new UsuarioMapper();
-            var sqlOperation = mapper.GetUpdateStatement(usuario);
-            dao.ExecuteProcedure(sqlOperation);
-        }
+        //public void UpdatePassword(string correo, string nuevaClave)
+        //{
+        //    SqlOperation operation = usuarioMapper.GetUpdateUserPassword(correo, nuevaClave);
+        //    dao.ExecuteStoredProcedure(operation);
+        //}
+
+        //public void UpdateRol(string correo, string nuevoRol)
+        //{
+        //    SqlOperation operation = usuarioMapper.GetUpdateUserRol(correo, nuevoRol);
+        //    dao.ExecuteStoredProcedure(operation);
+        //}
+
+
+
+        ///* Intento de update usuarios 1 */
+
+        //public override void Update(BaseClass dto)
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }
