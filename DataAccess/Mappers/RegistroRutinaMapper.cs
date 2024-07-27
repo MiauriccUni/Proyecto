@@ -11,7 +11,6 @@ namespace DataAccess.Mappers
 {
     public class RegistroRutinaMapper : IObjectMapper, ICrudStatements
     {
-        private readonly EncrypMapper _pass = new EncrypMapper();
         public BaseClass BuildObject(Dictionary<string, object> row)
         {
             RegistroRutina Regis = new RegistroRutina();
