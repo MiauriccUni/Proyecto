@@ -11,7 +11,6 @@ namespace DataAccess.Mappers
 {
 public  class RutinasMapper : IObjectMapper, ICrudStatements
     {
-        private readonly EncrypMapper _pass = new EncrypMapper();
         public BaseClass BuildObject(Dictionary<string, object> row)
         {
             rutinas rutin = new rutinas();
