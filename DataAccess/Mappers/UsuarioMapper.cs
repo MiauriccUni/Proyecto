@@ -6,7 +6,7 @@ namespace DataAccess.Mappers
 {
     public class UsuarioMapper : IObjectMapper, ICrudStatements
     {
-        private readonly EncrypMapper _pass = new EncrypMapper();
+        private readonly EncrypMapper _pass = new EncrypMapper("abcdefghijklmnopqrstuvwx12345678");
         public BaseClass BuildObject(Dictionary<string, object> row)
         {
             Usuario user = new Usuario();
@@ -51,7 +51,7 @@ namespace DataAccess.Mappers
             operation.AddDatetimeParam("nacimiento", user.Nacimiento);
             operation.AddVarCharParam("correo", user.Correo);
             operation.AddVarCharParam("celular", user.Celular);
-            operation.AddVarCharParam("contrasenna", _pass.Encryp(user.Contrasenna));
+            operation.AddVarCharParam("contrasenna", _pass.Encrypt(user.Contrasenna));
             operation.AddVarCharParam("rol", user.Rol);
             operation.AddVarCharParam("genero", user.Genero);
             operation.AddIntegerParam("otp", user.OTP);

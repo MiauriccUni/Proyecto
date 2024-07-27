@@ -8,6 +8,12 @@ function VerificarCuenta() {
             var view = new VerificarCuenta();
             view.SubmitVerificarCuenta();
         });
+
+        //$("#reenviar").click(function (event) {
+        //    var view = new VerificarCuenta();
+        //    sessionStorage.setItem("timestamp", new Date());
+        //    view.Submitreenvio();
+        //});
     }
 
     function fillTimestamp() {
@@ -102,6 +108,7 @@ function VerificarCuenta() {
             });
         }
     }
+
 
 
 }
