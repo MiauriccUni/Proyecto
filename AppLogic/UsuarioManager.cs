@@ -38,5 +38,6 @@ namespace AppLogic
             UsuarioCrud crud = new UsuarioCrud();
             crud.UpdateRolCrud(id, rol);
         }
+
     }
 }

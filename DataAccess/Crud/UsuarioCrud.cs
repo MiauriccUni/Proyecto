@@ -112,5 +112,6 @@ namespace DataAccess.Crud
             SqlOperation operation = usuarioMapper.UpdateRol(id, rol);
             dao.ExecuteStoreProcedure(operation);
         }
+
     }
 }
