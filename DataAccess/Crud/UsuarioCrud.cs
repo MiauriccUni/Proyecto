@@ -106,5 +106,12 @@ namespace DataAccess.Crud
             SqlOperation operation = usuarioMapper.UpdateVerificacion(correo, verificacion);
             dao.ExecuteStoreProcedure(operation);
         }
+
+        public void UpdateRolCrud(int id, string rol)
+        {
+            SqlOperation operation = usuarioMapper.UpdateRol(id, rol);
+            dao.ExecuteStoreProcedure(operation);
+        }
+
     }
 }

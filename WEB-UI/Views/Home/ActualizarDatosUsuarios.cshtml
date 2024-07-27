@@ -41,12 +41,12 @@
                     <div class="row align-items-center justify-content-between mt-3 mb-4">
                         <div class="col-md-3 mt-3">
                             @* <p class="ml-1">Buscar Usuario</p>
-                            </div>
-                            <div class="col-md-9">
-                            <form class="d-flex mr-4" action="/buscar" method="GET">
-                            <input class="form-control me-2 flex-grow-1" type="text" name="q" placeholder="Buscar...">
-                            <button class="btn btn-outline-success " type="submit">Buscar</button>
-                            </form> *@
+                                </div>
+                                <div class="col-md-9">
+                                <form class="d-flex mr-4" action="/buscar" method="GET">
+                                <input class="form-control me-2 flex-grow-1" type="text" name="q" placeholder="Buscar...">
+                                <button class="btn btn-outline-success " type="submit">Buscar</button>
+                                </form> *@
                         </div>
                     </div>
                     <div class="text-center align-content-center">
@@ -84,10 +84,10 @@
                                     </form>
                                 </div>
 
-                                <div class="mb-3 text-left">
+                                @* <div class="mb-3 text-left">
                                     <label for="txtContrasena">Cambiar Constraseña</label>
                                     <input id="txtContrasena" type="text" readonly="readonly" class="form-control" />
-                                </div>
+                                </div> *@
 
                                 <div class="mb-3">
                                     <button type="button" class="btn btn-success" id="btnActRol">Guardar rol</button>
@@ -102,7 +102,33 @@
             </div>
         </div>
     </div>
+    <script>
+        $(document).ready(function () {
+            $('#btnActRol').click(function () {
+                var userId = $('#txtIdentificacion').val();
+                var newRole = $('#rolselect').val();
 
+                $.ajax({
+                    url: '/api/Usuario/UpdateUserRole',
+                    type: 'PUT',
+                    data: {
+                        userId: userId,
+                        newRole: newRole
+                    },
+                    success: function (response) {
+                        if (response.success) {
+                            alert('Rol actualizado correctamente');
+                        } else {
+                            alert('Error al actualizar el rol: ' + response.message);
+                        }
+                    },
+                    error: function () {
+                        alert('Error al conectar con el servidor');
+                    }
+                });
+            });
+        });
+    </script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
 </body>
