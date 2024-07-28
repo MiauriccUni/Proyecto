@@ -58,7 +58,7 @@ function VerificarCuenta() {
         var timeStampDateTime = new Date(timestamp).getTime();
 
         var dif = (currentime - timeStampDateTime) / 1000;
-
+        //
         if (dif < 60) {
             $.ajax({
                 url: "https://localhost:7253/api/Usuario/GetUserByEmail?correo=" + email,
