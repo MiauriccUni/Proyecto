@@ -58,8 +58,8 @@ function VerificarCuenta() {
         var timeStampDateTime = new Date(timestamp).getTime();
 
         var dif = (currentime - timeStampDateTime) / 1000;
-        //
-        if (dif < 60) {
+
+        if (dif < 120) {
             $.ajax({
                 url: "https://localhost:7253/api/Usuario/GetUserByEmail?correo=" + email,
                 method: "GET",
@@ -82,12 +82,18 @@ function VerificarCuenta() {
                         contentType: "application/json;charset=utf-8",
                         dataType: "json"
                     }).done(function (error) {
+                        console.log(error);
+                    }).fail(function (error) {
                         Swal.fire({
                             icon: 'success',
                             text: "Se ha validado su correo, ahora puede iniciar sesión.",
                             title: 'Success',
                             timer: 5000,
                             showConfirmButton: true
+                        }).then((error) => {
+                            if (error.isConfirmed || error.dismiss === Swal.DismissReason.timer) {
+                                window.location = "/Home/Index";
+                            }
                         });
                     });
                 }
@@ -108,9 +114,6 @@ function VerificarCuenta() {
             });
         }
     }
-
-
-
 }
 
 limpiarOtp = function () {
