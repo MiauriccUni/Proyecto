@@ -45,14 +45,18 @@ namespace API.Controllers
             updater.UpdateValidacion(correo, verificar);
         }
 
-
         [HttpPut]
         public void UpdateRol(int id, string rol)
         {
             UsuarioManager updater = new UsuarioManager();
             updater.UpdateRolManager(id, rol);
         }
-     
 
+        [HttpPut]
+        public void UpdateOTP(string correo, int OTP)
+        {
+            UsuarioManager updater = new UsuarioManager();
+            updater.UpdateOTPManager(correo, OTP);
+        }
     }
 }

@@ -1,4 +1,6 @@
-﻿function setCorreoValue() {
+﻿import { ajax } from "jquery";
+
+function setCorreoValue() {
     $("#email").val(sessionStorage.getItem("correo"));
 }
 
@@ -9,11 +11,11 @@ function VerificarCuenta() {
             view.SubmitVerificarCuenta();
         });
 
-        //$("#reenviar").click(function (event) {
-        //    var view = new VerificarCuenta();
-        //    sessionStorage.setItem("timestamp", new Date());
-        //    view.Submitreenvio();
-        //});
+        $("#reenviar").click(function (event) {
+            var view = new VerificarCuenta();
+            sessionStorage.setItem("timestamp", new Date());
+            view.Submitreenvio();
+        });
     }
 
     function fillTimestamp() {
@@ -114,6 +116,29 @@ function VerificarCuenta() {
             });
         }
     }
+
+    this.Submitreenvio = function () {
+        email2 = $('#email').val();
+        newOTP = generateUniqueOTP();
+        $.ajax({
+            url: "https://localhost:7253/api/Usuario/UpdateOTP?correo=" + email2 + "&OTP=" + newOTP,
+            method: "GET",
+            contentType: "application/json;charset=utf-8",
+            dataType: "json"
+        }).done(function(result))
+    }
+}
+
+generateOTPS = [];
+
+generateUniqueOTP = () => {
+    let newOTP;
+    do {
+        const randomNumber = Math.floor(100000 + Math.random() * 900000);
+        newOTP = parseInt(randomNumber);
+    } while (generateOTPS.includes(newOTP));
+    generateOTPS.push(newOTP);
+    return newOTP;
 }
 
 limpiarOtp = function () {
