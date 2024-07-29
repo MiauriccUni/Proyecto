@@ -1,6 +1,4 @@
-﻿import { ajax } from "jquery";
-
-function setCorreoValue() {
+﻿function setCorreoValue() {
     $("#email").val(sessionStorage.getItem("correo"));
 }
 
@@ -120,13 +118,63 @@ function VerificarCuenta() {
     this.Submitreenvio = function () {
         email2 = $('#email').val();
         newOTP = generateUniqueOTP();
+        newtime = fillTimestamp();
+        sessionStorage.setItem('timestamp', newtime);
         $.ajax({
             url: "https://localhost:7253/api/Usuario/UpdateOTP?correo=" + email2 + "&OTP=" + newOTP,
-            method: "GET",
+            method: "PUT",
             contentType: "application/json;charset=utf-8",
             dataType: "json"
-        }).done(function(result))
-    }
+        }).done(function (error) {
+            console.log(error);
+        }).fail(function (error) {
+            Swal.fire({
+                icon: 'success',
+                text: "Se ha enviado un nuevo código a su correo.",
+                title: 'Success',
+                timer: 5000,
+                showConfirmButton: true
+            }).then((error) => {
+                if (error.isConfirmed || error.dismiss === Swal.DismissReason.timer) {
+                    cuerpo = "Hola" + "<br><br>" +
+                        "Para activar tu cuenta, por favor ingresa el siguiente código de verificación en la página: " + newOTP + "." + "<br><br>" +
+                        "Ten en cuenta que el código expirará en un dos minutos." + "<br><br>" +
+                        "Gimnasio Rambo's Gym."
+
+                    var apiUrl = "https://localhost:7253/api/Email/SendEmail?correo=" + email2 + "&cuerpo=" + cuerpo + "&asunto=Verificación de cuenta";
+
+                    $.ajax({
+                        url: apiUrl,
+                        method: "POST",
+                        contentType: "application/json;charset=utf-8",
+                        dataType: "json",
+                        processData: false,
+                        data: JSON.stringify({}),
+                        headers: {
+                            'Content-Type': 'text/html'
+                        }
+
+                    }).done(function (data) {
+                        console.log("Se ha enviado un correo con el código OTP" + data)
+                    }).fail(function (xhr, textStatus, errorThrown) {
+                        if (xhr.responseText === "OK") {
+                            Swal.fire({
+                                icon: 'success',
+                                text: "Correo de verificación enviado con éxito, por favor revise su correo para realizar la validación",
+                                title: 'Success',
+                            });
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                text: xhr.responseText,
+                                title: 'Error',
+                            });
+                        }
+                    });
+                }
+            });
+        });
+    }  
 }
 
 generateOTPS = [];
