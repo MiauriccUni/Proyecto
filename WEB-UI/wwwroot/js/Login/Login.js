@@ -61,9 +61,17 @@
                     title: "Excelente",
                     text: "Bienvenido"
                 }).then(function () {
-                    window.location = "/Home/AdminPanelPrincipal";
-                    //window.location = "/Home/Entrenador;"
-                    //window.location = "Recepcion";  
+                    var roles = user.rol;
+                    switch (roles) {
+                        case "Cliente":
+                            window.location = "/Home/AdminPanelPrincipal";
+                            break;
+                        case "Recepcion":
+                            window.location = "/Home/Recepcion";
+                            break;
+                        default:
+                            console.error("Unknown role:", rol);
+                    }
                 });
             }          
         }).fail(function (error) {
