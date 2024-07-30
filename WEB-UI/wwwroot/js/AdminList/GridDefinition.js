@@ -6,23 +6,25 @@
     { field: "rol", headerName: "Rol" }
 ];
 
-const gripOptions = {
+const gridOptions = {
     columnDefs: columnDefinition,
     rowData: [],
     rowSelection: 'single',
+
     defaultColDef: { sortable: true, filter: true },
-    onRowDoubleClicked: params => {
-        ProcessDoubleClick(params);
-    }
-}
 
-function ProcessDoubleClick(params) {
-    var view = new UsuariosList();
-    view.GetUsersDetails(params.data.correo);
+    //onRowDoubleClicked: params => {
+    //    ProcessDoubleClick(params);
+    //}
+};
 
-}
+//function ProcessDoubleClick(params) {
+//    var view = new UsuariosList();
+//    view.GetUsersDetails(params.data.correo);
+
+//}
 
 document.addEventListener('DOMContentLoaded', () => {
     const gridDiv = document.querySelector('#myGrid');
-    new agGrid.Grid(gridDiv, gripOptions);
+    new agGrid.Grid(gridDiv, gridOptions);
 });
