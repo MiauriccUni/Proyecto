@@ -40,6 +40,11 @@ namespace WEB_UI.Controllers
                 return View();
             }
 
+            public IActionResult RecepcionManager()
+            {
+                return View();
+            }
+
             public IActionResult Registrar()
             {
                 return View();
