@@ -2,7 +2,8 @@
     Layout = "_LayoutActualizarDatos";
 }
 @section Scripts {
-    <script src="https://cdn.jsdelivr.net/npm/ag-grid-community/dist/ag-grid-community.min.js"></script>
+    <script src="https://unpkg.com/gridjs/dist/gridjs.umd.js"></script>
+    @* <script src="https://cdn.jsdelivr.net/npm/ag-grid-community/dist/ag-grid-community.min.js"></script> *@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="~/js/AdminList/GridDefinition.js"></script>
@@ -39,19 +40,7 @@
                             <form action="ListUsers">
                                 <div class="mb-3 text-left">
                                     <label for="txtIdentificacion">Identificación</label>
-                                    <input id="txtIdentificacion" type="text" readonly="readonly" class="form-control " />
-                                </div>
-                                <div class="mb-3 text-left">
-                                    <label for="txtNombre">Nombre</label>
-                                    <input id="txtNombre" type="text" readonly="readonly" class="form-control" />
-                                </div>
-                                <div class="mb-3 text-left">
-                                    <label for="txtApellidos">Apellidos</label>
-                                    <input id="txtApellidos" type="text" readonly="readonly" class="form-control" />
-                                </div>
-                                <div class="mb-3 text-left">
-                                    <label for="txtCorreo">Correo</label>
-                                    <input id="txtCorreo" type="text" readonly="readonly" class="form-control" />
+                                    <input id="txtIdentificacion" type="text" class="form-control " />
                                 </div>
                                 <div class="mb-3 text-left">
                                     <form action="">
