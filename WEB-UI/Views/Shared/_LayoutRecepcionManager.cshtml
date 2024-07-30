@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] Rambo's Gym </title>
+    <link rel="icon" type="image/svg+xml" href="~/images/dumbbell-solid.svg" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/WEB_UI.styles.css" asp-append-version="true" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/5f2fe7cc8b.js" crossorigin="anonymous"></script>
+</head>
+<body data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="50">
+    <!-- Header -->
+    <header class="py-3 fixed-top bg-custom">
+        <div class="container d-flex justify-content-between align-items-center">
+            <!--  ver a cuál pag se dirije el entrenador al clicar el logo -->
+            <a href="@Url.Action("AdminPanelPrincipal", "Home")" style="color: white; text-decoration: none;">
+                <div class="logo" onclick="refreshPage();">
+                    Rambo's Gym <i class="fa-solid fa-dumbbell"></i>
+                </div>
+            </a>
+            <nav>
+                <ul class="nav">
+                    <li class="nav-item"><a class="nav-link text-white" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Cerrar Sesión  <i class="fa-solid fa-user"></i></a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="cta">
+        <div class="container text-center">
+            <p>&copy; 2024 Gimnasio. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

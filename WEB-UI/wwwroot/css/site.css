@@ -135,3 +135,20 @@ header {
     padding: 40px;
     margin: 0 80px 215px 50px;
 }
+
+/* Tarjetas de Administrador */
+
+.card {
+    height: 190px;
+    border: 2px ridge #E74C3C;
+}
+
+.card p {
+    margin-top: 10px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.card i {
+    font-size: 35px;
+}
