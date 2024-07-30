@@ -155,3 +155,38 @@ header {
 .card i {
     font-size: 35px;
 }
+
+/* Estilos para la tabla generada por Grid.js */
+.gridjs-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.gridjs-th, .gridjs-td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.gridjs-th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+.gridjs-tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.gridjs-tr:hover {
+    background-color: #ddd;
+}
+
+.gridjs-search {
+    margin-bottom: 10px;
+}
+
+.gridjs-pagination {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+}
