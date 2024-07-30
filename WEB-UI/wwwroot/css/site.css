@@ -135,9 +135,12 @@ header {
     padding: 40px;
     margin: 0 80px 215px 50px;
 }
-
+/* Pagos*/
+.card-pagos {
+    height: 250px;
+    border: 2px ridge #E74C3C;
+}
 /* Tarjetas de Administrador */
-
 .card {
     height: 190px;
     border: 2px ridge #E74C3C;

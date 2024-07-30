@@ -1,50 +1,51 @@
 ﻿@{
     Layout = "_LayoutPagos";
-}
-@section Scripts {
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-}
-<!-- Main Section -->
-<section class="hero">
-    <h1>Métodos de pago</h1>
-</section>
+    }
+    @section Scripts {
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    }
 
-<main class="container my-2">
-    <div class="row" style="padding:0 30px 450px 30px;">
-        <div class="col-6">
-            <div class="card" onclick="selectPaymentMethod('Paypal', this)">
-                <div class="card-body">
-                    <h3 class="card-title"> Paypal <i class="fa-brands fa-cc-paypal"></i></h3>
-                    <hr />
-                    <div class="escondido">
-                        <p>info paypal</p>
+<!--Main Section -->
+    <section class="hero">
+        <h1>Métodos de pago</h1>
+    </section>
+
+    <main class="container my-2">
+        <div class="row" style="padding:0 30px 450px 30px;">
+            <div class="col-6">
+            <div class="card-pagos" onclick="selectPaymentMethod('Paypal', this)">
+                    <div class="card-body pagos">
+                        <h3 class="card-title"> Paypal <i class="fa-brands fa-cc-paypal"></i></h3>
+                        <hr />
+                        <div class="escondido">
+                            <p>info paypal</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+            <div class="card-pagos" onclick="selectPaymentMethod('Sinpe Móvil', this)">
+                <div class="card-body ">
+                        <h3 class="card-title"> Sinpe Móvil <i class="fa-solid fa-money-bill-transfer"></i></h3>
+                        <hr />
+                        <div class="escondido">
+                            <ul>
+                                <li>Número telefónico: 8888-8888</li>
+                                <li>Nombre: Mauricio David Espinoza</li>
+                            </ul>
+                            <form>
+                                <label for="myfile">Comprobante:</label>
+                                <input type="file" id="myfile" name="myfile">
+                            </form>
+                            <br />
+                            <input type="submit" value="Enviar">
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-6">
-            <div class="card" onclick="selectPaymentMethod('Sinpe Móvil', this)">
-                <div class="card-body">
-                    <h3 class="card-title"> Sinpe Móvil <i class="fa-solid fa-money-bill-transfer"></i></h3>
-                    <hr />
-                    <div class="escondido">
-                        <ul>
-                            <li>Número telefónico: 8888-8888</li>
-                            <li>Nombre: Elver Galarga</li>
-                        </ul>
-                        <form>
-                            <label for="myfile">Comprobante:</label>
-                            <input type="file" id="myfile" name="myfile">
-                        </form>
-                        <br />
-                        <input type="submit" value="Enviar">
-                    </div>
-                </div>
-            </div>
+        <div class="mt-3">
+            <p id="selected-method" class="alert alert-info d-none"></p>
         </div>
-    </div>
-    <div class="mt-3">
-        <p id="selected-method" class="alert alert-info d-none"></p>
-    </div>
-</main>
+    </main>
