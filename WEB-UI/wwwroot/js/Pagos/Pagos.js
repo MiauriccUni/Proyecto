@@ -13,3 +13,4 @@
     cardElement.querySelector('.escondido').style.display = 'block';
 
 }
+
