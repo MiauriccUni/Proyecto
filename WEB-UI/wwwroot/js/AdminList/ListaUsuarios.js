@@ -10,16 +10,17 @@
 
     this.ListaUsuarios = function () {
         $.ajax({
-            url: "https://apisimepci.azurewebsites.net/api/Usuario/GetAllUsuariosA",
+            url: "https://localhost:7253/api/Usuario/GetAllUsuarios",
             method: "GET",
             contentType: "application/json;charset=utf-8",
             dataType: "json"
         }).done(function (result) {
             if (result.result == "OK") {
                 console.log("Estos fueron", result);
-                gripOptions.api.setRowData(result.data);
+                gridOptions.api.setRowData(result.data);
             }
             else {
+                console.log(error);
                 Swal.fire({
                     icon: "error",
                     title: "Hubo un problema al cargar los usuarios",
@@ -31,7 +32,7 @@
             Swal.fire({
                 icon: "error",
                 title: "Error al cargar los Usuarios",
-                text: "Hubo un error" + error.message
+                text: "Hubo un error" + " " +error.message
             });
 
         });

@@ -104,7 +104,7 @@ function VerificarCuenta() {
                     title: 'Error'
                 });
             });
-        } else{
+        } else {
             Swal.fire({
                 icon: 'error',
                 text: "Ha pasado más de un minuto, por favor solicitar nuevamente el codigo para realizar las validaciones.",

@@ -1,4 +1,5 @@
 ﻿using AppLogic;
+using DataAccess.Mappers;
 using DTO;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
@@ -51,6 +52,25 @@ namespace API.Controllers
             UsuarioManager updater = new UsuarioManager();
             updater.UpdateRolManager(id, rol);
         }
+
+        [HttpGet]
+        public API_Response GetAllUsuarios()
+        {
+            API_Response Response = new API_Response();
+            try
+            {
+                UsuarioMapper usuarioMapper = new UsuarioMapper();
+                Response.Data = usuarioMapper.GetRetrieveAllStatement();
+                Response.Result = "OK";
+            }
+            catch (Exception ex)
+            {
+                Response.Result = "ERROR";
+                Response.Message = ex.Message;
+            }
+            return Response;
+        }
+
 
         [HttpPut]
         public void UpdateOTP(string correo, int OTP)
