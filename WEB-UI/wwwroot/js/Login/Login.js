@@ -63,14 +63,21 @@
                 }).then(function () {
                     var roles = user.rol;
                     switch (roles) {
-                        case "Cliente":
+                        case "Administrador":
                             window.location = "/Home/AdminPanelPrincipal";
                             break;
-                        case "Recepcion":
+                        case "Recepcionista":
                             window.location = "/Home/Recepcion";
                             break;
+                        case "Entrenador":
+                            window.location = "/Home/Entrenador";
+                            break;
                         default:
-                            console.error("Unknown role:", rol);
+                            Swal.fire({
+                                icon: "error",
+                                title: "Error",
+                                text: "No se logro identificar el Usuario"
+                            })
                     }
                 });
             }          
