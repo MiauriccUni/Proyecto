@@ -2,18 +2,10 @@
     Layout = "_LayoutActualizarDatos";
 }
 @section Scripts {
-    <script src="https://cdn.jsdelivr.net/npm/ag-grid-community/dist/ag-grid-community.min.js"></script>
+    <script src="https://unpkg.com/gridjs/dist/gridjs.umd.js"></script>
+    @* <script src="https://cdn.jsdelivr.net/npm/ag-grid-community/dist/ag-grid-community.min.js"></script> *@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-
-    @*      <script src="~/lib/jquery/dist/jquery.min.js"></script>
-        <script src="~/js/usermenu/menufunctions.js"></script>
-        <script src="~/js/adminusuarios/griddefinition.js"></script>
-        <script src="~/js/adminusuarios/listausuarios.js"></script>
-        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="~/js/site.js" asp-append-version="true"></script> *@
-
     <script src="~/js/AdminList/GridDefinition.js"></script>
     <script src="~/js/AdminList/ListaUsuarios.js"></script>
 }
@@ -40,13 +32,6 @@
                 <div class="col text-left" id="menu-quick-access">
                     <div class="row align-items-center justify-content-between mt-3 mb-4">
                         <div class="col-md-3 mt-3">
-                            @* <p class="ml-1">Buscar Usuario</p>
-                                </div>
-                                <div class="col-md-9">
-                                <form class="d-flex mr-4" action="/buscar" method="GET">
-                                <input class="form-control me-2 flex-grow-1" type="text" name="q" placeholder="Buscar...">
-                                <button class="btn btn-outline-success " type="submit">Buscar</button>
-                                </form> *@
                         </div>
                     </div>
                     <div class="text-center align-content-center">
@@ -55,25 +40,13 @@
                             <form action="ListUsers">
                                 <div class="mb-3 text-left">
                                     <label for="txtIdentificacion">Identificación</label>
-                                    <input id="txtIdentificacion" type="text" readonly="readonly" class="form-control " />
-                                </div>
-                                <div class="mb-3 text-left">
-                                    <label for="txtNombre">Nombre</label>
-                                    <input id="txtNombre" type="text" readonly="readonly" class="form-control" />
-                                </div>
-                                <div class="mb-3 text-left">
-                                    <label for="txtApellidos">Apellidos</label>
-                                    <input id="txtApellidos" type="text" readonly="readonly" class="form-control" />
-                                </div>
-                                <div class="mb-3 text-left">
-                                    <label for="txtCorreo">Correo</label>
-                                    <input id="txtCorreo" type="text" readonly="readonly" class="form-control" />
+                                    <input id="txtIdentificacion" type="text" class="form-control " />
                                 </div>
                                 <div class="mb-3 text-left">
                                     <form action="">
                                         <label for="txtRol">Rol</label>
                                         <select class="form-select" name="rolselect" id="rolselect">
-                                            <option value="" disabled selected>---------------------</option>
+                                            <option value="" disabled selected>Selecione el rol correspondiente</option>
                                             <option value="Administrador">Administrador</option>
                                             <option value="Recepcionista">Recepcionista</option>
                                             <option value="Entrenador">Entrenador</option>
@@ -83,12 +56,6 @@
                                         </select>
                                     </form>
                                 </div>
-
-                                @* <div class="mb-3 text-left">
-                                    <label for="txtContrasena">Cambiar Constraseña</label>
-                                    <input id="txtContrasena" type="text" readonly="readonly" class="form-control" />
-                                </div> *@
-
                                 <div class="mb-3">
                                     <button type="button" class="btn btn-success" id="btnActRol">Guardar rol</button>
                                 </div>
@@ -102,33 +69,6 @@
             </div>
         </div>
     </div>
-    <script>
-        $(document).ready(function () {
-            $('#btnActRol').click(function () {
-                var userId = $('#txtIdentificacion').val();
-                var newRole = $('#rolselect').val();
-
-                $.ajax({
-                    url: '/api/Usuario/UpdateUserRole',
-                    type: 'PUT',
-                    data: {
-                        userId: userId,
-                        newRole: newRole
-                    },
-                    success: function (response) {
-                        if (response.success) {
-                            alert('Rol actualizado correctamente');
-                        } else {
-                            alert('Error al actualizar el rol: ' + response.message);
-                        }
-                    },
-                    error: function () {
-                        alert('Error al conectar con el servidor');
-                    }
-                });
-            });
-        });
-    </script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
 </body>

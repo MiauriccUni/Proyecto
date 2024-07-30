@@ -61,9 +61,24 @@
                     title: "Excelente",
                     text: "Bienvenido"
                 }).then(function () {
-                    window.location = "/Home/AdminPanelPrincipal";
-                    //window.location = "/Home/Entrenador;"
-                    //window.location = "Recepcion";  
+                    var roles = user.rol;
+                    switch (roles) {
+                        case "Administrador":
+                            window.location = "/Home/AdminPanelPrincipal";
+                            break;
+                        case "Recepcionista":
+                            window.location = "/Home/Recepcion";
+                            break;
+                        case "Entrenador":
+                            window.location = "/Home/Entrenador";
+                            break;
+                        default:
+                            Swal.fire({
+                                icon: "error",
+                                title: "Error",
+                                text: "No se logro identificar el Usuario"
+                            })
+                    }
                 });
             }          
         }).fail(function (error) {

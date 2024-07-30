@@ -108,6 +108,15 @@ namespace DataAccess.Mappers
             return operation;
         }
 
+        public SqlOperation UpdateOTP(string correo, int OTP)
+        {
+            SqlOperation operation = new SqlOperation();
+            operation.ProcedureName = "SP_UPDATE_OTP";
+            operation.AddVarCharParam("correo", correo);
+            operation.AddIntegerParam("OTP", OTP);
+            return operation;
+        }
+
         public SqlOperation UpdateRol(int id, string rol)
         {
             SqlOperation operation = new SqlOperation();
