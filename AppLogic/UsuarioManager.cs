@@ -39,5 +39,11 @@ namespace AppLogic
             crud.UpdateRolCrud(id, rol);
         }
 
+        public void UpdateOTPManager(string correo, int OTP)
+        {
+            UsuarioCrud crud = new UsuarioCrud();
+            crud.UpdateOTPCrud(correo, OTP);
+        }
+
     }
 }

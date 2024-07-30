@@ -112,6 +112,11 @@ namespace DataAccess.Crud
             SqlOperation operation = usuarioMapper.UpdateRol(id, rol);
             dao.ExecuteStoreProcedure(operation);
         }
+        public void UpdateOTPCrud(string correo, int OTP)
+        {
+            SqlOperation operation = usuarioMapper.UpdateOTP(correo, OTP);
+            dao.ExecuteStoreProcedure(operation);
+        }
 
     }
 }

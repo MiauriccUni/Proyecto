@@ -46,7 +46,6 @@ namespace API.Controllers
             updater.UpdateValidacion(correo, verificar);
         }
 
-
         [HttpPut]
         public void UpdateRol(int id, string rol)
         {
@@ -57,20 +56,27 @@ namespace API.Controllers
         [HttpGet]
         public API_Response GetAllUsuarios()
         {
-            API_Response Response = new API_Response();
+            API_Response response = new API_Response();
             try
             {
-                UsuarioMapper usuarioMapper = new UsuarioMapper();
-                Response.Data = usuarioMapper.GetRetrieveAllStatement();
-                Response.Result = "OK";
+                UsuarioManager manager = new UsuarioManager();
+                response.Data = manager.GetAllUsuarios();
+                response.Result = "OK";
             }
             catch (Exception ex)
             {
-                Response.Result = "ERROR";
-                Response.Message = ex.Message;
+                response.Result = "ERROR";
+                response.Message = ex.Message;
             }
-            return Response;
+            return response;
         }
 
+
+        [HttpPut]
+        public void UpdateOTP(string correo, int OTP)
+        {
+            UsuarioManager updater = new UsuarioManager();
+            updater.UpdateOTPManager(correo, OTP);
+        }
     }
 }
