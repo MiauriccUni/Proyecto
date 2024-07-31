@@ -1,0 +1,34 @@
+﻿@{
+    Layout = "_LayoutInfoClienteDia";
+}
+@section Scripts {
+    <script src="https://unpkg.com/gridjs/dist/gridjs.umd.js"></script>
+    @* <script src="https://cdn.jsdelivr.net/npm/ag-grid-community/dist/ag-grid-community.min.js"></script> *@
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="~/js/AdminList/GridDefinition.js"></script>
+    <script src="~/js/AdminList/ListaUsuarios.js"></script>
+}
+<!-- Main Section -->
+<section class="hero">
+    <h1>Información Personal</h1>
+</section>
+
+<main class="container my-2" style="padding:30px 20px;">
+    <div class="row info-cliente">
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title"> Datos Personales </h3>
+                    <hr />
+                    <ul class="li_Cliente">
+                        <li>Nombre completo: </li>
+                        <li>Edad: </li>
+                        <li>Fecha nacimiento: </li>
+                        <li>Contacto: </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

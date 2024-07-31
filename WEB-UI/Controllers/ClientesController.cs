@@ -23,5 +23,20 @@ namespace WEB_UI.Controllers
         {
             return View();
         }
+
+        public IActionResult InformacionClienteDia()
+        {
+            return View();
+        }
+
+        public IActionResult InformacionClienteStandard()
+        {
+            return View();
+        }
+
+        public IActionResult InformacionClientePremium()
+        {
+            return View();
+        }
     }
 }
