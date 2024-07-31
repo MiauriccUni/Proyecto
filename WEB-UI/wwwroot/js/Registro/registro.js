@@ -191,7 +191,7 @@
                                     sessionStorage.setItem('correo', email);
                                     sessionStorage.setItem('timestamp', time);
 
-                                    window.location = "/Home/OTP"
+                                    window.location = "/Views/OTP/OTP"
                                 }
                             )
                         }).fail(function (error) {

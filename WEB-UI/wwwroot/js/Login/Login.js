@@ -64,13 +64,13 @@
                     var roles = user.rol;
                     switch (roles) {
                         case "Administrador":
-                            window.location = "/Home/AdminPanelPrincipal";
+                            window.location = "/Views/Administrdor/AdminPanelPrincipal";
                             break;
                         case "Recepcionista":
-                            window.location = "/Home/Recepcion";
+                            window.location = "/Views/Recepcionista/RecepcionManager";
                             break;
                         case "Entrenador":
-                            window.location = "/Home/Entrenador";
+                            window.location = "Views/Entrenador/RecepcionPanel";
                             break;
                         default:
                             Swal.fire({
