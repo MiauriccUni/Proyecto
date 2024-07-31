@@ -92,7 +92,7 @@ function VerificarCuenta() {
                             showConfirmButton: true
                         }).then((error) => {
                             if (error.isConfirmed || error.dismiss === Swal.DismissReason.timer) {
-                                window.location = "/Views/Index/Index";
+                                window.location = "/Home/Index";
                             }
                         });
                     });
