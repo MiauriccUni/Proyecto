@@ -22,5 +22,14 @@ namespace WEB_UI.Controllers
         {
             return View();
         }
+        public IActionResult RecepcionPanel()
+        {
+            return View();
+        }
+
+        public IActionResult ActualizarDatosUsuariosRecepcionista()
+        {
+            return View();
+        }
     }
 }

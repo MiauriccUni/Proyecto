@@ -16,16 +16,16 @@
     <!-- Header -->
     <header class="py-3 fixed-top bg-custom">
         <div class="container d-flex justify-content-between align-items-center">
-            <!--  -->
-            <a href="@Url.Action("", "Clientes")" style="color: white; text-decoration: none;">
+            <!--@Url.Action("PanelEntrenador", "Entrenador") Al tocar el logo de Rambo a dónde mandamos la pag?  -->
+            <a href="#" style="color: white; text-decoration: none;">
                 <div class="logo" onclick="refreshPage();">
                     Rambo's Gym <i class="fa-solid fa-dumbbell"></i>
                 </div>
             </a>
-            <ul class="nav">
-                <li class="nav-item"><a class="nav-link text-white" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Página Principal  <i class="fas fa-user-astronaut mi-icono-personalizado"></i></a></li>
-                <li class="nav-item"><a class="nav-link text-white" href="#section2">Cerrar Sesión</a></li>
-            </ul>
+            <nav>
+                <ul class="nav">
+                    <li class="nav-item"><a class="nav-link text-white" href="#section2">Cerrar Sesión</a></li>
+                </ul>
             </nav>
         </div>
     </header>
@@ -44,8 +44,6 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-    <script src="~/js/Pagos/pagos2.js"></script>
-    <script src="~/js/Pagos/Pagos.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

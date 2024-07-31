@@ -1,0 +1,39 @@
+    Layout = "_LayoutPanelEntrenador";
+}
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="~/js/registro/registro.js"></script>
+}
+<section class="hero">
+    <h1>Bienvenido al Panel de Administrador</h1>
+</section>
+
+<main class="container my-2">
+    <div class="row">
+        <div class="col-md-4 mb-4 tarjetita">
+            <div class="card card-admin">
+                <h3 class="card-title">Registro de Máquinas</h3>
+                <p>Listado de máquinas del gimnasio</p>
+                <!--colocar el link de la vista en el href-->
+                <a href="@Url.Action("MaquinasEntrenador", "Entrenador")" style="color: #2C3E50; text-decoration: none; text-align: center;"><i class="fa-solid fa-dumbbell"></i></a>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4 tarjetita">
+            <div class="card card-admin">
+                <!---->
+                <h3 class="card-title">Listado de Rutinas</h3>
+                <p>Registro de rutinas clientes</p>
+                <a href="@Url.Action("Rutinas", "Entrenador")" style="color: #2C3E50; text-decoration: none; text-align: center;"><i class="fa-solid fa-table-list"></i></a>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4 tarjetita">
+            <div class="card card-admin">
+                <!--colocar el link de la vista en el href-->
+                <h3 class="card-title">Registro Rutinas</h3>
+                <p>Gestión de rutinas</p>
+                <a href="@Url.Action("Entrenador", "Entrenador")" style="color: #2C3E50; text-decoration: none; text-align: center;"><i class="fa-solid fa-list-check"></i></i></a>
+            </div>
+        </div>
+    </div>
+</main>

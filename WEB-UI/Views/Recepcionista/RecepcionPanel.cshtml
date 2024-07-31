@@ -1,0 +1,50 @@
+﻿@{
+    Layout = "_LayoutRecepcionPanel";
+}
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="~/js/registro/registro.js"></script>
+}
+<section class="hero">
+    <h1>Bienvenido al Panel de Administrador</h1>
+</section>
+
+<main class="container my-2">
+    <div class="row">
+        <div class="col-md-4 mb-4 tarjetita">
+            <div class="card card-admin">
+                <h3 class="card-title">Registro de Pagos</h3>
+                <p>Listado de clientes leales a Rambo's Gym</p>
+                <!--colocar el link de la vista en el href-->
+                <a href="#" style="color: #2C3E50; text-decoration: none; text-align: center;"><i class="fa-solid fa-comment-dollar"></i></a>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4 tarjetita">
+            <div class="card card-admin">
+                <!---->
+                <h3 class="card-title">Gestion de usuarios.</h3>
+                <p>Listado de usuarios Rambo's Gym</p>
+                <a href="@Url.Action("ActualizarDatosUsuarios", "Home")" style="color: #2C3E50; text-decoration: none; text-align: center;"><i class="fa-solid fa-user-group"></i></a>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4 tarjetita">
+            <div class="card card-admin">
+                <!--colocar el link de la vista en el href-->
+                <h3 class="card-title">Descuentos</h3>
+                <p>Dashboard de descuentos de Rambo's Gym</p>
+                <a href="#" style="color: #2C3E50; text-decoration: none; text-align: center;"><i class="fa-solid fa-percent"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col tarjetita">
+            <div class="card card-admin">
+                <!--colocar el link de la vista en el href-->
+                <h3 class="card-title">Registro de citas medición y clases de clientes</h3>
+                <p>Dashboard de citas y clases para clientes</p>
+                <a href="@Url.Action("RecepcionManager", "Home")" style="color: #2C3E50; text-decoration: none; text-align: center;"><i class="fa-solid fa-weight-scale"></i></a>
+            </div>
+        </div>
+    </div>
+</main>
