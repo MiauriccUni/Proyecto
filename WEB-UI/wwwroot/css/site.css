@@ -197,3 +197,47 @@ header nav ul li a {
     justify-content: center;
 }
 
+/* Registro máquinas */
+
+.maquinas-container {
+    margin-top: 60px;
+    padding: 0 250px 0 250px;
+}
+
+/*  CSS DAX  */
+
+.header-image {
+    width: 100%;
+    padding-top: 70px ;
+    max-height: 250px;
+    object-fit: cover;
+    margin-top: 0px; /* Ajusta el margen superior según sea necesario */
+    display: block;
+}
+
+.side-image {
+    position: fixed;
+    top: 250px;
+    left: 0;
+    height: auto;
+    width: auto;
+    max-width: 300px;
+    z-index: 1;
+}
+
+.bg-custom, .tarifa-card {
+            background-color: #34495E;
+        }
+
+        .cta-button:hover {
+            background-color: #2471A3;
+        }
+
+        .small-carousel .carousel-inner {
+            max-height: 300px; /* Ajusta la altura máxima del carrusel /
+        }
+
+        .small-carousel .carousel-item img {
+            height: 300px; / Ajusta la altura de las imágenes del carrusel /
+            object-fit: cover; / Asegura que las imágenes se ajusten correctamente */
+        }
