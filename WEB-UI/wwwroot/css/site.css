@@ -129,7 +129,7 @@ header {
     padding: 265px 0px 265px 0px;
 }
 
-/* Contraseña Landing */
+/* ContraseÃ±a Landing */
 .contenedor-contrasena {
     padding: 40px;
     margin: 0 80px 215px 50px;
@@ -140,6 +140,9 @@ header {
     border: 2px ridge #E74C3C;
 }
 /* Tarjetas de Administrador */
+
+/* Tarjetas de Administrador */
+
 .card {
     /*height: 190px;*/
     border: 2px ridge #E74C3C;
@@ -193,3 +196,4 @@ header {
     display: flex;
     justify-content: center;
 }
+
