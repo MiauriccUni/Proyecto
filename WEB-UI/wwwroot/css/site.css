@@ -16,28 +16,28 @@ header {
     align-items: center;
 }
 
-    header .logo {
-        font-family: 'Playfair Display', serif;
-        cursor: pointer;
-        font-size: 1.5rem;
-        font-weight: 700;
-    }
+header .logo {
+    font-family: 'Playfair Display', serif;
+    cursor: pointer;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
 
-    header nav ul {
-        list-style: none;
-        display: flex;
-        gap: 1rem;
-    }
+header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+}
 
-        header nav ul li {
-            display: inline;
-        }
+header nav ul li {
+    display: inline;
+}
 
-            header nav ul li a {
-                color: #FFFFFF;
-                text-decoration: none;
-                font-weight: 700;
-            }
+header nav ul li a {
+    color: #FFFFFF;
+    text-decoration: none;
+    font-weight: 700;
+}
 
 .hero {
     text-align: center;
@@ -45,14 +45,14 @@ header {
     color: #2C3E50;
 }
 
-    .hero h1 {
-        font-family: 'Playfair Display', serif;
-        font-size: 3rem;
-    }
+.hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+}
 
-    .hero p {
-        font-size: 1.5rem;
-    }
+.hero p {
+    font-size: 1.5rem;
+ }
 
 .cta-button {
     display: inline-block;
@@ -83,6 +83,7 @@ header {
 
 .bg-custom, .tarifa-card {
     background-color: #34495E;
+
 }
 
 .cta-button:hover {
@@ -106,10 +107,9 @@ header {
 .btn-cliente {
     color: #FFFFFF;
 }
-
-    .btn-cliente:hover {
-        background-color: #E74C3C;
-    }
+.btn-cliente:hover {
+    background-color: #E74C3C;
+}
 
 .title_clase {
     text-align: center;
@@ -130,7 +130,6 @@ header {
 }
 
 /* Contraseña Landing */
-
 .contenedor-contrasena {
     padding: 40px;
     margin: 0 80px 215px 50px;
@@ -145,8 +144,12 @@ header {
 /* Tarjetas de Administrador */
 
 .card {
-    height: 190px;
+    /*height: 190px;*/
     border: 2px ridge #E74C3C;
+}
+
+.card-admin {
+    height: 190px;
 }
 
 .card p {
