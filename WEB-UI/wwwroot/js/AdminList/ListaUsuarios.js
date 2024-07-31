@@ -139,7 +139,11 @@ function Consultar() {
         pagination: {
             limit: 5
         },
-
+        language: {
+            search: {
+                placeholder: 'Buscar'
+            }
+        },
         columns: ['ID', 'Nombre', 'Correo', 'Rol'],
         server: {
             url: 'https://localhost:7253/api/Usuario/GetAllUsuarios',
@@ -147,7 +151,6 @@ function Consultar() {
         },
     }).render(document.getElementById('myGrid'));
 }
-
 $(document).ready(function () {
     Consultar();
     var view = new UsuariosList();
