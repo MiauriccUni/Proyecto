@@ -72,18 +72,21 @@
                         case "Entrenador":
                             window.location = "/Entrenador/PanelEntrenador";
                             break;
+                        case "ClientePremium":
+                            window.location = "/Clientes/ClienteDia";
+                            break;
+                        case "ClienteStandard":
+                            window.location = "/Clientes/ClientePremium";
+                            break;
+                        case "Cliente1dia":
+                            window.location = "/Clientes/ClienteStandard";
+                            break;
                         default:
                             Swal.fire({
                                 icon: "error",
                                 title: "Error",
                                 text: "No se logro identificar el Usuario"
                             })
-                                //< option value = "Administrador" > Administrador</option >
-                                //            <option value="Recepcionista">Recepcionista</option>
-                                //            <option value="Entrenador">Entrenador</option>
-                                //            <option value="ClientePremium">Cliente Premium</option>
-                                //            <option value="ClienteStandard">Cliente Standard</option>
-                                //            <option value="Cliente1dia">Cliente 1 día</option>
                     }
                 });
             }          
