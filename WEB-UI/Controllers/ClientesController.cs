@@ -8,5 +8,20 @@ namespace WEB_UI.Controllers
         {
             return View();
         }
+
+        public IActionResult ClientePremium()
+        {
+            return View();
+        }
+
+        public IActionResult ClienteStandard()
+        {
+            return View();
+        }
+
+        public IActionResult ClienteDia()
+        {
+            return View();
+        }
     }
 }

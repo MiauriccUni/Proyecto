@@ -239,3 +239,32 @@ header nav ul li a {
  height: 300px; / Ajusta la altura de las imágenes del carrusel /
  object-fit: cover; / Asegura que las imágenes se ajusten correctamente */
  }
+
+
+/****************************************************************************************/
+
+/* Clientes */
+.row-clases-rutinas {
+    padding-bottom: 200px;
+}
+
+.row-clases-rutinas-undia {
+    padding-bottom: 410px;
+}
+
+.section-cliente {
+    text-align: center;
+    font-size: 15px;
+}
+
+.class-schedule, .routines {
+    list-style: none;
+    padding: 0;
+}
+
+.class-schedule li, .routines li {
+    background: #e4e4e4;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+}
