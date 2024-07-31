@@ -268,3 +268,36 @@ header nav ul li a {
     padding: 10px;
     border-radius: 5px;
 }
+
+.hero-cliente {
+    text-align: center;
+    padding: 1rem 2rem 1rem 2rem;
+    color: #2C3E50;
+}
+
+.card-cliente {
+    margin-bottom: 150px ;
+}
+
+.info-cliente {
+    margin-bottom: 370px;
+}
+
+.header-image-clientes {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    position: static;
+    height: auto; /* Ajusta el margen superior según sea necesario */
+    display: block;
+}
+
+.side-image-clientes {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    height: auto;
+    width: auto;
+    max-width: 300px;
+    z-index: 1;
+}

@@ -1,5 +1,101 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
+    Layout = "_LayoutClientePremium";
 }
+@section Scripts {
+    <script src="https://unpkg.com/gridjs/dist/gridjs.umd.js"></script>
+    @* <script src="https://cdn.jsdelivr.net/npm/ag-grid-community/dist/ag-grid-community.min.js"></script> *@
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="~/js/AdminList/GridDefinition.js"></script>
+    <script src="~/js/AdminList/ListaUsuarios.js"></script>
+}
+<!-- Main Section -->
+<div>
+    <img src="https://res.cloudinary.com/testcenfotecdsd/image/upload/t_sdasdasdasdasdasdasdsa/v1722396774/imagen_2024-07-30_213252929_h91nk3.png" alt="Imagen del gimnasio" class="header-image-clientes">
+</div>
+<section class="hero-cliente">
+    <h1>Bienvenido </h1>
+</section>
+<!-- Imagen Lateral -->
+<img src="https://res.cloudinary.com/testcenfotecdsd/image/upload/v1722367620/imagen_2024-07-30_132657783_jzlges.png" alt="Imagen Lateral" class="side-image-clientes">
+<main class="container my-2" style="padding:30px 20px;">
+    <div class="row">
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title"> Cita nutricionista </h3>
+                    <hr />
+                    <div class="section-cliente">
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title"> Entrenador Personal </h3>
+                    <hr />
+                    <div class="section-cliente">
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title"> Cita Medición Física </h3>
+                    <hr />
+                    <div class="section-cliente">
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row row-clases-rutinas">
+        <div class="col-6">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title"> Clases Grupales </h3>
+                    <hr />
+                    <div class="row">
+                        <div class="col-4">
+                            <h5 class="title_clase">Clase</h5>
+                            <hr>
+                            <ul id="clasesList">
+                            </ul>
+                        </div>
+                        <div class="col-4">
+                            <h5 class="title_clase">Horario</h5>
+                            <hr>
+                            <ul id="horarioList">
+                            </ul>
+                        </div>
+                        <div class="col-4">
+                            <h5 class="title_clase">Día</h5>
+                            <hr>
+                            <ul id="diaList">
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title"> Rutinas </h3>
+                    <hr />
+                    <div class="row">
+                        <ul class="routines">
+                            <li></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
