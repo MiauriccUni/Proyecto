@@ -14,25 +14,7 @@ namespace WEB_UI.Controllers
             {
                 _logger = logger;
             }
-
-            /* Controller Administrador */
-            
-
-            /* Controllers Recepcionista */
-            
-
-
-            /* Controllers Entrenador */
-
-            public IActionResult Rutinas()
-            {
-                return View();
-            }
-
-            public IActionResult MaquinasEntrenador()
-            {
-                return View();
-            }
+         
            
 
             [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

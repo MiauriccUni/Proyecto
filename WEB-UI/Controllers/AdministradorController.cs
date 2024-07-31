@@ -18,7 +18,7 @@ namespace WEB_UI.Controllers
             return View();
         }
 
-        public IActionResult ActualizarDatosUsuarios()
+        public IActionResult ActualizarDatosUsuariosAdministrador()
         {
             return View();
         }
