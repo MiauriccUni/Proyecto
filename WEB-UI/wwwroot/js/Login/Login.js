@@ -64,13 +64,13 @@
                     var roles = user.rol;
                     switch (roles) {
                         case "Administrador":
-                            window.location = "/Home/AdminPanelPrincipal";
+                            window.location = "/Administrador/AdminPanelPrincipal";
                             break;
                         case "Recepcionista":
-                            window.location = "/Home/Recepcion";
+                            window.location = "/Recepcionista/RecepcionPanel";
                             break;
                         case "Entrenador":
-                            window.location = "/Home/Entrenador";
+                            window.location = "/Entrenador/PanelEntrenador";
                             break;
                         default:
                             Swal.fire({
@@ -78,6 +78,12 @@
                                 title: "Error",
                                 text: "No se logro identificar el Usuario"
                             })
+                                //< option value = "Administrador" > Administrador</option >
+                                //            <option value="Recepcionista">Recepcionista</option>
+                                //            <option value="Entrenador">Entrenador</option>
+                                //            <option value="ClientePremium">Cliente Premium</option>
+                                //            <option value="ClienteStandard">Cliente Standard</option>
+                                //            <option value="Cliente1dia">Cliente 1 día</option>
                     }
                 });
             }          

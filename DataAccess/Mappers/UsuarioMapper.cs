@@ -1,6 +1,7 @@
 ﻿using DataAccess.DAO;
 using DataAccess.Mappers.Interfaces;
 using DTO;
+using System.Numerics;
 
 namespace DataAccess.Mappers
 {
@@ -128,7 +129,10 @@ namespace DataAccess.Mappers
 
         public SqlOperation GetRetrieveByIdStatement(string id)
         {
-            throw new NotImplementedException();
+            SqlOperation operation = new SqlOperation();
+            operation.ProcedureName = "SP_GET_BY_ID";
+            operation.AddVarCharParam("id_usuarios", id);
+            return operation;
         }
 
         public SqlOperation GetUpdateStatement(BaseClass dto)
@@ -136,29 +140,5 @@ namespace DataAccess.Mappers
             throw new NotImplementedException();
         }
 
-        ///* Intento de update usuario 1 */
-
-        //public SqlOperation GetUpdateUserPassword(string correo, string nuevaClave)
-        //{
-        //    SqlOperation operation = new SqlOperation();
-        //    operation.ProcedureName = "SP_PUT_PASSWORD";
-        //    operation.AddVarCharParam("Correo", correo);
-        //    operation.AddVarCharParam("nuevaClave", nuevaClave);
-        //    return operation;
-        //}
-
-        //public SqlOperation GetUpdateUserRol(string correo, string nuevoRol)
-        //{
-        //    SqlOperation operation = new SqlOperation();
-        //    operation.ProcedureName = "SP_UPDATE_ROL";
-        //    operation.AddVarCharParam("Correo", correo);
-        //    operation.AddVarCharParam("nuevoRol", nuevoRol);
-        //    return operation;
-        //}
-
-        //public SqlOperation GetUpdateStatement(BaseClass dto)
-        //{
-        //    throw new NotImplementedException();
-        //}
     }
 }
