@@ -26,6 +26,8 @@ namespace AppLogic
             RutinaCrud rutinasCrud = new RutinaCrud();
             return rutinasCrud.RetrieveBynombre_ejercicio <rutinas>(NombreEjercicio);
         }
+
+
         public List<rutinas> GetRetrieveTiposEjercicio(string TipoEjercicio)
         {
             RutinaCrud rutinasCrud = new RutinaCrud();

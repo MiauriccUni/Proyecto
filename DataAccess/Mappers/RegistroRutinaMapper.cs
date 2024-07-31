@@ -39,7 +39,7 @@ namespace DataAccess.Mappers
             SqlOperation operation = new SqlOperation();
             operation.ProcedureName = "SP_INSERT_REGISTRORUTINA";
             RegistroRutina user = (RegistroRutina)dto;
-            operation.AddIntegerParam("id_maquina", user.Id);
+            operation.AddIntegerParam("id_entrenamiento", user.Id);
             operation.AddIntegerParam("repeticiones", user.Repeticiones);
             operation.AddIntegerParam("peso", user.Peso);
             operation.AddDatetimeParam("tiempo", user.tiempo);
@@ -72,7 +72,7 @@ namespace DataAccess.Mappers
         {
             SqlOperation operation = new SqlOperation();
             operation.ProcedureName = "GET_USER_BY_REPETICIONES";
-            operation.AddIntegerParam("repetiociones", Repeticiones);
+            operation.AddIntegerParam("repeticiones", Repeticiones);
             return operation;
         }
         public SqlOperation GetRetrieveByPeso(int Peso)
@@ -92,7 +92,7 @@ namespace DataAccess.Mappers
         public SqlOperation GetRetrieveByTiempo(DateTime Tiempo)
         {
             SqlOperation operation = new SqlOperation();
-            operation.ProcedureName = "c";
+            operation.ProcedureName = "GET_USER_BY_TIEMPO";
             operation.AddDatetimeParam("tiempo", Tiempo);
             return operation;
         }

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    public class maquina:BaseClass
+    public class Maquina:BaseClass
     {
         public string NombreMaquina { get; set; }
 
