@@ -28,7 +28,7 @@
         usuario.correo = $('#registerEmail').val();
         usuario.celular = $('#Phone').val();
         usuario.contrasenna = $('#registerPassword').val();
-        usuario.rol = "Cliente";
+        usuario.rol = $('#clienteTipo').find(":selected").val();
         usuario.genero = $('#Sexo').find(":selected").val();
         usuario.otp = generateUniqueOTP();
         usuario.verificar = "Incompleta";

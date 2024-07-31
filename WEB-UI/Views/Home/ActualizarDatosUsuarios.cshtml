@@ -6,10 +6,8 @@
     @* <script src="https://cdn.jsdelivr.net/npm/ag-grid-community/dist/ag-grid-community.min.js"></script> *@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="~/js/AdminList/GridDefinition.js"></script>
     <script src="~/js/AdminList/ListaUsuarios.js"></script>
 }
-
 <body>
 
     <section class="hero">
@@ -40,13 +38,13 @@
                             <form action="ListUsers">
                                 <div class="mb-3 text-left">
                                     <label for="txtIdentificacion">Identificación</label>
-                                    <input id="txtIdentificacion" type="text" class="form-control " />
+                                    <input id="txtIdentificacion" type="number" class="form-control " />
                                 </div>
                                 <div class="mb-3 text-left">
                                     <form action="">
                                         <label for="txtRol">Rol</label>
                                         <select class="form-select" name="rolselect" id="rolselect">
-                                            <option value="" disabled selected>Selecione el rol correspondiente</option>
+                                            <option value="" disabled selected>Seleccione el rol correspondiente</option>
                                             <option value="Administrador">Administrador</option>
                                             <option value="Recepcionista">Recepcionista</option>
                                             <option value="Entrenador">Entrenador</option>

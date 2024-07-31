@@ -78,6 +78,12 @@
                                 title: "Error",
                                 text: "No se logro identificar el Usuario"
                             })
+                                //< option value = "Administrador" > Administrador</option >
+                                //            <option value="Recepcionista">Recepcionista</option>
+                                //            <option value="Entrenador">Entrenador</option>
+                                //            <option value="ClientePremium">Cliente Premium</option>
+                                //            <option value="ClienteStandard">Cliente Standard</option>
+                                //            <option value="Cliente1dia">Cliente 1 día</option>
                     }
                 });
             }          
