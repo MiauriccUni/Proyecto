@@ -226,18 +226,16 @@ header nav ul li a {
 }
 
 .bg-custom, .tarifa-card {
-            background-color: #34495E;
-        }
+     background-color: #34495E;
+}
 
-        .cta-button:hover {
-            background-color: #2471A3;
-        }
+.cta-button:hover {
+     background-color: #2471A3;
+}
 
-        .small-carousel .carousel-inner {
-            max-height: 300px; /* Ajusta la altura máxima del carrusel /
-        }
-
-        .small-carousel .carousel-item img {
-            height: 300px; / Ajusta la altura de las imágenes del carrusel /
-            object-fit: cover; / Asegura que las imágenes se ajusten correctamente */
-        }
+.small-carousel .carousel-inner {
+    max-height: 300px; /* Ajusta la altura máxima del carrusel /
+}.small-carousel .carousel-item img {
+ height: 300px; / Ajusta la altura de las imágenes del carrusel /
+ object-fit: cover; / Asegura que las imágenes se ajusten correctamente */
+ }

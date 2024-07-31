@@ -15,70 +15,25 @@ namespace WEB_UI.Controllers
                 _logger = logger;
             }
 
-            public IActionResult Index()
-            {
-                return View();
-            }
+            /* Controller Administrador */
+            
 
-            public IActionResult AdminActualizacionUsuario()
-            {
-                return View();
-            }
+            /* Controllers Recepcionista */
+            
 
-            public IActionResult AdminPanelPrincipal()
-            {
-                return View();
-            }
 
-            public IActionResult AdminRecuperacionContrasenna()
-            {
-                return View();
-            }
-
-            public IActionResult Recepcion()
-            {
-                return View();
-            }
-
-            public IActionResult RecepcionManager()
-            {
-                return View();
-            }
-
-            public IActionResult Registrar()
-            {
-                return View();
-            }
-
-            public IActionResult Entrenador()
-            {
-                return View();
-            }
-
-            public IActionResult OTP()
-            {
-                return View();
-            }
+            /* Controllers Entrenador */
 
             public IActionResult Rutinas()
             {
                 return View();
             }
 
-            public IActionResult ActualizarDatosUsuarios()
+            public IActionResult MaquinasEntrenador()
             {
                 return View();
             }
-
-            public IActionResult Pagos()
-            {
-                return View();
-            }
-
-            public IActionResult Maquinas()
-            {
-                return View();
-            }
+           
 
             [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
             public IActionResult Error()
