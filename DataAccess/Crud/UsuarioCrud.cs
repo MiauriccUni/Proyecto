@@ -44,24 +44,27 @@ namespace DataAccess.Crud
 
         public override T RetrieveById<T>(int id)
         {
-            //List<T> result = new List<T>();
-            //SqlOperation operation = usuarioMapper.GetRetrieveByIdStatement(id);
-
-            //List<Dictionary<string, object>> dataResults = dao.ExecuteStoredProcedureWithQuery(operation);
-
-            //if(dataResults.Count > 0)
-            //{
-            //    var dtoList = usuarioMapper.BuildObjects(dataResults);
-            //    foreach(var dto in dtoList)
-            //    {
-            //        result
-            //    }
-            //}
             throw new NotImplementedException();
         }
         public override void Update(BaseClass dto)
         {
             throw new NotImplementedException();
+        }
+
+        public List<T> RetrieveByID<T>(int id)
+        {
+            List<T> resultList = new List<T>();
+            SqlOperation operation = usuarioMapper.GetRetrieveByIdStatement(id);
+            List<Dictionary<string, object>> dataResults = dao.ExecuteStoredProcedureWithQuery(operation);
+            if(dataResults.Count > 0)
+            {
+                var dtoList = usuarioMapper.BuildObjects(dataResults);
+                foreach(var dto in dtoList)
+                {
+                    resultList.Add((T)Convert.ChangeType(dto, typeof(T)));
+                }
+            }
+            return resultList;
         }
 
         public List<T> RetrieveByEmail<T>(string correo)

@@ -96,6 +96,9 @@
 
     //}
 
+
+
+
     this.PutRol = function () {
         
         id = $('#txtIdentificacion').val();
@@ -103,30 +106,70 @@
 
         var api_url = "https://localhost:7253/api/Usuario/UpdateRol?id=" + id + "&rol=" + nuevoRol;
 
-        $.ajax({
-            headers: {
-                'Accept': "application/json",
-                'Content-Type': "application/json"
-            },
-            method: "PUT",
-            url: api_url,
-            contentType: "application/json;charset=utf-8",
-            dataType: "text",      
-        }).done(function (response) {
+        if (id === "") {
             Swal.fire({
-                title: '¡Rol cambiado!',
-                text: 'El rol del usuario ha sido cambiado con éxito.',
-                icon: 'success',
-                confirmButtonText: 'Aceptar',
-            })
+                icon: 'error',
+                text: "Por favor indique un ID a actualizar.",
+                title: 'Error'
+            });
+            return;
+        }
+        if (nuevoRol === "") {
+            Swal.fire({
+                icon: 'error',
+                text: "Por favor indique el nuevo rol a asignar correspondiente.",
+                title: 'Error'
+            });
+            return;
+        }
+
+        $.ajax({
+            url: "https://localhost:7253/api/Usuario/GetUserById?id=" + id,
+            method: "GET",
+            contentType: "application/json;charset=utf-8",
+            dataType: "json"
+        }).done(function (result) {
+            var user = result[0];
+            console.log(result[0]);
+            if (!user) {
+                Swal.fire({
+                    title: 'Error',
+                    icon: 'error',
+                    text: "Error el ID del usuario indicado no se encuentra registrado",
+                });
+            } else {
+                $.ajax({
+                    headers: {
+                        'accept': "application/json",
+                        'content-type': "application/json"
+                    },
+                    method: "put",
+                    url: api_url,
+                    contenttype: "application/json;charset=utf-8",
+                    datatype: "text",
+                }).done(function (response) {
+                    swal.fire({
+                        title: '¡rol cambiado!',
+                        text: 'el rol del usuario ha sido cambiado con éxito.',
+                        icon: 'success',
+                        confirmbuttontext: 'aceptar',
+                    })
+                }).fail(function (error) {
+                    swal.fire({
+                        title: '¡error!',
+                        text: 'no se pudo cambiar el rol del usuario.',
+                        icon: 'error',
+                        confirmbuttontext: 'aceptar',
+                    });
+                });
+            }
         }).fail(function (error) {
             Swal.fire({
-                title: '¡Error!',
-                text: 'No se pudo cambiar el rol del usuario.',
+                title: 'Error',
                 icon: 'error',
-                confirmButtonText: 'Aceptar',
+                text: "Error al cargar los usuarios",
             });
-        });
+        })
     }
 
 }
@@ -151,7 +194,6 @@ function Consultar() {
         },
     }).render(document.getElementById('myGrid'));
 }
-
 $(document).ready(function () {
     Consultar();
     var view = new UsuariosList();
