@@ -118,7 +118,11 @@ function Consultar() {
         pagination: {
             limit: 5
         },
-
+        language: {
+            search: {
+                placeholder: 'Buscar'
+            }
+        },
         columns: ['ID', 'Nombre', 'Correo', 'Fecha', 'Peso', 'Estatura'],
         server: {
             url: 'https://localhost:7253/api/CitasMedicion/GetAllUsuarios',
