@@ -2,7 +2,6 @@
 using DataAccess.Mappers;
 using DTO;
 
-
 namespace DataAccess.Crud
 {
     public class UsuarioCrud : CrudFactory

@@ -4,7 +4,7 @@
 @section Scripts {
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="~/js/registro/registro.js"></script>
+    <script src="~/js/citasmedicion/citasmedicion.js"></script>
 }
 <main class="container my-5" style="padding:50px 20px;">
     <!-- New Section -->
@@ -181,14 +181,41 @@
                 <div class="modal-body">
                     <form id="addMeasurementForm">
                         <div class="mb-3">
-                            <label for="cliente" class="form-label">Nombre del Cliente</label>
-                            <input type="text" class="form-control" id="cliente" name="cliente" required>
-                        </div>
-                        <div class="mb-3">
                             <label for="horaMedicion" class="form-label">Hora de la Medición</label>
-                            <input type="time" class="form-control" id="horaMedicion" name="horaMedicion" required>
+                            <input type="datetime-local" class="form-control" id="horaMedicion" name="horaMedicion" required>
                         </div>
-                        <button type="submit" class="btn btn-primary">Agendar Medición</button>
+
+                        <div class="mb-3">
+                            <label for="peso" class="form-label">Peso</label>
+                            <input type="number" class="form-control" id="peso" name="Peso" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="estatura" class="form-label">Estatura</label>
+                            <input type="number" class="form-control" id="estatura" name="Estatura" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="grasa" class="form-label">Porcentage de Grasa</label>
+                            <input type="number" class="form-control" id="grasa" name="grasa" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="rutina" class="form-label">Notas Adicionales</label>
+                            <input type="text" class="form-control" id="rutina" name="rutina" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="idrutina" class="form-label">Rutina a asignar</label>
+                            <input type="text" class="form-control" id="idrutina" name="rutina" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="idusuario" class="form-label">Usuario a asignar</label>
+                            <input type="text" class="form-control" id="idusuario" name="idusuario" required>
+                        </div>
+
+                        <button type="button" class="btn btn-primary" id="citaMedicion">Agendar Medición</button>
                     </form>
                 </div>
             </div>
