@@ -61,7 +61,7 @@ function Consultar() {
 
         columns: ['Nombre'],
         server: {
-            url: 'https://localhost:7253/api/maquina/GetAllMaquinas', /* cambiar esta parte del código */
+            url: 'https://localhost:7253/api/maquina/GetAllMaquinas',
             then: data => data.data.map(result => [result.nombreMaquina])
         },
     }).render(document.getElementById('myGrid'));

@@ -110,6 +110,23 @@
         
 }
 
+function Consultar() {
+    const grid = new gridjs.Grid({
+        search: true,
+        sort: true,
+        resizable: true,
+        pagination: {
+            limit: 5
+        },
+
+        columns: ['ID', 'Id Usuarios', 'Id Rutinas'],
+        server: {
+            url: 'https://localhost:7253/api/CitasMedicion/GetAllUsuarios',
+            then: data => data.data.map(result => [result.id, result.idUsuarios, result.idRutinas])
+        },
+    }).render(document.getElementById('myGrid'));
+}
+
 generatedIds = [];
 
 generateUniqueId = () => {
@@ -123,6 +140,7 @@ generateUniqueId = () => {
 }
 
 $(document).ready(function () {
+    Consultar();
     var view = new CrearCitaMedicion();
     view.InitView();
 });
