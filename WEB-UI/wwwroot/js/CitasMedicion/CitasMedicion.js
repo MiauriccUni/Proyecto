@@ -119,10 +119,16 @@ function Consultar() {
             limit: 5
         },
 
-        columns: ['ID', 'Id Usuarios', 'Id Rutinas'],
+        columns: ['ID', 'Nombre', 'Correo', 'Fecha', 'Peso', 'Estatura'],
         server: {
             url: 'https://localhost:7253/api/CitasMedicion/GetAllUsuarios',
-            then: data => data.data.map(result => [result.id, result.idUsuarios, result.idRutinas])
+            then: data => data.data.map(result => [
+                result.id,
+                result.usuariosList[0].nombre,
+                result.usuariosList[0].correo,
+                result.fecha,
+                result.peso,
+                result.estatura])
         },
     }).render(document.getElementById('myGrid'));
 }
