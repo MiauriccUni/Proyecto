@@ -16,8 +16,8 @@
     <!-- Header -->
     <header class="py-3 fixed-top bg-custom">
         <div class="container d-flex justify-content-between align-items-center">
-            <!-- @Url.Action("Index", "Home") -->
-            <a href="#" style="color: white; text-decoration: none;">
+            <!--  -->
+            <a href="@Url.Action("", "Clientes")" style="color: white; text-decoration: none;">
                 <div class="logo" onclick="refreshPage();">
                     Rambo's Gym <i class="fa-solid fa-dumbbell"></i>
                 </div>
@@ -44,6 +44,7 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/Pagos/pagos2.js"></script>
     <script src="~/js/Pagos/Pagos.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>

@@ -27,6 +27,13 @@ namespace AppLogic
             UsuarioCrud usuario = new UsuarioCrud();
             return usuario.RetrieveByPhone<Usuario>(phone);
         }
+
+        public List<Usuario> GetRetrieveByID(int id)
+        {
+            UsuarioCrud usuario = new UsuarioCrud();
+            return usuario.RetrieveByID<Usuario>(id);
+        }
+
         public void UpdateValidacion(string correo, string verificacion)
         {
             UsuarioCrud crud = new UsuarioCrud();
@@ -37,6 +44,12 @@ namespace AppLogic
         {
             UsuarioCrud crud = new UsuarioCrud();
             crud.UpdateRolCrud(id, rol);
+        }
+
+        public void UpdateOTPManager(string correo, int OTP)
+        {
+            UsuarioCrud crud = new UsuarioCrud();
+            crud.UpdateOTPCrud(correo, OTP);
         }
 
     }

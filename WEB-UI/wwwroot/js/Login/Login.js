@@ -61,9 +61,33 @@
                     title: "Excelente",
                     text: "Bienvenido"
                 }).then(function () {
-                    window.location = "/Home/AdminPanelPrincipal";
-                    //window.location = "/Home/Entrenador;"
-                    //window.location = "Recepcion";  
+                    var roles = user.rol;
+                    switch (roles) {
+                        case "Administrador":
+                            window.location = "/Administrador/AdminPanelPrincipal";
+                            break;
+                        case "Recepcionista":
+                            window.location = "/Recepcionista/RecepcionPanel";
+                            break;
+                        case "Entrenador":
+                            window.location = "/Entrenador/PanelEntrenador";
+                            break;
+                        case "ClientePremium":
+                            window.location = "/Clientes/ClienteDia";
+                            break;
+                        case "ClienteStandard":
+                            window.location = "/Clientes/ClientePremium";
+                            break;
+                        case "Cliente1dia":
+                            window.location = "/Clientes/ClienteStandard";
+                            break;
+                        default:
+                            Swal.fire({
+                                icon: "error",
+                                title: "Error",
+                                text: "No se logro identificar el Usuario"
+                            })
+                    }
                 });
             }          
         }).fail(function (error) {

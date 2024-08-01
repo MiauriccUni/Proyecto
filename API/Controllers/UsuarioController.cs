@@ -1,5 +1,4 @@
 ﻿using AppLogic;
-using DataAccess.Mappers;
 using DTO;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
@@ -38,6 +37,12 @@ namespace API.Controllers
             UsuarioManager usuarioManager = new UsuarioManager();
             return usuarioManager.GetRetrievePhone(phone);
         }
+        [HttpGet]
+        public List<Usuario> GetUserById(int id)
+        {
+            UsuarioManager usuarioManager = new UsuarioManager();
+            return usuarioManager.GetRetrieveByID(id);
+        }
 
         [HttpPut]
         public void Validacion(string correo, string verificar)
@@ -45,7 +50,6 @@ namespace API.Controllers
             UsuarioManager updater = new UsuarioManager();
             updater.UpdateValidacion(correo, verificar);
         }
-
 
         [HttpPut]
         public void UpdateRol(int id, string rol)
@@ -57,20 +61,27 @@ namespace API.Controllers
         [HttpGet]
         public API_Response GetAllUsuarios()
         {
-            API_Response Response = new API_Response();
+            API_Response response = new API_Response();
             try
             {
-                UsuarioMapper usuarioMapper = new UsuarioMapper();
-                Response.Data = usuarioMapper.GetRetrieveAllStatement();
-                Response.Result = "OK";
+                UsuarioManager manager = new UsuarioManager();
+                response.Data = manager.GetAllUsuarios();
+                response.Result = "OK";
             }
             catch (Exception ex)
             {
-                Response.Result = "ERROR";
-                Response.Message = ex.Message;
+                response.Result = "ERROR";
+                response.Message = ex.Message;
             }
-            return Response;
+            return response;
         }
 
+
+        [HttpPut]
+        public void UpdateOTP(string correo, int OTP)
+        {
+            UsuarioManager updater = new UsuarioManager();
+            updater.UpdateOTPManager(correo, OTP);
+        }
     }
 }

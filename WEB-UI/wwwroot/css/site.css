@@ -16,28 +16,28 @@ header {
     align-items: center;
 }
 
-    header .logo {
-        font-family: 'Playfair Display', serif;
-        cursor: pointer;
-        font-size: 1.5rem;
-        font-weight: 700;
-    }
+header .logo {
+    font-family: 'Playfair Display', serif;
+    cursor: pointer;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
 
-    header nav ul {
-        list-style: none;
-        display: flex;
-        gap: 1rem;
-    }
+header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+}
 
-        header nav ul li {
-            display: inline;
-        }
+header nav ul li {
+    display: inline;
+}
 
-            header nav ul li a {
-                color: #FFFFFF;
-                text-decoration: none;
-                font-weight: 700;
-            }
+header nav ul li a {
+    color: #FFFFFF;
+    text-decoration: none;
+    font-weight: 700;
+}
 
 .hero {
     text-align: center;
@@ -45,14 +45,14 @@ header {
     color: #2C3E50;
 }
 
-    .hero h1 {
-        font-family: 'Playfair Display', serif;
-        font-size: 3rem;
-    }
+.hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+}
 
-    .hero p {
-        font-size: 1.5rem;
-    }
+.hero p {
+    font-size: 1.5rem;
+ }
 
 .cta-button {
     display: inline-block;
@@ -83,6 +83,7 @@ header {
 
 .bg-custom, .tarifa-card {
     background-color: #34495E;
+
 }
 
 .cta-button:hover {
@@ -100,16 +101,15 @@ header {
     padding: 2rem;
     background-color: #E74C3C;
     color: #FFFFFF;
-    bottom: 0;
+    margin: 0px;
 }
 
 .btn-cliente {
     color: #FFFFFF;
 }
-
-    .btn-cliente:hover {
-        background-color: #E74C3C;
-    }
+.btn-cliente:hover {
+    background-color: #E74C3C;
+}
 
 .title_clase {
     text-align: center;
@@ -129,9 +129,175 @@ header {
     padding: 265px 0px 265px 0px;
 }
 
-/* Contrase�a Landing */
-
+/* Contraseña Landing */
 .contenedor-contrasena {
     padding: 40px;
     margin: 0 80px 215px 50px;
+}
+/* Pagos*/
+.card-pagos {
+    height: 250px;
+    border: 2px ridge #E74C3C;
+}
+/* Tarjetas de Administrador */
+
+/* Tarjetas de Administrador */
+
+.card {
+    /*height: 190px;*/
+    border: 2px ridge #E74C3C;
+}
+
+.card-admin {
+    height: 190px;
+}
+
+.card p {
+    margin-top: 10px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.card i {
+    font-size: 35px;
+}
+
+/* Estilos para la tabla generada por Grid.js */
+.gridjs-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.gridjs-th, .gridjs-td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.gridjs-th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+.gridjs-tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.gridjs-tr:hover {
+    background-color: #ddd;
+}
+
+.gridjs-search {
+    margin-bottom: 10px;
+}
+
+.gridjs-pagination {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+/* Registro máquinas */
+
+.maquinas-container {
+    margin-top: 60px;
+    padding: 0 250px 0 250px;
+}
+
+/*  CSS DAX  */
+
+.header-image {
+    width: 100%;
+    padding-top: 70px ;
+    max-height: 250px;
+    object-fit: cover;
+    margin-top: 0px; /* Ajusta el margen superior según sea necesario */
+    display: block;
+}
+
+.side-image {
+    position: fixed;
+    top: 250px;
+    left: 0;
+    height: auto;
+    width: auto;
+    max-width: 300px;
+    z-index: 1;
+}
+
+.bg-custom, .tarifa-card {
+     background-color: #34495E;
+}
+
+.cta-button:hover {
+     background-color: #2471A3;
+}
+
+.small-carousel .carousel-inner {
+    max-height: 300px; /* Ajusta la altura máxima del carrusel /
+}.small-carousel .carousel-item img {
+ height: 300px; / Ajusta la altura de las imágenes del carrusel /
+ object-fit: cover; / Asegura que las imágenes se ajusten correctamente */
+ }
+
+
+/****************************************************************************************/
+
+/* Clientes */
+.row-clases-rutinas {
+    padding-bottom: 200px;
+}
+
+.row-clases-rutinas-undia {
+    padding-bottom: 410px;
+}
+
+.section-cliente {
+    text-align: center;
+    font-size: 15px;
+}
+
+.class-schedule, .routines {
+    list-style: none;
+    padding: 0;
+}
+
+.class-schedule li, .routines li {
+    background: #e4e4e4;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.hero-cliente {
+    text-align: center;
+    padding: 1rem 2rem 1rem 2rem;
+    color: #2C3E50;
+}
+
+.card-cliente {
+    margin-bottom: 150px ;
+}
+
+.info-cliente {
+    margin-bottom: 370px;
+}
+
+.header-image-clientes {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    position: static;
+    height: auto; /* Ajusta el margen superior según sea necesario */
+    display: block;
+}
+
+.side-image-clientes {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    height: auto;
+    width: auto;
+    max-width: 300px;
+    z-index: 1;
 }

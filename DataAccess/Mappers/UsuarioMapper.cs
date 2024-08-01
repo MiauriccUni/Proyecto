@@ -108,6 +108,15 @@ namespace DataAccess.Mappers
             return operation;
         }
 
+        public SqlOperation UpdateOTP(string correo, int OTP)
+        {
+            SqlOperation operation = new SqlOperation();
+            operation.ProcedureName = "SP_UPDATE_OTP";
+            operation.AddVarCharParam("correo", correo);
+            operation.AddIntegerParam("OTP", OTP);
+            return operation;
+        }
+
         public SqlOperation UpdateRol(int id, string rol)
         {
             SqlOperation operation = new SqlOperation();
@@ -119,7 +128,10 @@ namespace DataAccess.Mappers
 
         public SqlOperation GetRetrieveByIdStatement(string id)
         {
-            throw new NotImplementedException();
+            SqlOperation operation = new SqlOperation();
+            operation.ProcedureName = "SP_GET_BY_ID";
+            operation.AddVarCharParam("id_usuarios", id);
+            return operation;
         }
 
         public SqlOperation GetUpdateStatement(BaseClass dto)
@@ -127,29 +139,5 @@ namespace DataAccess.Mappers
             throw new NotImplementedException();
         }
 
-        ///* Intento de update usuario 1 */
-
-        //public SqlOperation GetUpdateUserPassword(string correo, string nuevaClave)
-        //{
-        //    SqlOperation operation = new SqlOperation();
-        //    operation.ProcedureName = "SP_PUT_PASSWORD";
-        //    operation.AddVarCharParam("Correo", correo);
-        //    operation.AddVarCharParam("nuevaClave", nuevaClave);
-        //    return operation;
-        //}
-
-        //public SqlOperation GetUpdateUserRol(string correo, string nuevoRol)
-        //{
-        //    SqlOperation operation = new SqlOperation();
-        //    operation.ProcedureName = "SP_UPDATE_ROL";
-        //    operation.AddVarCharParam("Correo", correo);
-        //    operation.AddVarCharParam("nuevoRol", nuevoRol);
-        //    return operation;
-        //}
-
-        //public SqlOperation GetUpdateStatement(BaseClass dto)
-        //{
-        //    throw new NotImplementedException();
-        //}
     }
 }

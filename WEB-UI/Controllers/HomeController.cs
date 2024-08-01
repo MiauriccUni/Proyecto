@@ -20,56 +20,6 @@ namespace WEB_UI.Controllers
                 return View();
             }
 
-            public IActionResult AdminActualizacionUsuario()
-            {
-                return View();
-            }
-
-            public IActionResult AdminPanelPrincipal()
-            {
-                return View();
-            }
-
-            public IActionResult AdminRecuperacionContrasenna()
-            {
-                return View();
-            }
-
-            public IActionResult Recepcion()
-            {
-                return View();
-            }
-
-            public IActionResult Registrar()
-            {
-                return View();
-            }
-
-            public IActionResult Entrenador()
-            {
-                return View();
-            }
-
-            public IActionResult OTP()
-            {
-                return View();
-            }
-
-            public IActionResult Rutinas()
-            {
-                return View();
-            }
-
-            public IActionResult ActualizarDatosUsuarios()
-            {
-                return View();
-            }
-
-            public IActionResult Pagos()
-            {
-                return View();
-            }
-
             [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
             public IActionResult Error()
             {
