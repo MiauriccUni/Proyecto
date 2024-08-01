@@ -31,24 +31,22 @@ namespace API.Controllers
             return maquinaManager.GetRetrieveNombreMaquina(nombre_maquina);
         }
 
-
-        ///* Intento de traer la info de las máquinas */
-        //[HttpGet]
-        //public API_Response GetAllMaquinas()
-        //{
-        //    API_Response response = new API_Response();
-        //    try
-        //    {
-        //        maquinaManager manager = new maquinaManager();
-        //        response.Data = manager.GetAllmaquina();
-        //        response.Result = "OK";
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        response.Result = "ERROR";
-        //        response.Message = ex.Message;
-        //    }
-        //    return response;
-        //}
+        [HttpGet]
+        public API_Response GetAllMaquinas()
+        {
+            API_Response response = new API_Response();
+            try
+            {
+                maquinaManager manager = new maquinaManager();
+                response.Data = manager.GetAllmaquina();
+                response.Result = "OK";
+            }
+            catch (Exception ex)
+            {
+                response.Result = "ERROR";
+                response.Message = ex.Message;
+            }
+            return response;
+        }
     }
 }
