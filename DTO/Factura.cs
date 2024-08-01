@@ -2,9 +2,9 @@
 {
     public class Factura : BaseClass
     {
+        public int NumeroFactura { get; set; }
         public DateTime FechaPago { get; set; }
-        public decimal Descuento { get; set; }
-        public decimal MontoFinal { get; set; }
-
+        public int Descuento { get; set; }
+        public double MontoFinal { get; set; }
     }
 }
