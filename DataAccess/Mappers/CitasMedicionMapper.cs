@@ -18,6 +18,17 @@ namespace DataAccess.Mappers
             cita.Rutinas = row["rutinas"].ToString();
             cita.IdRutinas = int.Parse(row["rutinas_id_rutina"].ToString());
             cita.IdUsuarios = int.Parse(row["usuarios_id_usuarios"].ToString());
+            cita.usuariosList = new List<Usuario>
+            {
+                new Usuario
+                {
+                Nombre = row["nombre"].ToString(),
+                Correo = row["correo"].ToString()
+
+                }
+
+            };
+            
             return cita;
         }
 
@@ -53,7 +64,7 @@ namespace DataAccess.Mappers
         public SqlOperation GetRetrieveAllStatement()
         {
             SqlOperation operation = new SqlOperation();
-            operation.ProcedureName = "GET_ALL_CITAS";
+            operation.ProcedureName = "GET_ALL_CITAS_JOIN";
             return operation;
         }
 

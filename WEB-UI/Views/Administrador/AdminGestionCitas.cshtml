@@ -2,6 +2,7 @@
     Layout = "_LayoutRecepcionManagerAdmin";
 }
 @section Scripts {
+    <script src="https://unpkg.com/gridjs/dist/gridjs.umd.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="~/js/citasmedicion/citasmedicion.js"></script>
@@ -144,28 +145,7 @@
     <div class="my-5">
         <h2 class="text-center">Citas para Medición</h2>
         <div class="table-responsive">
-            <table class="table table-bordered" id="measurementTable">
-                <thead class="table-dark">
-                    <tr>
-                        <th scope="col">Nombre del Cliente</th>
-                        <th scope="col">Hora de la Medición</th>
-                        <th scope="col">Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Ejemplo de una fila -->
-                    <tr>
-                        <td>Nombre del Cliente</td>
-                        <td>Hora de la Medición</td>
-                        <td>
-                            <!-- Botones de Editar y Eliminar -->
-                            <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editarMedicionModal">Editar</button>
-                            <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#eliminarMedicionModal">Eliminar</button>
-                        </td>
-                    </tr>
-                    <!-- Otras filas dinámicas se agregarían aquí -->
-                </tbody>
-            </table>
+            <div id="myGrid" style="height: 430px; width: 1225px;" class="ag-theme-alpine justify-content-center"></div>
         </div>
         <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addMeasurementModal">Agendar Medición</button>
     </div>
