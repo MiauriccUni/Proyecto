@@ -92,8 +92,8 @@
                             <th scope="col">Nombre del Ejercicio</th>
                             <th scope="col">Repeticiones</th>
                             <th scope="col">Series</th>
-                            <th scope="col">Número de Máquina</th>
-                            <th scope="col">Foto</th>
+                            <th scope="col">Nombre Máquina</th>
+                            <th scope="col">Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -102,8 +102,11 @@
                             <td>Press de Banca</td>
                             <td>10</td>
                             <td>4</td>
-                            <td>Máquina 3</td>
-                            <td><img src="ruta/a/la/foto.jpg" alt="Press de Banca" width="100"></td>
+                            <td>Banca</td>
+                            <td> 
+                                <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editarCitaModal">Editar</button>
+                                <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#AgregarCitaModal">Agregar</button>
+                            </td>
                         </tr>
                         <!-- Otras filas de ejercicios se agregarán dinámicamente aquí -->
                     </tbody>
@@ -147,19 +150,38 @@
         </div>
     </div>
 </div>
-
-<!-- Modal para Eliminar Cita -->
-<div class="modal fade" id="eliminarCitaModal" tabindex="-1" aria-labelledby="eliminarCitaModalLabel" aria-hidden="true">
+<!-- Modal para Editar Cita -->
+<div class="modal fade" id="AgregarCitaModal" tabindex="-1" aria-labelledby="AgregarCitaModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="eliminarCitaModalLabel">Eliminar Cita</h5>
+                <h5 class="modal-title" id="AgregarCitaModalLabel">Agregar</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <p>¿Está seguro que desea eliminar esta cita?</p>
-                <button type="button" class="btn btn-danger">Eliminar</button>
+                <!-- Formulario de edición de cita -->
+                <form id="AgregarCitaForm">
+                    <div class="mb-3">
+                        <label for="AgregarNombre" class="form-label">Nombre del ejercicio</label>
+                        <input type="text" class="form-control" id="editnombre" name="AgregarEjercicio" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="EditarRepeticiones" class="form-label">Repeticiones</label>
+                        <input type="number" class="form-control" id="editReps" name="AgregarRepeticones" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="AgregarSeries" class="form-label">Series</label>
+                        <input type="number" class="form-control" id="AgregarSeries" name="AgregarSeries" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="NombreMaquina" class="form-label">NombreMaquina</label>
+                        <input type="text" class="form-control" id="NombreMaquina" name="NombreMaquina" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                </form>
             </div>
         </div>
     </div>
 </div>
+
+
