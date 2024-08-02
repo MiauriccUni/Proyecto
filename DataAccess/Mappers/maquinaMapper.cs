@@ -1,15 +1,11 @@
 ﻿using DataAccess.DAO;
 using DataAccess.Mappers.Interfaces;
 using DTO;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace DataAccess.Mappers
 {
-   public class maquinaMapper:IObjectMapper,ICrudStatements
+    public class maquinaMapper:IObjectMapper,ICrudStatements
     {
         public BaseClass BuildObject(Dictionary<string, object> row)
         {

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Mappers
 {
-public  class RutinasMapper : IObjectMapper, ICrudStatements
+    public  class RutinasMapper : IObjectMapper, ICrudStatements
     {
         public BaseClass BuildObject(Dictionary<string, object> row)
         {

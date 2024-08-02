@@ -139,7 +139,6 @@ header nav ul li a {
     height: 250px;
     border: 2px ridge #E74C3C;
 }
-/* Tarjetas de Administrador */
 
 /* Tarjetas de Administrador */
 
@@ -197,8 +196,22 @@ header nav ul li a {
     justify-content: center;
 }
 
-/* Registro máquinas */
+/* tabla maquinas */
+.tabla-maquinas {
+    margin-top: 80px;
+    margin-left: 350px;
+}
 
+/* facturas */
+.contendor-facturas {
+    margin-bottom: 150px;
+}
+
+.tabla-facturas {
+    margin-top: 90px;
+    margin-left: 200px;
+}
+/* Registro máquinas */
 .maquinas-container {
     margin-top: 60px;
     padding: 0 250px 0 250px;
