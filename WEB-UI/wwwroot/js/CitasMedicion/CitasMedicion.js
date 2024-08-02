@@ -1,6 +1,12 @@
-﻿function CrearCitaMedicion() {
+﻿idUsuarioID = null;
+infoUsuario = [];
+idRutinaID = null;
+infoRutina = [];
+function CrearCitaMedicion() {
 
     this.InitView = function () {
+        this.PopulateUsuarios();
+        this.PopulateRutinas();
         $('#citaMedicion').click(function (event) {
             var view = new CrearCitaMedicion();
             view.SubmitCitaMedicion();
@@ -15,9 +21,9 @@
         citas.peso = $('#peso').val();
         citas.estatura = $('#estatura').val();
         citas.porcentageGrasa = $('#grasa').val();
-        citas.rutinas = $('#rutina').val();
-        citas.idRutinas = $('#idrutina').val();
-        citas.idUsuarios = $('#idusuario').val();
+        citas.rutinas = $('#notas').val();
+        citas.idRutinas = idRutinaID;
+        citas.idUsuarios = idUsuarioID;
 
         if (citas.fecha === "") {
             Swal.fire({
@@ -107,7 +113,57 @@
             });
         });
     }
+    this.PopulateUsuarios = function () {
+        $.ajax({            
+            url: "https://localhost:7253/api/Usuario/GetUsuarios",
+            method: "GET",
+            contentType: "application/json;charset=utf-8",
+            dataType: "json"
+        }).done(function (data) {            
+            infoUsuario = data;
+            var select = $('#idusuario');
+            for (var row in data) {
+                select.append('<option value=' + data[row].id + '>' + data[row].nombre + ', ' + data[row].correo)
+            }
+            select.on('change', function () {
+                let id = $(this).val();
+                idUsuarioID = id;
+            });
+        }).fail(function (error) {
+            Swal.fire({
+                title: "Error",
+                icon: "error",
+                text: "Error al cargar los usuarios" + error
+            });
+        });
+        console.log(idRutinaID);
+    }
+
+    this.PopulateRutinas = function () {
+        $.ajax({
+            url: "https://localhost:7253/api/Rutina/Getrutina",
+            method: "GET",
+            contentType: "application/json;charset=utf-8",
+            dataType: "json"
+        }).done(function (data) {
+            infoRutina = data;
+            var select = $('#idrutinas');
+            for (var row in data) {
+                select.append('<option value=' + data[row].id + '>' + data[row].nombreEjercicio + ', ' + data[row].tipoEjercicio)
+            }
+            select.on('change', function () {
+                let id = $(this).val();
+                idRutinaID = id;
+            });
+        }).fail(function (error) {
+            Swal.fire({
+                title: "Error",
+                icon: "error",
+                text: "Error al cargar las rutinas" + error
+            });
+        });
         
+    }
 }
 
 function Consultar() {
@@ -119,16 +175,19 @@ function Consultar() {
             limit: 5
         },
 
-        columns: ['ID', 'Nombre', 'Correo', 'Fecha', 'Peso', 'Estatura'],
+        columns: ['Nombre', 'Correo', 'Fecha', 'Peso en KG', 'Estatura en Metros', 'Porcentage en Grasa', 'Nombre de ejercicio', 'Tipo de ejercicio'],
         server: {
             url: 'https://localhost:7253/api/CitasMedicion/GetAllUsuarios',
             then: data => data.data.map(result => [
-                result.id,
                 result.usuariosList[0].nombre,
                 result.usuariosList[0].correo,
                 result.fecha,
                 result.peso,
-                result.estatura])
+                result.estatura,
+                result.porcentageGrasa,
+                result.rutinasList[0].nombreEjercicio,
+                result.rutinasList[0].tipoEjercicio
+            ])
         },
     }).render(document.getElementById('myGrid'));
 }
