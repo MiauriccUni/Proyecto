@@ -28,6 +28,15 @@ namespace DataAccess.Mappers
                 }
 
             };
+            cita.rutinasList = new List<rutinas>
+            {
+                new rutinas
+                {
+                    NombreEjercicio = row["nombre_ejercicio"].ToString(),
+                    TipoEjercicio = row["tipos_de_ejercicio"].ToString()
+                }
+            };
+
             
             return cita;
         }
