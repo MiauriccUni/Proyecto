@@ -4,7 +4,7 @@
 @section Scripts {
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="~/js/registro/registro.js"></script>
+    <script src="~/js/Rutinas/Rutina.js"></script>
 }
 <main class="container my-5 pt-5">
     <section id="datos-usuario cedula-buscar" class="my-5">
@@ -90,9 +90,7 @@
                     <thead class="table-dark">
                         <tr>
                             <th scope="col">Nombre del Ejercicio</th>
-                            <th scope="col">Repeticiones</th>
-                            <th scope="col">Series</th>
-                            <th scope="col">Nombre Máquina</th>
+                            <th scope="col">Tipo de Ejercicio</th>
                             <th scope="col">Acciones</th>
                         </tr>
                     </thead>
@@ -100,12 +98,11 @@
                         <!-- Ejemplo de fila de ejercicio -->
                         <tr>
                             <td>Press de Banca</td>
-                            <td>10</td>
-                            <td>4</td>
-                            <td>Banca</td>
+                            <td>pecho</td>
+                        
                             <td> 
                                 <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editarCitaModal">Editar</button>
-                                <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#AgregarCitaModal">Agregar</button>
+                                <button type="button" class="btn btn-success btn-sm" id="Rutina" data-bs-toggle="modal" data-bs-target="#AgregarCitaModal">Agregar</button>
                             </td>
                         </tr>
                         <!-- Otras filas de ejercicios se agregarán dinámicamente aquí -->
@@ -163,20 +160,13 @@
                 <form id="AgregarCitaForm">
                     <div class="mb-3">
                         <label for="AgregarNombre" class="form-label">Nombre del ejercicio</label>
-                        <input type="text" class="form-control" id="editnombre" name="AgregarEjercicio" required>
+                        <input type="text" class="form-control" id="AgregarNombre" name="AgregarEjercicio" required>
                     </div>
                     <div class="mb-3">
-                        <label for="EditarRepeticiones" class="form-label">Repeticiones</label>
-                        <input type="number" class="form-control" id="editReps" name="AgregarRepeticones" required>
+                        <label for="AgregarTipoEjer" class="form-label">Tipo de ejercicio</label>
+                        <input type="text" class="form-control" id="c" name="AgregarEjercicio" required>
                     </div>
-                    <div class="mb-3">
-                        <label for="AgregarSeries" class="form-label">Series</label>
-                        <input type="number" class="form-control" id="AgregarSeries" name="AgregarSeries" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="NombreMaquina" class="form-label">NombreMaquina</label>
-                        <input type="text" class="form-control" id="NombreMaquina" name="NombreMaquina" required>
-                    </div>
+                   
                     <button type="submit" class="btn btn-primary">Guardar Cambios</button>
                 </form>
             </div>
