@@ -10,17 +10,43 @@ namespace DataAccess.Mappers
         {
             Cupones user = new Cupones();
 
-            user.Id = int.Parse(row["id_cupon"].ToString());
-            user.NumeroCupon = row["nombre_cupon"].ToString();
+            user.Id = int.Parse(row["id_cupones"].ToString());
+            user.NombreCupon = row["nombre_cupon"].ToString();
             user.Descuento = int.Parse(row["descuento"].ToString());
 
             return user;
         }
-        public CuponesMapper() { }
-
         public List<BaseClass> BuildObjects(List<Dictionary<string, object>> rowlist)
         {
-            throw new NotImplementedException();
+            List<BaseClass> results = new List<BaseClass>();
+
+            foreach (var row in rowlist)
+            {
+                var espec = BuildObject(row);
+                results.Add(espec);
+            }
+            return results;
+        }
+
+        public SqlOperation GetCreateStatement(BaseClass dto)
+        {
+            SqlOperation operation = new SqlOperation();
+            operation.ProcedureName = "SP_INSERT_CUPON";
+
+            Cupones user = (Cupones)dto;
+            operation.AddIntegerParam("id_cupones", user.Id);
+            operation.AddVarCharParam("nombre_cupon", user.NombreCupon);
+            operation.AddIntegerParam("descuento", user.Descuento);
+
+            return operation;
+        }
+
+        public SqlOperation GetRetrieveAllStatement()
+        {
+            SqlOperation operation = new SqlOperation();
+            operation.ProcedureName = "GET_ALL_CUPONES";
+            return operation;
+
         }
     }
 }
