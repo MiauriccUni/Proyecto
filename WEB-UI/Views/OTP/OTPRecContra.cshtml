@@ -4,7 +4,7 @@
 @section Scripts {
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="~/js/verificacion/verificarcuenta.js"></script>
+    <script src="~/js/recucontrase/recucontrase.js"></script>
 }
 
 <!-- Main Section -->
@@ -19,7 +19,7 @@
                     <form id="otpForm">
                         <div class="mb-3">
                             <label for="email" class="form-label">Correo Electrónico</label>
-                            <input type="email" class="form-control" id="email" name="email" readonly>
+                            <input type="email" class="form-control" id="email" name="email">
                         </div>
                         <div class="mb-3">
                             <label for="otp" class="form-label">Código OTP</label>
@@ -27,6 +27,7 @@
                         </div>
                         <div class="d-grid gap-2 d-md-flex justify-content-md-center">
                             <button type="button" class="btn btn-primary" id="verificarCorreo">Verificar correo</button>
+
                             <button type="button" class="btn btn-primary" id="reenviarCodigo">Reenviar código</button>
                             <button type="button" class="btn btn-primary" id="verifOTPContra">Verificar OTP</button>
                         </div>
