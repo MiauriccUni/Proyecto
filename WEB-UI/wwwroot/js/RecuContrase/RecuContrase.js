@@ -41,8 +41,6 @@
 
                 sessionStorage.setItem('timestamp', newtime);
 
-                console.log("Hola")
-
                 $.ajax({
                     url: "https://localhost:7253/api/Usuario/UpdateOTP?correo=" + correo + "&OTP=" + newOTP,
                     method: "PUT",
