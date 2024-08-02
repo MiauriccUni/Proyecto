@@ -11,7 +11,6 @@ namespace DTO
         public CitasMedicion() 
         {
             this.usuariosList = new List<Usuario>();
-            this.rutinasList = new List<rutinas>();
             
         }
         public DateTime Fecha { set; get; }
@@ -23,6 +22,5 @@ namespace DTO
         public int IdUsuarios { set; get; }
 
         public List<Usuario> usuariosList { set; get; }
-        public List<rutinas> rutinasList { set; get; }
     }
 }

@@ -16,7 +16,6 @@ namespace DataAccess.Mappers
             cita.Estatura = double.Parse(row["estatura"].ToString());
             cita.PorcentageGrasa = double.Parse(row["porcentage_grasa"].ToString());
             cita.Rutinas = row["rutinas"].ToString();
-            cita.IdRutinas = int.Parse(row["rutinas_id_rutina"].ToString());
             cita.IdUsuarios = int.Parse(row["usuarios_id_usuarios"].ToString());
             cita.usuariosList = new List<Usuario>
             {
@@ -28,16 +27,6 @@ namespace DataAccess.Mappers
                 }
 
             };
-            cita.rutinasList = new List<rutinas>
-            {
-                new rutinas
-                {
-                    NombreEjercicio = row["nombre_ejercicio"].ToString(),
-                    TipoEjercicio = row["tipos_de_ejercicio"].ToString()
-                }
-            };
-
-            
             return cita;
         }
 
@@ -65,7 +54,6 @@ namespace DataAccess.Mappers
             operation.AddDoubleParam("estatura", cita.Estatura);
             operation.AddDoubleParam("porcentage_grasa", cita.PorcentageGrasa);
             operation.AddVarCharParam("rutinas", cita.Rutinas);
-            operation.AddIntegerParam("rutinas_id_rutina", cita.IdRutinas);
             operation.AddIntegerParam("usuarios_id_usuarios", cita.IdUsuarios);
             return operation;
         }

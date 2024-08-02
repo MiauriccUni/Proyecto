@@ -25,6 +25,13 @@ namespace API.Controllers
         }
 
         [HttpGet]
+        public List<Usuario> GetClientes()
+        {
+            UsuarioManager pm = new UsuarioManager();
+            return pm.GetAllClientes();
+        }
+
+        [HttpGet]
         public List<Usuario> GetUserByEmail(string correo)
         {
             UsuarioManager usuarioManager = new UsuarioManager();

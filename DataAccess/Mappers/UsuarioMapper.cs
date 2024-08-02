@@ -73,6 +73,13 @@ namespace DataAccess.Mappers
             return operation;
 
         }
+        public SqlOperation GetRetrieveClients()
+        {
+            SqlOperation operation = new SqlOperation();
+            operation.ProcedureName = "GET_ALL_CLIENTS";
+            return operation;
+
+        }
 
         public SqlOperation GetRetrieveByIdStatement(int id)
         {
