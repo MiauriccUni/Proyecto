@@ -174,7 +174,11 @@ function Consultar() {
         pagination: {
             limit: 5
         },
-
+        language: {
+            search: {
+                placeholder: 'Buscar'
+            }
+        },
         columns: ['Nombre', 'Correo', 'Fecha', 'Peso en KG', 'Estatura en Metros', 'Porcentage en Grasa', 'Nombre de ejercicio', 'Tipo de ejercicio'],
         server: {
             url: 'https://localhost:7253/api/CitasMedicion/GetAllUsuarios',
