@@ -17,136 +17,127 @@ function CrearCitaMedicion() {
         var citas = {}
         citas.id = generateUniqueId();
         citas.fecha = $('#horaMedicion').val();
-        citas.peso = $('#peso').val();
-        citas.estatura = $('#estatura').val();
-        citas.porcentageGrasa = $('#grasa').val();
-        citas.rutinas = $('#notas').val();
+        //citas.peso = $('#peso').val();
+        //citas.estatura = $('#estatura').val();
+        //citas.porcentageGrasa = $('#grasa').val();
+        //citas.rutinas = $('#notas').val();
         citas.idUsuarios = idUsuarioID;
 
-        var fechaSeleccionadaString = $('#horaMedicion').val();
-        var fechaSeleccionada = new Date(fechaSeleccionadaString);
+        //var fechaSeleccionadaString = $('#horaMedicion').val();
+        //var fechaSeleccionada = new Date(fechaSeleccionadaString);
 
-        var fechaActualString = new Date().toISOString().slice(0, 16);
-        var fechaActual = new Date(fechaActualString);
+        //var fechaActualString = new Date().toISOString().slice(0, 16);
+        //var fechaActual = new Date(fechaActualString);
 
-        var diferencia = fechaActual.getFullYear() - fechaSeleccionada.getFullYear();
+        //var diferencia = fechaActual.getFullYear() - fechaSeleccionada.getFullYear();
 
-        if (diferencia < 0) {
-            Swal.fire({
-                icon: 'error',
-                text: "Por favor indique una fecha no menor a la actual.",
-                title: 'Error'
-            });
-            return;
-        }
+        //if (diferencia < 0) {
+        //    Swal.fire({
+        //        icon: 'error',
+        //        text: "Por favor indique una fecha no menor a la actual.",
+        //        title: 'Error'
+        //    });
+        //    return;
+        //}
 
-        if (citas.porcentageGrasa < 2) {
-            Swal.fire({
-                icon: 'error',
-                text: "Por favor indique un porcentage en grasa no menor a 2",
-                title: 'Error'
-            });
-            return;
-        }
+        //if (citas.porcentageGrasa < 2) {
+        //    Swal.fire({
+        //        icon: 'error',
+        //        text: "Por favor indique un porcentage en grasa no menor a 2",
+        //        title: 'Error'
+        //    });
+        //    return;
+        //}
 
-        if (citas.porcentageGrasa > 100) {
-            Swal.fire({
-                icon: 'error',
-                text: "Por favor indique un porcentage en grasa no mayor a 100",
-                title: 'Error'
-            });
-            return;
-        }
+        //if (citas.porcentageGrasa > 100) {
+        //    Swal.fire({
+        //        icon: 'error',
+        //        text: "Por favor indique un porcentage en grasa no mayor a 100",
+        //        title: 'Error'
+        //    });
+        //    return;
+        //}
 
-        if (citas.estatura < 1.10) {
-            Swal.fire({
-                icon: 'error',
-                text: "Por favor indique una estatura no menor a 1.10 metros",
-                title: 'Error'
-            });
-            return;
-        }
+        //if (citas.estatura < 1.10) {
+        //    Swal.fire({
+        //        icon: 'error',
+        //        text: "Por favor indique una estatura no menor a 1.10 metros",
+        //        title: 'Error'
+        //    });
+        //    return;
+        //}
 
-        if (citas.estatura > 2.30) {
-            Swal.fire({
-                icon: 'error',
-                text: "Por favor indique una estatura no mayor a 2.30 metros",
-                title: 'Error'
-            });
-            return;
-        }
+        //if (citas.estatura > 2.30) {
+        //    Swal.fire({
+        //        icon: 'error',
+        //        text: "Por favor indique una estatura no mayor a 2.30 metros",
+        //        title: 'Error'
+        //    });
+        //    return;
+        //}
 
-        if (citas.peso < 25) {
-            Swal.fire({
-                icon: 'error',
-                text: "Por favor indique un peso no menor a 25 Kilogramos.",
-                title: 'Error'
-            });
-            return;
-        }
+        //if (citas.peso < 25) {
+        //    Swal.fire({
+        //        icon: 'error',
+        //        text: "Por favor indique un peso no menor a 25 Kilogramos.",
+        //        title: 'Error'
+        //    });
+        //    return;
+        //}
 
-        if (citas.peso > 180) {
-            Swal.fire({
-                icon: 'error',
-                text: "Por favor indique un peso no mayor a 180 Kilogramos.",
-                title: 'Error'
-            });
-            return;
-        }
+        //if (citas.peso > 180) {
+        //    Swal.fire({
+        //        icon: 'error',
+        //        text: "Por favor indique un peso no mayor a 180 Kilogramos.",
+        //        title: 'Error'
+        //    });
+        //    return;
+        //}
 
-        if (citas.fecha === "") {
-            Swal.fire({
-                icon: 'error',
-                text: "Por favor indique un horario.",
-                title: 'Error'
-            });
-            return;
-        }
+        //if (citas.fecha === "") {
+        //    Swal.fire({
+        //        icon: 'error',
+        //        text: "Por favor indique un horario.",
+        //        title: 'Error'
+        //    });
+        //    return;
+        //}
 
-        if (citas.peso === "") {
-            Swal.fire({
-                icon: 'error',
-                text: "Por favor indique un peso.",
-                title: 'Error'
-            });
-            return;
-        }
+        //if (citas.peso === "") {
+        //    Swal.fire({
+        //        icon: 'error',
+        //        text: "Por favor indique un peso.",
+        //        title: 'Error'
+        //    });
+        //    return;
+        //}
 
-        if (citas.estatura === "") {
-            Swal.fire({
-                icon: 'error',
-                text: "Por favor una estatura.",
-                title: 'Error'
-            });
-            return;
-        }
+        //if (citas.estatura === "") {
+        //    Swal.fire({
+        //        icon: 'error',
+        //        text: "Por favor una estatura.",
+        //        title: 'Error'
+        //    });
+        //    return;
+        //}
 
-        if (citas.porcentageGrasa === "") {
-            Swal.fire({
-                icon: 'error',
-                text: "Por favor un porcentage de grasa.",
-                title: 'Error'
-            });
-            return;
-        }
+        //if (citas.porcentageGrasa === "") {
+        //    Swal.fire({
+        //        icon: 'error',
+        //        text: "Por favor un porcentage de grasa.",
+        //        title: 'Error'
+        //    });
+        //    return;
+        //}
 
-        if (citas.rutinas === "") {
-            Swal.fire({
-                icon: 'error',
-                text: "Por favor agregar las notas correspondientes.",
-                title: 'Error'
-            });
-            return;
-        }
-
-        if (citas.idRutinas === "") {
-            Swal.fire({
-                icon: 'error',
-                text: "Por favor indicar la rutina.",
-                title: 'Error'
-            });
-            return;
-        }
+        //if (citas.rutinas === "") {
+        //    Swal.fire({
+        //        icon: 'error',
+        //        text: "Por favor agregar las notas correspondientes.",
+        //        title: 'Error'
+        //    });
+        //    return;
+        //}
 
         if (citas.idUsuarios === "") {
             Swal.fire({
@@ -218,16 +209,14 @@ function Consultar() {
             limit: 5
         },
 
-        columns: ['Nombre', 'Correo', 'Fecha', 'Peso en KG', 'Estatura en Metros', 'Porcentage en Grasa', 'Nombre de ejercicio', 'Tipo de ejercicio'],
+        columns: ['id','Nombre', 'Correo', 'Fecha'],
         server: {
             url: 'https://localhost:7253/api/CitasMedicion/GetAllUsuarios',
             then: data => data.data.map(result => [
+                result.id,
                 result.usuariosList[0].nombre,
                 result.usuariosList[0].correo,
                 result.fecha,
-                result.peso,
-                result.estatura,
-                result.porcentageGrasa,
             ])
         },
     }).render(document.getElementById('myGrid'));

@@ -81,6 +81,13 @@ namespace DataAccess.Mappers
 
         }
 
+        public SqlOperation GetRetrieveEntrenadores()
+        {
+            SqlOperation operation = new SqlOperation();
+            operation.ProcedureName = "GET_ALL_ENTRENADORES";
+            return operation;
+        }
+
         public SqlOperation GetRetrieveByIdStatement(int id)
         {
             SqlOperation operation = new SqlOperation();

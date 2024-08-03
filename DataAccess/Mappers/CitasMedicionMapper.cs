@@ -11,22 +11,15 @@ namespace DataAccess.Mappers
             CitasMedicion cita = new CitasMedicion();
 
             cita.Id = int.Parse(row["id_citas_medicion"].ToString());
-            cita.Fecha = DateTime.Parse(row["fecha"].ToString());
-            cita.Peso = double.Parse(row["peso"].ToString());
-            cita.Estatura = double.Parse(row["estatura"].ToString());
-            cita.PorcentageGrasa = double.Parse(row["porcentage_grasa"].ToString());
-            cita.Rutinas = row["rutinas"].ToString();
-            cita.IdUsuarios = int.Parse(row["usuarios_id_usuarios"].ToString());
             cita.usuariosList = new List<Usuario>
             {
                 new Usuario
                 {
                 Nombre = row["nombre"].ToString(),
                 Correo = row["correo"].ToString()
-
                 }
-
             };
+            cita.Fecha = DateTime.Parse(row["fechas"].ToString());
             return cita;
         }
 
@@ -49,12 +42,8 @@ namespace DataAccess.Mappers
 
             CitasMedicion cita = (CitasMedicion)dto;
             operation.AddIntegerParam("id_citas_medicion", cita.Id);
-            operation.AddDatetimeParam("fecha", cita.Fecha);
-            operation.AddDoubleParam("peso", cita.Peso);
-            operation.AddDoubleParam("estatura", cita.Estatura);
-            operation.AddDoubleParam("porcentage_grasa", cita.PorcentageGrasa);
-            operation.AddVarCharParam("rutinas", cita.Rutinas);
             operation.AddIntegerParam("usuarios_id_usuarios", cita.IdUsuarios);
+            operation.AddDatetimeParam("fechas", cita.Fecha);
             return operation;
         }
 

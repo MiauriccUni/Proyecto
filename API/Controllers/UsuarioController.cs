@@ -32,6 +32,13 @@ namespace API.Controllers
         }
 
         [HttpGet]
+        public List<Usuario> GetEntrenadores()
+        {
+            UsuarioManager pm = new UsuarioManager();
+            return pm.GetAllEntrenadores();
+        }
+
+        [HttpGet]
         public List<Usuario> GetUserByEmail(string correo)
         {
             UsuarioManager usuarioManager = new UsuarioManager();
