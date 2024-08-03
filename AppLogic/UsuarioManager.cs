@@ -16,6 +16,17 @@ namespace AppLogic
             UsuarioCrud crud = new UsuarioCrud();
             return crud.RetrieveAll<Usuario>();
         }
+        public List<Usuario> GetAllClientes()
+        {
+            UsuarioCrud crud = new UsuarioCrud();
+            return crud.RetrieveAllClientes<Usuario>();
+        }
+        public List<Usuario> GetAllEntrenadores()
+        {
+            UsuarioCrud crud = new UsuarioCrud();
+            return crud.RetrieveAllEntrenadores<Usuario>();
+        }
+
         public List<Usuario> GetRetrieveUser(string correo)
         {
             UsuarioCrud usuarioCrud = new UsuarioCrud();

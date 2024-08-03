@@ -1,107 +1,17 @@
-﻿function UsuariosList() {
-    this.InitView = function () {       
+﻿idUsuarioID = null;
+infoUsuario = [];
+function UsuariosList() {
+    this.InitView = function () { 
+        this.PopulateUsuarios();
         $('#btnActRol').click(function () {
             var view = new UsuariosList();
             view.PutRol();
         });
     }
-    //this.ListaUsuarios = function () {
-    //    $.ajax({
-    //        url: "https://localhost:7253/api/Usuario/GetAllUsuarios",
-    //        method: "GET",
-    //        contentType: "application/json;charset=utf-8",
-    //        dataType: "json"
-    //    }).done(function (result) {
-    //        if (result.result == "OK") {
-    //            console.log("Estos fueron", result);
-    //           // gripOptions.api.setRowData(result.data);
-    //        }
-    //        else {
-    //            console.log(error);
-    //            Swal.fire({
-    //                icon: "error",
-    //                title: "Hubo un problema al cargar los usuarios",
-    //                text: "Hubo un problema al cargar las usuarios " + result.message
-    //            });
-    //        }
-    //    }).fail(function (error) {
-    //        console.log("El error" + error.data);
-    //        Swal.fire({
-    //            icon: "error",
-    //            title: "Error al cargar los Usuarios",
-    //            text: "Hubo un error" + " " +error.message
-    //        });
-
-    //    });
-    //}
-
-    //this.GetUsersDetails = function (correo) {
-    //    $.ajax({
-    //        url: API_URL_BASE + "/api/Usuario/GetUserByCorreo?correo=" + correo,
-    //        method: "GET",
-    //        contentType: "application/json;charset=utf-8",
-    //        dataType: "json"
-    //    }).done(function (result) {
-
-    //        var usuario = result[0];
-    //        console.log("Estos fueron", result);
-
-    //        $('#txtIdentificacion').val(usuario.identificacion);
-    //        console.log("Identificacion", usuario.identificacion);
-
-    //        $('#txtNombre').val(usuario.nombre);
-    //        console.log("Nombre", usuario.nombre);
-
-    //        $('#txtApellidos').val(usuario.apellidos);
-    //        console.log("Apellidos", usuario.apellidos);
-
-    //        $('#txtCorreo').val(usuario.correo);
-    //        console.log("Correo: ", usuario.correo);
-
-    //        console.log("Rol: ", usuario.rol);
-
-    //        // Remover opción vacía del dropdown
-    //        $('#Rol option[value=""]').remove();
-
-    //        // Establecer las opciones de rol disponibles
-    //        var roles = ["Administrador", "Recepcionista", "Entrenador", "Cliente Premium", "Cliente Standard", "Cliente 1 dia"];
-
-    //        // Verificar si el rol del usuario está en la lista de roles
-    //        var index = roles.indexOf(usuario.rol);
-    //        if (index !== -1) {
-    //            // Mover el rol del usuario al principio de la lista
-    //            roles.splice(index, 1);
-    //            roles.unshift(usuario.rol);
-    //        }
-
-    //        // Actualizar el dropdown con las opciones de rol
-    //        $('#Rol').empty();
-    //        roles.forEach(function (rol) {
-    //            $('#Rol').append('<option value="' + rol + '">' + rol + '</option>');
-    //        });
-
-    //        // Establecer el valor del rol del usuario seleccionado
-    //        $('#Rol').val(usuario.rol);
-
-
-    //    }).fail(function (error) {
-    //        console.log("El error" + error.data);
-    //        Swal.fire({
-    //            icon: "error",
-    //            title: "Error al cargar los usuarios",
-    //            text: "Hubo un error" + error.message
-    //        });
-
-    //    });
-
-    //}
-
-
-
 
     this.PutRol = function () {
-        
-        id = $('#txtIdentificacion').val();
+
+        id = idUsuarioID;
         nuevoRol = $('#rolselect').find(":selected").val();
 
         var api_url = "https://localhost:7253/api/Usuario/UpdateRol?id=" + id + "&rol=" + nuevoRol;
@@ -130,7 +40,6 @@
             dataType: "json"
         }).done(function (result) {
             var user = result[0];
-            console.log(result[0]);
             if (!user) {
                 Swal.fire({
                     title: 'Error',
@@ -172,8 +81,32 @@
         })
     }
 
-}
+    this.PopulateUsuarios = function () {
+        $.ajax({
+            url: "https://localhost:7253/api/Usuario/GetUsuarios",
+            method: "GET",
+            contentType: "application/json;charset=utf-8",
+            dataType: "json"
+        }).done(function (data) {
+            infoUsuario = data;
+            var select = $('#idusuario');
+            for (var row in data) {
+                select.append('<option value=' + data[row].id + '>' + data[row].nombre + ', ' + data[row].correo)
+            }
+            select.on('change', function () {
+                let id = $(this).val();
+                idUsuarioID = id;
+            });
+        }).fail(function (error) {
+            Swal.fire({
+                title: "Error",
+                icon: "error",
+                text: "Error al cargar los usuarios" + error
+            });
+        });
+    }
 
+}
 function Consultar() {
     const grid = new gridjs.Grid({
         search: true,
