@@ -2,9 +2,11 @@
     Layout = "_LayoutvistaEntrenadorTest";
 }
 @section Scripts {
+ 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="~/js/Rutinas/Rutina.js"></script>
+    <script src="https://unpkg.com/gridjs/dist/gridjs.umd.js"></script>
 }
 <main class="container my-5 pt-5">
     <section id="datos-usuario cedula-buscar" class="my-5">
@@ -85,30 +87,9 @@
     <section id="rutina-ejercicios" class="my-5">
         <div class="container">
             <h2 class="text-center">Rutina de Ejercicios</h2>
-            <div class="table-responsive">
-                <table class="table table-bordered">
-                    <thead class="table-dark">
-                        <tr>
-                            <th scope="col">Nombre del Ejercicio</th>
-                            <th scope="col">Tipo de Ejercicio</th>
-                            <th scope="col">Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- Ejemplo de fila de ejercicio -->
-                        <tr>
-                            <td>Press de Banca</td>
-                            <td>pecho</td>
-                        
-                            <td> 
-                                <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editarCitaModal">Editar</button>
-                                <button type="button" class="btn btn-success btn-sm" id="Rutina" data-bs-toggle="modal" data-bs-target="#AgregarCitaModal">Agregar</button>
-                            </td>
-                        </tr>
-                        <!-- Otras filas de ejercicios se agregarán dinámicamente aquí -->
-                    </tbody>
-                </table>
-            </div>
+                <div id="myGrid" style="height: 430px; width: 1225px;" class="ag-theme-alpine justify-content-center"></div>
+              <!----  <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editarCitaModal">Editar</button> -->
+                <button type="button" class="btn btn-success btn-sm" id="Rutina" data-bs-toggle="modal" data-bs-target="#AgregarCitaModal">Agregar</button>
         </div>
     </section>
 </main>

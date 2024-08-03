@@ -24,7 +24,6 @@ function CrearCitaMedicion() {
         citas.rutinas = $('#notas').val();
         citas.idRutinas = idRutinaID;
         citas.idUsuarios = idUsuarioID;
-
         if (citas.fecha === "") {
             Swal.fire({
                 icon: 'error',
@@ -33,7 +32,6 @@ function CrearCitaMedicion() {
             });
             return;
         }
-
         if (citas.peso === "") {
             Swal.fire({
                 icon: 'error',
@@ -42,7 +40,6 @@ function CrearCitaMedicion() {
             });
             return;
         }
-
         if (citas.estatura === "") {
             Swal.fire({
                 icon: 'error',
@@ -51,7 +48,6 @@ function CrearCitaMedicion() {
             });
             return;
         }
-
         if (citas.porcentageGrasa === "") {
             Swal.fire({
                 icon: 'error',
@@ -60,7 +56,6 @@ function CrearCitaMedicion() {
             });
             return;
         }
-
         if (citas.rutinas === "") {
             Swal.fire({
                 icon: 'error',
@@ -69,7 +64,6 @@ function CrearCitaMedicion() {
             });
             return;
         }
-
         if (citas.idRutinas === "") {
             Swal.fire({
                 icon: 'error',
@@ -78,7 +72,6 @@ function CrearCitaMedicion() {
             });
             return;
         }
-
         if (citas.idUsuarios === "") {
             Swal.fire({
                 icon: 'error',
@@ -87,7 +80,6 @@ function CrearCitaMedicion() {
             });
             return;
         }
-
         $.ajax({
             headers: {
                 'Accept': "application/json",
@@ -138,7 +130,6 @@ function CrearCitaMedicion() {
         });
         console.log(idRutinaID);
     }
-
     this.PopulateRutinas = function () {
         $.ajax({
             url: "https://localhost:7253/api/Rutina/Getrutina",
@@ -165,7 +156,6 @@ function CrearCitaMedicion() {
         
     }
 }
-
 function Consultar() {
     const grid = new gridjs.Grid({
         search: true,
@@ -174,7 +164,6 @@ function Consultar() {
         pagination: {
             limit: 5
         },
-
         columns: ['Nombre', 'Correo', 'Fecha', 'Peso en KG', 'Estatura en Metros', 'Porcentage en Grasa', 'Nombre de ejercicio', 'Tipo de ejercicio'],
         server: {
             url: 'https://localhost:7253/api/CitasMedicion/GetAllUsuarios',
@@ -191,7 +180,6 @@ function Consultar() {
         },
     }).render(document.getElementById('myGrid'));
 }
-
 generatedIds = [];
 
 generateUniqueId = () => {
@@ -203,7 +191,6 @@ generateUniqueId = () => {
     generatedIds.push(newId);
     return newId;
 }
-
 $(document).ready(function () {
     Consultar();
     var view = new CrearCitaMedicion();
