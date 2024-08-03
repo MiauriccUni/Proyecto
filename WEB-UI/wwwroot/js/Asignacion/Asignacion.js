@@ -8,7 +8,11 @@ function ConsultarAsignacion() {
         pagination: {
             limit: 5
         },
-
+        language: {
+            search: {
+                placeholder: 'Buscar'
+            }
+        },
         columns: ['id', 'Entrenador', 'Correo entrenador', 'Fecha'],
         server: {
             url: 'https://localhost:7253/api/AsignacionCita/GetAllAsignaciones',
@@ -35,6 +39,6 @@ generateUniqueId = () => {
 }
 $(document).ready(function () {
     ConsultarAsignacion();
-   // var view = new CrearCitaMedicion();
+    var view = new CrearCitaMedicion();
     view.InitView();
 });

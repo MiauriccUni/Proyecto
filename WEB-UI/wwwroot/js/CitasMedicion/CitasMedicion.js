@@ -136,7 +136,6 @@ function CrearCitaMedicion() {
                 text: "Error al cargar los usuarios" + error
             });
         });
-        console.log(idRutinaID);
     }
 
     this.PopulateRutinas = function () {
@@ -179,7 +178,7 @@ function Consultar() {
                 placeholder: 'Buscar'
             }
         },
-        columns: ['Nombre', 'Correo', 'Fecha', 'Peso en KG', 'Estatura en Metros', 'Porcentage en Grasa', 'Nombre de ejercicio', 'Tipo de ejercicio'],
+        columns: ['Nombre cliente', 'Correo Cliente', 'Fecha'],
         server: {
             url: 'https://localhost:7253/api/CitasMedicion/GetAllUsuarios',
             then: data => data.data.map(result => [
@@ -189,8 +188,6 @@ function Consultar() {
                 result.peso,
                 result.estatura,
                 result.porcentageGrasa,
-                result.rutinasList[0].nombreEjercicio,
-                result.rutinasList[0].tipoEjercicio
             ])
         },
     }).render(document.getElementById('myGrid'));
