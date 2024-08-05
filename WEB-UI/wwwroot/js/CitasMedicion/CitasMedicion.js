@@ -178,10 +178,11 @@ function Consultar() {
                 placeholder: 'Buscar'
             }
         },
-        columns: ['Nombre cliente', 'Correo Cliente', 'Fecha'],
+        columns: ['ID','Nombre', 'cliente', 'Correo Cliente', 'Fecha'],
         server: {
             url: 'https://localhost:7253/api/CitasMedicion/GetAllUsuarios',
             then: data => data.data.map(result => [
+                result.id,
                 result.usuariosList[0].nombre,
                 result.usuariosList[0].correo,
                 result.fecha,

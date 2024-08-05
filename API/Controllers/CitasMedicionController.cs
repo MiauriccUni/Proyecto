@@ -18,6 +18,13 @@ namespace API.Controllers
         }
 
         [HttpGet]
+        public List<CitasMedicion> GetUsuarios()
+        {
+            CitasMedicionManager pm = new CitasMedicionManager();
+            return pm.GetAllCitasMedicionesManager();
+        }
+
+        [HttpGet]
         public API_Response GetAllUsuarios()
         {
             API_Response response = new API_Response();
