@@ -63,7 +63,6 @@ function AsignacionCita(){
             });
         });
     }
-
     
     this.PopulateCitas = function () {
         $.ajax({
@@ -74,24 +73,9 @@ function AsignacionCita(){
         }).done(function (data) {
             infoCitas = data;
             var select = $('#idcita');
-            //for (var row in data) {
-            //   // select.append('<option value=' + data[row].id + '>'arguments
-            //      select.append('<option value=' + data[row].id + '>' + data[row].id + '</option>');
-            //}
-            //select.on('change', function () {
-            //    let id = $(this).val();
-            //    idCitas = id;
-            //});
-            //for (var i = 0; i < data.length; i++) {
-            //    select.append('<option value=' + data[i].id + '>' + data[i].id + '</option>'); // Added closing </option> tag
-            //}
-            //select.on('change', function () {
-            //    let id = $(this).val();
-            //    idCitas = id;
-            //});
             for (var i = 0; i < data.length; i++) {
-                var usuario = data[i].usuariosList[0]; // Assuming there's always one user in the list
-                select.append('<option value=' + data[i].id + '>' + data[i].id + ' - ' + usuario.nombre + ' (' + usuario.correo + ')</option>'); // Added closing </option> tag
+                var usuario = data[i].usuariosList[0];
+                select.append('<option value=' + data[i].id + '>' + data[i].id + ' - ' + usuario.nombre + ' (' + usuario.correo + ')</option>');
             }
             select.on('change', function () {
                 let id = $(this).val();
@@ -133,7 +117,6 @@ function AsignacionCita(){
     }
 
 }
-
 
 function ConsultarAsignacion() {
     const grid = new gridjs.Grid({
