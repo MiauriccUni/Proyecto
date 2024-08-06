@@ -14,6 +14,7 @@ function AsignacionCita(){
             view.SubmitAsignacion();
         });
     }
+
     this.SubmitAsignacion = function () {
         var asignaciones = {}
         asignaciones.id = generateUniqueId();
@@ -155,6 +156,7 @@ generateUniqueId = () => {
     generatedIds.push(newId);
     return newId;
 }
+
 $(document).ready(function () {
     ConsultarAsignacion();
     var view = new AsignacionCita();

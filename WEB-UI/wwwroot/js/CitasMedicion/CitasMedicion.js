@@ -13,21 +13,22 @@ function CrearCitaMedicion() {
 
     this.SubmitCitaMedicion = function () {
 
-        function fillTimestamp() {
-            var now = new Date();
-            var year = now.getFullYear();
-            var month = ('0' + (now.getMonth() + 1)).slice(-2);
-            var day = ('0' + now.getDate()).slice(-2);
-            var hours = ('0' + now.getHours()).slice(-2);
-            var minutes = ('0' + now.getMinutes()).slice(-2);
-            var seconds = ('0' + now.getSeconds()).slice(-2);
-            return year + '-' + month + '-' + day + 'T' + hours + ':' + minutes + ':' + seconds;
-        }
-
         var citas = {}
         citas.id = generateUniqueId();
         citas.fecha = $('#horaMedicion').val();       
         citas.idUsuarios = idUsuarioID;
+
+        var fechaString = $('#horaMedicion').val();
+        var fecha = new Date(fechaString);
+        var fechaActualS = new Date().toISOString().slice(0, 16);
+        var fechaActual = new Date(fechaActualS);
+
+        var calyear = fecha.getFullYear() - fechaActual.getFullYear();
+       //var calhora = fecha.getHours();
+
+       var caldias = fecha.getDay();
+
+       //var difhour = calhora / 1000;
 
         if (citas.fecha === "") {
             Swal.fire({
@@ -38,36 +39,19 @@ function CrearCitaMedicion() {
             return;
         }
 
-        //var time = fillTimestamp();
-
-        var fechaString = $('#horaMedicion').val();
-        var fecha = new Date(fechaString);
-        var fechaActualS = new Date().toISOString().slice(0, 16);
-        var fechaActual = new Date(fechaActualS);
-
-        var calyear = fecha.getFullYear() - fechaActual.getFullYear();
-        var calhora = fecha.getHours();
-
-        var caldias = fecha.getDay();
-
-        console.log(caldias);
-        
-        var difhour = calhora / 1000;
-
-
-        if (calyear < 0) {
+        if (caldias === 0 || caldias === 6) {
             Swal.fire({
                 icon: 'error',
-                text: "Por favor indicar un año valido.",
+                text: "Por favor un dia entre semana.",
                 title: 'Error'
             });
             return;
         }
 
-        if (difhour < 8) {
+        if (calyear < 0) {
             Swal.fire({
                 icon: 'error',
-                text: "Por favor indicar una hora dentro del horario laboral.",
+                text: "Por favor indicar un año valido.",
                 title: 'Error'
             });
             return;
@@ -105,7 +89,7 @@ function CrearCitaMedicion() {
         }).fail(function (error) {
             Swal.fire({
                 icon: 'error',
-                text: "Error al registrarse",
+                text: "Error al agregar la cita",
                 title: 'Error',
             });
         });
@@ -113,7 +97,7 @@ function CrearCitaMedicion() {
 
     this.PopulateUsuarios = function () {
         $.ajax({            
-            url: "https://localhost:7253/api/Usuario/GetUsuarios",
+            url: "https://localhost:7253/api/Usuario/GetClientes",
             method: "GET",
             contentType: "application/json;charset=utf-8",
             dataType: "json"
