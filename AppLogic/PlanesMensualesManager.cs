@@ -17,10 +17,10 @@ namespace AppLogic
             return "Ok";
         }
 
-        public List<CitasMedicion> GetAllCitasMedicionesManager()
+        public List<PlanesMensuales> GetAllPlanesMensualesManager()
         {
-            CitasMedicionCrud crud = new CitasMedicionCrud();
-            return crud.RetrieveAll<CitasMedicion>();
+            PlanesMensualesCrud crud = new PlanesMensualesCrud();
+            return crud.RetrieveAll<PlanesMensuales>();
         }
 
     }
