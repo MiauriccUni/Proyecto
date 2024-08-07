@@ -24,16 +24,25 @@ function CrearCitaMedicion() {
         var fechaActual = new Date(fechaActualS);
 
         var calyear = fecha.getFullYear() - fechaActual.getFullYear();
-       //var calhora = fecha.getHours();
+        var calhora = fecha.getHours();
+        console.log(calhora)
+        var caldias = fecha.getDay();
 
-       var caldias = fecha.getDay();
-
-       //var difhour = calhora / 1000;
+        
 
         if (citas.fecha === "") {
             Swal.fire({
                 icon: 'error',
                 text: "Por favor indique un horario.",
+                title: 'Error'
+            });
+            return;
+        }
+
+        if (calhora < 8 || caldias > 17) {
+            Swal.fire({
+                icon: 'error',
+                text: "Por favor indique un horario entre las 8 a.m. y las 5 p.m.",
                 title: 'Error'
             });
             return;
