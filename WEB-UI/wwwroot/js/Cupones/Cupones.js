@@ -1,22 +1,40 @@
 ﻿function CuponesList() {
-
     this.InitView = function () {
-        $('#registroCupon').click(function () {
+        $('#registroCupon').click(() => {
             var view = new CuponesList();
-            view.RegistroCupon();
+            this.RegistroCupon();
         });
     }
 
     this.RegistroCupon = function () {
-        var cupon = {}
+        var cupon = {};
         cupon.id = generateUniqueId();
-        cupon.nombreCupon = $('#nombre').val();
-        cupon.numeroDescuento = $('#Descuentoselect').find(":selected").val();
+        cupon.nombreCupon = $('#nombreCupon').val();
+        cupon.descuento = $('#Descuentoselect').val();
+        cupon.validez = $('#validez').val();
 
-        if (cupon.nombreCupon == "") {
+        if (cupon.nombreCupon === "") {
             Swal.fire({
                 icon: 'error',
                 text: "Por favor indique el nombre del cupón.",
+                title: 'Error'
+            });
+            return;
+        }
+
+        if (cupon.descuento === "") {
+            Swal.fire({
+                icon: 'error',
+                text: "Por favor indique el valor del cupón.",
+                title: 'Error'
+            });
+            return;
+        }
+
+        if (cupon.validez === "") {
+            Swal.fire({
+                icon: 'error',
+                text: "Por favor indique la fecha de validez del cupón.",
                 title: 'Error'
             });
             return;
@@ -29,28 +47,30 @@
             },
             method: "POST",
             url: api + "/api/Cupones/CrearCupones",
-            contentType: "application/json;charset=utf-8",
             dataType: "json",
-            data: JSON.stringify(cupon),
-            hasContent: true
-        }).done(function (result) {
+            data: JSON.stringify(cupon)
+        }).done(function () {
             Swal.fire({
                 title: "Éxito",
                 icon: "success",
-                text: "Se ha completado el registro",
-            })
-        }).fail(function (error) {
+                text: "Se ha completado el registro"
+            }).then(() => {
+                // Volver a consultar y actualizar la tabla
+                Consultar();
+                // Recargar la página después de actualizar la tabla
+                setTimeout(() => {
+                    location.reload();
+                }, 1000); // Esperar 1 segundo antes de recargar la página
+            });
+        }).fail(function () {
             Swal.fire({
                 icon: 'error',
                 text: "Error al registrar el cupón",
-                title: 'Error',
+                title: 'Error'
             });
-        })
-
+        });
     }
-
 }
-
 function Consultar() {
     const grid = new gridjs.Grid({
         search: true,
@@ -64,14 +84,17 @@ function Consultar() {
                 placeholder: 'Buscar'
             }
         },
-        columns: ['Nombre', 'Valor Descuento %'],
+        columns: ['Nombre', 'Valor Descuento %', 'Fecha de Validez'],
         server: {
             url: 'https://localhost:7253/api/Cupones/GetAllCupones',
-            then: data => data.data.map(result => [result.nombreCupon])
+            then: data => data.data.map(result => [
+                result.nombreCupon,
+                result.descuento,
+                new Date(result.validez).toLocaleDateString(),
+            ])
         },
     }).render(document.getElementById('myGrid'));
 }
-
 generatedIds = [];
 
 generateUniqueId = () => {
@@ -85,7 +108,14 @@ generateUniqueId = () => {
 }
 
 $(document).ready(function () {
+    // Obtener la fecha actual en formato YYYY-MM-DD
+    var today = new Date().toISOString().split('T')[0];
+
+    // Establecer la fecha mínima en el campo de entrada
+    $('#validez').attr('min', today);
+
     Consultar();
     var view = new CuponesList();
     view.InitView();
 });
+

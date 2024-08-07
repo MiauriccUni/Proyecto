@@ -13,6 +13,7 @@ namespace DataAccess.Mappers
             user.Id = int.Parse(row["id_cupones"].ToString());
             user.NombreCupon = row["nombre_cupon"].ToString();
             user.Descuento = int.Parse(row["descuento"].ToString());
+            user.Validez = DateTime.Parse(row["fecha_validez"].ToString());
 
             return user;
         }
@@ -37,6 +38,7 @@ namespace DataAccess.Mappers
             operation.AddIntegerParam("id_cupones", user.Id);
             operation.AddVarCharParam("nombre_cupon", user.NombreCupon);
             operation.AddIntegerParam("descuento", user.Descuento);
+            operation.AddDatetimeParam("fecha_validez", user.Validez);
 
             return operation;
         }

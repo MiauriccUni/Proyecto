@@ -67,7 +67,7 @@ namespace DataAccess.Mappers
         //public SqlOperation GetRetrieveAllStatement()
         //{
         //    SqlOperation operation = new SqlOperation();
-        //    operation.ProcedureName = "GET_ALL_CITAS_JOIN";
+        //    operation.ProcedureName = "GET_ALL_PLANES_JOIN";
         //    return operation;
         //}
     }
