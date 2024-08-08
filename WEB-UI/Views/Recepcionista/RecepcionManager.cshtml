@@ -30,24 +30,25 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="addMeasurementModalLabel">Agendar Nueva Medición</h5>
+                <h5 class="modal-title" id="addMeasurementModalLabel">Crear Nueva Clase Grupal</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form id="addMeasurementForm">
                     <div class="mb-3">
-                        <label for="horaMedicion" class="form-label">Hora de la Medición</label>
+                        <label for="tipoClase" class="form-label">Tipo de Clase</label>
+                        <input type="text" class="form-control" id="tipoClase" name="tipoClase" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="horaMedicion" class="form-label">Horario</label>
                         <input type="datetime-local" class="form-control" id="horaMedicion" name="horaMedicion" required>
                     </div>
-
-                    <div class="mt-3 mb-3">
-                        <label for="idusuario" class="container">Usuarios a asignar:</label>
-                        <select id="idusuario" class="form-control">
-                            <option value="" disabled selected>Seleccione un usuario</option>
-                        </select>
+                    <div class="mb-3">
+                        <label for="instructor" class="form-label">Cupos Disponibles</label>
+                        <input type="number" class="form-control" id="instructor" name="instructor" required>
                     </div>
 
-                    <button type="button" class="btn btn-primary" id="citaMedicion">Agendar medición</button>
+                    <button type="button" class="btn btn-primary" id="citaMedicion">Guardar Nueva Clase</button>
                 </form>
             </div>
         </div>

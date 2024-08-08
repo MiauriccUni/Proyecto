@@ -11,7 +11,7 @@
                 placeholder: 'Buscar'
             }
         },
-        columns: ['id', 'nombreClase', 'horarios', 'cuposDisponibles'],
+        columns: ['Nombre de la Clase', 'Horarios', 'Cupos Disponibles', 'ID'],
         server: {
             url: 'https://localhost:7253/api/ClasesGrupales/GetAllClasesGrupales',
             then: data => data.data.map(result => [
