@@ -17,6 +17,7 @@ namespace DTO
         public double PrecioPlan { get; set; }
         public int CuponDescuentoId { get; set; }
         public string EstadoPlan { get; set; }
+        public int UsuarioID { get; set; }
         public List<Usuario> usuariosList { set; get; }
         public List<Cupones> cuponesList { set; get; }
     }
