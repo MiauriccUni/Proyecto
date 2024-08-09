@@ -5,8 +5,8 @@
  
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="~/js/Rutinas/Rutina.js"></script>
     <script src="https://unpkg.com/gridjs/dist/gridjs.umd.js"></script>
+    <script src="~/js/Rutinas/Rutina.js"></script>
 }
 <main class="container my-5 pt-5">
     <section id="datos-usuario cedula-buscar" class="my-5">
@@ -147,6 +147,15 @@
                         <label for="AgregarTipoEjer" class="form-label">Tipo de ejercicio</label>
                         <input type="text" class="form-control" id="AgregarTipoEjer" name="AgregarEjercicio" required>
                     </div>
+                    <div class="mb-3">
+                        <label for="AgregarTipoEjer" class="form-label">Repeticiones</label>
+                        <input type="number" class="form-control" id="AgregarReps" name="AgregarEjercicio" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="AgregarTipoEjer" class="form-label">Series</label>
+                        <input type="number" class="form-control" id="AgregarSeries" name="AgregarEjercicio" required>
+                    </div>
+                 
                    
                     <button type="button" id="Rutinas" class="btn btn-primary">Guardar Cambios</button>
                 </form>

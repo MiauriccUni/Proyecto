@@ -10,6 +10,8 @@
         rutina.id = generateUniqueId();
         rutina.nombreEjercicio = $('#AgregarNombre').val();
         rutina.tipoEjercicio = $('#AgregarTipoEjer').val();
+        rutina.repeticiones = $('#AgregarReps').val();
+        rutina.series = $('#AgregarSeries').val();
         if (rutina.nombreEjercicio === "") {
             Swal.fire({
                 icon: 'error',
@@ -26,6 +28,23 @@
             });
             return;
         }
+        if (rutina.repeticiones === "") {
+            Swal.fire({
+                icon: 'error',
+                text: "Por favor indique el  numero de repeticiones.",
+                title: 'Error'
+            });
+            return;
+        }
+        if (rutina.series === "") {
+            Swal.fire({
+                icon: 'error',
+                text: "Por favor indique el  tipo de series.",
+                title: 'Error'
+            });
+            return;
+        }
+   
         $.ajax({
             headers: {
                 'Accept': "application/json",
@@ -58,14 +77,16 @@ function Consultar() {
         sort: true,
         resizable: true,
         pagination: {
-            limit: 3
+            limit: 5
         },
-        columns: ['Nombre del ejercicio', 'Tipo de ejercicio'],
+        columns: ['Nombre del ejercicio', 'Tipo de ejercicio','Repeticiones','Serires'],
         server: {
             url: 'https://localhost:7253/api/Rutina/Getrutina',
             then: data => data.map(result => [
                 result.nombreEjercicio,
                 result.tipoEjercicio,
+                result.repeticiones,
+                result.series,
             ])
         },
     }).render(document.getElementById('myGrid'));

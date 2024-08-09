@@ -104,6 +104,40 @@ namespace DataAccess.Crud
             }
             return resultList;
 
+        }  public List<T> RetrieveByRepeticiones<T>(int Repeticiones)
+        {
+            List<T> resultList = new List<T>();
+            SqlOperation operation = rutinasMapper.GetRetrieveBytRepeticiones(Repeticiones);
+
+            List<Dictionary<string, object>> dataResults = dao.ExecuteStoredProcedureWithQuery(operation);
+
+            if (dataResults.Count > 0)
+            {
+                var dtoList = rutinasMapper.BuildObjects(dataResults);
+                foreach (var dto in dtoList)
+                {
+                    resultList.Add((T)Convert.ChangeType(dto, typeof(T)));
+                }
+            }
+            return resultList;
+
+        }  public List<T> RetrieveBySeries<T>(int series)
+        {
+            List<T> resultList = new List<T>();
+            SqlOperation operation = rutinasMapper.GetRetrieveBySeries(series);
+
+            List<Dictionary<string, object>> dataResults = dao.ExecuteStoredProcedureWithQuery(operation);
+
+            if (dataResults.Count > 0)
+            {
+                var dtoList = rutinasMapper.BuildObjects(dataResults);
+                foreach (var dto in dtoList)
+                {
+                    resultList.Add((T)Convert.ChangeType(dto, typeof(T)));
+                }
+            }
+            return resultList;
+
         }
     }
 }

@@ -34,6 +34,16 @@ namespace API.Controllers
         {
             RegistroRutinasManager RutinaManager = new RegistroRutinasManager();
             return RutinaManager.GetRetrieveTiposEjercicio(tipos_de_ejercicio);
+        }    [HttpGet]
+        public List<rutinas> GetByRepeticiones(int Repeticiones)
+        {
+            RegistroRutinasManager RutinaManager = new RegistroRutinasManager();
+            return RutinaManager.GetRetrieveRepeticiones(Repeticiones);
+        }    [HttpGet]
+        public List<rutinas> GetBySeries(int Series)
+        {
+            RegistroRutinasManager RutinaManager = new RegistroRutinasManager();
+            return RutinaManager.GetRetrieveSeries(Series);
         }
 
 

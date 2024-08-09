@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace DataAccess.Mappers
@@ -16,8 +17,11 @@ namespace DataAccess.Mappers
             rutinas rutin = new rutinas();
 
            rutin.Id = int.Parse(row["id_rutina"].ToString());
-            rutin.NombreEjercicio = row["nombre_ejercicio"].ToString(); 
+            rutin.NombreEjercicio = row["nombre_ejercicio"].ToString();
             rutin.TipoEjercicio = row["tipos_de_ejercicio"].ToString();
+            rutin.Repeticiones = int.Parse(row["repeticiones"].ToString());
+            rutin.Series = int.Parse(row["series"].ToString());
+          
             return rutin;
         }
 
@@ -42,6 +46,9 @@ namespace DataAccess.Mappers
             operation.AddIntegerParam("id_rutina", rutin.Id);
             operation.AddVarCharParam("nombre_ejercicio", rutin.NombreEjercicio);
             operation.AddVarCharParam("tipos_de_ejercicio", rutin.TipoEjercicio);
+            operation.AddIntegerParam("repeticiones", rutin.Repeticiones);
+         
+            operation.AddIntegerParam("series", rutin.Series);
             return operation;
         }
 
@@ -80,6 +87,21 @@ namespace DataAccess.Mappers
             operation.AddVarCharParam("tipos_de_ejercicio", TipoEjercicio);
             return operation;
         }
+        public SqlOperation GetRetrieveBytRepeticiones(int  Repiticiones)
+        {
+            SqlOperation operation = new SqlOperation();
+            operation.ProcedureName = "GET_USER_BY_REPETICIONES";
+            operation.AddIntegerParam("repeticiones", Repiticiones);
+            return operation;
+        }
+        public SqlOperation GetRetrieveBySeries(int Series)
+        {
+            SqlOperation operation = new SqlOperation();
+            operation.ProcedureName = "GET_USER_BY_SERIES";
+            operation.AddIntegerParam("series", Series);
+            return operation;
+        }
+ 
 
 
 
