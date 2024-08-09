@@ -154,14 +154,15 @@ function Consultar() {
                 placeholder: 'Buscar'
             }
         },
-        columns: ['Nombre Cupón', 'Valor %', 'Cupón Validez', 'Nombre Plan', 'Precio Plan', 'Nombre Usuario'],
+        columns: ['Cupón', 'Valor %', 'Cupón Validez', 'Nombre Plan', 'Precio Plan', 'Estado Plan','Usuario'],
         server: {
-            url: 'https://localhost:7253/api/PlanesMensuales/GetAllPlanesMensuales',
+            url: 'https://localhost:7253/api/PlanesMensuales/GetPlanesMensuales',
             then: data => data.data.map(result => [
                 result.cuponesList[0].nombreCupon,
                 result.cuponesList[0].descuento,
                 result.cuponesList[0].validez,
                 result.nombrePlan,
+                result.estadoPlan,
                 result.precioPlan,
                 result.usuariosList[0].nombre,
             ])

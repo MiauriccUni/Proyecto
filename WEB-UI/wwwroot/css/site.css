@@ -115,6 +115,9 @@ header nav ul li a {
     text-align: center;
 }
 
+/*.main-container {
+    width: 100% ;
+}*/
 /*  Entrenador  */
 .cedula-buscar {
     margin: 0 180px 0 180px;
