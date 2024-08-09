@@ -35,5 +35,12 @@ namespace API.Controllers
             return response;
         }
 
+        [HttpGet]
+        public List<PlanesMensuales> GetPlanesMensuales() 
+        { 
+            PlanesMensualesManager manager = new PlanesMensualesManager();
+            return manager.GetAllPlanesMensualesManager();
+        }
+
     }
 }

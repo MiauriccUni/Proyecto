@@ -18,54 +18,31 @@
         <h2 class="text-center">Planes Mensuales</h2>
         <div class="table-responsive">
             <div id="myGrid" class="ag-theme-alpine justify-content-center"></div>
-            <div><button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addMeasurementModal">Agendar Plan</button></div>
+            <div><button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addMeasurementModal">Actualizar Plan</button></div>
         </div>
 
     </div>
 
-    <!-- Modal para Agendar Plan Mensual -->
+    <!-- Modal para Crear Medición -->
     <div class="modal fade" id="addMeasurementModal" tabindex="-1" aria-labelledby="addMeasurementModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="addMeasurementModalLabel">Agendar Nueva Medición</h5>
+                    <h5 class="modal-title" id="addMeasurementModalLabel">Actualizar Plan</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <form id="addMeasurementForm">
-                        <div class="mb-3">
-                            <label for="horaMedicion" class="form-label">Hora de la Medición</label>
-                            <input type="datetime-local" class="form-control" id="horaMedicion" name="horaMedicion" required>
-                        </div>
-
-                        @* <div class="mb-3">
-                        <label for="peso" class="form-label">Peso</label>
-                        <input type="number" class="form-control" id="peso" name="Peso" required>
-                        </div>
-
-                        <div class="mb-3">
-                        <label for="estatura" class="form-label">Estatura</label>
-                        <input type="number" class="form-control" id="estatura" name="Estatura" required>
-                        </div>
-
-                        <div class="mb-3">
-                        <label for="grasa" class="form-label">Porcentage de Grasa</label>
-                        <input type="number" class="form-control" id="grasa" name="grasa" required>
-                        </div>
-
-                        <div class="mb-3">
-                        <label for="notas" class="form-label">Notas Adicionales</label>
-                        <input type="text" class="form-control" id="notas" name="rutina" required>
-                        </div>
-                        *@
-                        <div class="mt-3 mb-3">
-                            <label for="idusuario" class="container">Usuarios a asignar:</label>
-                            <select id="idusuario" class="form-control">
-                                <option value="" disabled selected>Seleccione un usuario</option>
+                        <form action="">
+                            <label for="txtPlan">Estado Plan</label>
+                            <select class="form-select" name="planSelect" id="planSelect">
+                                <option value="" disabled selected>Seleccione estado del plan</option>
+                                <option value="activo">Activo</option>
+                                <option value="vencido">Vencido</option>
                             </select>
-                        </div>
+                        </form>
 
-                        <button type="button" class="btn btn-primary" id="citaMedicion">Agendar Medición</button>
+                        <button type="button" class="btn btn-primary" id="citaPlanMensual">Agendar Medición</button>
                     </form>
                 </div>
             </div>
