@@ -1,6 +1,7 @@
 ﻿using AppLogic;
 using DTO;
 using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
@@ -96,6 +97,14 @@ namespace API.Controllers
         {
             UsuarioManager updater = new UsuarioManager();
             updater.UpdateOTPManager(correo, OTP);
+        }
+
+        [HttpPut]
+        public string ChangePassword(string correo, string password) 
+        { 
+            UsuarioManager usuarioManager = new UsuarioManager();
+            usuarioManager.ChangePassword(correo, password);
+            return "OK";
         }
     }
 }
