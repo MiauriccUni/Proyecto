@@ -29,14 +29,16 @@
                 title: "Éxito",
                 icon: "success",
                 text: "Se ha completado el registro de la clase",
-            })
+            }).then(() => {
+                $('#modalCrearClase').modal('hide'); 
+                Swal.close();
+            });
         }).fail(function (error) {
             console.error('Error:', error);
         })
     }
+
 }
-
-
 
 function Consultar() {
     const grid = new gridjs.Grid({
