@@ -55,6 +55,12 @@ function AsignacionCita(){
                 title: "Éxito",
                 icon: "success",
                 text: "Se ha completado el registro",
+            }).then(function () {
+                var view = new AsignacionCita();
+                view.Listar();
+                setTimeout(() => {
+                    location.reload();
+                }, 1000);
             });
         }).fail(function (error) {
             Swal.fire({
@@ -117,6 +123,9 @@ function AsignacionCita(){
         });
     }
 
+    this.Listar = function () {
+        ConsultarAsignacion();
+    }
 }
 
 function ConsultarAsignacion() {
