@@ -10,7 +10,7 @@
         clase.id = generateUniqueId();
         clase.nombreClase = $('#registerTipoClase').val();
         clase.horarios = $('#registerHorario').val();
-        clase.cuposDisponibles = $('#registerCupos');
+        clase.cuposDisponibles = $('#registerCupos').val();
 
 
         $.ajax({
@@ -31,7 +31,7 @@
                 text: "Se ha completado el registro de la clase",
             })
         }).fail(function (error) {
-            console.log("Error", error);
+            console.error('Error:', error);
         })
     }
 }
