@@ -5,7 +5,7 @@
     <script src="https://unpkg.com/gridjs/dist/gridjs.umd.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="~/js/ClasesGrupales/JavaScript.js"></script>
+    <script src="~/js/ClasesGrupales/clasesGrupales.js"></script>
     
 }
 
@@ -37,18 +37,18 @@
                 <form id="addMeasurementForm">
                     <div class="mb-3">
                         <label for="tipoClase" class="form-label">Tipo de Clase</label>
-                        <input type="text" class="form-control" id="tipoClase" name="tipoClase" required>
+                        <input type="text" class="form-control" id="registerTipoClase" name="tipoClase" required>
                     </div>
                     <div class="mb-3">
                         <label for="horaMedicion" class="form-label">Horario</label>
-                        <input type="datetime-local" class="form-control" id="horaMedicion" name="horaMedicion" required>
+                        <input type="datetime-local" class="form-control" id="registerHorario" name="horaMedicion" required>
                     </div>
                     <div class="mb-3">
                         <label for="instructor" class="form-label">Cupos Disponibles</label>
-                        <input type="number" class="form-control" id="instructor" name="instructor" required>
+                            <input type="number" class="form-control" id="registerCupos" name="instructor" required>
                     </div>
 
-                    <button type="button" class="btn btn-primary" id="citaMedicion">Guardar Nueva Clase</button>
+                    <button type="button" class="btn btn-primary" id="agregarClase">Guardar Nueva Clase</button>
                 </form>
             </div>
         </div>
