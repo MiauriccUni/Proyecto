@@ -1,15 +1,17 @@
-﻿function UsuariosList() {
-    this.InitView = function () {       
+﻿idUsuarioID = null;
+infoUsuario = [];
+function UsuariosList() {
+    this.InitView = function () { 
+        this.PopulateUsuarios();
         $('#btnActRol').click(function () {
             var view = new UsuariosList();
             view.PutRol();
         });
     }
 
-
     this.PutRol = function () {
-        
-        id = $('#txtIdentificacion').val();
+
+        id = idUsuarioID;
         nuevoRol = $('#rolselect').find(":selected").val();
 
         var api_url = "https://localhost:7253/api/Usuario/UpdateRol?id=" + id + "&rol=" + nuevoRol;
@@ -38,7 +40,6 @@
             dataType: "json"
         }).done(function (result) {
             var user = result[0];
-            console.log(result[0]);
             if (!user) {
                 Swal.fire({
                     title: 'Error',
@@ -80,8 +81,32 @@
         })
     }
 
-}
+    this.PopulateUsuarios = function () {
+        $.ajax({
+            url: "https://localhost:7253/api/Usuario/GetUsuarios",
+            method: "GET",
+            contentType: "application/json;charset=utf-8",
+            dataType: "json"
+        }).done(function (data) {
+            infoUsuario = data;
+            var select = $('#idusuario');
+            for (var row in data) {
+                select.append('<option value=' + data[row].id + '>' + data[row].nombre + ', ' + data[row].correo)
+            }
+            select.on('change', function () {
+                let id = $(this).val();
+                idUsuarioID = id;
+            });
+        }).fail(function (error) {
+            Swal.fire({
+                title: "Error",
+                icon: "error",
+                text: "Error al cargar los usuarios" + error
+            });
+        });
+    }
 
+}
 function Consultar() {
     const grid = new gridjs.Grid({
         search: true,

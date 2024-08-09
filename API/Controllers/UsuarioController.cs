@@ -1,6 +1,7 @@
 ﻿using AppLogic;
 using DTO;
 using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
@@ -22,6 +23,20 @@ namespace API.Controllers
         {
             UsuarioManager pm = new UsuarioManager();
             return pm.GetAllUsuarios();
+        }
+
+        [HttpGet]
+        public List<Usuario> GetClientes()
+        {
+            UsuarioManager pm = new UsuarioManager();
+            return pm.GetAllClientes();
+        }
+
+        [HttpGet]
+        public List<Usuario> GetEntrenadores()
+        {
+            UsuarioManager pm = new UsuarioManager();
+            return pm.GetAllEntrenadores();
         }
 
         [HttpGet]
@@ -82,6 +97,14 @@ namespace API.Controllers
         {
             UsuarioManager updater = new UsuarioManager();
             updater.UpdateOTPManager(correo, OTP);
+        }
+
+        [HttpPut]
+        public string ChangePassword(string correo, string password) 
+        { 
+            UsuarioManager usuarioManager = new UsuarioManager();
+            usuarioManager.ChangePassword(correo, password);
+            return "OK";
         }
     }
 }

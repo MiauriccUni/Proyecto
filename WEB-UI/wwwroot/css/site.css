@@ -314,3 +314,14 @@ header nav ul li a {
     max-width: 300px;
     z-index: 1;
 }
+
+/* CUPONES */
+
+.cupones {
+    margin-bottom: 90px;
+}
+
+.cupon-derecho {
+    padding-left: 150px;
+}
+
