@@ -15,7 +15,7 @@
     <!-- Your content here -->
 </div>
 
-<!-- Tabla de Citas para Medición -->
+    <!-- Tabla de Clase -->
 <div class="my-5">
     <h2 class="text-center">Clases Grupales</h2>
     <div class="table-responsive">
@@ -25,35 +25,35 @@
 
 </div>
 
-<!-- Modal para Agendar Medición -->
-<div class="modal fade" id="addMeasurementModal" tabindex="-1" aria-labelledby="addMeasurementModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="addMeasurementModalLabel">Crear Nueva Clase Grupal</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form id="addMeasurementForm">
-                    <div class="mb-3">
-                        <label for="tipoClase" class="form-label">Tipo de Clase</label>
-                        <input type="text" class="form-control" id="registerTipoClase" name="tipoClase" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="horaMedicion" class="form-label">Horario</label>
-                        <input type="datetime-local" class="form-control" id="registerHorario" name="horaMedicion" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="instructor" class="form-label">Cupos Disponibles</label>
+<!-- Modal para Agendar Clase -->
+    <div class="modal fade" id="addMeasurementModalLabel" tabindex="-1" aria-labelledby="addMeasurementModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addMeasurementModalLabel">Crear Nueva Clase Grupal</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="addMeasurementForm">
+                        <div class="mb-3">
+                            <label for="tipoClase" class="form-label">Tipo de Clase</label>
+                            <input type="text" class="form-control" id="registerTipoClase" name="tipoClase" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="horaMedicion" class="form-label">Horario</label>
+                            <input type="datetime-local" class="form-control" id="registerHorario" name="horaMedicion" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="instructor" class="form-label">Cupos Disponibles</label>
                             <input type="number" class="form-control" id="registerCupos" name="instructor" required>
-                    </div>
+                        </div>
 
-                    <button type="button" class="btn btn-primary" id="agregarClase">Guardar Nueva Clase</button>
-                </form>
+                        <button type="button" class="btn btn-primary" id="agregarClase">Guardar Nueva Clase</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
 
 </main>

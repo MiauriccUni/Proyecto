@@ -12,6 +12,32 @@
         clase.horarios = $('#registerHorario').val();
         clase.cuposDisponibles = $('#registerCupos').val();
 
+        if (clase.nombreClase == "") {
+            Swal.fire({
+                icon: 'error',
+                text: "Por favor indique el nombre de la Clase Grupal.",
+                title: 'Error'
+            });
+            return;
+        }
+
+        if (clase.horarios == "") {
+            Swal.fire({
+                icon: 'error',
+                text: "Por favor indique el horario.",
+                title: 'Error'
+            });
+            return;
+        }
+
+        if (clase.cuposDisponibles == "") {
+            Swal.fire({
+                icon: 'error',
+                text: "Por favor indique el Cupo Disponible.",
+                title: 'Error'
+            });
+            return;
+        }
 
         $.ajax({
             headers: {
@@ -30,12 +56,16 @@
                 icon: "success",
                 text: "Se ha completado el registro de la clase",
             }).then(() => {
-                $('#modalCrearClase').modal('hide'); 
+                $('#addMeasurementModalLabel').modal('hide'); 
                 Swal.close();
             });
         }).fail(function (error) {
-            console.error('Error:', error);
-        })
+            Swal.fire({
+                icon: 'error',
+                text: "Error al registrar clase",
+                title: 'Error',
+            });
+        });
     }
 
 }
