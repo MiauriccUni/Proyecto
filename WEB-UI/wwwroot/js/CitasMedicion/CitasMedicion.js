@@ -25,10 +25,22 @@ function CrearCitaMedicion() {
 
         var calyear = fecha.getFullYear() - fechaActual.getFullYear();
         var calhora = fecha.getHours();
-        console.log(calhora)
         var caldias = fecha.getDay();
-
+        var calmin = fecha.getMinutes();
         
+        var cal = fecha.get - fechaActual.getDay();
+
+        var difday = fechaActual.getTime() - fecha.getTime();
+        var dif = difday / 1000 / 60 / 60 / 24;
+
+        if (dif >= 1) {
+            Swal.fire({
+                icon: 'error',
+                text: "Por favor indique el dia siguiente.",
+                title: 'Error'
+            });
+            return;
+        }
 
         if (citas.fecha === "") {
             Swal.fire({
@@ -75,6 +87,25 @@ function CrearCitaMedicion() {
             return;
         }
 
+        if (calmin != 30 && calmin != 0) {
+            
+            Swal.fire({
+                icon: 'error',
+                text: "En el apartado de minutos debe indicar '00' o '30'.",
+                title: 'Error'
+            });
+            return;
+        }
+
+        if (cal === 0) {
+            Swal.fire({
+                icon: 'error',
+                text: "Por favor indique el proximo día disponible.",
+                title: 'Error'
+            });
+            return;
+        }
+
         $.ajax({
             headers: {
                 'Accept': "application/json",
@@ -93,7 +124,12 @@ function CrearCitaMedicion() {
                 text: "Se ha completado el registro",
             }).then(function () {
                 var view = new CrearCitaMedicion();
-                view.LimpiarForm();                
+                view.LimpiarForm();
+                view.Listar();
+                setTimeout(() => {
+                    location.reload();
+
+                },1000);
             });
         }).fail(function (error) {
             Swal.fire({
@@ -114,7 +150,7 @@ function CrearCitaMedicion() {
             infoUsuario = data;
             var select = $('#idusuario');
             for (var row in data) {
-                select.append('<option value=' + data[row].id + '>' + data[row].nombre + ', ' + data[row].correo)
+                select.append('<option value=' + data[row].id + '>' + data[row].nombre + ' ' + data[row].apellidos + ', ' +data[row].correo)
             }
             select.on('change', function () {
                 let id = $(this).val();
@@ -134,30 +170,37 @@ function CrearCitaMedicion() {
         $('#idusuario').val('');
     }
 
+    this.Listar = function () {
+        Consultar();
+    }
+
 }
+
+
 
 function Consultar() {
     const grid = new gridjs.Grid({
-        search: true,
-        sort: true,
-        resizable: true,
-        pagination: {
-            limit: 5
-        },
-        language: {
-            search: {
-                placeholder: 'Buscar'
-            }
-        },
-        columns: ['ID','Nombre del Cliente', 'Correo Cliente', 'Fecha'],
+        
+
+        columns: ['Nombre del Cliente', 'Correo Cliente', 'Fecha'],
         server: {
             url: 'https://localhost:7253/api/CitasMedicion/GetAllUsuarios',
-            then: data => data.data.map(result => [
-                result.id,
-                result.usuariosList[0].nombre,
-                result.usuariosList[0].correo,
-                result.fecha,
-            ])
+            then: data => data.data.map(result => {
+
+                const originalDate = new Date(result.fecha);
+               
+                const formattedDate = `${(originalDate.getMonth() + 1).toString().padStart(2, '0')}/` +
+                    `${originalDate.getDate().toString().padStart(2, '0')}/` +
+                    `${originalDate.getFullYear()} ` +
+                    `${originalDate.getHours().toString().padStart(2, '0')}:` +
+                    `${originalDate.getMinutes().toString().padStart(2, '0')}`;
+
+                return [
+                    result.usuariosList[0].nombre,
+                    result.usuariosList[0].correo,
+                    formattedDate,
+                ];
+            }),
         },
     }).render(document.getElementById('myGrid'));
 }

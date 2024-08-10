@@ -61,6 +61,7 @@
                     title: "Excelente",
                     text: "Bienvenido"
                 }).then(function () {
+                    sessionStorage.setItem('correo', email);
                     var roles = user.rol;
                     switch (roles) {
                         case "Administrador":
