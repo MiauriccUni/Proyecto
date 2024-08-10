@@ -90,10 +90,8 @@ this.PopulateUsuarios = function () {
         infoUsuario = data;
         var select = $('#idusuario');
         for (var row in data) {
-            select.append('<option value=' + data[row].id + '>' + data[i].id + + ' - ' + usuario.correo + '</option>');
-            
+            select.append('<option value=' + data[row].id + '>' + data[i].id + + ' - ' + usuario.correo + '</option>')    
         }
-
         select.on('change', function () {
             let id = $(this).val();
             idUsuarioID = id;
