@@ -14,7 +14,6 @@ function CrearPlanMensual() {
     }
 
     this.ActualizarPlan = function () {
-
         var plan = {}
         plan.id = generateUniqueId();
         plan.estadoPlan = $('#planSelect').val();
@@ -29,7 +28,7 @@ function CrearPlanMensual() {
         }
 
         // Obtener el rol del usuario seleccionado
-        var selectedUsuario = infoUsuarios.find(usuario => usuario.nombre === idUsuariosID);
+        var selectedUsuario = infoUsuarios.find(usuario => usuario.id === idUsuariosID);
         if (!selectedUsuario) {
             Swal.fire({
                 icon: 'error',
@@ -64,6 +63,35 @@ function CrearPlanMensual() {
                 return;
         }
 
+        // Obtener el descuento del cupón seleccionado
+        var selectedCupon = infoCupon.find(cupon => cupon.id === idCuponID);
+        var descuentoCupon = selectedCupon ? selectedCupon.Descuento : 0;
+
+        // Calcular el total a pagar
+        var totalAPagar = plan.precioPlan * (1 - (descuentoCupon / 100));
+
+        // Generar factura
+        var fechaFactura = new Date();
+        fechaFactura.setMonth(fechaFactura.getMonth() + 1);
+        fechaFactura.setDate(0); // Fin de mes
+
+        var factura = `
+        <h3>Factura</h3>
+        <p><strong>Plan del cliente:</strong> ${plan.nombrePlan}</p>
+        <p><strong>Valor del plan:</strong> $${plan.precioPlan}</p>
+        <p><strong>Descuento cupón:</strong> ${descuentoCupon}%</p>
+        <p><strong>Fecha de la factura:</strong> ${fechaFactura.toLocaleDateString()}</p>
+        <p><strong>Total a pagar:</strong> $${totalAPagar.toFixed(2)}</p>`;
+        $('#facturaContent').html(factura);
+        $('#facturaModal').modal('show');
+
+        // Mostrar factura al usuario
+        Swal.fire({
+            title: 'Factura Generada',
+            html: factura,
+            icon: 'success'
+        });
+
         $.ajax({
             headers: {
                 'Accept': "application/json",
@@ -89,6 +117,7 @@ function CrearPlanMensual() {
             });
         });
     }
+
     this.PopulateUsuarios2 = function () {
         $.ajax({
             url: "https://localhost:7253/api/Usuario/GetClientes",
@@ -116,7 +145,7 @@ function CrearPlanMensual() {
 
     this.PopulateCupones = function () {
         $.ajax({
-            url: "https://localhost:7253/api/PlanesMensuales/GetPlanesMensuales",
+            url: "https://localhost:7253/api/Cupones/GetCupones",
             method: "GET",
             contentType: "application/json;charset=utf-8",
             dataType: "json"
@@ -124,7 +153,7 @@ function CrearPlanMensual() {
             infoCupon = data;
             var select = $('#idcupones');
             for (var row in data) {
-                select.append('<option value="' + data[row].id + '">' + data[row].NombreCupon + ', ' + data[row].Descuento + ', ' + data[row].Validez + '</option>');
+                select.append('<option value="' + data[row].id + '">' + data[row].NombreCupon + ', ' + data[row].Descuento + ', ' + data[row].validez + '</option>');
             }
             select.on('change', function () {
                 let id = $(this).val();
@@ -134,7 +163,7 @@ function CrearPlanMensual() {
             Swal.fire({
                 title: "Error",
                 icon: "error",
-                text: "Error al cargar las rutinas" + error
+                text: "Error al cargar los cupones" + error
             });
         });
 
@@ -154,11 +183,18 @@ function Consultar() {
                 placeholder: 'Buscar'
             }
         },
-        columns: ['Cupón', 'Valor %', 'Cupón Validez', 'Nombre Plan', 'Precio Plan', 'Estado Plan','Usuario', 'Rol'],
+        columns: [
+            'Cupón', 'Desc %', 'Validez', 'Plan', 'Precio', 'Estado', 'Usuario', 'Rol', 
+            {
+                name: 'Factura',
+                formatter: (cell, row) => {
+                    return gridjs.html(`<button type="button" class="btn btn-primary btn-factura" data-plan-id="${row.cells[3].data}" data-bs-toggle="modal" data-bs-target="#facturaModal">Factura</button>`);
+                }
+            }
+        ],
         server: {
             url: 'https://localhost:7253/api/PlanesMensuales/GetAllPlanesMensuales',
             then: data => data.data.map(result => [
-
                 result.cuponesList[0]?.nombreCupon || 'No disponible',
                 result.cuponesList[0]?.descuento || 'No disponible',
                 result.cuponesList[0]?.validez.split('T')[0] || 'No disponible',
@@ -170,6 +206,24 @@ function Consultar() {
             ])
         },
     }).render(document.getElementById('myGrid'));
+
+    // Manejar el evento click en los botones "Factura"
+    $(document).on('click', '.btn-factura', function () {
+        const row = $(this).closest('tr');
+        const planNombre = row.find('td:nth-child(4)').text(); // Obtener el nombre del plan
+        const precioPlan = parseFloat(row.find('td:nth-child(5)').text().replace('$', '')); // Obtener el valor del plan
+        const descuentoCupon = parseFloat(row.find('td:nth-child(2)').text()) || 0; // Obtener el descuento del cupón
+        const totalAPagar = precioPlan * (1 - (descuentoCupon / 100)); // Calcular el total a pagar
+
+        $('#facturaContent').html(`
+        <h3>Factura</h3>
+        <p><strong>Plan del cliente:</strong> ${planNombre}</p>
+        <p><strong>Valor del plan:</strong> $${precioPlan.toFixed(2)}</p>
+        <p><strong>Descuento cupón:</strong> ${descuentoCupon}%</p>
+        <p><strong>Fecha de la factura:</strong> ${new Date().toLocaleDateString()}</p>
+        <p><strong>Total a pagar:</strong> $${totalAPagar.toFixed(2)}</p>
+    `);
+    });
 }
 
 generatedIds = [];
@@ -183,8 +237,8 @@ generateUniqueId = () => {
     generatedIds.push(newId);
     return newId;
 }
-$(document).ready(function () {
 
+$(document).ready(function () {
     Consultar();
     var view = new CrearPlanMensual();
     view.InitView();

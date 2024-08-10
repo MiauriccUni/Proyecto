@@ -18,9 +18,8 @@
         <h2 class="text-center">Planes Mensuales</h2>
         <div class="table-responsive">
             <div id="myGrid" class="ag-theme-alpine justify-content-center"></div>
-           @*  <div><button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addMeasurementModal">Actualizar Plan</button></div> *@
+            @* <div><button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addMeasurementModal">Actualizar Plan</button></div> *@
         </div>
-
     </div>
 
     <!-- Modal para Crear Medición -->
@@ -33,22 +32,41 @@
                 </div>
                 <div class="modal-body">
                     <form id="addMeasurementForm">
-                        <form action="">
-                            <label for="txtPlan">Estado Plan</label>
-                            <select class="form-select" name="planSelect" id="planSelect">
-                                <option value="" disabled selected>Seleccione estado del plan</option>
-                                <option value="activo">Activo</option>
-                                <option value="vencido">Vencido</option>
-                            </select>
-                        </form>
-
-                        <button type="button" class="btn btn-primary" id="citaPlanMensual">Agendar Medición</button>
+                        <label for="txtPlan">Estado Plan</label>
+                        <select class="form-select" name="planSelect" id="planSelect">
+                            <option value="" disabled selected>Seleccione estado del plan</option>
+                            <option value="activo">Activo</option>
+                            <option value="vencido">Vencido</option>
+                        </select>
+                        <button type="button" class="btn btn-primary mt-3" id="citaPlanMensual">Actualizar Plan</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-    <div class="plan-mensual">
 
+    <!-- NUEVO -->
+
+    <!-- Modal para Mostrar Factura -->
+    <div class="modal fade" id="facturaModal" tabindex="-1" aria-labelledby="facturaModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="facturaModalLabel">Factura Generada</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Aquí se mostrarán los datos de la factura -->
+                    <div id="facturaContent">Datos de la factura aparecerán aquí...</div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <!-- FIN -->
+
+    <div class="plan-mensual"></div>
 </main>
