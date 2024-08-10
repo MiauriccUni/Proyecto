@@ -16,7 +16,7 @@
             Swal.fire({
                 icon: 'error',
                 text: "Por favor indique el nombre de la Clase Grupal.",
-                title: 'Error'
+                title: ''
             });
             return;
         }
@@ -25,7 +25,7 @@
             Swal.fire({
                 icon: 'error',
                 text: "Por favor indique el horario.",
-                title: 'Error'
+                title: ''
             });
             return;
         }
@@ -34,7 +34,7 @@
             Swal.fire({
                 icon: 'error',
                 text: "Por favor indique el Cupo Disponible.",
-                title: 'Error'
+                title: ''
             });
             return;
         }
@@ -63,7 +63,7 @@
             Swal.fire({
                 icon: 'error',
                 text: "Error al registrar clase grupal",
-                title: 'Error',
+                title: '',
             });
         });
     }
@@ -87,7 +87,7 @@ function Consultar() {
                 placeholder: 'Buscar'
             }
         },
-        columns: ['Nombre de la Clase', 'Horarios', 'Cupos Disponibles', 'ID'],
+        columns: ['Nombre de la Clase', 'Horarios', 'Cupos Disponibles',],
         headerVisible: false,
         server: {
             url: 'https://localhost:7253/api/ClasesGrupales/GetAllClasesGrupales',

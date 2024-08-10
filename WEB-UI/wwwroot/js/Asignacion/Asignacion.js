@@ -25,7 +25,7 @@ function AsignacionCita(){
             Swal.fire({
                 icon: 'error',
                 text: "Por favor elija una cita.",
-                title: 'Error'
+                title: ''
             });
             return;
         }
@@ -34,7 +34,7 @@ function AsignacionCita(){
             Swal.fire({
                 icon: 'error',
                 text: "Por favor elija un entrenador.",
-                title: 'Error'
+                title: ''
             });
             return;
         }
@@ -60,7 +60,7 @@ function AsignacionCita(){
             Swal.fire({
                 icon: 'error',
                 text: "Error al registrarse",
-                title: 'Error',
+                title: '',
             });
         });
     }
@@ -84,7 +84,7 @@ function AsignacionCita(){
             });
         }).fail(function (error) {
             Swal.fire({
-                title: "Error",
+                title: "",
                 icon: "error",
                 text: "Error al cargar las ID citas" + error
             });
@@ -110,7 +110,7 @@ function AsignacionCita(){
             });
         }).fail(function (error) {
             Swal.fire({
-                title: "Error",
+                title: "",
                 icon: "error",
                 text: "Error al cargar los Entrenadores" + error
             });

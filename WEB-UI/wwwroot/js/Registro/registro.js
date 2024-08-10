@@ -54,7 +54,7 @@
             Swal.fire({
                 icon: 'error',
                 text: "Por favor indique su nombre en el espacio correspondiente.",
-                title: 'Error'
+                title: ''
             });
             return;
         }
@@ -63,7 +63,7 @@
             Swal.fire({
                 icon: 'error',
                 text: "Por favor indique su apellido en el espacio correspondiente.",
-                title: 'Error'
+                title: ''
             });
             return;
         }
@@ -72,14 +72,14 @@
             Swal.fire({
                 icon: 'error',
                 text: "La edad minima para matricular debe ser 16 años, " + "la edad indicada fue: " + edad,
-                title: 'Error'
+                title: ''
             });
             return;
         } else if (edad > 68) {
             Swal.fire({
                 icon: 'error',
                 text: "La edad maxima para matricular debe ser 68 años, " + "la edad indicada fue: " + edad,
-                title: 'Error'
+                title: ''
             });
             return;
         }
@@ -88,7 +88,7 @@
             Swal.fire({
                 icon: 'error',
                 text: "Por favor seleccione una fecha de nacimiento.",
-                title: 'Error'
+                title: ''
             });
             return;
         }
@@ -97,7 +97,7 @@
             Swal.fire({
                 icon: 'error',
                 text: "Por favor indique su correo en el espacio correspondiente.",
-                title: 'Error'
+                title: ''
             });
             return;
         }
@@ -106,7 +106,7 @@
             Swal.fire({
                 icon: 'error',
                 text: "Por favor indique su numero celular en el espacio correspondiente.",
-                title: 'Error'
+                title: ''
             });
             return;
         }
@@ -115,7 +115,7 @@
             Swal.fire({
                 icon: 'error',
                 text: "El número de teléfono debe tener 8 digitos.",
-                title: 'Error'
+                title: ''
             });
             return;
         }
@@ -124,7 +124,7 @@
             Swal.fire({
                 icon: 'error',
                 text: "Por favor indique su genero en el espacio correspondiente.",
-                title: 'Error'
+                title: ''
             });
             return;
         }
@@ -133,7 +133,7 @@
             Swal.fire({
                 icon: 'error',
                 text: "La contraseña debe tener 8 caracteres.",
-                title: 'Error'
+                title: ''
             });
             return;
         }
@@ -145,7 +145,7 @@
             Swal.fire({
                 icon: 'error',
                 text: "Las contraseñas no coinciden.",
-                title: 'Error'
+                title: ''
             });
             return;
         }
@@ -198,7 +198,7 @@
                             Swal.fire({
                                 icon: 'error',
                                 text: "Error al registrarse",
-                                title: 'Error',
+                                title: '',
                             });
                         });
 
@@ -206,7 +206,7 @@
                         Swal.fire({
                             icon: 'error',
                             text: "Por favor indicar un numero telefonico que no se haya registrado antes.",
-                            title: 'Error'
+                            title: ''
                         });
                     }
                 }).fail(function (error) {
@@ -217,7 +217,7 @@
                 Swal.fire({
                     icon: 'error',
                     text: "Por favor indicar un correo que no se haya registrado antes.",
-                    title: 'Error'
+                    title: ''
                 });
             }
         }).fail(function (error) {
@@ -252,13 +252,13 @@
                 Swal.fire({
                     icon: 'success',
                     text: "Correo de verificación enviado con éxito, por favor revise su correo para realizar la validación",
-                    title: 'Success',
+                    title: 'Éxito',
                 });
             } else {
                 Swal.fire({
                     icon: 'error',
                     text: xhr.responseText,
-                    title: 'Error',
+                    title: '',
                 });
             }
         });
