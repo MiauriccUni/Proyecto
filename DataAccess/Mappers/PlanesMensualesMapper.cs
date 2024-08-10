@@ -21,6 +21,7 @@ namespace DataAccess.Mappers
                 new Usuario
                 {
                 Nombre = row["nombre"].ToString(),
+                Rol = row["rol"].ToString()
                 }
 
             };

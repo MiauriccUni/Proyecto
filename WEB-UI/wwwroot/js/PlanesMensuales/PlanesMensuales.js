@@ -154,17 +154,19 @@ function Consultar() {
                 placeholder: 'Buscar'
             }
         },
-        columns: ['Cupón', 'Valor %', 'Cupón Validez', 'Nombre Plan', 'Precio Plan', 'Estado Plan','Usuario'],
+        columns: ['Cupón', 'Valor %', 'Cupón Validez', 'Nombre Plan', 'Precio Plan', 'Estado Plan','Usuario', 'Rol'],
         server: {
-            url: 'https://localhost:7253/api/PlanesMensuales/GetPlanesMensuales',
+            url: 'https://localhost:7253/api/PlanesMensuales/GetAllPlanesMensuales',
             then: data => data.data.map(result => [
-                result.cuponesList[0].nombreCupon,
-                result.cuponesList[0].descuento,
-                result.cuponesList[0].validez,
+
+                result.cuponesList[0]?.nombreCupon || 'No disponible',
+                result.cuponesList[0]?.descuento || 'No disponible',
+                result.cuponesList[0]?.validez.split('T')[0] || 'No disponible',
                 result.nombrePlan,
-                result.estadoPlan,
                 result.precioPlan,
+                result.estadoPlan,
                 result.usuariosList[0].nombre,
+                result.usuariosList[0].rol,
             ])
         },
     }).render(document.getElementById('myGrid'));
@@ -182,6 +184,7 @@ generateUniqueId = () => {
     return newId;
 }
 $(document).ready(function () {
+
     Consultar();
     var view = new CrearPlanMensual();
     view.InitView();
