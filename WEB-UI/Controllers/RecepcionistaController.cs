@@ -36,5 +36,15 @@ namespace WEB_UI.Controllers
         {
             return View();
         }
+
+        public IActionResult CuponesRecepcionista()
+        {
+            return View();
+        }
+
+        public IActionResult RecepcionPlanesMensuales()
+        {
+            return View();
+        }
     }
 }

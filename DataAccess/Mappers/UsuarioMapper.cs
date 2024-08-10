@@ -152,6 +152,16 @@ namespace DataAccess.Mappers
         {
             throw new NotImplementedException();
         }
+        
+        public SqlOperation ChangePassword(string correo, string password) 
+        {
+            SqlOperation operation = new SqlOperation();
+            operation.ProcedureName = "SP_CHANGEPASSWORD";
+            operation.AddVarCharParam("contrasenna", _pass.Encrypt(password));
+            operation.AddVarCharParam("correo", correo);
+            return operation;   
 
+
+        }
     }
 }
