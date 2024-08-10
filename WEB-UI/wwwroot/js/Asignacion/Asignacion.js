@@ -39,6 +39,7 @@ function AsignacionCita(){
             return;
         }
 
+
         $.ajax({
             headers: {
                 'Accept': "application/json",

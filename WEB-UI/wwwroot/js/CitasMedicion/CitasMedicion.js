@@ -27,14 +27,11 @@ function CrearCitaMedicion() {
         var calhora = fecha.getHours();
         var caldias = fecha.getDay();
         var calmin = fecha.getMinutes();
-
         
         var cal = fecha.get - fechaActual.getDay();
-        console.log(cal);
 
         var difday = fechaActual.getTime() - fecha.getTime();
         var dif = difday / 1000 / 60 / 60 / 24;
-        console.log(dif);
 
         if (dif >= 1) {
             Swal.fire({
