@@ -55,19 +55,23 @@
                 title: "Éxito",
                 icon: "success",
                 text: "Se ha completado el registro de la clase",
-            }).then(() => {
-                $('#addMeasurementModalLabel').modal('hide'); 
-                Swal.close();
+            }).then(function () {
+                var view = new CrearClaseGrupal();
+                view.LimpiarForm();
             });
         }).fail(function (error) {
             Swal.fire({
                 icon: 'error',
-                text: "Error al registrar clase",
+                text: "Error al registrar clase grupal",
                 title: 'Error',
             });
         });
     }
-
+    this.LimpiarForm = function () {
+        $('#registerTipoClase').val('');
+        $('#registerHorario').val('');
+        $('#registerCupos').val('');
+    }
 }
 
 function Consultar() {
