@@ -13,5 +13,10 @@ namespace WEB_UI.Controllers
         {
             return View();
         }
+
+        public IActionResult ChangePassword()
+        {
+            return View();
+        }
     }
 }

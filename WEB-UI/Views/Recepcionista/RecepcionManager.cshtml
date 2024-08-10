@@ -34,7 +34,7 @@
     </div>
     <!-- Tabla de Clases -->
     <div class="my-5">
-        <h2 class="text-center">Próximas Clases</h2>
+        <h2 class="text-center">Próximas Clases Grupales</h2>
         <div class="table-responsive">
             <table class="table table-bordered" id="classTable">
                 <thead class="table-dark">
@@ -42,6 +42,7 @@
                         <th scope="col">Hora</th>
                         <th scope="col">Clase</th>
                         <th scope="col">Instructor</th>
+                        <th scope="col">Cupos Disponibles</th>
                         <th scope="col">Acciones</th>
                     </tr>
                 </thead>
@@ -51,6 +52,7 @@
                         <td>Hora de la Clase</td>
                         <td>Tipo de Clase</td>
                         <td>Instructor</td>
+                        <td>Cupos Disponibles</td>
                         <td>
                             <!-- Botones de Editar y Eliminar -->
                             <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editarClaseModal">Editar</button>
@@ -86,6 +88,10 @@
                             <label for="instructor" class="form-label">Instructor</label>
                             <input type="text" class="form-control" id="instructor" name="instructor" required>
                         </div>
+                        <div class="mb-3">
+                            <label for="instructor" class="form-label">Cupos Disponibles</label>
+                            <input type="text" class="form-control" id="instructor" name="instructor" required>
+                        </div>
                         <button type="submit" class="btn btn-primary">Agregar Clase</button>
                     </form>
                 </div>
@@ -113,6 +119,10 @@
                         </div>
                         <div class="mb-3">
                             <label for="editInstructor" class="form-label">Instructor</label>
+                            <input type="text" class="form-control" id="editInstructor" name="editInstructor" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editInstructor" class="form-label">Cupos Disponibles</label>
                             <input type="text" class="form-control" id="editInstructor" name="editInstructor" required>
                         </div>
                         <button type="submit" class="btn btn-primary">Guardar Cambios</button>

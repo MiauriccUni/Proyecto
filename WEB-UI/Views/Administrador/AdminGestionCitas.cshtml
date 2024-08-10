@@ -39,26 +39,6 @@
                             <input type="datetime-local" class="form-control" id="horaMedicion" name="horaMedicion" required>
                         </div>
 
-                        @* <div class="mb-3">
-                            <label for="peso" class="form-label">Peso</label>
-                            <input type="number" class="form-control" id="peso" name="Peso" required>
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="estatura" class="form-label">Estatura</label>
-                            <input type="number" class="form-control" id="estatura" name="Estatura" required>
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="grasa" class="form-label">Porcentage de Grasa</label>
-                            <input type="number" class="form-control" id="grasa" name="grasa" required>
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="notas" class="form-label">Notas Adicionales</label>
-                            <input type="text" class="form-control" id="notas" name="rutina" required>
-                        </div>
- *@
                         <div class="mt-3 mb-3">
                             <label for="idusuario" class="container">Usuarios a asignar:</label>
                             <select id="idusuario" class="form-control">
@@ -66,7 +46,7 @@
                             </select>
                         </div>
 
-                        <button type="button" class="btn btn-primary" id="citaMedicion">Agendar Medición</button>
+                        <button type="button" class="btn btn-primary" id="citaMedicion">Agendar medición</button>
                     </form>
                 </div>
             </div>
@@ -77,11 +57,11 @@
         <h2 class="text-center">Asignar cita para medición a un entrenador</h2>
         <div class="table-responsive">
             <div id="myGrid2" class="ag-theme-alpine justify-content-center"></div>
-            <div><button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addMeasurementModal">Asignar cita de Medición</button></div>
+            <div><button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addMeasurementModal2">Asignar cita de medición</button></div>
         </div>
     </div>
     <!-- Modal para Agregar Clase -->
-    <div class="modal fade" id="addClassModal" tabindex="-1" aria-labelledby="addClassModalLabel" aria-hidden="true">
+    <div class="modal fade" id="addMeasurementModal2" tabindex="-1" aria-labelledby="addClassModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
@@ -90,19 +70,21 @@
                 </div>
                 <div class="modal-body">
                     <form id="addClassForm">
-                        <div class="mb-3">
-                            <label for="hora" class="form-label">Hora</label>
-                            <input type="text" class="form-control" id="hora" name="hora" required>
+                        <div>
+                            <label for="idEntrenador" class="container">Entrenador a asignar:</label>
+                            <select id="idEntrenador" class="form-control">
+                                <option value="" disabled selected>Seleccione un entrenador</option>
+                            </select>
                         </div>
-                        <div class="mb-3">
-                            <label for="tipoClase" class="form-label">Tipo de Clase</label>
-                            <input type="text" class="form-control" id="tipoClase" name="tipoClase" required>
+
+                        <div class="mt-3 mb-3">
+                            <label for="idcita" class="container">Indique el numero de la cita:</label>
+                            <select id="idcita" class="form-control">
+                                <option value="" disabled selected>Seleccione un identificador de la cita</option>
+                            </select>
                         </div>
-                        <div class="mb-3">
-                            <label for="instructor" class="form-label">Instructor</label>
-                            <input type="text" class="form-control" id="instructor" name="instructor" required>
-                        </div>
-                        <button type="button" class="btn btn-primary">Agregar Clase</button>
+
+                        <button type="button" id="AsigCita" class="btn btn-primary">Asignar Cita</button>
                     </form>
                 </div>
             </div>

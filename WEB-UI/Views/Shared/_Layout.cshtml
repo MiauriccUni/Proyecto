@@ -48,6 +48,11 @@
             window.location.href = '@Url.Action("OTPRecContra", "OTP")';
         }
     </script>
+    @* <script>
+        function redirect() {
+            window.location.href = '@Url.Action("ChangePassword", "Home")';
+        }
+    </script> *@
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
