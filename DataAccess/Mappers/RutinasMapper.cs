@@ -21,7 +21,21 @@ namespace DataAccess.Mappers
             rutin.TipoEjercicio = row["tipos_de_ejercicio"].ToString();
             rutin.Repeticiones = int.Parse(row["repeticiones"].ToString());
             rutin.Series = int.Parse(row["series"].ToString());
-          
+            rutin.usuariosList = new List<Usuario>
+     {
+                new Usuario
+                {
+                    Correo = row["correo"].ToString(),
+                }
+            };
+            rutin.maquinaList = new List<Maquina>
+            {
+                new Maquina
+                {
+                    NombreMaquina = row["maquina"].ToString(),
+                }
+            };
+
             return rutin;
         }
 
@@ -40,15 +54,16 @@ namespace DataAccess.Mappers
         public SqlOperation GetCreateStatement(BaseClass dto)
         {
             SqlOperation operation = new SqlOperation();
-            operation.ProcedureName = "SP_INSERT_RUTINAS";
+            operation.ProcedureName = "SP_INSERT_RUTINA";
 
             rutinas rutin = (rutinas)dto;
             operation.AddIntegerParam("id_rutina", rutin.Id);
             operation.AddVarCharParam("nombre_ejercicio", rutin.NombreEjercicio);
             operation.AddVarCharParam("tipos_de_ejercicio", rutin.TipoEjercicio);
             operation.AddIntegerParam("repeticiones", rutin.Repeticiones);
-         
             operation.AddIntegerParam("series", rutin.Series);
+            operation.AddIntegerParam("id_maquina", rutin.IdMaquina);
+            operation.AddIntegerParam("id_usuario", rutin.IdUsuario);
             return operation;
         }
 
@@ -60,7 +75,7 @@ namespace DataAccess.Mappers
         public SqlOperation GetRetrieveAllStatement()
         {
             SqlOperation operation = new SqlOperation();
-            operation.ProcedureName = "GET_ALL_RUTINAS";
+            operation.ProcedureName = "GET_ALL_RUTINAS_JOIN";
             return operation;
 
         }
