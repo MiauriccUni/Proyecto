@@ -6,7 +6,6 @@ function AgregarRutina() {
     this.InitView = function () {
         this.PopulateUsuarios();
         this.PopulateMaquina();
-
         $('#Rutinas').click(function (event){
             var view = new AgregarRutina();
             view.SubitRutinas();
@@ -78,58 +77,59 @@ function AgregarRutina() {
             });
         });
     }
-    
-}
-this.PopulateUsuarios = function () {
-    $.ajax({
-        url: "https://localhost:7253/api/Usuario/GetClientes",
-        method: "GET",
-        contentType: "application/json;charset=utf-8",
-        dataType: "json"
-    }).done(function (data) {
-        infoUsuario = data;
-        var select = $('#idusuario');
-        for (var row in data) {
-            select.append('<option value=' + data[row].id + '>' + data[i].id + + ' - ' + usuario.correo + '</option>')    
-        }
-        select.on('change', function () {
-            let id = $(this).val();
-            idUsuarioID = id;
-        });
-    }).fail(function (error) {
-        Swal.fire({
-            title: "Error",
-            icon: "error",
-            text: "Error al cargar los usuarios" + error
-        });
-    });
-    }
-this.PopulateMaquina = function () {
-    $.ajax({
-        url: "https://localhost:7253/api/Maquina/Getmaquina",
-        method: "GET",
-        contentType: "application/json;charset=utf-8",
-        dataType: "json"
-    }).done(function (data) {
-        infoUsuario = data;
-        var select = $('#idMaquina');
-        for (var row in data) {
-            select.append('<option value=' + data[row].id + '>' + data[i].id + + ' - ' + maquina.nombreMaquina + '</option>');
 
-        }
-     
-        select.on('change', function () {
-            let id = $(this).val();
-            idMaquinaID = id;
+    this.PopulateUsuarios = function () {
+        $.ajax({
+            url: "https://localhost:7253/api/Usuario/GetClientes",
+            method: "GET",
+            contentType: "application/json;charset=utf-8",
+            dataType: "json"
+        }).done(function (data) {
+            infoUsuario = data;
+            var select = $('#idusuario');
+            for (var row in data) {
+                select.append('<option value=' + data[row].id + '>' + data[row].correo + '</option>')
+            }
+            select.on('change', function () {
+                let id = $(this).val();
+                idUsuarioID = id;
+            });
+        }).fail(function (error) {
+            Swal.fire({
+                title: "Error",
+                icon: "error",
+                text: "Error al cargar los usuarios" + error
+            });
         });
-    }).fail(function (error) {
-        Swal.fire({
-            title: "Error",
-            icon: "error",
-            text: "Error al cargar los usuarios" + error
+    }
+
+    this.PopulateMaquina = function () {
+        $.ajax({
+            url: "https://localhost:7253/api/Maquina/Getmaquina",
+            method: "GET",
+            contentType: "application/json;charset=utf-8",
+            dataType: "json"
+        }).done(function (data) {
+            infoMaquina = data;
+            var select = $('#idMaquina');
+            for (var row in data) {
+                select.append('<option value=' + data[row].id + '>' + data[row].nombreMaquina + '</option>');
+            }
+            select.on('change', function () {
+                let id = $(this).val();
+                idMaquinaID = id;
+            });
+        }).fail(function (error) {
+            Swal.fire({
+                title: "Error",
+                icon: "error",
+                text: "Error al cargar los usuarios" + error
+            });
         });
-    });
+    }
+   
 }
+
 function Consultar() {
     const grid = new gridjs.Grid({
         search: true,
