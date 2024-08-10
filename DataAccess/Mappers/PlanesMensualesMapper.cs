@@ -1,9 +1,6 @@
 ﻿using DataAccess.DAO;
 using DataAccess.Mappers.Interfaces;
 using DTO;
-using DataAccess.DAO;
-using DataAccess.Mappers.Interfaces;
-using DTO;
 
 namespace DataAccess.Mappers
 {
@@ -11,31 +8,33 @@ namespace DataAccess.Mappers
     {
         public BaseClass BuildObject(Dictionary<string, object> row)
         {
-            PlanesMensuales cita = new PlanesMensuales();
+            PlanesMensuales plan = new PlanesMensuales();
 
-            cita.Id = int.Parse(row["id_plan"].ToString());
-            cita.NombrePlan = row["nombre_plan"].ToString();
-            cita.PrecioPlan = double.Parse(row["precio"].ToString());
-            cita.CuponDescuentoId = int.Parse(row["cupones_descuentos_id_cupones"].ToString());
-            cita.EstadoPlan = row["estado"].ToString();
-            cita.usuariosList = new List<Usuario>
+            plan.Id = int.Parse(row["id_plan"].ToString());
+            plan.NombrePlan = row["nombre_plan"].ToString();
+            //plan.CuponDescuentoId = int.Parse(row[""].ToString());
+            plan.PrecioPlan = double.Parse(row["precio"].ToString());
+            plan.EstadoPlan = row["estado"].ToString();
+            //plan.UsuarioID = int.Parse(row[""].ToString());
+            plan.usuariosList = new List<Usuario>
             {
                 new Usuario
                 {
                 Nombre = row["nombre"].ToString(),
+                Rol = row["rol"].ToString()
                 }
 
             };
-            cita.cuponesList = new List<Cupones>
+            plan.cuponesList = new List<Cupones>
             {
                 new Cupones
                 {
-                    Id = int.Parse(row["id_cupon"].ToString()),
-                    NombreCupon = row["nombre"].ToString(),
+                    NombreCupon = row["nombre_cupon"].ToString(),
+                    Descuento = int.Parse(row["descuento"].ToString())
                 }
             };
 
-            return cita;
+            return plan;
         }
 
         public List<BaseClass> BuildObjects(List<Dictionary<string, object>> rowlist)
@@ -55,20 +54,21 @@ namespace DataAccess.Mappers
             SqlOperation operation = new SqlOperation();
             operation.ProcedureName = "SP_INSERT_PLAN_MENSUAL";
 
-            PlanesMensuales cita = (PlanesMensuales)dto;
-            operation.AddIntegerParam("id_plan", cita.Id);
-            operation.AddVarCharParam("nombre_plan", cita.NombrePlan);
-            operation.AddDoubleParam("precio", cita.PrecioPlan);
-            operation.AddIntegerParam("cupones_descuentos_id_cupones", cita.CuponDescuentoId);
-            operation.AddVarCharParam("estado", cita.EstadoPlan);
+            PlanesMensuales plan = (PlanesMensuales)dto;
+            operation.AddIntegerParam("id_plan", plan.Id);
+            operation.AddVarCharParam("nombre_plan", plan.NombrePlan);
+            operation.AddDoubleParam("precio", plan.PrecioPlan);
+            operation.AddIntegerParam("cupones_descuentos_id_cupones", plan.CuponDescuentoId);
+            operation.AddVarCharParam("estado", plan.EstadoPlan);
+            operation.AddIntegerParam("usuarios_id_usuarios", plan.UsuarioID);
             return operation;
         }
 
-        //public SqlOperation GetRetrieveAllStatement()
-        //{
-        //    SqlOperation operation = new SqlOperation();
-        //    operation.ProcedureName = "GET_ALL_PLANES_JOIN";
-        //    return operation;
-        //}
+        public SqlOperation GetRetrieveAllStatement()
+        {
+            SqlOperation operation = new SqlOperation();
+            operation.ProcedureName = "GET_ALL_PLANES_MENSUALES_JOIN";
+            return operation;
+        }
     }
 }

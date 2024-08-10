@@ -27,17 +27,17 @@ namespace DataAccess.Crud
         public override List<T> RetrieveAll<T>()
         {
             List<T> resultList = new List<T>();
-            //SqlOperation operation = planesMensualesMapper.GetRetrieveAllStatement();
+            SqlOperation operation = planesMensualesMapper.GetRetrieveAllStatement();
 
-            //List<Dictionary<string, object>> dataResults = dao.ExecuteStoredProcedureWithQuery(operation);
-            //if (dataResults.Count > 0)
-            //{
-            //    var dtoList = planesMensualesMapper.BuildObjects(dataResults);
-            //    foreach (var dto in dtoList)
-            //    {
-            //        resultList.Add((T)Convert.ChangeType(dto, typeof(T)));
-            //    }
-            //}
+            List<Dictionary<string, object>> dataResults = dao.ExecuteStoredProcedureWithQuery(operation);
+            if (dataResults.Count > 0)
+            {
+                var dtoList = planesMensualesMapper.BuildObjects(dataResults);
+                foreach (var dto in dtoList)
+                {
+                    resultList.Add((T)Convert.ChangeType(dto, typeof(T)));
+                }
+            }
             return resultList;
         }
 

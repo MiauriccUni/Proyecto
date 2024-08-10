@@ -1,0 +1,54 @@
+﻿@{
+    Layout = "_LayoutPlanMensualAdmin";
+}
+@section Scripts {
+    <script src="https://unpkg.com/gridjs/dist/gridjs.umd.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="~/js/planesmensuales/planesmensuales.js"></script>
+}
+<main class="container my-5" style="padding:50px 20px;">
+    <!-- New Section -->
+    <div class="page position-absolute" style="top: -4884px; left: 6796px; width: 1925px; height: 1080px; background: #FFFFFF;">
+        <!-- Your content here -->
+    </div>
+
+    <!-- Tabla de Citas para Medición -->
+    <div class="my-5">
+        <h2 class="text-center">Planes Mensuales</h2>
+        <div class="table-responsive">
+            <div id="myGrid" class="ag-theme-alpine justify-content-center"></div>
+           @*  <div><button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addMeasurementModal">Actualizar Plan</button></div> *@
+        </div>
+
+    </div>
+
+    <!-- Modal para Crear Medición -->
+    <div class="modal fade" id="addMeasurementModal" tabindex="-1" aria-labelledby="addMeasurementModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addMeasurementModalLabel">Actualizar Plan</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="addMeasurementForm">
+                        <form action="">
+                            <label for="txtPlan">Estado Plan</label>
+                            <select class="form-select" name="planSelect" id="planSelect">
+                                <option value="" disabled selected>Seleccione estado del plan</option>
+                                <option value="activo">Activo</option>
+                                <option value="vencido">Vencido</option>
+                            </select>
+                        </form>
+
+                        <button type="button" class="btn btn-primary" id="citaPlanMensual">Agendar Medición</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="plan-mensual">
+
+    </div>
+</main>

@@ -12,6 +12,16 @@
 
 <main class="container my-2">
     <div class="row">
+
+        <div class="col-md-4 mb-4 tarjetita">
+            <div class="card card-admin">
+                <!---->
+                <h3 class="card-title">Clases grupales</h3>
+                <p>Agregar clases grupales y horarios</p>
+                <a href="@Url.Action("ClasesGrupalesAdministrador", "Administrador")" style="color: #2C3E50; text-decoration: none; text-align: center;"><i class="fa-solid fa-people-group"></i></a>
+            </div>
+        </div>
+
         <div class="col-md-4 mb-4">
             <div class="card card-admin">
                 <!---->
@@ -33,9 +43,9 @@
         <div class="col-md-4 mb-4 tarjetita">
             <div class="card card-admin">
                 <!--colocar el link de la vista en el href-->
-                <h3 class="card-title">Registro de citas medición y clases de clientes</h3>
-                <p>Dashboard de citas y clases para clientes</p>
-                <a href="@Url.Action("AdminGestionCitas", "Administrador")" style="color: #2C3E50; text-decoration: none; text-align: center;"><i class="fa-solid fa-weight-scale"></i></a>
+                <h3 class="card-title">Registro de planes mensuales</h3>
+                <p>Dashboard de registro de planes mensuales</p>
+                <a href="@Url.Action("AdminPlanesMensuales", "Administrador")" style="color: #2C3E50; text-decoration: none; text-align: center;"><i class="fa-solid fa-calendar-days"></i></a>
             </div>
         </div>
         <div class="col-md-4 mb-4 tarjetita">
@@ -52,6 +62,24 @@
                 <p>Listado de clientes leales a Rambo's Gym</p>
                 <!--colocar el link de la vista en el href-->
                 <a href="#" style="color: #2C3E50; text-decoration: none; text-align: center;"><i class="fa-regular fa-handshake"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="row admin-panel">
+        <div class="col-6 mb-4 tarjetita">
+            <div class="card card-admin">
+                <!--colocar el link de la vista en el href-->
+                <h3 class="card-title">Registro de citas medición y clases de clientes</h3>
+                <p>Dashboard de citas y clases para clientes</p>
+                <a href="@Url.Action("AdminGestionCitas", "Administrador")" style="color: #2C3E50; text-decoration: none; text-align: center;"><i class="fa-solid fa-weight-scale"></i></a>
+            </div>
+        </div>
+        <div class="col-6 mb-4 tarjetita">
+            <div class="card card-admin">
+                <!--colocar el link de la vista en el href-->
+                <h3 class="card-title">Facturación</h3>
+                <p>Dashboard de descuentos de Rambo's Gym</p>
+                <a href="@Url.Action("CuponesAdministrador", "Administrador")" style="color: #2C3E50; text-decoration: none; text-align: center;"><i class="fa-solid fa-wallet"></i></a>
             </div>
         </div>
     </div>

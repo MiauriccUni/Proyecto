@@ -115,6 +115,9 @@ header nav ul li a {
     text-align: center;
 }
 
+/*.main-container {
+    width: 100% ;
+}*/
 /*  Entrenador  */
 .cedula-buscar {
     margin: 0 180px 0 180px;
@@ -325,3 +328,19 @@ header nav ul li a {
     padding-left: 150px;
 }
 
+/* Administrador */
+.admin-panel {
+    margin-bottom: 120px;
+}
+
+/* Recepción */
+
+.repecion-panel {
+    margin-bottom: 360px;
+}
+
+/* Planes Mensuales */
+
+.plan-mensual {
+    margin-bottom: 330px;
+}

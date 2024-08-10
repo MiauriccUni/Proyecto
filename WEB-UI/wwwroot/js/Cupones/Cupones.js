@@ -1,4 +1,8 @@
-﻿function CuponesList() {
+﻿idUsuariosID = null;
+infoUsuarios = [];
+idCuponesID = null;
+infoCupones = [];
+function CuponesList() {
     this.InitView = function () {
         $('#registroCupon').click(() => {
             var view = new CuponesList();
