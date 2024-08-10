@@ -22,7 +22,7 @@
             Swal.fire({
                 icon: 'error',
                 text: "Por favor indique el correo correspondiente.",
-                title: 'Error'
+                title: ''
             });
             return;
         }
@@ -38,7 +38,7 @@
                 Swal.fire({
                     icon: 'error',
                     text: "El correo indicado no corresponde",
-                    title: 'Error',
+                    title: '',
                 });
             } else {
 
@@ -59,7 +59,7 @@
                     Swal.fire({
                         icon: 'success',
                         text: "Se ha enviado un nuevo código a su correo.",
-                        title: 'Success',
+                        title: 'Éxito',
                         timer: 5000,
                         showConfirmButton: true
 
@@ -91,7 +91,7 @@
                                     Swal.fire({
                                         icon: 'success',
                                         text: "Correo de verificación enviado con éxito, por favor revise su correo para realizar la validación",
-                                        title: 'Success',
+                                        title: 'Éxito',
                                     });
                                 } else {
                                     Swal.fire({
@@ -126,8 +126,8 @@
             if (user.otp != otp1) {
                 Swal.fire({
                     icon: 'error',
-                    text: "el otp no es correcto",
-                    title: 'error',
+                    text: "El otp no es correcto",
+                    title: '',
                 });
             } else if (user.otp == otp1) {
                 Swal.fire({

@@ -34,7 +34,7 @@ function CrearCitaMedicion() {
             Swal.fire({
                 icon: 'error',
                 text: "Por favor indique un horario.",
-                title: 'Error'
+                title: ''
             });
             return;
         }
@@ -43,7 +43,7 @@ function CrearCitaMedicion() {
             Swal.fire({
                 icon: 'error',
                 text: "Por favor indique un horario entre las 8 a.m. y las 5 p.m.",
-                title: 'Error'
+                title: ''
             });
             return;
         }
@@ -52,7 +52,7 @@ function CrearCitaMedicion() {
             Swal.fire({
                 icon: 'error',
                 text: "Por favor un dia entre semana.",
-                title: 'Error'
+                title: ''
             });
             return;
         }
@@ -61,7 +61,7 @@ function CrearCitaMedicion() {
             Swal.fire({
                 icon: 'error',
                 text: "Por favor indicar un año valido.",
-                title: 'Error'
+                title: ''
             });
             return;
         }
@@ -70,7 +70,7 @@ function CrearCitaMedicion() {
             Swal.fire({
                 icon: 'error',
                 text: "Por favor indicar un usuarios.",
-                title: 'Error'
+                title: ''
             });
             return;
         }
@@ -99,7 +99,7 @@ function CrearCitaMedicion() {
             Swal.fire({
                 icon: 'error',
                 text: "Error al agregar la cita",
-                title: 'Error',
+                title: '',
             });
         });
     }
@@ -122,7 +122,7 @@ function CrearCitaMedicion() {
             });
         }).fail(function (error) {
             Swal.fire({
-                title: "Error",
+                title: "",
                 icon: "error",
                 text: "Error al cargar los usuarios" + error
             });
