@@ -48,8 +48,7 @@ function AsignacionCita(){
             contentType: "application/json;charset=utf-8",
             dataType: "json"
         }).done(function (result) {
-            var datos = result[0];
-            //var nombres = datos.usuarioList[0]
+            var datos = result[0];            
 
             let opcion = "si";
 
@@ -187,7 +186,7 @@ function ConsultarAsignacion() {
                 placeholder: 'Buscar'
             }
         },
-        columns: ['id', 'Entrenador', 'Correo entrenador', 'Fecha'],
+        columns: ['id', 'Entrenador', 'Correo entrenador', 'Fecha', 'Nombre Cliente', 'Correo Cliente'],
         server: {
             url: 'https://localhost:7253/api/AsignacionCita/GetAllAsignaciones',
             then: data => data.data.map(result => {
@@ -206,6 +205,8 @@ function ConsultarAsignacion() {
                     result.usuarioLis[0].nombre,
                     result.usuarioLis[0].correo,
                     formatteDate,
+                    result.citasMedicionesList[0].usuariosList[0].nombre,
+                    result.citasMedicionesList[0].usuariosList[0].correo,
 
                 ]
             }),
