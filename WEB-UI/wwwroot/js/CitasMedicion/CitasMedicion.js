@@ -180,8 +180,12 @@ function CrearCitaMedicion() {
 
 function Consultar() {
     const grid = new gridjs.Grid({
-        
-
+        search: true,
+        language: {
+            search: {
+                placeholder: 'Buscar'
+            }
+        },
         columns: ['Nombre del Cliente', 'Correo Cliente', 'Fecha'],
         server: {
             url: 'https://localhost:7253/api/CitasMedicion/GetAllUsuarios',
