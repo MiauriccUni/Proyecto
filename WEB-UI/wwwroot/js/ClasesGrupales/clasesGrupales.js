@@ -85,6 +85,13 @@ function Consultar() {
         language: {
             search: {
                 placeholder: 'Buscar'
+            },
+        
+        pagination: {
+            previous: 'Anterior',
+            next: 'Siguiente',
+            showing: 'Mostrando',
+            results: () => 'resultados'
             }
         },
         columns: ['Nombre de la Clase', 'Horarios', 'Cupos Disponibles',],
