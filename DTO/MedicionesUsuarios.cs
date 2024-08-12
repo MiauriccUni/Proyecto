@@ -16,6 +16,7 @@ namespace DTO
         public double altura { get; set; }
         public double imc { get; set; }
         public double PesoIdeal { get; set; }
+        public int IdUsuarios { get; set; }
         public List<Usuario> usuariosList { get; set; }
         public List<CitasMedicion> citasMedicionesList { get; set; }
     }
