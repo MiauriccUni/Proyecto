@@ -8,7 +8,7 @@
             Swal.fire({
                 icon: 'error',
                 text: "La nueva contraseña debe tener al menos 8 caracteres.",
-                title: 'Error'
+                title: ''
             });
             return;
         }
@@ -17,7 +17,7 @@
             Swal.fire({
                 icon: 'error',
                 text: "Por favor ingrese la nueva contraseña y la confirmación.",
-                title: 'Error'
+                title: ''
             });
             return;
         }
@@ -26,7 +26,7 @@
             Swal.fire({
                 icon: 'error',
                 text: "Las contraseñas no coinciden.",
-                title: 'Error'
+                title: ''
             });
             return;
         }
@@ -45,7 +45,7 @@
             error: function (error)
             {
                 Swal.fire({
-                    title: "Éxito",
+                    title: "",
                     icon: "success",
                     text: "Se ha cambiado la contraseña",
                 }).then(

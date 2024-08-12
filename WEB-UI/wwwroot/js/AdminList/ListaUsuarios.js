@@ -20,7 +20,7 @@ function UsuariosList() {
             Swal.fire({
                 icon: 'error',
                 text: "Por favor indique un ID a actualizar.",
-                title: 'Error'
+                title: ''
             });
             return;
         }
@@ -28,7 +28,7 @@ function UsuariosList() {
             Swal.fire({
                 icon: 'error',
                 text: "Por favor indique el nuevo rol a asignar correspondiente.",
-                title: 'Error'
+                title: ''
             });
             return;
         }
@@ -42,9 +42,9 @@ function UsuariosList() {
             var user = result[0];
             if (!user) {
                 Swal.fire({
-                    title: 'Error',
+                    title: '',
                     icon: 'error',
-                    text: "Error el ID del usuario indicado no se encuentra registrado",
+                    text: "El ID del usuario indicado no se encuentra registrado",
                 });
             } else {
                 $.ajax({
@@ -58,15 +58,15 @@ function UsuariosList() {
                     datatype: "text",
                 }).done(function (response) {
                     swal.fire({
-                        title: '¡rol cambiado!',
-                        text: 'el rol del usuario ha sido cambiado con éxito.',
+                        title: '¡Rol cambiado!',
+                        text: 'El rol del usuario ha sido cambiado con éxito.',
                         icon: 'success',
                         confirmbuttontext: 'aceptar',
                     })
                 }).fail(function (error) {
                     swal.fire({
-                        title: '¡error!',
-                        text: 'no se pudo cambiar el rol del usuario.',
+                        title: '',
+                        text: 'No se pudo cambiar el Rol del usuario.',
                         icon: 'error',
                         confirmbuttontext: 'aceptar',
                     });
@@ -74,7 +74,7 @@ function UsuariosList() {
             }
         }).fail(function (error) {
             Swal.fire({
-                title: 'Error',
+                title: '',
                 icon: 'error',
                 text: "Error al cargar los usuarios",
             });
@@ -99,7 +99,7 @@ function UsuariosList() {
             });
         }).fail(function (error) {
             Swal.fire({
-                title: "Error",
+                title: "",
                 icon: "error",
                 text: "Error al cargar los usuarios" + error
             });

@@ -43,6 +43,11 @@ namespace WEB_UI.Controllers
             return View();
         }
 
+        public IActionResult AdminClasesGrupales()
+        {
+            return View();
+        }
+
         public IActionResult AdminPlanesMensuales() 
         { 
             return View();
