@@ -1,5 +1,4 @@
-﻿
-idEntrenador = null;
+﻿idEntrenador = null;
 infoEntrenador = [];
 idCitas = null;
 infoCitas = [];
@@ -130,6 +129,14 @@ function ConsultarAsignacion() {
         language: {
             search: {
                 placeholder: 'Buscar'
+            },
+            pagination: {
+                previous: 'Anterior',
+                next: 'Siguiente',
+                showing: 'Mostrando',
+                results: () => 'resultados',
+                to: 'a',
+                of: 'de',
             }
         },
         columns: ['id', 'Entrenador', 'Correo entrenador', 'Fecha'],

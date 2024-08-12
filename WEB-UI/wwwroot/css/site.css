@@ -194,7 +194,7 @@ header nav ul li a {
 }
 
 .gridjs-pagination {
-    margin-top: 10px;
+    margin-top: 4px;
     display: flex;
     justify-content: center;
 }
@@ -343,4 +343,8 @@ header nav ul li a {
 
 .plan-mensual {
     margin-bottom: 330px;
+}
+
+.crear-factura {
+    
 }

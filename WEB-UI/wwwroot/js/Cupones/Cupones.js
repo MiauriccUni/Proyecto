@@ -73,6 +73,7 @@ function CuponesList() {
                 title: 'Error'
             });
         });
+        
     }
 }
 function Consultar() {
@@ -86,6 +87,14 @@ function Consultar() {
         language: {
             search: {
                 placeholder: 'Buscar'
+            },
+            pagination: {
+                previous: 'Anterior',
+                next: 'Siguiente',
+                showing: 'Mostrando',
+                results: () => 'resultados',
+                to: 'a',
+                of: 'de',
             }
         },
         columns: ['Nombre', 'Valor Descuento %', 'Fecha de Validez'],
