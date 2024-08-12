@@ -19,6 +19,19 @@ namespace DataAccess.Mappers
             mediciones.MedicionCin = double.Parse(row["medicion_cintura"].ToString());
             mediciones.MedicionPier = double.Parse(row["medicion_pierna"].ToString());
             mediciones.IdCitaAsignacion = int.Parse(row["id_cita_entrenador"].ToString());
+            mediciones.asignacionCitas = new List<AsignacionCita>
+            {
+                new AsignacionCita
+                {
+                    citasMedicionesList = new List<CitasMedicion>
+                    {
+                        new CitasMedicion
+                        {
+                            Fecha = DateTime.Parse(row["fechas"].ToString()),
+                        }
+                    }
+                }
+            };
             return mediciones;
         }
 

@@ -23,5 +23,22 @@ namespace API.Controllers
             MedicionesManager manager = new MedicionesManager();
             return manager.GetMediciones();
         }
+        [HttpGet]
+        public API_Response GetAllMediciones()
+        {
+            API_Response response = new API_Response();
+            try
+            {
+                MedicionesManager manager = new MedicionesManager();
+                response.Data = manager.GetMediciones();
+                response.Result = "OK";
+            }
+            catch (Exception ex)
+            {
+                response.Result = "ERROR";
+                response.Message = ex.Message;
+            }
+            return response;
+        }
     }
 }
