@@ -24,7 +24,7 @@ function AsignacionCita(){
             Swal.fire({
                 icon: 'error',
                 text: "Por favor elija una cita.",
-                title: 'Error'
+                title: ''
             });
             return;
         }
@@ -33,10 +33,11 @@ function AsignacionCita(){
             Swal.fire({
                 icon: 'error',
                 text: "Por favor elija un entrenador.",
-                title: 'Error'
+                title: ''
             });
             return;
         }
+
 
         $.ajax({
             headers: {
@@ -54,12 +55,18 @@ function AsignacionCita(){
                 title: "Éxito",
                 icon: "success",
                 text: "Se ha completado el registro",
+            }).then(function () {
+                var view = new AsignacionCita();
+                view.Listar();
+                setTimeout(() => {
+                    location.reload();
+                }, 1000);
             });
         }).fail(function (error) {
             Swal.fire({
                 icon: 'error',
                 text: "Error al registrarse",
-                title: 'Error',
+                title: '',
             });
         });
     }
@@ -83,7 +90,7 @@ function AsignacionCita(){
             });
         }).fail(function (error) {
             Swal.fire({
-                title: "Error",
+                title: "",
                 icon: "error",
                 text: "Error al cargar las ID citas" + error
             });
@@ -109,13 +116,16 @@ function AsignacionCita(){
             });
         }).fail(function (error) {
             Swal.fire({
-                title: "Error",
+                title: "",
                 icon: "error",
                 text: "Error al cargar los Entrenadores" + error
             });
         });
     }
 
+    this.Listar = function () {
+        ConsultarAsignacion();
+    }
 }
 
 function ConsultarAsignacion() {

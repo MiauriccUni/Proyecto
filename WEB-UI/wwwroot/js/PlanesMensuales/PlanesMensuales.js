@@ -28,7 +28,7 @@ function CrearPlanMensual() {
             Swal.fire({
                 icon: 'error',
                 text: "Por favor indique un estado.",
-                title: 'Error'
+                title: ''
             });
             return;
         }
@@ -39,7 +39,7 @@ function CrearPlanMensual() {
             Swal.fire({
                 icon: 'error',
                 text: "Usuario no encontrado.",
-                title: 'Error'
+                title: ''
             });
             return;
         }
@@ -119,7 +119,7 @@ function CrearPlanMensual() {
             Swal.fire({
                 icon: 'error',
                 text: "Error al registrarse",
-                title: 'Error',
+                title: '',
             });
         });
     }
@@ -142,7 +142,7 @@ function CrearPlanMensual() {
             });
         }).fail(function (error) {
             Swal.fire({
-                title: "Error",
+                title: "",
                 icon: "error",
                 text: "Error al cargar los usuarios" + error
             });
@@ -230,7 +230,7 @@ function CrearPlanMensual() {
             });
         }).fail(function (error) {
             Swal.fire({
-                title: "Error",
+                title: "",
                 icon: "error",
                 text: "Error al cargar los cupones" + error
             });

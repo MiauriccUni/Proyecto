@@ -40,7 +40,7 @@ function VerificarCuenta() {
             Swal.fire({
                 icon: 'error',
                 text: "Por favor indicar el numero de validación enviado a su correo.",
-                title: 'Error',
+                title: '',
                 showConfirmButton: true
             });
             return;
@@ -71,7 +71,7 @@ function VerificarCuenta() {
                     Swal.fire({
                         icon: 'error',
                         text: "El Número indicado no corresponde con el enviado al correo.",
-                        title: 'Error',
+                        title: '',
                         timer: 5000,
                         showConfirmButton: true
                     });
@@ -87,7 +87,7 @@ function VerificarCuenta() {
                         Swal.fire({
                             icon: 'success',
                             text: "Se ha validado su correo, ahora puede iniciar sesión.",
-                            title: 'Success',
+                            title: 'Éxito',
                             timer: 5000,
                             showConfirmButton: true
                         }).then((error) => {
@@ -101,14 +101,14 @@ function VerificarCuenta() {
                 Swal.fire({
                     icon: 'error',
                     text: message,
-                    title: 'Error'
+                    title: ''
                 });
             });
         } else {
             Swal.fire({
                 icon: 'error',
                 text: "Ha pasado más de un minuto, por favor solicitar nuevamente el codigo para realizar las validaciones.",
-                title: 'Error',
+                title: '',
                 timer: 5000,
                 showConfirmButton: true
             });
@@ -131,7 +131,7 @@ function VerificarCuenta() {
             Swal.fire({
                 icon: 'success',
                 text: "Se ha enviado un nuevo código a su correo.",
-                title: 'Success',
+                title: 'Éxito',
                 timer: 5000,
                 showConfirmButton: true
             }).then((error) => {
@@ -161,7 +161,7 @@ function VerificarCuenta() {
                             Swal.fire({
                                 icon: 'success',
                                 text: "Correo de verificación enviado con éxito, por favor revise su correo para realizar la validación",
-                                title: 'Success',
+                                title: 'Éxito',
                             });
                         } else {
                             Swal.fire({

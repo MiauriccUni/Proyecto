@@ -21,7 +21,7 @@ function CuponesList() {
             Swal.fire({
                 icon: 'error',
                 text: "Por favor indique el nombre del cupón.",
-                title: 'Error'
+                title: ''
             });
             return;
         }
@@ -30,7 +30,7 @@ function CuponesList() {
             Swal.fire({
                 icon: 'error',
                 text: "Por favor indique el valor del cupón.",
-                title: 'Error'
+                title: ''
             });
             return;
         }
@@ -39,7 +39,7 @@ function CuponesList() {
             Swal.fire({
                 icon: 'error',
                 text: "Por favor indique la fecha de validez del cupón.",
-                title: 'Error'
+                title: ''
             });
             return;
         }
@@ -70,7 +70,7 @@ function CuponesList() {
             Swal.fire({
                 icon: 'error',
                 text: "Error al registrar el cupón",
-                title: 'Error'
+                title: ''
             });
         });
         
