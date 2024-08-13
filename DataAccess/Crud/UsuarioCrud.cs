@@ -154,5 +154,11 @@ namespace DataAccess.Crud
             dao.ExecuteStoreProcedure(operation);
         }
 
+        public void ChangePassword (string correo, string password) 
+        {
+            SqlOperation operation = usuarioMapper.ChangePassword(correo, password);
+            dao.ExecuteStoreProcedure(operation);
+        }
+
     }
 }

@@ -1,0 +1,55 @@
+﻿@{
+    Layout = "_LayoutRegistroCuponesRecepcionista";
+}
+
+@section Scripts {
+    <script src="https://unpkg.com/gridjs/dist/gridjs.umd.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="~/js/cupones/cupones.js"></script>
+}
+<section class="hero">
+    <h1>Registros de Cupones</h1>
+</section>
+<main class="container my-2" style="padding:30px 20px;">
+    <div class="row cupones">
+        <div class="col-4 cupon-izquierdo">
+            <div class="container">
+                <h3 class="text-center">Creación de Cupones</h3>
+                <br />
+                <form id="registroForm" class="facturas-container">
+                    <div class="mb-3">
+                        <label for="nombreCupon" class="form-label">Nombre del cupón</label>
+                        <input type="text" class="form-control" id="nombreCupon" name="nombreCupon" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="txtDescuento">Tipo de descuento</label>
+                        <select class="form-select" name="Descuentoselect" id="Descuentoselect">
+                            <option value="" disabled selected>Seleccione el descuento correspondiente</option>
+                            <option value="10">10 %</option>
+                            <option value="15">15 %</option>
+                            <option value="25">25 %</option>
+                            <option value="40">40 %</option>
+                            <option value="55">55 %</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="validez" class="form-label">Fecha de Validez</label>
+                        <input type="date" class="form-control text" id="validez" required>
+                    </div>
+                    <button type="button" class="btn btn-primary boton-cupon" id="registroCupon">Registrar Cupón</button>
+                </form>
+            </div>
+        </div>
+        <div class="col-6 cupon-derecho">
+            <div class="container">
+                <h3 class="text-center">Cupones creados</h3>
+                <br />
+                <div class="container tabla-cupones">
+                    <div id="myGrid" style="height: 430px; width: 600px;" class="ag-theme-alpine justify-content-center justify-content-sm-start"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>

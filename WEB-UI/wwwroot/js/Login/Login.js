@@ -16,7 +16,7 @@
             Swal.fire({
                 icon: 'error',
                 text: "Por favor indique su correo en el espacio correspondiente.",
-                title: 'Error'
+                title: ''
             });
             return;
         }
@@ -25,7 +25,7 @@
             Swal.fire({
                 icon: 'error',
                 text: "Por favor indique su contraseña en el espacio correspondiente.",
-                title: 'Error'
+                title: ''
             });
             return;
         }
@@ -40,19 +40,19 @@
             if (!user) {
                 Swal.fire({
                     icon: "error",
-                    title: "Error",
+                    title: "",
                     text: "El usuario y contraseña indicada no se encuentran registrados."
                 });
             } else if ((user.correo != email) || (user.contrasenna != pass)) {
                 Swal.fire({
                     icon: "error",
-                    title: "Error",
+                    title: "",
                     text: "La contraseña y el correo no coinciden."
                 });
             } else if (user.verificar === "Incompleta") {
                 Swal.fire({
                     icon: "error",
-                    title: "Error",
+                    title: "",
                     text: "La cuenta no esta verificada."
                 });
             } else if ((user.correo === email) && (user.contrasenna === pass)) {
@@ -95,7 +95,7 @@
             console.log("Error", error);
             Swal.fire({
                 icon: "error",
-                title: "Error",
+                title: "",
                 text: "Hubo un problema con la solicitud. Por favor, intente de nuevo más tarde."
             });
         });

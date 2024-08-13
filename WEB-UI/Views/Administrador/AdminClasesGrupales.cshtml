@@ -1,0 +1,59 @@
+﻿@{
+    Layout = "_LayoutAdminClasesGrupales";
+}
+@section Scripts {
+    <script src="https://unpkg.com/gridjs/dist/gridjs.umd.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="~/js/ClasesGrupales/clasesGrupales.js"></script>
+
+}
+
+<main class="container my-5" style="padding:50px 20px;">
+    <!-- New Section -->
+    <div class="page position-absolute" style="top: -4884px; left: 6796px; width: 1925px; height: 1080px; background: #FFFFFF;">
+        <!-- Your content here -->
+    </div>
+
+    <!-- Tabla de Clase -->
+    <div class="my-5">
+        <h2 class="text-center">Clases Grupales</h2>
+        <div class="table-responsive">
+            <div id="myGrid" class="ag-theme-alpine justify-content-center"></div>
+            <div><button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addMeasurementModal">Agregar Clase</button></div>
+        </div>
+
+    </div>
+
+    <!-- Modal para Agendar Clase -->
+    <div class="modal fade" id="addMeasurementModal" tabindex="-1" aria-labelledby="addMeasurementModal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                        <h5 class="modal-title" id="addMeasurementModalLabel">Crear Nueva Clase Grupal</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="addMeasurementForm">
+                        <div class="mb-3">
+                            <label for="tipoClase" class="form-label">Tipo de Clase</label>
+                            <input type="text" class="form-control" id="registerTipoClase" name="tipoClase" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="horaMedicion" class="form-label">Horario</label>
+                            <input type="datetime-local" class="form-control" id="registerHorario" name="horaMedicion" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="instructor" class="form-label">Cupos Disponibles</label>
+                            <input type="number" class="form-control" id="registerCupos" name="instructor" required>
+                        </div>
+
+                        <button type="button" class="btn btn-primary" id="agregarClase">Guardar Nueva Clase</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</main>

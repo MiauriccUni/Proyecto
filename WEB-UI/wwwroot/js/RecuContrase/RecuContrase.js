@@ -4,6 +4,13 @@
             var view = new RecuContras();
             view.SubmitRecuperar();
         });
+
+        // Parte nueva: Agregar el evento para el botón 'verifOTPContra'
+        $('#verifOTPContra').click(function () {
+            var view = new RecuContras();
+            view.VerificarOTP();  // Llamada a la nueva función para verificar OTP
+
+        });
     }
 
     this.SubmitRecuperar = function () {
@@ -15,7 +22,7 @@
             Swal.fire({
                 icon: 'error',
                 text: "Por favor indique el correo correspondiente.",
-                title: 'Error'
+                title: ''
             });
             return;
         }
@@ -31,7 +38,7 @@
                 Swal.fire({
                     icon: 'error',
                     text: "El correo indicado no corresponde",
-                    title: 'Error',
+                    title: '',
                 });
             } else {
 
@@ -52,13 +59,15 @@
                     Swal.fire({
                         icon: 'success',
                         text: "Se ha enviado un nuevo código a su correo.",
-                        title: 'Success',
+                        title: 'Éxito',
                         timer: 5000,
                         showConfirmButton: true
+
                     }).then((error) => {
+                        sessionStorage.setItem('correo', correo);
                         if (error.isConfirmed || error.dismiss === Swal.DismissReason.timer) {
                             cuerpo = "Hola" + "<br><br>" +
-                                "Para activar tu cuenta, por favor ingresa el siguiente código de verificación en la página: " + newOTP + "." + "<br><br>" +
+                                "Para actualizar tu contraseña, por favor ingresa el siguiente código de verificación en la página: " + newOTP + "." + "<br><br>" +
                                 "Ten en cuenta que el código expirará en un dos minutos." + "<br><br>" +
                                 "Gimnasio Rambo's Gym."
 
@@ -82,7 +91,7 @@
                                     Swal.fire({
                                         icon: 'success',
                                         text: "Correo de verificación enviado con éxito, por favor revise su correo para realizar la validación",
-                                        title: 'Success',
+                                        title: 'Éxito',
                                     });
                                 } else {
                                     Swal.fire({
@@ -95,15 +104,45 @@
                         }
                     });
                 });
-
-
             }
         }).fail(function (error) {
             console.log("Error", error);
         });
+    }
 
-    }    
-    
+    this.VerificarOTP = function () {
+        var correo = sessionStorage.getItem("correo")
+        otp1 = $('#otp').val();
+        
+        $.ajax({
+            url: "https://localhost:7253/api/Usuario/GetUserByEmail?correo=" + correo,
+            method: "GET",
+            contentType: "application/json;charset=utf-8",
+            dataType: "json"
+        }).done(function (result) {
+            var user = result[0];
+            console.log(otp1)
+            console.log(user.otp)
+            if (user.otp != otp1) {
+                Swal.fire({
+                    icon: 'error',
+                    text: "El otp no es correcto",
+                    title: '',
+                });
+            } else if (user.otp == otp1) {
+                Swal.fire({
+                    icon: 'success',
+                    text: "OTP validado con éxito.",
+                    title: 'Éxito',
+                }).then(() => {
+                    sessionStorage.setItem('correo', correo);
+                    window.location = "/OTP/ChangePassword"; 
+                });
+            }
+        }).fail(function(error){
+            console.log(error);
+        })
+    }
 }
 
 function fillTimestamp() {
@@ -128,7 +167,6 @@ generateUniqueId = () => {
     generatedIds.push(newId);
     return newId;
 }
-
 
 $(document).ready(function () {
     var view = new RecuContras();

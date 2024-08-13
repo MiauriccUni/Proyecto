@@ -63,5 +63,11 @@ namespace AppLogic
             crud.UpdateOTPCrud(correo, OTP);
         }
 
+        public void ChangePassword(string correo, string password) 
+        {
+            UsuarioCrud crud = new UsuarioCrud();
+            crud.ChangePassword( correo,  password);
+        }
+
     }
 }

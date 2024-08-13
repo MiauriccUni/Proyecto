@@ -1,10 +1,5 @@
 ﻿using DataAccess.Crud;
 using DTO;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AppLogic
 {
@@ -17,10 +12,16 @@ namespace AppLogic
             return "Ok";
         }
 
-        public List<CitasMedicion> GetAllCitasMedicionesManager()
+        public List<PlanesMensuales> GetAllPlanesMensualesManager()
         {
-            CitasMedicionCrud crud = new CitasMedicionCrud();
-            return crud.RetrieveAll<CitasMedicion>();
+            PlanesMensualesCrud crud = new PlanesMensualesCrud();
+            return crud.RetrieveAll<PlanesMensuales>();
+        }
+
+        public List<PlanesMensuales> GetAllClientes()
+        {
+            PlanesMensualesCrud crud = new PlanesMensualesCrud();
+            return crud.RetrieveAll<PlanesMensuales>();
         }
 
     }
