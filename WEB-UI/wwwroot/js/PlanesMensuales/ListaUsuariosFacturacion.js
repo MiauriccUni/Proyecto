@@ -2,7 +2,7 @@
 let infoUsuario = [];
 let infoCupon = [];
 let selectedUser = null;
-let idCupon = 503999;
+let idCupon = null;
 
 function UsuariosList() {
     this.InitView = function () {
@@ -12,6 +12,11 @@ function UsuariosList() {
         $('#registrarFactura').click(function () {
             var view = new UsuariosList();
             view.CrearPlan();
+        });
+
+        $('#enviarFactura').click(function () {
+            var view = new CrearPlanMensual();
+            view.EnviarFactura();
         });
 
         /* Código nuevo para que al seleccionar un usuario aparezca la info */
@@ -31,8 +36,6 @@ function UsuariosList() {
 
     }
 
-    
-
     this.CrearPlan = function () {
         if (!idUsuarioID || !selectedUser) {
             Swal.fire({
@@ -45,15 +48,17 @@ function UsuariosList() {
 
         // Usa el valor de idCupon extraído de la selección del usuario
         const selectedCupon = infoCupon.find(cupon => cupon.id === parseInt(idCupon)) || { nombreCupon: "Descuento no disponible", descuento: 0 };
+        
 
         let plan = {
-            id: parseInt(generateUniqueId()),
-            usuarioRol: selectedUser?.rol || "Rol desconocido",
+            id: generateUniqueId(),
+            nombrePlan: selectedUser?.rol || "Plan sin nombre",
             precioPlan: 0,
-            idCupon: idCupon,
+            cuponDescuentoId: 530999,
             estadoPlan: "pendiente",
-            idUsuario: parseInt(selectedUser?.id) || null,
-            NombrePlan: selectedUser?.rol || "Plan sin nombre"
+            usuarioRol: selectedUser?.rol || "Rol desconocido",
+            usuarioID: parseInt(selectedUser?.id) || null,
+            
         };
 
         switch (plan.usuarioRol) {
@@ -71,17 +76,6 @@ function UsuariosList() {
                 break;
         }
 
-        console.log(plan);
-        // Validación adicional del plan
-        if (!plan.usuarioRol || plan.precioPlan === 0 || !plan.idUsuario) {
-            Swal.fire({
-                icon: 'error',
-                text: "Datos del plan incompletos.",
-                title: 'Error'
-            });
-            return;
-        }
-
         const descuentoCupon = selectedCupon ? selectedCupon.descuento : 0;
         const totalAPagar = plan.precioPlan * (1 - (descuentoCupon / 100));
 
@@ -93,54 +87,55 @@ function UsuariosList() {
             fechaFactura.setDate(0);
         }
 
-        const factura = `
-        <h3>Factura</h3>
-        <p><strong>Plan del cliente:</strong> ${plan.usuarioRol}</p>
-        <p><strong>Valor del plan:</strong> $${plan.precioPlan}</p>
-        <p><strong>Descuento cupón:</strong> ${descuentoCupon}%</p>
-        <p><strong>Fecha de la factura:</strong> ${fechaFactura.toLocaleDateString()}</p>
-        <p><strong>Total a pagar:</strong> $${totalAPagar.toFixed(2)}</p>`;
-        $('#facturaContent').html(factura);
-        $('#facturaModal').modal('show');
+        //const factura = `
+        //<h3>Factura</h3>
+        //<p><strong>Plan del cliente:</strong> ${plan.usuarioRol}</p>
+        //<p><strong>Valor del plan:</strong> $${plan.precioPlan}</p>
+        //<p><strong>Descuento cupón:</strong> ${descuentoCupon}%</p>
+        //<p><strong>Fecha de la factura:</strong> ${fechaFactura.toLocaleDateString()}</p>
+        //<p><strong>Total a pagar:</strong> $${totalAPagar.toFixed(2)}</p>`;
+        //$('#facturaContent').html(factura);
+        //$('#facturaModal').modal('show');
 
-        Swal.fire({
-            title: 'Factura Generada',
-            html: factura,
-            icon: 'success'
-        });
-
-        //$.ajax({
-        //    headers: {
-        //        'Accept': "application/json",
-        //        'Content-Type': "application/json"
-        //    },
-        //    method: "POST",
-        //    url: "https://localhost:7253/api/PlanesMensuales/CrearPlanesMensuales",
-        //    contentType: "application/json;charset=utf-8",
-        //    dataType: "json",
-        //    data: JSON.stringify(plan), // Asegúrate de que el objeto 'plan' contiene todas las propiedades necesarias
-        //}).done(function (result) {
-        //    Swal.fire({
-        //        title: "Éxito",
-        //        icon: "success",
-        //        text: "Se ha completado el registro",
-        //    }).then(() => {
-        //        // Volver a consultar y actualizar la tabla
-        //        Consultar();
-        //        // Recargar la página después de actualizar la tabla
-        //        setTimeout(() => {
-        //            location.reload();
-        //        }, 1000); // Esperar 1 segundo antes de recargar la página
-        //    });
-        //    console.log("Factura registrada:", plan);
-        //}).fail(function (error) {
-        //    Swal.fire({
-        //        icon: 'error',
-        //        text: "Error al registrarse",
-        //        title: 'Error',
-        //    });
+        //Swal.fire({
+        //    title: 'Factura Generada',
+        //    html: factura,
+        //    icon: 'success'
         //});
-        //console.log("Factura registrada:", plan);
+
+        $.ajax({
+            headers: {
+                'Accept': "application/json",
+                'Content-Type': "application/json"
+            },
+            method: "POST",
+            url: "https://localhost:7253/api/PlanesMensuales/CrearPlanesMensuales",
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            data: JSON.stringify(plan), // Asegúrate de que el objeto 'plan' contiene todas las propiedades necesarias
+        }).done(function (result) {
+            Swal.fire({
+                title: "Éxito",
+                icon: "success",
+                text: "Se ha completado el registro",
+            }).then(() => {
+                // Volver a consultar y actualizar la tabla
+                Consultar();
+                // Recargar la página después de actualizar la tabla
+                setTimeout(() => {
+                    location.reload();
+                }, 1000); // Esperar 1 segundo antes de recargar la página
+            });
+            /*console.log("Factura registrada:", plan);*/
+        }).fail(function (error) {
+            console.log(error);
+            Swal.fire({
+                icon: 'error',
+                text: "Error al registrarse",
+                title: 'Error',
+            });
+        });
+        /*console.log("Factura registrada:", plan);*/
     }
     
     this.PopulateUsuarios = function () {
@@ -153,9 +148,12 @@ function UsuariosList() {
             infoUsuario = data;
             var select = $('#idusuario');
             select.empty(); // Limpiar opciones previas
-            data.forEach(row => {
-                select.append(`<option value="${row.id}">${row.nombre} ${row.apellidos} ${row.rol} ${row.correo} (ID: ${row.id})</option>`);
-            });
+            select.append('<option value="" disabled selected>Seleccione un usuario</option>'); // Agrega la opción por defecto
+            // Filtrar usuarios por el rol "Cliente1dia"
+            data.filter(user => user.rol === "Cliente1dia")
+                .forEach(row => {
+                    select.append(`<option value="${row.id}">${row.nombre} ${row.apellidos} ${row.correo} (ID: ${row.id})</option>`);
+                });
         }).fail(function (error) {
             Swal.fire({
                 title: "Error",
@@ -186,6 +184,68 @@ function UsuariosList() {
             });
         });
     }
+
+    /* Código para el envío de correo */
+
+    this.EnviarFactura = function () {
+        const selectedUsuario = $('#enviarFactura').data('user');
+        if (!selectedUsuario) {
+            Swal.fire({
+                icon: 'error',
+                text: "Usuario no encontrado.",
+                title: 'Error'
+            });
+            return;
+        }
+        const email = selectedUsuario.email;
+        const row = $('.btn-factura').closest('tr');
+        const planNombre = row.find('td:nth-child(3)').text(); // Obtener el nombre del plan
+        const precioPlan = parseFloat(row.find('td:nth-child(4)').text().replace('$', '')); // Obtener el valor del plan
+        const descuentoCupon = parseFloat(row.find('td:nth-child(2)').text()) || 0; // Obtener el descuento del cupón
+        const totalAPagar = precioPlan * (1 - (descuentoCupon / 100)); // Calcular el total a pagar
+
+        const facturaHtml = `
+            <h3>Factura</h3>
+            <p><strong>Plan del cliente:</strong> ${planNombre}</p>
+            <p><strong>Valor del plan:</strong> $${precioPlan.toFixed(2)}</p>
+            <p><strong>Descuento cupón:</strong> ${descuentoCupon}%</p>
+            <p><strong>Fecha de la factura:</strong> ${new Date().toLocaleDateString()}</p>
+            <p><strong>Total a pagar:</strong> $${totalAPagar.toFixed(2)}</p>`;
+
+        const cuerpo = `
+            Hola,<br><br>
+            Rambo's Gym te informa que tu factura por $${totalAPagar.toFixed(2)} se encuentra disponible para pago.<br><br>
+            ${facturaHtml}<br><br>
+            Gracias por elegir nuestro gimnasio.`;
+
+        const apiUrl = `https://localhost:7253/api/Email/SendEmail?correo=${email}&cuerpo=${encodeURIComponent(cuerpo)}&asunto=Factura Generada`;
+
+        $.ajax({
+            url: apiUrl,
+            method: "POST",
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            processData: false,
+            data: JSON.stringify({}),
+            headers: {
+                'Content-Type': 'text/html'
+            }
+        }).done(function () {
+            Swal.fire({
+                icon: 'success',
+                text: "Correo de factura enviado con éxito.",
+                title: 'Éxito',
+            });
+        }).fail(function (xhr) {
+            Swal.fire({
+                icon: 'error',
+                text: xhr.responseText || "Error al enviar el correo.",
+                title: 'Error',
+            });
+        });
+    };
+
+    /* Fin para el envío de correo */
 }
 function Consultar() {
     const grid = new gridjs.Grid({
@@ -208,22 +268,26 @@ function Consultar() {
                 of: 'de',
             }
         },
-        columns: ['Nombre', 'Apellido', 'Rol', 'Membresía', 'Cupón' , 'Nombre Cupón'],
+        columns: ['Nombre', 'Rol', 'Membresía', 'Correo', 'Cupón' , 'Nombre Cupón'],
         server: {
             url: 'https://localhost:7253/api/Usuario/GetAllUsuarios',
             then: data => data.data
-                .filter(result => ["ClienteStandard", "ClientePremium", "Cliente1dia"].includes(result.rol))
-                .map(result => [
-                    result.nombre,
-                    result.apellidos,
-                    formatRole(result.rol),
-                    getMembresia(result.rol),
-                    idCupon,
-                    getCuponDescuento(result.id)
-                ])
+                .filter(result => ["Cliente1dia"].includes(result.rol))
+                .map(result => {
+                    const cupon = infoCupon.find(c => c.idUsuario == result.id);
+                    return [
+                        result.nombre + ' ' + result.apellidos,
+                        formatRole(result.rol),
+                        getMembresia(result.rol),
+                        result.correo,
+                        cupon ? `${cupon.descuento}%` : '0%',
+                        cupon ? cupon.nombreCupon : 'No hay cupón'
+                    ];
+                })
         },
     }).render(document.getElementById('myGridClientesGuardados'));
 }
+
 
 function Consultar2() {
     const grid = new gridjs.Grid({
@@ -247,27 +311,93 @@ function Consultar2() {
             }
         },
         columns: [
-            'Cupón', 'Desc %', 'Plan', 'Precio', 'Estado', 'Usuario', 'Rol',
+            'Cliente', 'Correo','Cupón' ,'Desc %', 'Precio plan', 'Precio a pagar', 'Estado',
             {
                 name: 'Factura',
                 formatter: (cell, row) => {
-                    return gridjs.html(`<button type="button" class="btn btn-primary btn-factura" data-plan-id="${row.cells[3].data}" data-bs-toggle="modal" data-bs-target="#facturaModal">Factura</button>`);
+                    return gridjs.html(`<button type="button" class="btn btn-primary btn-factura" 
+                            data-plan-id="${row.cells[3].data}" 
+                            data-user-id="${row.cells[0].data}" 
+                            ata-email="${row.cells[1].data}"
+                            data-bs-toggle="modal" 
+                            data-bs-target="#facturaModal">Factura
+                        </button>
+                    `);
                 }
             }
         ],
         server: {
             url: 'https://localhost:7253/api/PlanesMensuales/GetAllPlanesMensuales',
-            then: data => data.data.map(result => [
-                result.plan.nombreCupon,
-                `${result.descuentoCupon}%`,
-                result.plan.nombrePlan,
-                `$${result.plan.precioPlan}`,
-                result.plan.estadoPlan,
-                result.plan.nombreUsuario,
-                formatRole(result.plan.usuarioRol) // Asumiendo que esta función existe
-            ])
+            then: data => data.data
+                .filter(result => result.usuariosList[0].rol === "Cliente1dia")
+
+                .map(result => {
+                    const user = result.usuariosList[0];
+                    const cupon = result.cuponesList[0];
+
+                    const nombreCompleto = `${user.nombre}`;
+                    const nombreCupon = cupon.nombreCupon || 'No hay cupón';
+                    const descuentoCupon = cupon.descuento || 0;
+                    const precioBase = result.precioPlan || 15;
+                    const precioAPagar = precioBase * (1 - (descuentoCupon / 100));
+
+                    const estadoPlan = 'pendiente';
+
+                    return [
+                        nombreCompleto,
+                        user.email || 'No disponible',
+                        nombreCupon,
+                        `$${precioBase.toFixed(2)}`,
+                        `${descuentoCupon}%`,
+                        `$${precioAPagar.toFixed(2)}`,
+                        estadoPlan
+                    ];
+                })
         },
     }).render(document.getElementById('myGrid'));
+
+    // Manejar el evento click en los botones "Generar Factura"
+    $(document).on('click', '.btn-factura', function () {
+        const email = $(this).data('email');
+        const row = $(this).closest('tr');
+        const nombre = row.find('td:nth-child(1)').text(); // Obtener el nombre
+        const descuento = parseFloat(row.find('td:nth-child(5)').text().replace('%', '')) || 0; // Obtener el descuento
+        const nombreCupon = row.find('td:nth-child(6)').text(); // Obtener el nombre del cupón
+
+        const precioBase = 15; // Precio base para Cliente1dia
+        const precioAPagar = precioBase * (1 - (descuento / 100)); // Calcular el total a pagar
+
+        $('#facturaContent').html(`
+            <h3>Factura</h3>
+            <p><strong>Nombre:</strong> ${nombre}</p>
+            <p><strong>Correo a notificar:</strong> ${email}</p>
+            <p><strong>Membresía:</strong> Cliente 1 día</p>
+            <p><strong>Valor del plan:</strong> $ ${precioBase.toFixed(2)}</p>
+            <p><strong>Descuento cupón:</strong> ${descuento}%</p>
+            <p><strong>Fecha de la factura:</strong> ${new Date().toLocaleDateString()}</p>
+            <p><strong>Total a pagar:</strong> $ ${precioAPagar.toFixed(2)}</p>
+        `);
+        console.log()
+    });
+}
+
+function getMembresia(rol) {
+    switch (rol) {
+        case 'ClientePremium':
+            return 'Premium';
+        case 'ClienteStandard':
+            return 'Standard';
+        case 'Cliente1dia':
+            return 'Diario';
+        default:
+            return 'Sin membresía';
+    }
+}
+
+function generateUniqueId() {
+    return 'xxxxxxxxyxxxxxx'.replace(/[x]/g, function () {
+        return (Math.random() * 16 | 0).toString(16);
+    });
 }
 function formatRole(role) {
     if (role === "ClienteStandard") return "Cliente Standard";
@@ -285,8 +415,10 @@ function getMembresia(role) {
 
 function getCuponDescuento(idUsuario) {
     const cupon = infoCupon.find(c => c.idUsuario == idUsuario);
-    if (!cupon) return "Descuento no disponible";
-    return `${cupon.NombreCupon} (${cupon.Descuento}%)`;
+    if (!cupon) {
+        return "Descuento no disponible"; // Si no se encuentra el cupón, devuelve un mensaje por defecto.
+    }
+    return `${cupon.nombreCupon} (${cupon.descuento}%)`;
 }
 
 generatedIds = [];
