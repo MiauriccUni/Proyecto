@@ -86,15 +86,24 @@ function Consultar() {
             search: {
                 placeholder: 'Buscar'
             },
-        
-        pagination: {
-            previous: 'Anterior',
-            next: 'Siguiente',
-            showing: 'Mostrando',
-            results: () => 'resultados'
+            pagination: {
+                previous: 'Anterior',
+                next: 'Siguiente',
+                showing: 'Mostrando',
+                results: () => 'resultados'
             }
         },
-        columns: ['Nombre de la Clase', 'Horarios', 'Cupos Disponibles',],
+        columns: [
+            'Nombre de la Clase',
+            'Horarios',
+            'Cupos Disponibles',
+            {
+                name: 'Matricular',
+                formatter: (cell, row) => {
+                    return gridjs.html(`<button class="btn btn-primary" onclick="takeSpace(${row[3]})">Tomar un espacio</button>`);
+                }
+            }
+        ],
         headerVisible: false,
         server: {
             url: 'https://localhost:7253/api/ClasesGrupales/GetAllClasesGrupales',
@@ -107,6 +116,12 @@ function Consultar() {
         },
     }).render(document.getElementById('myGrid'));
 }
+
+//// Add a function to handle the button click
+//function takeSpace(id) {
+//    // TO DO: implement the logic to decrement the cuposDisponibles and update the database
+//    console.log(`Button clicked for row with ID ${id}`);
+//}
 
 generatedIds = [];
 
