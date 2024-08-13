@@ -117,11 +117,31 @@ function Consultar() {
     }).render(document.getElementById('myGrid'));
 }
 
-//// Add a function to handle the button click
 //function takeSpace(id) {
-//    // TO DO: implement the logic to decrement the cuposDisponibles and update the database
-//    console.log(`Button clicked for row with ID ${id}`);
+//    // Get the current value of cuposDisponibles for the row with the given ID
+//    fetch(`https://localhost:7253/api/ClasesGrupales/GetClasesGrupalesById/${id}`)
+//        .then(response => response.json())
+//        .then(data => {
+//            const currentCuposDisponibles = data.cuposDisponibles;
+//            const newCuposDisponibles = currentCuposDisponibles - 1;
+
+//            // Update the database with the new value
+//            fetch(`https://localhost:7253/api/ClasesGrupales/UpdateCuposDisponibles`, {
+//                method: 'POST',
+//                headers: { 'Content-Type': 'application/json' },
+//                body: JSON.stringify({ id, newCuposDisponibles }),
+//            })
+//                .then(response => response.json())
+//                .then(data => {
+//                    console.log(`Cupos Disponibles Actualizado: ${newCuposDisponibles}`);
+//                    // Refresh the grid to reflect the updated value
+//                    Consultar();
+//                })
+//                .catch(error => console.error(error));
+//        })
+//        .catch(error => console.error(error));
 //}
+
 
 generatedIds = [];
 
