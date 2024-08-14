@@ -10,24 +10,24 @@ namespace DataAccess.Mappers
         {
             MedicionesUsuarios mediciones = new MedicionesUsuarios();
 
-            mediciones.Peso = double.Parse(row["peso"].ToString());
+            mediciones.Id = int.Parse(row["id_informacion_medicion"].ToString());
+            mediciones.peso = double.Parse(row["peso"].ToString());
             mediciones.altura = double.Parse(row["altura"].ToString());
             mediciones.imc = double.Parse(row["imc"].ToString());
-            mediciones.PesoIdeal = double.Parse(row["peso_ideal"].ToString());
+            mediciones.pesoMeta = double.Parse(row["peso_meta"].ToString());
 
             mediciones.usuariosList = new List<Usuario>()
             {
                 new Usuario
                 {
-                    Nombre = row["nombre"].ToString(),
-                    Rol = row["rol"].ToString()
+                    Nombre = row["nombre"].ToString()
                 }
             };
             mediciones.citasMedicionesList = new List<CitasMedicion>()
             {
                 new CitasMedicion
                 {
-                    Fecha = DateTime.Parse(row["fecha"].ToString()),
+                    Fecha = DateTime.Parse(row["fecha"].ToString())
                 }
             };
 
@@ -49,13 +49,15 @@ namespace DataAccess.Mappers
         public SqlOperation GetCreateStatement(BaseClass dto)
         {
             SqlOperation operation = new SqlOperation();
-            operation.ProcedureName = "SP_INSERT_MEDICIONS_USUARIOS";
+            operation.ProcedureName = "SP_INSERT_MEDICIONES_USUARIOS";
 
             MedicionesUsuarios mediciones = (MedicionesUsuarios)dto;
-            operation.AddDoubleParam("peso", mediciones.Peso);
+            operation.AddIntegerParam("id_informacion_medicion", mediciones.Id);
+            operation.AddDoubleParam("peso", mediciones.peso);
             operation.AddDoubleParam("altura", mediciones.altura);
             operation.AddDoubleParam("imc", mediciones.imc);
-            operation.AddDoubleParam("peso_ideal", mediciones.PesoIdeal);
+            operation.AddDoubleParam("peso_meta", mediciones.pesoMeta);
+            operation.AddIntegerParam("usuarios_id_usuarios", mediciones.IdUsuarios);
             return operation;
         }
 

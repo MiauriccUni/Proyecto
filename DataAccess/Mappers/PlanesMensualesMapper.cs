@@ -24,6 +24,7 @@ namespace DataAccess.Mappers
                 {
                     Nombre = row["nombre"].ToString(),
                     Rol = row["rol"].ToString(),
+                    Correo = row["correo"].ToString()
 
                 }
 
@@ -67,11 +68,21 @@ namespace DataAccess.Mappers
             return operation;
         }
 
+        public SqlOperation UpdateCupon(int CuponDescuentoId, int id)
+        {
+            SqlOperation operation = new SqlOperation();
+            operation.ProcedureName = "SP_UPDATE_USUARIO_CUPON";
+            operation.AddIntegerParam("cupones_descuentos_id_cupones", CuponDescuentoId);
+            operation.AddIntegerParam("id_usuarios", id);
+            return operation;
+        }
+
         public SqlOperation GetRetrieveAllStatement()
         {
             SqlOperation operation = new SqlOperation();
             operation.ProcedureName = "GET_ALL_PLANES_MENSUALES_JOIN";
             return operation;
         }
+
     }
 }

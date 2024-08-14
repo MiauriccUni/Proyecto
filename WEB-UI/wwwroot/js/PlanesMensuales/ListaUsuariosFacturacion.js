@@ -1,8 +1,13 @@
 ﻿let idUsuarioID = null;
+let idUsuarioID2 = null;
 let infoUsuario = [];
+let infoUsuario2 = [];
 let infoCupon = [];
+let infoCupon2 = [];
 let selectedUser = null;
-let idCupon = 503999;
+let selectedUser2 = null;
+let idCupon = null;
+let correo = null;
 
 function UsuariosList() {
     this.InitView = function () {
@@ -14,6 +19,16 @@ function UsuariosList() {
             view.CrearPlan();
         });
 
+        $('#enviarFactura').click(function () {
+            var view = new UsuariosList();
+            view.EnviarFactura();
+        });
+
+        $('#registrarCupon').click(function () {
+            var view = new UsuariosList();
+            view.RegistrarCupon();
+        })
+
         /* Código nuevo para que al seleccionar un usuario aparezca la info */
         $('#idusuario').on('change', function () {
             idUsuarioID = $(this).val();
@@ -21,6 +36,7 @@ function UsuariosList() {
             const cupon = infoCupon.find(c => c.idUsuario == idUsuarioID) || { nombreCupon: "Descuento no disponible", descuento: 0 };
             $('#user-info').show();
             $('#nombreCliente').val(selectedUser.nombre + ' ' + selectedUser.apellidos);
+            $('#correoCliente').val(selectedUser.correo);
             $('#rolCliente').val(selectedUser.rol);
             $('#membresiaCliente').val(getMembresia(selectedUser.rol));
             $('#nombreCupon').val(cupon.nombreCupon);
@@ -29,9 +45,27 @@ function UsuariosList() {
             $('#registrarFactura').data('cupon', cupon);
         });
 
-    }
+        /* Código nuevo para que al seleccionar un usuario aparezca la info para agregar cupón*/
+        $('#idusuario2').on('change', function () {
+            idUsuarioID2 = $(this).val();
+            selectedUser2 = infoUsuario2.find(user => user.id == idUsuarioID2);
+            if (!selectedUser2) {
+                Swal.fire({
+                    icon: 'error',
+                    text: "Usuario no encontrado.",
+                    title: 'Error'
+                });
+                return;
+            }
 
-    
+            const cupon = infoCupon2.find(c => c.idUsuario == idUsuarioID2) || { nombreCupon: "Descuento no disponible", descuento: 0 };
+            $('#user-info2').show();
+            $('#nombreCliente2').val(selectedUser2.nombre + ' ' + selectedUser2.apellidos);
+            $('#correoCliente2').val(selectedUser2.correo);
+            $('#registrarFactura').data('user', selectedUser2);
+            $('#registrarFactura').data('cupon', cupon);
+        });
+    }
 
     this.CrearPlan = function () {
         if (!idUsuarioID || !selectedUser) {
@@ -47,40 +81,15 @@ function UsuariosList() {
         const selectedCupon = infoCupon.find(cupon => cupon.id === parseInt(idCupon)) || { nombreCupon: "Descuento no disponible", descuento: 0 };
 
         let plan = {
-            id: parseInt(generateUniqueId()),
-            usuarioRol: selectedUser?.rol || "Rol desconocido",
-            precioPlan: 0,
-            idCupon: idCupon,
+            id: parseInt(selectedUser?.id),  // Asegúrate de que el id se convierta a un número entero
+            planesMensuales: "valor correspondiente",  // Debes asegurarte de que este campo exista y tenga un valor
+            nombrePlan: selectedUser?.rol || "Plan sin nombre",
+            precioPlan: 15,
+            cuponDescuentoId: 530999,
             estadoPlan: "pendiente",
-            idUsuario: parseInt(selectedUser?.id) || null,
-            NombrePlan: selectedUser?.rol || "Plan sin nombre"
+            usuarioRol: selectedUser?.rol || "Rol desconocido",
+            usuarioID: parseInt(selectedUser?.id) || null,
         };
-
-        switch (plan.usuarioRol) {
-            case "ClientePremium":
-                plan.precioPlan = 150;
-                break;
-            case "ClienteStandard":
-                plan.precioPlan = 80;
-                break;
-            case "Cliente1dia":
-                plan.precioPlan = 15;
-                break;
-            default:
-                plan.precioPlan = 0; // Si el rol no coincide, se establece un valor por defecto
-                break;
-        }
-
-        console.log(plan);
-        // Validación adicional del plan
-        if (!plan.usuarioRol || plan.precioPlan === 0 || !plan.idUsuario) {
-            Swal.fire({
-                icon: 'error',
-                text: "Datos del plan incompletos.",
-                title: 'Error'
-            });
-            return;
-        }
 
         const descuentoCupon = selectedCupon ? selectedCupon.descuento : 0;
         const totalAPagar = plan.precioPlan * (1 - (descuentoCupon / 100));
@@ -93,54 +102,38 @@ function UsuariosList() {
             fechaFactura.setDate(0);
         }
 
-        const factura = `
-        <h3>Factura</h3>
-        <p><strong>Plan del cliente:</strong> ${plan.usuarioRol}</p>
-        <p><strong>Valor del plan:</strong> $${plan.precioPlan}</p>
-        <p><strong>Descuento cupón:</strong> ${descuentoCupon}%</p>
-        <p><strong>Fecha de la factura:</strong> ${fechaFactura.toLocaleDateString()}</p>
-        <p><strong>Total a pagar:</strong> $${totalAPagar.toFixed(2)}</p>`;
-        $('#facturaContent').html(factura);
-        $('#facturaModal').modal('show');
-
-        Swal.fire({
-            title: 'Factura Generada',
-            html: factura,
-            icon: 'success'
+        $.ajax({
+            headers: {
+                'Accept': "application/json",
+                'Content-Type': "application/json"
+            },
+            method: "POST",
+            url: "https://localhost:7253/api/PlanesMensuales/CrearPlanesMensuales",
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            data: JSON.stringify(plan), // Asegúrate de que el objeto 'plan' contiene todas las propiedades necesarias
+        }).done(function (result) {
+            Swal.fire({
+                title: "Éxito",
+                icon: "success",
+                text: "Se ha completado el registro",
+            }).then(() => {
+                // Volver a consultar y actualizar la tabla
+                Consultar();
+                // Recargar la página después de actualizar la tabla
+                setTimeout(() => {
+                    location.reload();
+                }, 1000); // Esperar 1 segundo antes de recargar la página
+            });
+            /*console.log("Factura registrada:", plan);*/
+        }).fail(function (error) {
+            console.log(error);
+            Swal.fire({
+                icon: 'error',
+                text: "Error al registrarse",
+                title: 'Error',
+            });
         });
-
-        //$.ajax({
-        //    headers: {
-        //        'Accept': "application/json",
-        //        'Content-Type': "application/json"
-        //    },
-        //    method: "POST",
-        //    url: "https://localhost:7253/api/PlanesMensuales/CrearPlanesMensuales",
-        //    contentType: "application/json;charset=utf-8",
-        //    dataType: "json",
-        //    data: JSON.stringify(plan), // Asegúrate de que el objeto 'plan' contiene todas las propiedades necesarias
-        //}).done(function (result) {
-        //    Swal.fire({
-        //        title: "Éxito",
-        //        icon: "success",
-        //        text: "Se ha completado el registro",
-        //    }).then(() => {
-        //        // Volver a consultar y actualizar la tabla
-        //        Consultar();
-        //        // Recargar la página después de actualizar la tabla
-        //        setTimeout(() => {
-        //            location.reload();
-        //        }, 1000); // Esperar 1 segundo antes de recargar la página
-        //    });
-        //    console.log("Factura registrada:", plan);
-        //}).fail(function (error) {
-        //    Swal.fire({
-        //        icon: 'error',
-        //        text: "Error al registrarse",
-        //        title: 'Error',
-        //    });
-        //});
-        //console.log("Factura registrada:", plan);
     }
     
     this.PopulateUsuarios = function () {
@@ -151,11 +144,19 @@ function UsuariosList() {
             dataType: "json"
         }).done(function (data) {
             infoUsuario = data;
+            infoUsuario2 = data;
             var select = $('#idusuario');
+            var select2 = $('#idusuario2');
             select.empty(); // Limpiar opciones previas
-            data.forEach(row => {
-                select.append(`<option value="${row.id}">${row.nombre} ${row.apellidos} ${row.rol} ${row.correo} (ID: ${row.id})</option>`);
-            });
+            select.append('<option value="" disabled selected>Seleccione un usuario</option>'); // Agrega la opción por defecto
+            select2.empty();
+            select2.append('<option value="" disabled selected>Seleccione un usuario</option>');
+            // Filtrar usuarios por el rol "Cliente1dia"
+            data.filter(user => user.rol === "Cliente1dia")
+                .forEach(row => {
+                    select.append(`<option value="${row.id}">${row.nombre} ${row.apellidos} ${row.correo} (ID: ${row.id})</option>`);
+                    select2.append(`<option value="${row.id}">${row.nombre} ${row.apellidos} ${row.correo} (ID: ${row.id})</option>`);
+                });
         }).fail(function (error) {
             Swal.fire({
                 title: "Error",
@@ -173,10 +174,31 @@ function UsuariosList() {
             dataType: "json"
         }).done(function (data) {
             infoCupon = data;
-            var select = $('#idcupones');
-            select.empty(); // Limpiar opciones previas
+            infoCupon2 = data;
+            var selectCupon = $('#nombreCupon');
+            selectCupon.empty(); // Limpiar opciones previas
             data.forEach(row => {
-                select.append(`<option value="${row.id}">${row.NombreCupon} (${row.Descuento}%)</option>`);
+                selectCupon.append(`<option value="${row.id}">${row.NombreCupon} (${row.Descuento}%)</option>`);
+            });
+
+            // Validation function for coupon existence
+            $('#validateCupon').on('click', function () {
+                var enteredCuponName = $('#nombreCupon').val().trim();
+                var cuponExists = data.some(cupon => cupon.NombreCupon === enteredCuponName);
+
+                if (!cuponExists) {
+                    Swal.fire({
+                        title: "Lo sentimos",
+                        icon: "warning",
+                        text: "Ese cupón no existe."
+                    });
+                } else {
+                    Swal.fire({
+                        title: "Cupón válido",
+                        icon: "success",
+                        text: "El cupón existe y puede ser utilizado."
+                    });
+                }
             });
         }).fail(function (error) {
             Swal.fire({
@@ -186,6 +208,195 @@ function UsuariosList() {
             });
         });
     }
+
+    /* Código para el registro de cupón */
+
+    this.RegistrarCupon = function () {
+        const nombreCuponRegistrar = $('#nombreCuponRegistrar').val().trim();
+        console.log("Valor ingresado en el cupón:", nombreCuponRegistrar);
+        console.log("Lista de cupones guardados:", infoCupon)
+
+        if (!nombreCuponRegistrar) {
+            
+            Swal.fire({
+                icon: 'error',
+                text: "Por favor complete todos los campos.",
+                title: 'Error'
+            });
+            return;
+        }
+
+        // Asegúrate de que la comparación sea insensible a mayúsculas/minúsculas
+        const cuponValido = infoCupon.find(cupon => cupon.nombreCupon.toLowerCase() === nombreCuponRegistrar.toLowerCase());
+
+        if (!cuponValido) {
+            Swal.fire({
+                title: "Lo sentimos",
+                icon: "warning",
+                text: "Ese cupón no existe."
+            });
+            return;
+        }
+
+        const cuponDescuentoId = cuponValido.id;
+        const descuento = cuponValido.Descuento;
+
+        // Suponiendo que el ID del usuario se encuentra disponible
+        const idUsuario = $('#nombreCupon').data('user-id'); // Ajusta para obtener el ID correcto
+
+        class SqlOperation {
+            constructor() {
+                this.params = {};
+            }
+
+            ProcedureName = "";
+
+            AddIntegerParam(name, value) {
+                this.params[name] = value;
+            }
+
+            // Agregar otros métodos si es necesario
+        }
+        // Proceder con la actualización del cupón en la tabla planes_mensuales
+        const operation = new SqlOperation();
+        operation.ProcedureName = "SP_UPDATE_USUARIO_CUPON";
+        operation.AddIntegerParam("cupones_descuentos_id_cupones", cuponDescuentoId);
+        operation.AddIntegerParam("id_usuarios", idUsuario);
+
+        $.ajax({
+            headers: {
+                'Accept': "application/json",
+                'Content-Type': "application/json"
+            },
+            method: "POST",
+            url: "https://localhost:7253/api/PlanesMensuales/ActualizarCupon", // Ajusta la URL según tu API
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            data: JSON.stringify(operation),
+        }).done(function (result) {
+            Swal.fire({
+                title: "Éxito",
+                icon: "success",
+                text: "Cupón actualizado exitosamente.",
+            }).then(() => {
+                view.PopulateCupones(); // Volver a cargar los cupones
+            });
+        }).fail(function (error) {
+            Swal.fire({
+                icon: 'error',
+                text: "Error al actualizar el cupón.",
+                title: 'Error',
+            });
+        });
+    };
+
+    /* Código para el envío de correo */
+
+    this.EnviarFactura = function () {
+        const selectedUsuario = $('#enviarFactura').data('user');
+       /* console.log('Usuario seleccionado:', selectedUsuario); // Depuración*/
+
+        if (!selectedUsuario) {
+            Swal.fire({
+                icon: 'error',
+                text: "Usuario no encontrado LPM.",
+                title: 'Error'
+            });
+            return;
+        }
+        const email = selectedUsuario.email;
+        const row = $('.btn-factura').closest('tr');
+        console.log(row.html());
+        const planNombre = "Cliente 1 día";
+        const precioPlan = 15; // Obtener el valor del plan
+        const descuentoCupon = parseFloat(row.find('td:nth-child(2)').text().replace('%', '')) || 0; // Obtener el descuento del cupón
+        const totalAPagar = precioPlan * (1 - (descuentoCupon / 100)); // Calcular el total a pagar
+        console.log(email, row, planNombre, precioPlan, descuentoCupon, totalAPagar);
+        
+        const facturaHtml = `
+            <h3>Factura</h3>
+            <p><strong>Plan del cliente:</strong> ${planNombre}</p>
+            <p><strong>Valor del plan:</strong> $${precioPlan.toFixed(2)}</p>
+            <p><strong>Descuento cupón:</strong> ${descuentoCupon}%</p> 
+            <p><strong>Fecha de la factura:</strong> ${new Date().toLocaleDateString()}</p>
+            <p><strong>Total a pagar:</strong> $${totalAPagar.toFixed(2)}</p>`;
+        const cuerpo = `
+            Hola,<br><br>
+            Rambo's Gym te informa que tu factura por $${totalAPagar.toFixed(2)} se encuentra disponible para pago.<br><br>
+            ${facturaHtml}<br><br>
+            Estos son nuestros métodos de pago:<br><br>
+            <table border="1" cellpadding="5" cellspacing="0">
+                <tr>
+                    <th>Método de Pago</th>
+                    <th>Detalle</th>
+                    <th>Nombre</th>
+                </tr>
+                <tr>
+                    <td>Sinpe Móvil</td>
+                    <td>8888-8888</td>
+                    <td>Mario Perez</td>
+                </tr>
+                <tr>
+                    <td>Transferencia Bancaria</td>
+                    <td>CR 1234567890</td>
+                    <td>Rambo's Gym</td>
+                </tr>
+                <tr>
+                    <td>PayPal</td>
+                    <td>info@example.com</td>
+                    <td>Rambo's Gym</td>
+                </tr>
+            </table>
+            <br><br>
+            Gracias por tu preferencia.
+            `;
+
+        const apiUrl = `https://localhost:7253/api/Email/SendEmail?correo=${email}&cuerpo=${encodeURIComponent(cuerpo)}&asunto=Factura Generada`;
+
+        $.ajax({
+            url: apiUrl,
+            method: "POST",
+            contentType: "application/json;charset=utf-8",
+            dataType: "text",
+            processData: false,
+            data: JSON.stringify({}),
+            headers: {
+                'Content-Type': 'text/html'
+            }
+        }).done(function (response) {
+            console.log('Respuesta del servidor:', response); // Depuración
+            Swal.fire({
+                icon: 'success',
+                text: "Correo de factura enviado con éxito.",
+                title: 'Éxito',
+            });
+        }).fail(function (xhr) {
+            console.error('Error en la solicitud:', xhr); // Depuración
+            Swal.fire({
+                icon: 'error',
+                text: xhr.responseText || "Error al enviar el correo.",
+                title: 'Error',
+            });
+        });
+    }
+
+    function generateUniqueId() {
+        return '_' + Math.random().toString(36).substr(2, 9);
+    }
+
+    function getMembresia(rol) {
+        switch (rol) {
+            case "ClientePremium":
+                return "$150";
+            case "ClienteStandard":
+                return "$80";
+            case "Cliente1dia":
+                return "$15";
+            default:
+                return "$0";
+        }
+    }
+
 }
 function Consultar() {
     const grid = new gridjs.Grid({
@@ -208,22 +419,26 @@ function Consultar() {
                 of: 'de',
             }
         },
-        columns: ['Nombre', 'Apellido', 'Rol', 'Membresía', 'Cupón' , 'Nombre Cupón'],
+        columns: ['Nombre', 'Rol', 'Membresía', 'Correo', 'Cupón' , 'Nombre Cupón'],
         server: {
             url: 'https://localhost:7253/api/Usuario/GetAllUsuarios',
             then: data => data.data
-                .filter(result => ["ClienteStandard", "ClientePremium", "Cliente1dia"].includes(result.rol))
-                .map(result => [
-                    result.nombre,
-                    result.apellidos,
-                    formatRole(result.rol),
-                    getMembresia(result.rol),
-                    idCupon,
-                    getCuponDescuento(result.id)
-                ])
+                .filter(result => ["Cliente1dia"].includes(result.rol))
+                .map(result => {
+                    const cupon = infoCupon.find(c => c.idUsuario == result.id);
+                    return [
+                        result.nombre + ' ' + result.apellidos,
+                        formatRole(result.rol),
+                        getMembresia(result.rol),
+                        result.correo,
+                        cupon ? `${cupon.descuento}%` : '0%',
+                        cupon ? cupon.nombreCupon : 'No hay cupón'
+                    ];
+                })
         },
     }).render(document.getElementById('myGridClientesGuardados'));
 }
+
 
 function Consultar2() {
     const grid = new gridjs.Grid({
@@ -247,27 +462,107 @@ function Consultar2() {
             }
         },
         columns: [
-            'Cupón', 'Desc %', 'Plan', 'Precio', 'Estado', 'Usuario', 'Rol',
+            'Cliente', 'Correo','Cupón' ,'Desc %', 'Precio plan', 'Precio a pagar', 'Estado',
             {
                 name: 'Factura',
                 formatter: (cell, row) => {
-                    return gridjs.html(`<button type="button" class="btn btn-primary btn-factura" data-plan-id="${row.cells[3].data}" data-bs-toggle="modal" data-bs-target="#facturaModal">Factura</button>`);
+                    return gridjs.html(`
+                        <button type="button" class="btn btn-primary btn-factura" 
+                                data-plan-id="${row.cells[3].data}" 
+                                data-user-id="${row.cells[0].data}" 
+                                data-email="${row.cells[1].data}"
+                                data-bs-toggle="modal" 
+                                data-bs-target="#facturaModal">Factura
+                        </button>
+                    `);
+
                 }
             }
         ],
         server: {
             url: 'https://localhost:7253/api/PlanesMensuales/GetAllPlanesMensuales',
-            then: data => data.data.map(result => [
-                result.plan.nombreCupon,
-                `${result.descuentoCupon}%`,
-                result.plan.nombrePlan,
-                `$${result.plan.precioPlan}`,
-                result.plan.estadoPlan,
-                result.plan.nombreUsuario,
-                formatRole(result.plan.usuarioRol) // Asumiendo que esta función existe
-            ])
+            then: data => data.data
+                .filter(result => result.usuariosList[0].rol === "Cliente1dia")
+
+                .map(result => {
+                    const user = result.usuariosList[0];
+                    const cupon = result.cuponesList[0];
+                    const correoUsuario = user.correo || 'No disponible'; 
+                    const nombreCompleto = `${user.nombre}`;
+                    const nombreCupon = cupon.nombreCupon || 'No hay cupón';
+                    const precioBase = result.precioPlan || 15;
+                    const descuentoCupon = cupon.descuento || 0;
+                    const precioAPagar = precioBase * (1 - (descuentoCupon / 100));
+
+                    const estadoPlan = 'pendiente';
+
+                    return [
+                        nombreCompleto,
+                        correoUsuario,
+                        nombreCupon,
+                        `${descuentoCupon}%`,
+                        `$${precioBase.toFixed(2)}`,
+                        `$${precioAPagar.toFixed(2)}`,
+                        estadoPlan
+                    ];
+                })
         },
     }).render(document.getElementById('myGrid'));
+
+    $(document).on('click', '.btn-factura', function () {
+        const userId = $(this).data('user-id');
+        const email = $(this).data('email');
+        const nombreCupon = $(this).data('plan-id'); // Asegúrate de que este dato es correcto
+        const descuento = parseFloat($(this).closest('tr').find('td:nth-child(5)').text().replace('%', '')) || 0; // Obtener el descuento
+        const precioBase = 15; // Precio base para Cliente1dia
+        const precioAPagar = precioBase * (1 - (descuento / 100)); // Calcular el total a pagar
+
+        // Verificar si el usuario ID está disponible
+        if (!userId) {
+            Swal.fire('Error', 'Usuario no encontrado LPM 2', 'error');
+            return;
+        }
+
+        // Actualizar el contenido del modal
+        $('#facturaContent').html(`
+            <p><strong>Nombre:</strong> ${$(this).closest('tr').find('td:nth-child(1)').text()}</p>
+            <p><strong>Correo a notificar:</strong> ${email}</p>
+            <p><strong>Membresía:</strong> Cliente 1 día</p>
+            <p><strong>Valor del plan:</strong> $${precioBase.toFixed(2)}</p>
+            <p><strong>Descuento cupón:</strong> ${descuento}%</p>
+            <p><strong>Fecha de la factura:</strong> ${new Date().toLocaleDateString()}</p>
+            <p><strong>Total a pagar:</strong> $${precioAPagar.toFixed(2)}</p>
+        `);
+
+        // Configurar el usuario seleccionado para el envío de la factura
+        $('#enviarFactura').data('user', { email: email });
+
+        // Mostrar el modal
+        $('#facturaModal').modal('show');
+    });
+    // Manejador para enviar la factura
+    $('#enviarFacturaBtn').on('click', function () {
+        this.EnviarFactura();
+    }.bind(this));
+}
+
+function getMembresia(rol) {
+    switch (rol) {
+        case 'ClientePremium':
+            return 'Premium';
+        case 'ClienteStandard':
+            return 'Standard';
+        case 'Cliente1dia':
+            return 'Diario';
+        default:
+            return 'Sin membresía';
+    }
+}
+
+function generateUniqueId() {
+    return 'xxxxxxxxyxxxxxx'.replace(/[x]/g, function () {
+        return (Math.random() * 16 | 0).toString(16);
+    });
 }
 function formatRole(role) {
     if (role === "ClienteStandard") return "Cliente Standard";
@@ -285,8 +580,10 @@ function getMembresia(role) {
 
 function getCuponDescuento(idUsuario) {
     const cupon = infoCupon.find(c => c.idUsuario == idUsuario);
-    if (!cupon) return "Descuento no disponible";
-    return `${cupon.NombreCupon} (${cupon.Descuento}%)`;
+    if (!cupon) {
+        return "Descuento no disponible"; // Si no se encuentra el cupón, devuelve un mensaje por defecto.
+    }
+    return `${cupon.nombreCupon} (${cupon.descuento}%)`;
 }
 
 generatedIds = [];
