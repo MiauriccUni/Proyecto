@@ -15,7 +15,7 @@ function MedicionesUsuarios() {
 
     this.PopulateUsuarios = function () {
         $.ajax({
-            url: "https://localhost:7253/api/Usuario/GetClientes",
+            url: "https://apirambosgym-emercdd0c8dbe0fq.eastus-01.azurewebsites.net/api/Usuario/GetClientes",
             method: "GET",
             contentType: "application/json;charset=utf-8",
             dataType: "json"
@@ -37,7 +37,7 @@ function MedicionesUsuarios() {
 
     this.PopulateCitasMedicion = function () {
         $.ajax({
-            url: "https://localhost:7253/api/CitasMedicion/GetAllUsuarios",
+            url: "https://apirambosgym-emercdd0c8dbe0fq.eastus-01.azurewebsites.net/api/CitasMedicion/GetAllUsuarios",
             method: "GET",
             contentType: "application/json;charset=utf-8",
             dataType: "json"
@@ -81,7 +81,7 @@ function Consultar() {
         },
         columns: ['Nombre Completo', 'Rol', 'Fecha de medición'],
         server: {
-            url: 'https://localhost:7253/api/Usuario/GetAllUsuarios',
+            url: 'https://apirambosgym-emercdd0c8dbe0fq.eastus-01.azurewebsites.net/api/Usuario/GetAllUsuarios',
             then: data => data.data
                 .filter(result => ["ClienteStandard", "ClientePremium"].includes(result.rol))
                 .map(result => [
@@ -118,7 +118,7 @@ function Consultar2() {
         },
         columns: ['Nombre Completo', 'Rol', 'Peso', 'Altura', 'IMC', 'Peso Ideal'],
         server: {
-            url: 'https://localhost:7253/api/Usuario/GetAllUsuarios',
+            url: 'https://apirambosgym-emercdd0c8dbe0fq.eastus-01.azurewebsites.net/api/Usuario/GetAllUsuarios',
             then: data => data.data
                 .filter(result => ["ClienteStandard", "ClientePremium"].includes(result.rol))
                 .map(result => [

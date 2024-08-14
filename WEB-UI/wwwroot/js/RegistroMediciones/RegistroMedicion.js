@@ -165,7 +165,7 @@
         iddecita = $('#idCita').val();
 
         $.ajax({
-            url: "https://localhost:7253/api/Mediciones/GetMediciones",
+            url: "https://apirambosgym-emercdd0c8dbe0fq.eastus-01.azurewebsites.net/api/Mediciones/GetMediciones",
             method: "GET",
             contentType: "application/json;charset=utf-8",
             dataType: "json"
@@ -193,7 +193,7 @@
                             'Content-Type': "application/json"
                         },
                         method: "POST",
-                        url: "https://localhost:7253/api/Mediciones/CreateMediciones",
+                        url: "https://apirambosgym-emercdd0c8dbe0fq.eastus-01.azurewebsites.net/api/Mediciones/CreateMediciones",
                         contentType: "application/json;charset=utf-8",
                         dataType: "json",
                         data: JSON.stringify(regMedicion),
@@ -236,7 +236,7 @@ function Consultar2() {
         },
         columns: ['Peso', 'Estatura', 'Porcentage en Grasa', 'Notas', 'Medición Espalda', 'Medición Cintura', 'Medición Pierna', 'Fecha'],
         server: {
-            url: 'https://localhost:7253/api/Mediciones/GetAllMediciones',
+            url: 'https://apirambosgym-emercdd0c8dbe0fq.eastus-01.azurewebsites.net/api/Mediciones/GetAllMediciones',
             then: data => data.data.map(result => {
 
                 const originalDate = new Date(result.asignacionCitas[0].citasMedicionesList[0].fecha,);

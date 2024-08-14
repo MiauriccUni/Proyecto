@@ -58,7 +58,7 @@ function CrearFactura() {
                 'Content-Type': "application/json"
             },
             method: "POST",
-            url: "https://localhost:7253/api/Factura/CrearFactura",
+            url: "https://apirambosgym-emercdd0c8dbe0fq.eastus-01.azurewebsites.net/api/Factura/CrearFactura",
             contentType: "application/json;charset=utf-8",
             dataType: "json",
             data: JSON.stringify(citas),
@@ -95,7 +95,7 @@ function Consultar() {
         },
         columns: ['ID', 'Número Factura', 'Fecha', 'Descuento', 'Monto Final'],
         server: {
-            url: 'https://localhost:7253/api/Factura/GetAllFacturas',
+            url: 'https://apirambosgym-emercdd0c8dbe0fq.eastus-01.azurewebsites.net/api/Factura/GetAllFacturas',
             then: data => data.data.map(result => [
                 result.id,
                 result.numeroFactura,

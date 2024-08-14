@@ -34,7 +34,7 @@
     
 
         $.ajax({
-            url: "https://localhost:7253/api/Usuario/ChangePassword?correo=" + email + "&password=" + newPassword,
+            url: "https://apirambosgym-emercdd0c8dbe0fq.eastus-01.azurewebsites.net/api/Usuario/ChangePassword?correo=" + email + "&password=" + newPassword,
             method: "PUT",
             contentType: "application/json;charset=utf-8",
             dataType: "json",

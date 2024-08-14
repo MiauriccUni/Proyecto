@@ -104,7 +104,7 @@ function CrearPlanMensual() {
                 'Content-Type': "application/json"
             },
             method: "POST",
-            url: "https://localhost:7253/api/PlanesMensuales/CrearPlanesMensuales",
+            url: "https://apirambosgym-emercdd0c8dbe0fq.eastus-01.azurewebsites.net/api/PlanesMensuales/CrearPlanesMensuales",
             contentType: "application/json;charset=utf-8",
             dataType: "json",
             data: JSON.stringify(plan),
@@ -126,7 +126,7 @@ function CrearPlanMensual() {
 
     this.PopulateUsuarios2 = function () {
         $.ajax({
-            url: "https://localhost:7253/api/Usuario/GetClientes",
+            url: "https://apirambosgym-emercdd0c8dbe0fq.eastus-01.azurewebsites.net/api/Usuario/GetClientes",
             method: "GET",
             contentType: "application/json;charset=utf-8",
             dataType: "json"
@@ -184,7 +184,7 @@ function CrearPlanMensual() {
         ${facturaHtml}<br><br>
         Gracias por elegir nuestro gimnasio.`;
 
-        const apiUrl = `https://localhost:7253/api/Email/SendEmail?correo=${email}&cuerpo=${encodeURIComponent(cuerpo)}&asunto=Factura Generada`;
+        const apiUrl = `https://apirambosgym-emercdd0c8dbe0fq.eastus-01.azurewebsites.net/api/Email/SendEmail?correo=${email}&cuerpo=${encodeURIComponent(cuerpo)}&asunto=Factura Generada`;
 
         $.ajax({
             url: apiUrl,
@@ -214,7 +214,7 @@ function CrearPlanMensual() {
     /* Fin para el envío de correo */
     this.PopulateCupones = function () {
         $.ajax({
-            url: "https://localhost:7253/api/Cupones/GetCupones",
+            url: "https://apirambosgym-emercdd0c8dbe0fq.eastus-01.azurewebsites.net/api/Cupones/GetCupones",
             method: "GET",
             contentType: "application/json;charset=utf-8",
             dataType: "json"
@@ -270,7 +270,7 @@ function Consultar() {
             }
         ],
         server: {
-            url: 'https://localhost:7253/api/PlanesMensuales/GetAllPlanesMensuales',
+            url: 'https://apirambosgym-emercdd0c8dbe0fq.eastus-01.azurewebsites.net/api/PlanesMensuales/GetAllPlanesMensuales',
             then: data => data.data.map(result => [
                 result.cuponesList[0]?.nombreCupon || 'No disponible',
                 result.cuponesList[0]?.descuento !== undefined ? `${result.cuponesList[0].descuento}%` : '0%',

@@ -43,7 +43,7 @@ function AsignacionCita(){
         }     
 
         $.ajax({
-            url: "https://localhost:7253/api/AsignacionCita/GetAsignacionCita",
+            url: "https://apirambosgym-emercdd0c8dbe0fq.eastus-01.azurewebsites.net/api/AsignacionCita/GetAsignacionCita",
             method: "GET",
             contentType: "application/json;charset=utf-8",
             dataType: "json"
@@ -69,7 +69,7 @@ function AsignacionCita(){
                             'Content-Type': "application/json"
                         },
                         method: "POST",
-                        url: "https://localhost:7253/api/AsignacionCita/CrearAsignacion",
+                        url: "https://apirambosgym-emercdd0c8dbe0fq.eastus-01.azurewebsites.net/api/AsignacionCita/CrearAsignacion",
                         contentType: "application/json;charset=utf-8",
                         dataType: "json",
                         data: JSON.stringify(asignaciones),
@@ -115,7 +115,7 @@ function AsignacionCita(){
     
     this.PopulateCitas = function () {
         $.ajax({
-            url: "https://localhost:7253/api/CitasMedicion/GetUsuarios",
+            url: "https://apirambosgym-emercdd0c8dbe0fq.eastus-01.azurewebsites.net/api/CitasMedicion/GetUsuarios",
             method: "GET",
             contentType: "application/json;charset=utf-8",
             dataType: "json"
@@ -143,7 +143,7 @@ function AsignacionCita(){
 
     this.PopulateEntrenadores = function () {
         $.ajax({
-            url: "https://localhost:7253/api/Usuario/GetEntrenadores",
+            url: "https://apirambosgym-emercdd0c8dbe0fq.eastus-01.azurewebsites.net/api/Usuario/GetEntrenadores",
             method: "GET",
             contentType: "application/json;charset=utf-8",
             dataType: "json"
@@ -188,7 +188,7 @@ function ConsultarAsignacion() {
         },
         columns: ['id', 'Entrenador', 'Correo entrenador', 'Fecha', 'Nombre Cliente', 'Correo Cliente'],
         server: {
-            url: 'https://localhost:7253/api/AsignacionCita/GetAllAsignaciones',
+            url: 'https://apirambosgym-emercdd0c8dbe0fq.eastus-01.azurewebsites.net/api/AsignacionCita/GetAllAsignaciones',
             then: data => data.data.map(result => {
 
                 const originalDate = new Date(result.citasMedicionesList[0].fecha);

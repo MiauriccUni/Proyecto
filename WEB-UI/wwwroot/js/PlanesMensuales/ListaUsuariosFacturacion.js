@@ -109,43 +109,11 @@ function UsuariosList() {
             icon: 'success'
         });
 
-        //$.ajax({
-        //    headers: {
-        //        'Accept': "application/json",
-        //        'Content-Type': "application/json"
-        //    },
-        //    method: "POST",
-        //    url: "https://localhost:7253/api/PlanesMensuales/CrearPlanesMensuales",
-        //    contentType: "application/json;charset=utf-8",
-        //    dataType: "json",
-        //    data: JSON.stringify(plan), // Asegúrate de que el objeto 'plan' contiene todas las propiedades necesarias
-        //}).done(function (result) {
-        //    Swal.fire({
-        //        title: "Éxito",
-        //        icon: "success",
-        //        text: "Se ha completado el registro",
-        //    }).then(() => {
-        //        // Volver a consultar y actualizar la tabla
-        //        Consultar();
-        //        // Recargar la página después de actualizar la tabla
-        //        setTimeout(() => {
-        //            location.reload();
-        //        }, 1000); // Esperar 1 segundo antes de recargar la página
-        //    });
-        //    console.log("Factura registrada:", plan);
-        //}).fail(function (error) {
-        //    Swal.fire({
-        //        icon: 'error',
-        //        text: "Error al registrarse",
-        //        title: 'Error',
-        //    });
-        //});
-        //console.log("Factura registrada:", plan);
     }
     
     this.PopulateUsuarios = function () {
         $.ajax({
-            url: "https://localhost:7253/api/Usuario/GetClientes",
+            url: "https://apirambosgym-emercdd0c8dbe0fq.eastus-01.azurewebsites.net/api/Usuario/GetClientes",
             method: "GET",
             contentType: "application/json;charset=utf-8",
             dataType: "json"
@@ -167,7 +135,7 @@ function UsuariosList() {
 
     this.PopulateCupones = function () {
         $.ajax({
-            url: "https://localhost:7253/api/Cupones/GetCupones",
+            url: "https://apirambosgym-emercdd0c8dbe0fq.eastus-01.azurewebsites.net/api/Cupones/GetCupones",
             method: "GET",
             contentType: "application/json;charset=utf-8",
             dataType: "json"
@@ -210,7 +178,7 @@ function Consultar() {
         },
         columns: ['Nombre', 'Apellido', 'Rol', 'Membresía', 'Cupón' , 'Nombre Cupón'],
         server: {
-            url: 'https://localhost:7253/api/Usuario/GetAllUsuarios',
+            url: 'https://apirambosgym-emercdd0c8dbe0fq.eastus-01.azurewebsites.net/api/Usuario/GetAllUsuarios',
             then: data => data.data
                 .filter(result => ["ClienteStandard", "ClientePremium", "Cliente1dia"].includes(result.rol))
                 .map(result => [
@@ -256,7 +224,7 @@ function Consultar2() {
             }
         ],
         server: {
-            url: 'https://localhost:7253/api/PlanesMensuales/GetAllPlanesMensuales',
+            url: 'https://apirambosgym-emercdd0c8dbe0fq.eastus-01.azurewebsites.net/api/PlanesMensuales/GetAllPlanesMensuales',
             then: data => data.data.map(result => [
                 result.plan.nombreCupon,
                 `${result.descuentoCupon}%`,
