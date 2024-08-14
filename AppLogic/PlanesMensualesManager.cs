@@ -24,5 +24,11 @@ namespace AppLogic
             return crud.RetrieveAll<PlanesMensuales>();
         }
 
+        public void UpdateCuponManager(int CuponDescuentoId, int id)
+        {
+            PlanesMensualesCrud crud = new PlanesMensualesCrud();
+            crud.UpdateCuponCrud(CuponDescuentoId, id);
+        }
+
     }
 }
