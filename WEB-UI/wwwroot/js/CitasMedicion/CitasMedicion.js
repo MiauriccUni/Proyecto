@@ -46,7 +46,7 @@ function CrearCitaMedicion() {
             Swal.fire({
                 icon: 'error',
                 text: "Por favor indique un horario.",
-                title: ''
+                title: 'Error'
             });
             return;
         }
@@ -55,7 +55,7 @@ function CrearCitaMedicion() {
             Swal.fire({
                 icon: 'error',
                 text: "Por favor indique un horario entre las 8 a.m. y las 5 p.m.",
-                title: ''
+                title: 'Error'
             });
             return;
         }
@@ -64,7 +64,7 @@ function CrearCitaMedicion() {
             Swal.fire({
                 icon: 'error',
                 text: "Por favor un dia entre semana.",
-                title: ''
+                title: 'Error'
             });
             return;
         }
@@ -73,7 +73,7 @@ function CrearCitaMedicion() {
             Swal.fire({
                 icon: 'error',
                 text: "Por favor indicar un año valido.",
-                title: ''
+                title: 'Error'
             });
             return;
         }
@@ -82,7 +82,7 @@ function CrearCitaMedicion() {
             Swal.fire({
                 icon: 'error',
                 text: "Por favor indicar un usuarios.",
-                title: ''
+                title: 'Error'
             });
             return;
         }
@@ -135,7 +135,7 @@ function CrearCitaMedicion() {
             Swal.fire({
                 icon: 'error',
                 text: "Error al agregar la cita",
-                title: '',
+                title: 'Error',
             });
         });
     }
@@ -158,7 +158,7 @@ function CrearCitaMedicion() {
             });
         }).fail(function (error) {
             Swal.fire({
-                title: "",
+                title: "Error",
                 icon: "error",
                 text: "Error al cargar los usuarios" + error
             });
@@ -180,29 +180,12 @@ function CrearCitaMedicion() {
 
 function Consultar() {
     const grid = new gridjs.Grid({
-
         search: true,
-        sort: true,
-        resizable: true,
-        pagination: {
-            limit: 5
-        },
         language: {
             search: {
                 placeholder: 'Buscar'
-            },
-            pagination: {
-                previous: 'Anterior',
-                next: 'Siguiente',
-                showing: 'Mostrando',
-                results: () => 'resultados',
-                to: 'a',
-                of: 'de',
             }
         },
-
-        
-
         columns: ['Nombre del Cliente', 'Correo Cliente', 'Fecha'],
         server: {
             url: 'https://localhost:7253/api/CitasMedicion/GetAllUsuarios',
