@@ -43,10 +43,10 @@ namespace API.Controllers
         }
 
         [HttpPut]
-        public void UpdateCupon(int CuponDescuentoId, int id)
+        public void UpdateCupon(int planId, int CuponDescuentoId, int usuarios_id_usuarios)
         { 
             PlanesMensualesManager updater = new PlanesMensualesManager();
-            updater.UpdateCuponManager(CuponDescuentoId, id);
+            updater.UpdateCuponManager(planId, CuponDescuentoId, usuarios_id_usuarios);
         }
 
     }

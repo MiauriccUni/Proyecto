@@ -212,9 +212,14 @@ function UsuariosList() {
     /* Código para el registro de cupón */
 
     this.RegistrarCupon = function () {
-        const nombreCuponRegistrar = $('#nombreCuponRegistrar').val().trim();
-        console.log("Valor ingresado en el cupón:", nombreCuponRegistrar);
-        console.log("Lista de cupones guardados:", infoCupon)
+        const idUsuarioCupon = idUsuarioID2; // Funciona
+
+        const nombreUsuarioCupon = selectedUser2.nombre; // Funciona
+        console.log("Id Usuario" + idUsuarioCupon + "nombre" + nombreUsuarioCupon); // Funciona
+
+        const nombreCuponRegistrar = $('#nombreCuponRegistrar').val().trim().toLowerCase(); // Funciona
+        console.log("Valor ingresado en el cupón:", nombreCuponRegistrar); // Funciona
+        console.log("Lista de cupones guardados:", infoCupon) // Funciona
 
         if (!nombreCuponRegistrar) {
             
@@ -226,20 +231,33 @@ function UsuariosList() {
             return;
         }
 
-        // Asegúrate de que la comparación sea insensible a mayúsculas/minúsculas
-        const cuponValido = infoCupon.find(cupon => cupon.nombreCupon.toLowerCase() === nombreCuponRegistrar.toLowerCase());
+        let cuponEncontrado = false;
 
-        if (!cuponValido) {
+        for (let i = 0; i < infoCupon.length; i++) {
+            let cupon = infoCupon[i]
+
+            // Verificar si el nombre del cupón coincide (insensible a mayúsculas)
+            if (cupon.NombreCupon && cupon.NombreCupon.toLowerCase() === nombreCuponRegistrar) {
+                cuponEncontrado = true;
+                Swal.fire({
+                    title: "Cupón encontrado con éxito",
+                    icon: "success",
+                    text: `El cupón "${cupon.NombreCupon}" ha sido encontrado con éxito.`,
+                });
+                break; // Salir del bucle una vez que se encuentra el cupón
+            }
+        }
+
+        if (!cuponEncontrado) {
             Swal.fire({
                 title: "Lo sentimos",
                 icon: "warning",
-                text: "Ese cupón no existe."
+                text: "Ese cupón no existe.",
             });
-            return;
         }
 
-        const cuponDescuentoId = cuponValido.id;
-        const descuento = cuponValido.Descuento;
+        const cuponDescuentoId = cuponEncontrado.id;
+        const descuento = cuponEncontrado.Descuento;
 
         // Suponiendo que el ID del usuario se encuentra disponible
         const idUsuario = $('#nombreCupon').data('user-id'); // Ajusta para obtener el ID correcto
@@ -268,8 +286,8 @@ function UsuariosList() {
                 'Accept': "application/json",
                 'Content-Type': "application/json"
             },
-            method: "POST",
-            url: "https://localhost:7253/api/PlanesMensuales/ActualizarCupon", // Ajusta la URL según tu API
+            method: "PUT",
+            url: "https://localhost:7253/api/PlanesMensuales/UpdateCupon", // Ajusta la URL según tu API
             contentType: "application/json;charset=utf-8",
             dataType: "json",
             data: JSON.stringify(operation),
@@ -282,6 +300,7 @@ function UsuariosList() {
                 view.PopulateCupones(); // Volver a cargar los cupones
             });
         }).fail(function (error) {
+            console.log(error);
             Swal.fire({
                 icon: 'error',
                 text: "Error al actualizar el cupón.",
