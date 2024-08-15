@@ -44,6 +44,12 @@ namespace API.Controllers
         {
             RegistroRutinasManager RutinaManager = new RegistroRutinasManager();
             return RutinaManager.GetRetrieveSeries(Series);
+        }  
+        [HttpGet]
+        public List<rutinas> GetRutinasBYCorreo(string Correo)
+        {
+            RegistroRutinasManager RutinaManager = new RegistroRutinasManager();
+            return RutinaManager.GetRetrieveCorreo(Correo);
         }
 
 

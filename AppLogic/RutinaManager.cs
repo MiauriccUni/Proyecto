@@ -42,6 +42,10 @@ namespace AppLogic
         {
             RutinaCrud rutinasCrud = new RutinaCrud();
             return rutinasCrud.RetrieveBySeries<rutinas>(Series);
+        }   public List<rutinas> GetRetrieveCorreo(string Correo)
+        {
+            RutinaCrud rutinasCrud = new RutinaCrud();
+            return rutinasCrud.RetrieveBycorreo<rutinas>(Correo);
         }
 
     }

@@ -101,7 +101,7 @@ namespace DataAccess.Mappers
             operation.ProcedureName = "GET_USER_BY_RUTINATIPO";
             operation.AddVarCharParam("tipos_de_ejercicio", TipoEjercicio);
             return operation;
-        }
+        } 
         public SqlOperation GetRetrieveBytRepeticiones(int  Repiticiones)
         {
             SqlOperation operation = new SqlOperation();
@@ -117,7 +117,13 @@ namespace DataAccess.Mappers
             return operation;
         }
  
-
+public SqlOperation GetRetrieveByCorreo(string Correo)
+        {
+            SqlOperation operation = new SqlOperation();
+            operation.ProcedureName = "GET_RUTINA_BY_CORREO";
+            operation.AddVarCharParam("correo", Correo);
+            return operation;
+        }
 
 
         public SqlOperation GetRetrieveByIdStatement(string id)
