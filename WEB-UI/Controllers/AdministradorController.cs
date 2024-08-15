@@ -33,12 +33,27 @@ namespace WEB_UI.Controllers
             return View();
         }
 
-        public IActionResult RegistroFacturasAdministrador()
+        public IActionResult FacturasAdministrador()
         {
             return View();
         }
 
         public IActionResult CuponesAdministrador()
+        {
+            return View();
+        }
+
+        public IActionResult AdminClasesGrupales()
+        {
+            return View();
+        }
+
+        public IActionResult AdminPlanesMensuales() 
+        { 
+            return View();
+        }
+
+        public IActionResult AdminClientesPotenciales()
         {
             return View();
         }

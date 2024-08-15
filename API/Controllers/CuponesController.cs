@@ -34,5 +34,12 @@ namespace API.Controllers
             }
             return response;
         }
+
+        [HttpGet]
+        public List<Cupones> GetCupones()
+        {
+            CuponesManager cupones = new CuponesManager();
+            return cupones.GetAllCuponesManager();
+        }
     }
 }

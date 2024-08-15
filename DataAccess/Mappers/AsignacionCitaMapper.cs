@@ -11,23 +11,35 @@ namespace DataAccess.Mappers
             AsignacionCita asig = new AsignacionCita();
 
             asig.Id = int.Parse(row["id_asignacion_cita"].ToString());
-            asig.usuarioLis = new List<Usuario>
-            {
-                new Usuario
-                {
-                    Nombre = row["nombre"].ToString(),
-                    Correo = row["correo"].ToString()
-                }
-            };
+            asig.IdEntrenador = int.Parse(row["id_entrenador"].ToString());            
             asig.citasMedicionesList = new List<CitasMedicion>
             {
                 new CitasMedicion
                 {
                     Fecha = DateTime.Parse(row["fechas"].ToString()),
+                    usuariosList = new List<Usuario>
+                    {
+                       new Usuario
+                       {
+                           Nombre = row["nombre_cliente"].ToString(),
+                           Correo = row["correo_cliente"].ToString(),
+                           Rol = row["usuario_rol"].ToString(),
+                       }
+                    }
+                }
+            };
+            asig.usuarioLis = new List<Usuario>
+            {
+                new Usuario
+                {
+                    Nombre = row["nombre_entrenador"].ToString(),
+                    Correo = row["correo_entrenador"].ToString(),
+                    Rol = row["entrenador_rol"].ToString(),
                 }
             };
             return asig;
         }
+
         public List<BaseClass> BuildObjects(List<Dictionary<string, object>> rowlist)
         {
             List<BaseClass> results = new List<BaseClass>();
@@ -43,7 +55,7 @@ namespace DataAccess.Mappers
         public SqlOperation GetRetrieveAllStatement()
         {
             SqlOperation operation = new SqlOperation();
-            operation.ProcedureName = "GET_ALL_ASIGNACION_JOIN";
+            operation.ProcedureName = "GET_ALL_ASIGNACION_JOIN_MODIFY";
             return operation;
         }
         public SqlOperation GetCreateStatement(BaseClass dto)

@@ -16,7 +16,7 @@
               Swal.fire({
                   icon: 'error',
                   text: "Por favor indique el nombre de la maquina.",
-                  title: 'Error'
+                  title: ''
               });
               return;
           }
@@ -42,7 +42,7 @@
               Swal.fire({
                   icon: 'error',
                   text: "Error al registrar la maquina",
-                  title: 'Error',
+                  title: '',
               });
           })
           
@@ -61,6 +61,14 @@ function Consultar() {
         language: {
             search: {
                 placeholder: 'Buscar'
+            },
+            pagination: {
+                previous: 'Anterior',
+                next: 'Siguiente',
+                showing: 'Mostrando',
+                results: () => 'resultados',
+                to: 'a',
+                of: 'de',
             }
         },
         columns: ['Nombre'],

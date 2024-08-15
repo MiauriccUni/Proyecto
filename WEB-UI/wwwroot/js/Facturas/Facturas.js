@@ -20,7 +20,7 @@ function CrearFactura() {
             Swal.fire({
                 icon: 'error',
                 text: "Por favor el número de la factura.",
-                title: 'Error'
+                title: ''
             });
             return;
         }
@@ -29,7 +29,7 @@ function CrearFactura() {
             Swal.fire({
                 icon: 'error',
                 text: "Por favor indique el día de la factura.",
-                title: 'Error'
+                title: ''
             });
             return;
         }
@@ -38,7 +38,7 @@ function CrearFactura() {
             Swal.fire({
                 icon: 'error',
                 text: "Por favor indique si tiene descuento.",
-                title: 'Error'
+                title: ''
             });
             return;
         }
@@ -47,7 +47,7 @@ function CrearFactura() {
             Swal.fire({
                 icon: 'error',
                 text: "Por favor ingresar el monto final.",
-                title: 'Error'
+                title: ''
             });
             return;
         }
@@ -73,7 +73,7 @@ function CrearFactura() {
             Swal.fire({
                 icon: 'error',
                 text: "Error al registrarse",
-                title: 'Error',
+                title: '',
             });
         });
     }
