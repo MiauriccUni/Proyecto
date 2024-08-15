@@ -222,7 +222,7 @@
                                                     'Content-Type': "application/json"
                                                 },
                                                 method: "POST",
-                                                url: "https://localhost:7253/api/PlanesMensuales/CrearPlanesMensuales",
+                                                url: "https://apirambosgym-emercdd0c8dbe0fq.eastus-01.azurewebsites.net/api/PlanesMensuales/CrearPlanesMensuales",
                                                 contentType: "application/json;charset=utf-8",
                                                 dataType: "json",
                                                 data: JSON.stringify(plan),
