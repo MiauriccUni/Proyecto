@@ -1,7 +1,63 @@
 ﻿
-function Consultar() {
-    let userCorreo = sessionStorage.getItem('selectedUserCorreo');
 
+    var correo = sessionStorage.getItem('correo')
+    //if (correo) {
+    //    console.log("Tengo el correo" , correo)
+    //} else {
+    //    console.log("no tengo el correo", correo)
+    //}
+    
+        this.PopulateUsuarios = function () {
+            $.ajax({
+                url: "https://localhost:7253/api/Usuario/GetClientes",
+                method: "GET",
+                contentType: "application/json;charset=utf-8",
+                dataType: "json"
+            }).done(function (data) {
+                infoUsuario = data;
+                var select = $('#idusuario');
+                for (var row in data) {
+                    select.append('<option value=' + data[row].id + '>' + data[row].correo + '</option>')
+                }
+                select.on('change', function () {
+                    let id = $(this).val();
+                    idUsuarioID = id;
+                });
+            }).fail(function (error) {
+                Swal.fire({
+                    title: "Error",
+                    icon: "error",
+                    text: "Error al cargar los usuarios" + error
+                });
+            });
+        }
+
+        this.PopulateMaquina = function () {
+            $.ajax({
+                url: "https://localhost:7253/api/Maquina/Getmaquina",
+                method: "GET",
+                contentType: "application/json;charset=utf-8",
+                dataType: "json"
+            }).done(function (data) {
+                infoMaquina = data;
+                var select = $('#idMaquina');
+                for (var row in data) {
+                    select.append('<option value=' + data[row].id + '>' + data[row].nombreMaquina + '</option>');
+                }
+                select.on('change', function () {
+                    let id = $(this).val();
+                    idMaquinaID = id;
+                });
+            }).fail(function (error) {
+                Swal.fire({
+                    title: "Error",
+                    icon: "error",
+                    text: "Error al cargar los usuarios" + error
+                });
+            });
+        }
+
+function Consultar() {
     const grid = new gridjs.Grid({
         search: true,
         sort: true,
@@ -12,46 +68,16 @@ function Consultar() {
         columns: ['Nombre del ejercicio', 'Tipo de ejercicio', 'Repeticiones', 'Serires', 'Usuario', 'Maquina'],
         server: {
             url: 'https://localhost:7253/api/Rutina/Getrutina',
-            then: data => data
-                .filter(result => result.usuariosList.some(user => user.correo === userCorreo))
-                .map(result => [
-                    result.nombreEjercicio,
-                    result.tipoEjercicio,
-                    result.repeticiones,
-                    result.series,
-                    result.usuariosList[0].correo,
-                    result.maquinaList[0].nombreMaquina,
-                ])
+            then: data => data.map(result => [
+                result.nombreEjercicio,
+                result.tipoEjercicio,
+                result.repeticiones,
+                result.series,
+                result.usuariosList[0].correo = sessionStorage.getItem('correo'),
+                result.maquinaList[0].nombreMaquina,
+            ])
         },
     }).render(document.getElementById('myGrid'));
-}
-
-this.PopulateUsuarios = function () {
-    $.ajax({
-        url: "https://localhost:7253/api/Usuario/GetClientes",
-        method: "GET",
-        contentType: "application/json;charset=utf-8",
-        dataType: "json"
-    }).done(function (data) {
-        infoUsuario = data;
-        var select = $('#idusuario');
-        for (var row in data) {
-            select.append('<option value=' + data[row].id + '>' + data[row].correo + '</option>');
-        }
-        select.on('change', function () {
-            let id = $(this).val();
-            idUsuarioID = id;
-
-            let selectedCorreo = data.find(user => user.id == id).correo;
-            sessionStorage.setItem('selectedUserCorreo', selectedCorreo);
-        });
-    }).fail(function (error) {
-        Swal.fire({
-            title: "Error",
-            icon: "error",
-            text: "Error al cargar los usuarios: " + error
-        });
-    }); 
 }
 
 document.addEventListener("DOMContentLoaded", function () {
