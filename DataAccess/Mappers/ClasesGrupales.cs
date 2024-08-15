@@ -10,7 +10,7 @@ namespace DataAccess.Mappers
         {
             ClasesGrupales user = new ClasesGrupales();
 
-            user.Id = int.Parse(row["id_clase"].ToString());
+            user.IdClase = int.Parse(row["id_clase"].ToString());
             user.NombreClase = row["nombre_clase"].ToString();
             user.Horarios = DateTime.Parse(row["horarios"].ToString());
             user.CuposDisponibles = int.Parse(row["cupos_disponibles"].ToString());
@@ -35,7 +35,7 @@ namespace DataAccess.Mappers
             operation.ProcedureName = "SP_INSERT_CLASES_GRUPALES";
 
             ClasesGrupales user = (ClasesGrupales)dto;
-            operation.AddIntegerParam("id_clase", user.Id);
+            operation.AddIntegerParam("id_clase", user.IdClase);
             operation.AddVarCharParam("nombre_clase", user.NombreClase);
             operation.AddDatetimeParam("horarios", user.Horarios); 
             operation.AddIntegerParam("cupos_disponibles", user.CuposDisponibles);
@@ -49,6 +49,17 @@ namespace DataAccess.Mappers
             operation.ProcedureName = "GET_ALL_CLASES_GRUPALES";
             return operation;
 
+        }
+        public SqlOperation GetUpdateStatement(BaseClass dto)
+        {
+            ClasesGrupales clasesGrupales = (ClasesGrupales)dto;
+            SqlOperation operation = new SqlOperation();
+            operation.ProcedureName = "SP_UPDATE_CLASES_GRUPALES";
+
+            operation.AddIntegerParam("@id_clase", clasesGrupales.IdClase);
+            operation.AddIntegerParam("@cupos_disponibles", clasesGrupales.CuposDisponibles);
+
+            return operation;
         }
     }
 }

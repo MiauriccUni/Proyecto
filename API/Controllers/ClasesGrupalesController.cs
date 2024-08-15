@@ -34,5 +34,12 @@ namespace API.Controllers
             }
             return response;
         }
+
+        [HttpPut]
+        public string UpdateClasesGrupales(ClasesGrupales clasesGrupales)
+        {
+            ClasesGrupalesManager manager = new ClasesGrupalesManager();
+            return manager.UpdateClasesGrupalesManager(clasesGrupales);
+        }
     }
 }

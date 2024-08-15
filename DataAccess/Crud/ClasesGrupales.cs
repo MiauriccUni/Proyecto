@@ -48,7 +48,8 @@ namespace DataAccess.Crud
 
         public override void Update(BaseClass dto)
         {
-            throw new NotImplementedException();
+            SqlOperation operation = clasesGrupalesMapper.GetUpdateStatement(dto);
+            dao.ExecuteStoreProcedure(operation);
         }
     }
 }
