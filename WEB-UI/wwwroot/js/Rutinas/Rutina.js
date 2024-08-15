@@ -18,8 +18,8 @@ function AgregarRutina() {
         rutina.tipoEjercicio = $('#AgregarTipoEjer').val();
         rutina.repeticiones = $('#AgregarReps').val();
         rutina.series = $('#AgregarSeries').val();
-        rutina.idUsuarios = idUsuarioID;
         rutina.idMaquina = idMaquinaID;
+        rutina.idUsuario = idUsuarioID;
         if (rutina.nombreEjercicio === "") {
             Swal.fire({
                 icon: 'error',
@@ -52,6 +52,9 @@ function AgregarRutina() {
             });
             return;
         }
+
+        console.log(rutina);
+        console.log(idUsuarioID);
    
         $.ajax({
             headers: {
@@ -62,8 +65,11 @@ function AgregarRutina() {
             url: "https://localhost:7253/api/Rutina/CreateRutina",
             contentType: "application/json;charset=utf-8",
             dataType: "json",
-            data: JSON.stringify(rutina)
+            data: JSON.stringify(rutina),
+            hasContent: true
         }).done(function (result) {
+            console.log(result);
+            console.log(rutina);
             Swal.fire({
                 title: "Éxito",
                 icon: "success",
@@ -75,6 +81,8 @@ function AgregarRutina() {
                 text: "Error al registrarse",
                 title: 'Error',
             });
+            console.log(rutina);
+            console.log("este es el error: ",error)
         });
     }
 
@@ -93,6 +101,7 @@ function AgregarRutina() {
             select.on('change', function () {
                 let id = $(this).val();
                 idUsuarioID = id;
+                console.log(id);
             });
         }).fail(function (error) {
             Swal.fire({
