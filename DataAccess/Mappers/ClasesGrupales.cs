@@ -10,7 +10,7 @@ namespace DataAccess.Mappers
         {
             ClasesGrupales user = new ClasesGrupales();
 
-            user.IdClase = int.Parse(row["id_clase"].ToString());
+            user.Id = int.Parse(row["id_clase"].ToString());
             user.NombreClase = row["nombre_clase"].ToString();
             user.Horarios = DateTime.Parse(row["horarios"].ToString());
             user.CuposDisponibles = int.Parse(row["cupos_disponibles"].ToString());
@@ -35,7 +35,7 @@ namespace DataAccess.Mappers
             operation.ProcedureName = "SP_INSERT_CLASES_GRUPALES";
 
             ClasesGrupales user = (ClasesGrupales)dto;
-            operation.AddIntegerParam("id_clase", user.IdClase);
+            operation.AddIntegerParam("id_clase", user.Id);
             operation.AddVarCharParam("nombre_clase", user.NombreClase);
             operation.AddDatetimeParam("horarios", user.Horarios); 
             operation.AddIntegerParam("cupos_disponibles", user.CuposDisponibles);
@@ -56,7 +56,7 @@ namespace DataAccess.Mappers
             SqlOperation operation = new SqlOperation();
             operation.ProcedureName = "SP_UPDATE_CLASES_GRUPALES";
 
-            operation.AddIntegerParam("@id_clase", clasesGrupales.IdClase);
+            operation.AddIntegerParam("@id_clase", clasesGrupales.Id);
             operation.AddIntegerParam("@cupos_disponibles", clasesGrupales.CuposDisponibles);
 
             return operation;
