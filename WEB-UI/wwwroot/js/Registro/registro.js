@@ -36,7 +36,7 @@
         email = $('#registerEmail').val();
         phone = $('#Phone').val();
         gotp = usuario.otp;
-
+        NombrePlan = usuario.rol;
         nombreCompleto = usuario.nombre + " " + usuario.apellidos;
         var time = fillTimestamp();
 
@@ -54,7 +54,7 @@
             Swal.fire({
                 icon: 'error',
                 text: "Por favor indique su nombre en el espacio correspondiente.",
-                title: 'Error'
+                title: ''
             });
             return;
         }
@@ -63,7 +63,7 @@
             Swal.fire({
                 icon: 'error',
                 text: "Por favor indique su apellido en el espacio correspondiente.",
-                title: 'Error'
+                title: ''
             });
             return;
         }
@@ -72,14 +72,14 @@
             Swal.fire({
                 icon: 'error',
                 text: "La edad minima para matricular debe ser 16 años, " + "la edad indicada fue: " + edad,
-                title: 'Error'
+                title: ''
             });
             return;
         } else if (edad > 68) {
             Swal.fire({
                 icon: 'error',
                 text: "La edad maxima para matricular debe ser 68 años, " + "la edad indicada fue: " + edad,
-                title: 'Error'
+                title: ''
             });
             return;
         }
@@ -88,7 +88,7 @@
             Swal.fire({
                 icon: 'error',
                 text: "Por favor seleccione una fecha de nacimiento.",
-                title: 'Error'
+                title: ''
             });
             return;
         }
@@ -97,7 +97,7 @@
             Swal.fire({
                 icon: 'error',
                 text: "Por favor indique su correo en el espacio correspondiente.",
-                title: 'Error'
+                title: ''
             });
             return;
         }
@@ -106,7 +106,7 @@
             Swal.fire({
                 icon: 'error',
                 text: "Por favor indique su numero celular en el espacio correspondiente.",
-                title: 'Error'
+                title: ''
             });
             return;
         }
@@ -115,7 +115,7 @@
             Swal.fire({
                 icon: 'error',
                 text: "El número de teléfono debe tener 8 digitos.",
-                title: 'Error'
+                title: ''
             });
             return;
         }
@@ -124,7 +124,7 @@
             Swal.fire({
                 icon: 'error',
                 text: "Por favor indique su genero en el espacio correspondiente.",
-                title: 'Error'
+                title: ''
             });
             return;
         }
@@ -133,7 +133,7 @@
             Swal.fire({
                 icon: 'error',
                 text: "La contraseña debe tener 8 caracteres.",
-                title: 'Error'
+                title: ''
             });
             return;
         }
@@ -145,9 +145,21 @@
             Swal.fire({
                 icon: 'error',
                 text: "Las contraseñas no coinciden.",
-                title: 'Error'
+                title: ''
             });
             return;
+        }
+
+        opcion = "si";
+        precio = null;
+        identificador = usuario.id;
+
+        if (usuario.rol == 'Cliente1dia') {
+            opcion = "no";
+        } else if (usuario.rol == 'ClientePremium') {
+            precio = "150";
+        } else if (usuario.rol == "ClienteStandard") {
+            precio = "80";
         }
 
         $.ajax({
@@ -192,13 +204,49 @@
                                     sessionStorage.setItem('timestamp', time);
 
                                     window.location = "/OTP/OTP"
+
+                                    switch (opcion) {
+                                        case 'si':
+                                            plan = {};
+
+                                            plan.id = generateUniqueId();
+                                            plan.nombrePlan = NombrePlan;
+                                            plan.precioPlan = precio;
+                                            plan.cuponDescuentoId = 530999;
+                                            plan.estadoPlan = "pendiente";
+                                            plan.usuarioID = identificador;
+
+                                            $.ajax({
+                                                headers: {
+                                                    'Accept': "application/json",
+                                                    'Content-Type': "application/json"
+                                                },
+                                                method: "POST",
+                                                url: "https://localhost:7253/api/PlanesMensuales/CrearPlanesMensuales",
+                                                contentType: "application/json;charset=utf-8",
+                                                dataType: "json",
+                                                data: JSON.stringify(plan),
+                                                hasContent: true
+                                            }).done(function (result) {
+                                                console.log("si registra la factura")
+                                            }).fail(function (error) {
+                                                console.log("este es el erro", error);
+                                            });
+                                            break;
+                                        case 'no':
+                                            console.log("noooooo")
+                                            break;
+                                        default:
+                                            console.log("di no")
+                                            return;
+                                    }
                                 }
                             )
                         }).fail(function (error) {
                             Swal.fire({
                                 icon: 'error',
                                 text: "Error al registrarse",
-                                title: 'Error',
+                                title: '',
                             });
                         });
 
@@ -206,7 +254,7 @@
                         Swal.fire({
                             icon: 'error',
                             text: "Por favor indicar un numero telefonico que no se haya registrado antes.",
-                            title: 'Error'
+                            title: ''
                         });
                     }
                 }).fail(function (error) {
@@ -217,7 +265,7 @@
                 Swal.fire({
                     icon: 'error',
                     text: "Por favor indicar un correo que no se haya registrado antes.",
-                    title: 'Error'
+                    title: ''
                 });
             }
         }).fail(function (error) {
@@ -252,13 +300,13 @@
                 Swal.fire({
                     icon: 'success',
                     text: "Correo de verificación enviado con éxito, por favor revise su correo para realizar la validación",
-                    title: 'Success',
+                    title: 'Éxito',
                 });
             } else {
                 Swal.fire({
                     icon: 'error',
                     text: xhr.responseText,
-                    title: 'Error',
+                    title: '',
                 });
             }
         });

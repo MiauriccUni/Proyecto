@@ -1,10 +1,5 @@
 ﻿using DataAccess.Crud;
 using DTO;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AppLogic
 {
@@ -21,6 +16,18 @@ namespace AppLogic
         {
             PlanesMensualesCrud crud = new PlanesMensualesCrud();
             return crud.RetrieveAll<PlanesMensuales>();
+        }
+
+        public List<PlanesMensuales> GetAllClientes()
+        {
+            PlanesMensualesCrud crud = new PlanesMensualesCrud();
+            return crud.RetrieveAll<PlanesMensuales>();
+        }
+
+        public void UpdateCuponManager(int CuponDescuentoId, int id)
+        {
+            PlanesMensualesCrud crud = new PlanesMensualesCrud();
+            crud.UpdateCuponCrud(CuponDescuentoId, id);
         }
 
     }

@@ -1,0 +1,17 @@
+﻿@{
+    Layout = "_LayoutAdminClientesPotenciales";
+}
+@section Scripts {
+    <script src="https://unpkg.com/gridjs/dist/gridjs.umd.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="~/js/clientespotenciales/clientespotenciales.js"></script>
+}
+<main class="container my-5" style="padding:50px 20px;">
+    <div>
+        <h2 class="text-center">Clientes Potenciales</h2>
+        <div class="table-responsive">
+            <div id="myGridClientesGuardados" class="ag-theme-alpine"></div>
+        </div>
+    </div>
+</main>

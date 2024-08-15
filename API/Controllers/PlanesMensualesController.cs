@@ -13,27 +13,41 @@ namespace API.Controllers
         [HttpPost]
         public string CrearPlanesMensuales(PlanesMensuales planesMensuales)
         {
-            PlanesMensualesManager manager = new PlanesMensualesManager();
-            return manager.CreatePlanesMensualesManager(planesMensuales);
+            PlanesMensualesManager planMensual = new PlanesMensualesManager();
+            return planMensual.CreatePlanesMensualesManager(planesMensuales);
         }
 
-    //    [HttpGet]
-    //    public API_Response GetAllPlanesMensuales()
-    //    {
-    //        API_Response response = new API_Response();
-    //        try
-    //        {
-    //            PlanesMensualesManager manager = new PlanesMensualesManager();
-    //            response.Data = manager.GetAllPlanesMensualesManager();
-    //            response.Result = "OK";
-    //        }
-    //        catch (Exception ex)
-    //        {
-    //            response.Result = "ERROR";
-    //            response.Message = ex.Message;
-    //        }
-    //        return response;
-    //    }
+        [HttpGet]
+        public API_Response GetAllPlanesMensuales()
+        {
+            API_Response response = new API_Response();
+            try
+            {
+                PlanesMensualesManager planMensual = new PlanesMensualesManager();
+                response.Data = planMensual.GetAllPlanesMensualesManager();
+                response.Result = "OK";
+            }
+            catch (Exception ex)
+            {
+                response.Result = "ERROR";
+                response.Message = ex.Message;
+            }
+            return response;
+        }
+
+        [HttpGet]
+        public List<PlanesMensuales> GetPlanesMensuales() 
+        { 
+            PlanesMensualesManager manager = new PlanesMensualesManager();
+            return manager.GetAllPlanesMensualesManager();
+        }
+
+        [HttpPut]
+        public void UpdateCupon(int CuponDescuentoId, int id)
+        { 
+            PlanesMensualesManager updater = new PlanesMensualesManager();
+            updater.UpdateCuponManager(CuponDescuentoId, id);
+        }
 
     }
 }

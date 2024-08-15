@@ -1,4 +1,8 @@
-﻿function CuponesList() {
+﻿idUsuariosID = null;
+infoUsuarios = [];
+idCuponesID = null;
+infoCupones = [];
+function CuponesList() {
     this.InitView = function () {
         $('#registroCupon').click(() => {
             var view = new CuponesList();
@@ -17,7 +21,7 @@
             Swal.fire({
                 icon: 'error',
                 text: "Por favor indique el nombre del cupón.",
-                title: 'Error'
+                title: ''
             });
             return;
         }
@@ -26,7 +30,7 @@
             Swal.fire({
                 icon: 'error',
                 text: "Por favor indique el valor del cupón.",
-                title: 'Error'
+                title: ''
             });
             return;
         }
@@ -35,7 +39,7 @@
             Swal.fire({
                 icon: 'error',
                 text: "Por favor indique la fecha de validez del cupón.",
-                title: 'Error'
+                title: ''
             });
             return;
         }
@@ -66,9 +70,10 @@
             Swal.fire({
                 icon: 'error',
                 text: "Error al registrar el cupón",
-                title: 'Error'
+                title: ''
             });
         });
+        
     }
 }
 function Consultar() {
@@ -82,6 +87,14 @@ function Consultar() {
         language: {
             search: {
                 placeholder: 'Buscar'
+            },
+            pagination: {
+                previous: 'Anterior',
+                next: 'Siguiente',
+                showing: 'Mostrando',
+                results: () => 'resultados',
+                to: 'a',
+                of: 'de',
             }
         },
         columns: ['Nombre', 'Valor Descuento %', 'Fecha de Validez'],

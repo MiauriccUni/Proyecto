@@ -7,6 +7,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="~/js/citasmedicion/citasmedicion.js"></script>
     <script src="~/js/asignacion/asignacion.js"></script>
+    <script src="~/js/registromediciones/registromedicion.js"></script>
 }
 <main class="container my-5" style="padding:50px 20px;">
     <!-- New Section -->
@@ -29,7 +30,7 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="addMeasurementModalLabel">Agendar Nueva Medición</h5>
+                    <h5 class="modal-title" id="addMeasurementModalLabel">Agendar Nuevo Plan</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -85,6 +86,62 @@
                         </div>
 
                         <button type="button" id="AsigCita" class="btn btn-primary">Asignar Cita</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal para Agregar Medición -->
+    <div class="my-5">
+        <h2 class="text-center">Registro de Mediciones </h2>
+        <div class="table-responsive">
+            <div id="myGrid3" class="ag-theme-alpine justify-content-center"></div>
+            <div><button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addMeasurementModal3">Registrar Medición</button></div>
+        </div>
+    </div>
+    <div class="modal fade" id="addMeasurementModal3" tabindex="-1" aria-labelledby="addClassModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addClassModalLabel">Agregar nueva medición</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="addClassForm">
+                        <div class="mb-3">
+                            <label for="Peso" class="form-label">Peso: </label>
+                            <input type="number" class="form-control" id="Peso" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="Estatura" class="form-label">Estatura: </label>
+                            <input type="number" class="form-control" id="Estatura" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="Porcentage" class="form-label">Porcentage de Grasa: </label>
+                            <input type="number" class="form-control" id="Porcentage" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="Notas" class="form-label">Notas adicionales: </label>
+                            <input type="text" class="form-control" id="Notas" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="Espalda" class="form-label">Medición de Espalda: </label>
+                            <input type="number" class="form-control" id="Espalda" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="Pierna" class="form-label">Medición de Pierna: </label>
+                            <input type="number" class="form-control" id="Pierna" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="Cintura" class="form-label">Medición de Cintura: </label>
+                            <input type="number" class="form-control" id="Cintura" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="idCita" class="form-label">Identificador de la Cita: </label>
+                            <input type="number" class="form-control" id="idCita" required>
+                        </div>
+
+                        <button type="button" id="RegMedicion" class="btn btn-primary">Registrar Medición</button>
                     </form>
                 </div>
             </div>
