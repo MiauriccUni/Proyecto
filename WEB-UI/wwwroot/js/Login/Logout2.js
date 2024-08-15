@@ -8,13 +8,23 @@
 }
 
 function cerrarSesion() {
-    console.log("Botón de cerrar sesión presionado");
+    // Mostrar modal de confirmación antes de cerrar sesión
+    Swal.fire({
+        title: '¿Quieres cerrar sesión?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Cerrar Sesión',
+        cancelButtonText: 'Cancelar'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Si el usuario confirma, proceder con el cierre de sesión
+            console.log("Cerrando sesión");
 
+            borrarTodasLasCookies();
+            sessionStorage.clear();
 
-    borrarTodasLasCookies();
-
-    sessionStorage.clear();
-
-    window.location.href = '/Home/Index';
+            // Redirige al usuario a la página de inicio
+            window.location.href = '/Home/Index';
+        }
+    });
 }
-
