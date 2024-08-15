@@ -23,10 +23,7 @@
             <nav>
                 <ul class="nav">
                     <li class="nav-item"><a class="nav-link text-white" href="#section2">Tarifas  <i class="fa-solid fa-money-bill"></i></a></li>
-                    <li class="nav-item">
-                        <a onclick="cerrarSesion();" class="nav-link text-white" href="#" id="cerrarSesion">Cerrar Sesión</a>
-                    </li>
-                    @* <li class="nav-item"><a class="nav-link text-white" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Iniciar Sesión  <i class="fa-solid fa-user"></i></a></li> *@
+                    <li class="nav-item"><a class="nav-link text-white" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Iniciar Sesión  <i class="fa-solid fa-user"></i></a></li>
                 </ul>
             </nav>
         </div>
@@ -51,7 +48,6 @@
             window.location.href = '@Url.Action("OTPRecContra", "OTP")';
         }
     </script>
-    <script src="~/js/login/logout2.js"></script>
     @* <script>
         function redirect() {
             window.location.href = '@Url.Action("ChangePassword", "Home")';
