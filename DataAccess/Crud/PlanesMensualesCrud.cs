@@ -46,6 +46,12 @@ namespace DataAccess.Crud
             throw new NotImplementedException();
         }
 
+        public void UpdateCuponCrud(int CuponDescuentoId, int id)
+        {
+            SqlOperation operation = planesMensualesMapper.UpdateCupon(CuponDescuentoId, id);
+            dao.ExecuteStoreProcedure(operation);
+        }
+
         public override void Update(BaseClass dto)
         {
             throw new NotImplementedException();

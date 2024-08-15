@@ -42,5 +42,12 @@ namespace API.Controllers
             return manager.GetAllPlanesMensualesManager();
         }
 
+        [HttpPut]
+        public void UpdateCupon(int CuponDescuentoId, int id)
+        { 
+            PlanesMensualesManager updater = new PlanesMensualesManager();
+            updater.UpdateCuponManager(CuponDescuentoId, id);
+        }
+
     }
 }

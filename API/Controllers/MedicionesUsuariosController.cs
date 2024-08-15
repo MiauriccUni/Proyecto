@@ -18,13 +18,6 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        public List<MedicionesUsuarios> GetMedicionesUsuarios()
-        {
-            MedicionesUsuariosManager pm = new MedicionesUsuariosManager();
-            return pm.GetMedicionesUsuariosManager();
-        }
-
-        [HttpGet]
         public API_Response GetAllMedicionesUsuarios()
         {
             API_Response response = new API_Response();
@@ -41,5 +34,14 @@ namespace API.Controllers
             }
             return response;
         }
+
+        [HttpGet]
+        public List<MedicionesUsuarios> GetMedicionesUsuarios()
+        {
+            MedicionesUsuariosManager pm = new MedicionesUsuariosManager();
+            return pm.GetMedicionesUsuariosManager();
+        }
+
+        
     }
 }
