@@ -24,7 +24,9 @@
                     </a>
                 <ul class="nav">
                     <li class="nav-item"><a class="nav-link text-white" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Página Principal  <i class="fas fa-user-astronaut mi-icono-personalizado"></i></a></li>
-                    <li class="nav-item"><a class="nav-link text-white" href="#section2">Cerrar Sesión</a></li>
+                    <li class="nav-item">
+                        <a onclick="cerrarSesion();" class="nav-link text-white" href="#" id="cerrarSesion">Cerrar Sesión</a>
+                    </li>
                 </ul>
             </nav>
         </div>
@@ -41,6 +43,7 @@
             <p>&copy; 2024 Gimnasio. Todos los derechos reservados.</p>
         </div>
     </footer>
+    <script src="~/js/login/logout2.js"></script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
