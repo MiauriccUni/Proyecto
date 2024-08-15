@@ -60,6 +60,11 @@
 function Consultar() {
     const grid = new gridjs.Grid({
         search: true,
+        language: {
+            search: {
+                placeholder: 'Buscar'
+            }
+        },
         sort: true,
         resizable: true,
         pagination: {
@@ -79,7 +84,6 @@ function Consultar() {
         },
     }).render(document.getElementById('myGrid'));
 }
-
 document.addEventListener("DOMContentLoaded", function () {
     Consultar();
 });
