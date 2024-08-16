@@ -21,6 +21,35 @@
                     <div class="escondido">
                         <p>info paypal</p>
                     </div>
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                        <input type="hidden" name="cmd" value="_s-xclick" />
+                        <input type="hidden" name="hosted_button_id" value="FFMW7GR9QKKP4" />
+                        <table>
+                            <tr>
+                                <td>
+                                    <input type="hidden" name="on0" value="Cliente Standard" />
+                                    Nuestros Planes
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <select name="os0">
+                                        <option value="Mensualidad">
+                                            Premium $150,00 mes(es)
+                                        </option>
+                                        <option value="Premium">
+                                            Standard $$80,00 USD - mes(es)
+                                        </option>
+                                        <option value="RecontraPremium">
+                                            Cita por día $15,00 USD - mes(es)
+                                        </option>
+                                    </select>
+                                </td>
+                            </tr>
+                        </table>
+                        <input type="hidden" name="currency_code" value="USD" />
+                        <input type="image" src="https://www.paypalobjects.com/es_XC/i/btn/btn_subscribe_LG.gif" border="0" name="submit" title="PayPal es una forma segura y fácil de pagar en línea." alt="Suscribirse" />
+                    </form>
                 </div>
             </div>
         </div>
@@ -47,7 +76,7 @@
         <div class="mt-3">
             <p id="selected-method" class="alert alert-info d-none"></p>
         </div>
-    </main>
+    
     </div>
     <div class="mt-3">
         <p id="selected-method" class="alert alert-info d-none"></p>
