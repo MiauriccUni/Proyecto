@@ -77,6 +77,14 @@ namespace DataAccess.Mappers
             return operation;
         }
 
+        // Ver info de factura en cliente
+        public SqlOperation GetRetriveByCorreo(string Correo) {
+            SqlOperation operation = new SqlOperation();
+            operation.ProcedureName = "GET_PLAN_MENSUAL_BY_CORREO";
+            operation.AddVarCharParam("correo", Correo);
+            return operation;
+        }
+
         public SqlOperation GetRetrieveAllStatement()
         {
             SqlOperation operation = new SqlOperation();

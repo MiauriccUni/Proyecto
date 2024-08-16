@@ -49,5 +49,12 @@ namespace API.Controllers
             updater.UpdateCuponManager(CuponDescuentoId, UsuarioID);
         }
 
+        [HttpGet]
+        public List<PlanesMensuales> GetPlanMensualByCorreo(string Correo)
+        {
+            PlanesMensualesManager PlanUsuario = new PlanesMensualesManager();
+            return PlanUsuario.GetRetrieveCorreo(Correo);
+        }
+
     }
 }

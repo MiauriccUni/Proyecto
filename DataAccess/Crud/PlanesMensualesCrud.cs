@@ -52,12 +52,36 @@ namespace DataAccess.Crud
             dao.ExecuteStoreProcedure(operation);
         }
 
+        // RetreiveByCorreo
+        public List<T> RetrieveByCorreoCrud<T>(string Correo)
+        {
+            List<T> resultList = new List<T>();
+            SqlOperation operation = planesMensualesMapper.GetRetriveByCorreo(Correo);
+
+            List<Dictionary<string, object>> dataResults = dao.ExecuteStoredProcedureWithQuery(operation);
+
+            if (dataResults.Count > 0)
+            {
+                var dtoList = planesMensualesMapper.BuildObjects(dataResults);
+                foreach (var dto in dtoList)
+                {
+                    resultList.Add((T)Convert.ChangeType(dto, typeof(T)));
+                }
+            }
+            return resultList;
+        }
+
 
         // Revisar
         public override void Update(BaseClass dto)
         {
             SqlOperation operation = planesMensualesMapper.GetCreateStatement(dto);
             dao.ExecuteStoreProcedure(operation);
+        }
+
+        public List<PlanesMensuales> RetrieveBycorreo<T>(string correo)
+        {
+            throw new NotImplementedException();
         }
     }
 }

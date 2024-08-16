@@ -1,11 +1,6 @@
 ﻿using DataAccess.DAO;
 using DataAccess.Mappers;
 using DTO;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataAccess.Crud
 {
@@ -143,4 +138,6 @@ namespace DataAccess.Crud
         }
 
     }
+    
+
 }
