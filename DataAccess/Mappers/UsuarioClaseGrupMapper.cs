@@ -18,6 +18,22 @@ namespace DataAccess.Mappers
             us.Id = int.Parse(row["id_usuario_clase"].ToString());
             us.IdUsuario = int.Parse(row["id_usuario"].ToString());
             us.IdClase = int.Parse(row["id_clas"].ToString());
+            us.clasesGrupalesList = new List<ClasesGrupales>
+            {
+                new ClasesGrupales
+                {
+                    NombreClase = row["nombre_clase"].ToString(),
+                    Horarios = DateTime.Parse(row["horarios"].ToString()),
+                }
+            };
+            us.usuariosList = new List<Usuario>
+            {
+                new Usuario
+                {
+                    Correo = row["correo"].ToString(),
+                    Nombre = row["nombre"].ToString(),
+                }
+            };
             return us;
         }
 

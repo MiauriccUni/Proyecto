@@ -25,7 +25,7 @@
     </div>
 
     <!-- Modal para Agendar Clase -->
-    <div class="modal fade" id="addMeasurementModal2" tabindex="-1" aria-labelledby="addMeasurementModal" aria-hidden="true">
+    <div class="modal fade" id="addMeasurementModal" tabindex="-1" aria-labelledby="addMeasurementModal" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
@@ -63,5 +63,33 @@
         </div>
     </div>
     <!-- Modal para asignar la clase al usuario cliente -->
+    <div class="modal fade" id="addMeasurementModal2" tabindex="-1" aria-labelledby="addMeasurementModal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addMeasurementModalLabel2">Crear Nueva Clase Grupal</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="addMeasurementForm">
+                        <div>
+                            <label for="idCliente" class="container">Entrenador a asignar:</label>
+                            <select id="idCliente" class="form-control">
+                                <option value="" disabled selected>Seleccione un Cliente</option>
+                            </select>
+                        </div>
+
+                        <div class="mt-3 mb-3">
+                            <label for="idClase" class="container">Indique el numero de la cita:</label>
+                            <select id="idClase" class="form-control">
+                                <option value="" disabled selected>Seleccione la clase</option>
+                            </select>
+                        </div>
+                        <button type="button" class="btn btn-primary" id="agregar">Guardar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </main>

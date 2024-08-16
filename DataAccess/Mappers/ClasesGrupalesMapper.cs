@@ -63,6 +63,20 @@ namespace DataAccess.Mappers
 
             return operation;
         }
-     
+        public SqlOperation GetRetrieveByID(int id)
+        {
+            SqlOperation operation = new SqlOperation();
+            operation.ProcedureName = "GET_CLASES_GRUPALES_BY_ID";
+            operation.AddIntegerParam("id_clase", id);
+            return operation;
+        }
+        public SqlOperation UpdateCupos(int id, int cupos)
+        {
+            SqlOperation operation = new SqlOperation();
+            operation.ProcedureName = "SP_UPDATE_CUPOS_CLASES";
+            operation.AddIntegerParam("id_clase", id);
+            operation.AddIntegerParam("cupos_disponibles", cupos);
+            return operation;
+        }
     }
 }

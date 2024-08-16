@@ -17,8 +17,9 @@ namespace API.Controllers
             cru.CreateClasesGrupalesManager(clases);
             return "Ok";
         }
+
         [HttpGet]
-        public API_Response GetClasesGrupales() 
+        public API_Response GetAllClasesGrupales() 
         {
             API_Response response = new API_Response();
             try
@@ -32,9 +33,27 @@ namespace API.Controllers
                 response.Message = ex.Message;
             }
             return response;
-        } 
+        }
 
+        [HttpGet]
+        public List<ClasesGrupales> GetClasesGrupales()
+        {
+            ClasesGrupalesManager manager = new ClasesGrupalesManager();
+            return manager.GetClasesGrupalesManager();
+        }
 
+        [HttpGet]
+        public List<ClasesGrupales> GetClasesGrupalesByID(int id)
+        {
+            ClasesGrupalesManager manager = new ClasesGrupalesManager();
+            return manager.GetRetrieveByID(id);
+        }
 
+        [HttpPut]
+        public void UpdateCupos(int id, int cupos)
+        {
+            ClasesGrupalesManager manager = new ClasesGrupalesManager();
+            manager.UpdateCuposManager(id, cupos);
+        }
     }
 }
