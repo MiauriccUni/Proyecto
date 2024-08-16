@@ -53,5 +53,10 @@ namespace WEB_UI.Controllers
             return View();
         }
 
+        public IActionResult AdminClientesPotenciales()
+        {
+            return View();
+        }
+
     }
 }

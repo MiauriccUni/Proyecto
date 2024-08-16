@@ -118,6 +118,14 @@ function Consultar() {
         language: {
             search: {
                 placeholder: 'Buscar'
+            },
+            pagination: {
+                previous: 'Anterior',
+                next: 'Siguiente',
+                showing: 'Mostrando',
+                results: () => 'resultados',
+                to: 'a',
+                of: 'de',
             }
         },
         columns: ['ID', 'Nombre', 'Correo', 'Rol'],

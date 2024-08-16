@@ -34,5 +34,11 @@ namespace API.Controllers
             }
             return response;
         }
+        [HttpGet]
+        public List<AsignacionCita> GetAsignacionCita()
+        {
+            AsignacionCitaManager manager = new AsignacionCitaManager();
+            return manager.GetAsignacions();
+        }
     }
 }
