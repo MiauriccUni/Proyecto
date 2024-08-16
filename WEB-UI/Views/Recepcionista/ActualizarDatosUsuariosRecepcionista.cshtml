@@ -12,60 +12,62 @@
 
 <body>
 
-    <section class="hero">
-        <h1>Lista de Usuarios Rambo's Gym</h1>
-    </section>
-    <div class="position-relative ">
-        <div class="container">
-            <ul id="other-options-list" class="list-unstyled position-absolute end-0 " style="display:none;">
-                <li><a asp-controller="Administrador" asp-action="DatosPersonales">Mi perfil</a></li>
-                <li><a asp-controller="Login" asp-action="Logout">Cerrar Sesión</a></li>
-            </ul>
+    <div class="footer-datos-recepcionista">
+        <section class="hero">
+            <h1>Lista de Usuarios Rambo's Gym</h1>
+        </section>
+        <div class="position-relative ">
+            <div class="container">
+                <ul id="other-options-list" class="list-unstyled position-absolute end-0 " style="display:none;">
+                    <li><a asp-controller="Administrador" asp-action="DatosPersonales">Mi perfil</a></li>
+                    <li><a asp-controller="Login" asp-action="Logout">Cerrar Sesión</a></li>
+                </ul>
+            </div>
         </div>
-    </div>
 
 
-    <div class="container-fluid">
-        <div class="row">
-            <!-- Contenido de la página -->
-            <div class="col">
-                <div class="col text-left" id="menu-quick-access">
-                    <div class="row align-items-center justify-content-between mt-3 mb-4">
-                        <div class="col-md-3 mt-3">
+        <div class="container-fluid">
+            <div class="row">
+                <!-- Contenido de la página -->
+                <div class="col">
+                    <div class="col text-left" id="menu-quick-access">
+                        <div class="row align-items-center justify-content-between mt-3 mb-4">
+                            <div class="col-md-3 mt-3">
+                            </div>
+                        </div>
+                        <div class="text-center align-content-center">
+                            <div class="container tabla-usuarios">
+                                <div id="myGrid" style="height: 430px; width: 1225px;" class="ag-theme-alpine justify-content-center"></div>
+                                <form action="ListUsers">
+                                    <div class="mb-3 text-left">
+                                        <label for="txtIdentificacion">Identificación</label>
+                                        <input id="txtIdentificacion" type="text" class="form-control " />
+                                    </div>
+                                    <div class="mb-3 text-left">
+                                        <form action="">
+                                            <label for="txtRol">Rol</label>
+                                            <select class="form-select" name="rolselect" id="rolselect">
+                                                <option value="" disabled selected>Selecione el rol correspondiente</option>
+                                                <option value="Administrador">Administrador</option>
+                                                <option value="Recepcionista">Recepcionista</option>
+                                                <option value="Entrenador">Entrenador</option>
+                                                <option value="ClientePremium">Cliente Premium</option>
+                                                <option value="ClienteStandard">Cliente Standard</option>
+                                                <option value="Cliente1dia">Cliente 1 día</option>
+                                            </select>
+                                        </form>
+                                    </div>
+                                    <div class="mb-3">
+                                        <button type="button" class="btn btn-success" id="btnActRol">Guardar rol</button>
+                                    </div>
+
+                                </form>
+                            </div>
+
                         </div>
                     </div>
-                    <div class="text-center align-content-center">
-                        <div class="container tabla-usuarios">
-                            <div id="myGrid" style="height: 430px; width: 1225px;" class="ag-theme-alpine justify-content-center"></div>
-                            <form action="ListUsers">
-                                <div class="mb-3 text-left">
-                                    <label for="txtIdentificacion">Identificación</label>
-                                    <input id="txtIdentificacion" type="text" class="form-control " />
-                                </div>
-                                <div class="mb-3 text-left">
-                                    <form action="">
-                                        <label for="txtRol">Rol</label>
-                                        <select class="form-select" name="rolselect" id="rolselect">
-                                            <option value="" disabled selected>Selecione el rol correspondiente</option>
-                                            <option value="Administrador">Administrador</option>
-                                            <option value="Recepcionista">Recepcionista</option>
-                                            <option value="Entrenador">Entrenador</option>
-                                            <option value="ClientePremium">Cliente Premium</option>
-                                            <option value="ClienteStandard">Cliente Standard</option>
-                                            <option value="Cliente1dia">Cliente 1 día</option>
-                                        </select>
-                                    </form>
-                                </div>
-                                <div class="mb-3">
-                                    <button type="button" class="btn btn-success" id="btnActRol">Guardar rol</button>
-                                </div>
 
-                            </form>
-                        </div>
-
-                    </div>
                 </div>
-
             </div>
         </div>
     </div>
