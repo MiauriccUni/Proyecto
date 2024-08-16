@@ -100,7 +100,7 @@ function Consultar() {
             {
                 name: 'Matricular',
                 formatter: (cell, row) => {
-                    return gridjs.html(`<button class="btn btn-primary" onclick="takeSpace(${row[3]})">Tomar un espacio</button>`);
+                    return gridjs.html(`<button class="btn btn-primary" onclick="takeSpace(${row[3]})">Registrar</button>`);
                 }
             }
         ],
