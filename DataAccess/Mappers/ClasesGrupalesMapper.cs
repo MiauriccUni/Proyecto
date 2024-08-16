@@ -43,15 +43,13 @@ namespace DataAccess.Mappers
             return operation;
         }
 
-        public SqlOperation RetrieveAllStatement
+        public SqlOperation RetrieveAllStatement()
         {
-            get
-            {
-                SqlOperation operation = new SqlOperation();
-                operation.ProcedureName = "GET_ALL_CLASES_GRUPALES";
-                return operation;
-
-            }
+            
+            SqlOperation operation = new SqlOperation();
+            operation.ProcedureName = "GET_ALL_CLASES_GRUPALES";
+            return operation;
+            
         }
 
         public SqlOperation GetUpdateCuposDisponiblesStatement(BaseClass dto)

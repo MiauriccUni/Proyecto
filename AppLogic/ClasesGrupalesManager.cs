@@ -5,27 +5,16 @@ namespace AppLogic
 {
     public class ClasesGrupalesManager
     {
-        private ClasesGrupalesCrud crud;
-
-        public ClasesGrupalesManager()
+        public string CreateClasesGrupalesManager(ClasesGrupales clasesGrupales)
         {
-            crud = new ClasesGrupalesCrud();
-        }
-
-        public int CreateClasesGrupalesManager(ClasesGrupales clasesGrupales)
-        {
+            ClasesGrupalesCrud crud = new ClasesGrupalesCrud();
             crud.Create(clasesGrupales);
-            return clasesGrupales.Id; // return the ID of the newly created object
+            return "Ok";
         }
-
-        public List<ClasesGrupales> GetAllClasesGrupalesManager()
+        public List<ClasesGrupales> GetClasesGrupalesManager()
         {
+            ClasesGrupalesCrud crud = new ClasesGrupalesCrud();
             return crud.RetrieveAll<ClasesGrupales>();
-        }
-
-        public void UpdateCuposDisponiblesManager(ClasesGrupales clasesGrupales)
-        {
-            crud.Update(clasesGrupales);
         }
     }
 }
