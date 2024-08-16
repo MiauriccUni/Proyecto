@@ -251,7 +251,7 @@ header nav ul li a {
 
 .header-image {
     width: 100%;
-    padding-top: 70px ;
+    padding-top: 70px;
     max-height: 250px;
     object-fit: cover;
     margin-top: 0px; /* Ajusta el margen superior según sea necesario */
@@ -266,6 +266,9 @@ header nav ul li a {
     width: auto;
     max-width: 300px;
     z-index: 1;
+    width: 15%; /* Ajusta el tamaño aquí */
+    max-width: 280px; /* Tamaño máximo para pantallas más grandes */
+    height: auto; /* Mantiene la proporción */
 }
 
 .bg-custom, .tarifa-card {
@@ -343,6 +346,9 @@ header nav ul li a {
     width: auto;
     max-width: 300px;
     z-index: 1;
+    width: 25%; /* Ajusta el tamaño aquí */
+    max-width: 350px; /* Tamaño máximo para pantallas más grandes */
+    height: auto; /* Mantiene la proporción */
 }
 
 /* CUPONES */
