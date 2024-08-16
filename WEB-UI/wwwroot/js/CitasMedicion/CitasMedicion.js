@@ -176,8 +176,6 @@ function CrearCitaMedicion() {
 
 }
 
-
-
 function Consultar() {
     const grid = new gridjs.Grid({
         search: true,
@@ -190,6 +188,7 @@ function Consultar() {
         server: {
             url: 'https://localhost:7253/api/CitasMedicion/GetAllUsuarios',
             then: data => data.data.map(result => {
+                console.log(data)
 
                 const originalDate = new Date(result.fecha);
                
