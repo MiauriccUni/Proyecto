@@ -1,34 +1,51 @@
-﻿@{
+﻿@* @{
     Layout = "_LayoutInfoClienteDia";
 }
 @section Scripts {
     <script src="https://unpkg.com/gridjs/dist/gridjs.umd.js"></script>
     @* <script src="https://cdn.jsdelivr.net/npm/ag-grid-community/dist/ag-grid-community.min.js"></script> *@
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    @* <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="~/js/AdminList/GridDefinition.js"></script>
     <script src="~/js/AdminList/ListaUsuarios.js"></script>
-}
+    <script src="~/js/planesmensuales/vistafacturas.js"></script>
+} *@
 <!-- Main Section -->
-<section class="hero">
-    <h1>Información Personal</h1>
-</section>
 
-<main class="container my-2" style="padding:30px 20px;">
-    <div class="row info-cliente">
-        <div class="col">
-            <div class="card">
-                <div class="card-body">
-                    <h3 class="card-title"> Datos Personales </h3>
-                    <hr />
-                    <ul class="li_Cliente">
-                        <li>Nombre completo: </li>
-                        <li>Edad: </li>
-                        <li>Fecha nacimiento: </li>
-                        <li>Contacto: </li>
-                    </ul>
+
+@* <main class="container my-2" style="padding:30px 20px;">
+    <div class="ajuste-footer-clientedia1">
+        <div class="row info-cliente">
+            <div class="col-8">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title"> Datos Personales </h3>
+                        <hr />
+                        <ul class="li_Cliente">
+                            <li id="datoNombre">Nombre: </li>
+                            <li id="datoCorreo">Correo contacto: </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title"> Factura </h3>
+                        <hr />
+                        <ul class="li_Cliente">
+                            <li id="datoPrecio">Precio Plan: </li>
+                            <li id="datoDescuento">Descuento: </li>
+                            <hr />
+                            <li id="datoTotalPagar">Total a Pagar: </li>
+                        </ul>
+                        <br />
+                        <p>Aquí habría un botón de paypal, si hubiera unooo</p>
+                        <img src="~/images/padrinos.png" alt="Alternate Text" />
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</main>
+</main> *@ 

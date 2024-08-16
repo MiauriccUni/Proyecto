@@ -164,6 +164,33 @@ header nav ul li a {
     font-size: 35px;
 }
 
+.ultima-tarjeta-admin {
+    padding-bottom: 140px;
+}
+
+.ajuste-footer {
+    padding-bottom: 200px;
+}
+
+.ajuste-footer-2 {
+    padding-bottom: 260px;
+}
+
+.ajuste-footer-3 {
+    padding-bottom: 260px;
+}
+
+.ajuste-footer-4 {
+    padding-bottom: 240px;
+}
+
+.ajuste-footer-5 {
+    padding-bottom: 240px;
+}
+
+.ajuste-footer-6 {
+    padding-bottom: 260px;
+}
 /* Estilos para la tabla generada por Grid.js */
 .gridjs-table {
     width: 100%;
@@ -335,8 +362,8 @@ header nav ul li a {
 
 /* Recepción */
 
-.repecion-panel {
-    margin-bottom: 360px;
+.ultima-tarjeta-recepcion {
+    padding-bottom: 460px;
 }
 
 /* Planes Mensuales */

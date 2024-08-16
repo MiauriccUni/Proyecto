@@ -74,13 +74,13 @@
                             window.location = "/Entrenador/PanelEntrenador";
                             break;
                         case "ClientePremium":
-                            window.location = "/Clientes/ClienteDia";
-                            break;
-                        case "ClienteStandard":
                             window.location = "/Clientes/ClientePremium";
                             break;
-                        case "Cliente1dia":
+                        case "ClienteStandard":
                             window.location = "/Clientes/ClienteStandard";
+                            break;
+                        case "Cliente1dia":
+                            window.location = "/Clientes/ClienteDia"; 
                             break;
                         default:
                             Swal.fire({
