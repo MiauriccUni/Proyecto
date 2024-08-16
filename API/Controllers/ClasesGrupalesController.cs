@@ -10,29 +10,46 @@ namespace API.Controllers
     [ApiController]
     public class ClasesGrupalesController : ControllerBase
     {
-        [HttpPost]
-        public string CrearClasesGrupales(ClasesGrupales clasesGrupales)
+        private ClasesGrupalesManager manager;
+
+        public ClasesGrupalesController()
         {
-            ClasesGrupalesManager manager = new ClasesGrupalesManager();
-            return manager.CreateClasesGrupalesManager(clasesGrupales);
+            manager = new ClasesGrupalesManager();
+        }
+
+        [HttpPost]
+        public IActionResult CrearClasesGrupales(ClasesGrupales clasesGrupales)
+        {
+            int id = manager.CreateClasesGrupalesManager(clasesGrupales);
+            return CreatedAtAction(nameof(GetAllClasesGrupales), new { id = id }, clasesGrupales);
         }
 
         [HttpGet]
-        public API_Response GetAllClasesGrupales()
+        public IActionResult GetAllClasesGrupales()
         {
-            API_Response response = new API_Response();
             try
             {
-                ClasesGrupalesManager manager = new ClasesGrupalesManager();
-                response.Data = manager.GetAllClasesGrupalesManager();
-                response.Result = "OK";
+                List<ClasesGrupales> clasesGrupales = manager.GetAllClasesGrupalesManager();
+                return Ok(clasesGrupales);
             }
             catch (Exception ex)
             {
-                response.Result = "ERROR";
-                response.Message = ex.Message;
+                return StatusCode(500, ex.Message);
             }
-            return response;
+        }
+
+        [HttpPut]
+        public IActionResult UpdateCuposDisponibles(ClasesGrupales clasesGrupales)
+        {
+            try
+            {
+                manager.UpdateCuposDisponiblesManager(clasesGrupales);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
         }
 
     }
