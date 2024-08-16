@@ -14,7 +14,7 @@ function UsuariosList() {
         id = idUsuarioID;
         nuevoRol = $('#rolselect').find(":selected").val();
 
-        var api_url = "https://localhost:7253/api/Usuario/UpdateRol?id=" + id + "&rol=" + nuevoRol;
+        var api_url = "https://apirambosgym-emercdd0c8dbe0fq.eastus-01.azurewebsites.net/api/Usuario/UpdateRol?id=" + id + "&rol=" + nuevoRol;
 
         if (id === "") {
             Swal.fire({
@@ -34,7 +34,7 @@ function UsuariosList() {
         }
 
         $.ajax({
-            url: "https://localhost:7253/api/Usuario/GetUserById?id=" + id,
+            url: "https://apirambosgym-emercdd0c8dbe0fq.eastus-01.azurewebsites.net/api/Usuario/GetUserById?id=" + id,
             method: "GET",
             contentType: "application/json;charset=utf-8",
             dataType: "json"
@@ -83,7 +83,7 @@ function UsuariosList() {
 
     this.PopulateUsuarios = function () {
         $.ajax({
-            url: "https://localhost:7253/api/Usuario/GetUsuarios",
+            url: "https://apirambosgym-emercdd0c8dbe0fq.eastus-01.azurewebsites.net/api/Usuario/GetUsuarios",
             method: "GET",
             contentType: "application/json;charset=utf-8",
             dataType: "json"
@@ -130,7 +130,7 @@ function Consultar() {
         },
         columns: ['ID', 'Nombre', 'Correo', 'Rol'],
         server: {
-            url: 'https://localhost:7253/api/Usuario/GetAllUsuarios',
+            url: 'https://apirambosgym-emercdd0c8dbe0fq.eastus-01.azurewebsites.net/api/Usuario/GetAllUsuarios',
             then: data => data.data.map(result => [result.id, result.nombre, result.correo, result.rol])
         },
     }).render(document.getElementById('myGrid'));

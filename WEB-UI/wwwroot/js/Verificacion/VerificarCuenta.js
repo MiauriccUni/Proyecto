@@ -61,7 +61,7 @@ function VerificarCuenta() {
 
         if (dif < 120) {
             $.ajax({
-                url: "https://localhost:7253/api/Usuario/GetUserByEmail?correo=" + email,
+                url: "https://apirambosgym-emercdd0c8dbe0fq.eastus-01.azurewebsites.net/api/Usuario/GetUserByEmail?correo=" + email,
                 method: "GET",
                 contentType: "application/json;charset=utf-8",
                 dataType: "json"
@@ -77,7 +77,7 @@ function VerificarCuenta() {
                     });
                 } else {
                     $.ajax({
-                        url: "https://localhost:7253/api/Usuario/Validacion?correo=" + email + "&verificar=Validado",
+                        url: "https://apirambosgym-emercdd0c8dbe0fq.eastus-01.azurewebsites.net/api/Usuario/Validacion?correo=" + email + "&verificar=Validado",
                         method: "PUT",
                         contentType: "application/json;charset=utf-8",
                         dataType: "json"
@@ -121,7 +121,7 @@ function VerificarCuenta() {
         newtime = fillTimestamp();
         sessionStorage.setItem('timestamp', newtime);
         $.ajax({
-            url: "https://localhost:7253/api/Usuario/UpdateOTP?correo=" + email2 + "&OTP=" + newOTP,
+            url: "https://apirambosgym-emercdd0c8dbe0fq.eastus-01.azurewebsites.net/api/Usuario/UpdateOTP?correo=" + email2 + "&OTP=" + newOTP,
             method: "PUT",
             contentType: "application/json;charset=utf-8",
             dataType: "json"
@@ -141,7 +141,7 @@ function VerificarCuenta() {
                         "Ten en cuenta que el código expirará en un dos minutos." + "<br><br>" +
                         "Gimnasio Rambo's Gym."
 
-                    var apiUrl = "https://localhost:7253/api/Email/SendEmail?correo=" + email2 + "&cuerpo=" + cuerpo + "&asunto=Verificación de cuenta";
+                    var apiUrl = "https://apirambosgym-emercdd0c8dbe0fq.eastus-01.azurewebsites.net/api/Email/SendEmail?correo=" + email2 + "&cuerpo=" + cuerpo + "&asunto=Verificación de cuenta";
 
                     $.ajax({
                         url: apiUrl,

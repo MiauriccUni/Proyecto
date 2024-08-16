@@ -45,7 +45,7 @@
                 'Content-Type': "application/json"
             },
             method: "POST",
-            url: "https://localhost:7253/api/ClasesGrupales/CrearClasesGrupales",
+            url: "https://apirambosgym-emercdd0c8dbe0fq.eastus-01.azurewebsites.net/api/ClasesGrupales/CrearClasesGrupales",
             contentType: "application/json;charset=utf-8",
             dataType: "json",
             data: JSON.stringify(clase),
@@ -104,7 +104,7 @@ function Consultar() {
         ],
         headerVisible: false,
         server: {
-            url: 'https://localhost:7253/api/ClasesGrupales/GetAllClasesGrupales',
+            url: 'https://apirambosgym-emercdd0c8dbe0fq.eastus-01.azurewebsites.net/api/ClasesGrupales/GetAllClasesGrupales',
             then: data => data.data.map(result => [
                 result.nombreClase,
                 result.horarios,

@@ -31,7 +31,7 @@
         }
 
         $.ajax({
-            url: "https://localhost:7253/api/Usuario/GetUserByEmail?correo=" + email,
+            url: "https://apirambosgym-emercdd0c8dbe0fq.eastus-01.azurewebsites.net/api/Usuario/GetUserByEmail?correo=" + email,
             method: "GET",
             contentType: "application/json;charset=utf-8",
             dataType: "json"
