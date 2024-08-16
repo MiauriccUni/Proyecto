@@ -6,6 +6,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://unpkg.com/gridjs/dist/gridjs.umd.js"></script>
+    <link rel="stylesheet" href="/css/Rutina.css" />
     <script src="~/js/Rutinas/Rutina.js"></script>
 }
 <main class="container my-5 pt-5">
@@ -68,7 +69,7 @@
                 <form id="AgregarCitaForm">
                     <div class="mb-3">
                         <label for="AgregarNombre" class="form-label">Nombre del ejercicio</label>
-                        <input type="text" class="form-control" id="AgregarNombre" name="AgregarEjercicio" required>
+                        <input type="text" class="form-control"  id="AgregarNombre" name="AgregarEjercicio" required>
                     </div>
                     <div class="mb-3">
                         <label for="AgregarTipoEjer" class="form-label">Tipo de ejercicio</label>
@@ -90,8 +91,8 @@
                     </div>
                     <div>
                         <label for="idUsuario" class="container">Cliente:</label>
-                        <select id="idusuario" class="form-control">
-                            <option value="" disabled selected>Seleccione al cliente para la asignacion de la rutina</option>
+                        <select id="idusuario"    class="form-control">
+                            <option id="ss" value="" disabled selected>Seleccione al cliente para la asignacion de la rutina</option>
                         </select>
                     </div>
                     <button type="button" id="Rutinas" class="btn btn-primary">Guardar Cambios</button>
