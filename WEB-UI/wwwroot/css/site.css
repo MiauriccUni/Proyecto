@@ -455,3 +455,57 @@ header nav ul li a {
 .footer-registrar-facturas {
     padding-bottom: 240px;
 }
+
+/* disenos facturas */
+
+.disenoFacturastop {
+    padding-top: 120px;
+}
+
+.diseno-factura1 {
+    border: 10px;
+    border-style: double;
+    border-color: #E74C3C;
+    /*background-color: #2C3E50;
+    color: #FFFFFF;*/
+}
+
+.diseno-factura2 {
+    border: 10px;
+    border-style: dotted;
+    border-color: #E74C3C;
+    /*background-color: #2C3E50;
+    color: #FFFFFF;*/
+}
+
+.diseno-factura3 {
+    border: 10px;
+    border-style: groove;
+    border-color: #E74C3C;
+    /*background-color: #2C3E50;
+    color: #FFFFFF;*/
+}
+
+.diseno-factura4 {
+    border: 10px;
+    border-style: outset;
+    border-color: #E74C3C;
+    /*background-color: #2C3E50;
+    color: #FFFFFF;*/
+}
+
+.diseno-factura5 {
+    border: 10px;
+    border-style: ridge;
+    border-color: #E74C3C;
+    /*background-color: #2C3E50;
+    color: #FFFFFF;*/
+}
+
+.diseno-factura6 {
+    border: 10px;
+    border-style: solid;
+    border-color: #E74C3C;
+    /*background-color: #2C3E50;
+    color: #FFFFFF;*/
+}
