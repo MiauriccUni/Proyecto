@@ -184,6 +184,12 @@ function ConsultarAsignacion() {
         language: {
             search: {
                 placeholder: 'Buscar'
+            },
+            pagination: {
+                previous: 'Anterior',
+                next: 'Siguiente',
+                showing: 'Mostrando',
+                results: () => 'resultados'
             }
         },
         columns: ['id', 'Entrenador', 'Correo entrenador', 'Fecha', 'Nombre Cliente', 'Correo Cliente'],
