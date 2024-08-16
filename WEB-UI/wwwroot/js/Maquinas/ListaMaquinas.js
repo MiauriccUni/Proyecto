@@ -73,7 +73,7 @@ function Consultar() {
         },
         columns: ['Nombre'],
         server: {
-            url: 'https://localhost:7253/api/maquina/GetAllMaquinas',
+            url: 'https://apirambosgym-emercdd0c8dbe0fq.eastus-01.azurewebsites.net/api/maquina/GetAllMaquinas',
             then: data => data.data.map(result => [result.nombreMaquina])
         },
     }).render(document.getElementById('myGrid'));

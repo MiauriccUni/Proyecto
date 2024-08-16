@@ -8,18 +8,21 @@
     <script src="~/js/maquinas/listamaquinas.js"></script>
 }
 <!-- Main Section -->
-<main class="container my-5" style="padding:50px 20px;">
-    <div class="container mt-5">
-        <h1 class="text-center">Registro de Máquinas</h1>
-        <form id="registroForm" class="maquinas-container">
-            <div class="mb-3">
-                <label for="nombreMaquina" class="form-label">Nombre de la máquina</label>
-                <input type="text" class="form-control" id="nombre" name="nombre" required>
-            </div>
-            <button type="button" class="btn btn-primary"id="registromaquina">Registrar Máquina</button>
-        </form>
+<main class="container" style="padding:50px 20px;">
+    <div class="ajuste-footer-5">
+        <div class="container">
+            <h1 class="text-center">Registro de Máquinas</h1>
+            <form id="registroForm" class="maquinas-container">
+                <div class="mb-3">
+                    <label for="nombreMaquina" class="form-label">Nombre de la máquina</label>
+                    <input type="text" class="form-control" id="nombre" name="nombre" required>
+                </div>
+                <button type="button" class="btn btn-primary" id="registromaquina">Registrar Máquina</button>
+            </form>
+        </div>
+        <div class="container tabla-maquinas">
+            <div id="myGrid" style="height: 430px; width: 500px;" class="ag-theme-alpine justify-content-center justify-content-sm-start"></div>
+        </div>
     </div>
-    <div class="container tabla-maquinas">
-        <div id="myGrid" style="height: 430px; width: 500px;" class="ag-theme-alpine justify-content-center justify-content-sm-start"></div>
-    </div>
+   
 </main>

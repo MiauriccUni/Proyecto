@@ -37,18 +37,34 @@ namespace DataAccess.Mappers
             ClasesGrupales user = (ClasesGrupales)dto;
             operation.AddIntegerParam("id_clase", user.Id);
             operation.AddVarCharParam("nombre_clase", user.NombreClase);
-            operation.AddDatetimeParam("horarios", user.Horarios); 
+            operation.AddDatetimeParam("horarios", user.Horarios);
             operation.AddIntegerParam("cupos_disponibles", user.CuposDisponibles);
 
             return operation;
         }
 
-        public SqlOperation GetRetrieveAllStatement()
+        public SqlOperation RetrieveAllStatement
+        {
+            get
+            {
+                SqlOperation operation = new SqlOperation();
+                operation.ProcedureName = "GET_ALL_CLASES_GRUPALES";
+                return operation;
+
+            }
+        }
+
+        public SqlOperation GetUpdateCuposDisponiblesStatement(BaseClass dto)
         {
             SqlOperation operation = new SqlOperation();
-            operation.ProcedureName = "GET_ALL_CLASES_GRUPALES";
-            return operation;
+            operation.ProcedureName = "SP_UPDATE_CLASES_GRUPALES";
 
+            ClasesGrupales user = (ClasesGrupales)dto;
+            operation.AddIntegerParam("id_clase", user.Id);
+            operation.AddIntegerParam("cupos_disponibles", user.CuposDisponibles);
+
+            return operation;
         }
+     
     }
 }

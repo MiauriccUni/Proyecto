@@ -163,7 +163,7 @@
         }
 
         $.ajax({
-            url: "https://localhost:7253/api/Usuario/GetUserByEmail?correo=" + email,
+            url: "https://apirambosgym-emercdd0c8dbe0fq.eastus-01.azurewebsites.net/api/Usuario/GetUserByEmail?correo=" + email,
             method: "GET",
             contentType: "application/json;charset=utf-8",
             dataType: "json"
@@ -171,7 +171,7 @@
             var user = result[0];
             if (!user) {
                 $.ajax({
-                    url: "https://localhost:7253/api/Usuario/GetUserByPhone?phone=" + phone,
+                    url: "https://apirambosgym-emercdd0c8dbe0fq.eastus-01.azurewebsites.net/api/Usuario/GetUserByPhone?phone=" + phone,
                     method: "GET",
                     contentType: "application/json;charset=utf-8",
                     dataType: "json"
@@ -184,7 +184,7 @@
                                 'Content-Type': "application/json"
                             },
                             method: "POST",
-                            url: "https://localhost:7253/api/Usuario/CreateUsuario",
+                            url: "https://apirambosgym-emercdd0c8dbe0fq.eastus-01.azurewebsites.net/api/Usuario/CreateUsuario",
                             contentType: "application/json;charset=utf-8",
                             dataType: "json",
                             data: JSON.stringify(usuario),
@@ -222,7 +222,7 @@
                                                     'Content-Type': "application/json"
                                                 },
                                                 method: "POST",
-                                                url: "https://localhost:7253/api/PlanesMensuales/CrearPlanesMensuales",
+                                                url: "https://apirambosgym-emercdd0c8dbe0fq.eastus-01.azurewebsites.net/api/PlanesMensuales/CrearPlanesMensuales",
                                                 contentType: "application/json;charset=utf-8",
                                                 dataType: "json",
                                                 data: JSON.stringify(plan),
@@ -279,7 +279,7 @@
             "Ten en cuenta que el código expirará en un minuto." + "<br><br>" +
             "Gimnasio Rambo's Gym."
 
-        var apiUrl = "https://localhost:7253/api/Email/SendEmail?correo=" + email + "&cuerpo=" + cuerpo + "&asunto=Verificación de cuenta";
+        var apiUrl = " https://apirambosgym-emercdd0c8dbe0fq.eastus-01.azurewebsites.net/api/Email/SendEmail?correo=" + email + "&cuerpo=" + cuerpo + "&asunto=Verificación de cuenta";
         
         $.ajax({
             url: apiUrl,

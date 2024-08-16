@@ -6,7 +6,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="~/js/ClasesGrupales/clasesGrupales.js"></script>
-
+    <script src="~/js/usuarioclase/usuarioclase.js"></script>
 }
 
 <main class="container my-5" style="padding:50px 20px;">
@@ -18,15 +18,14 @@
     <!-- Tabla de Clase -->
     <div class="my-5">
         <h2 class="text-center">Clases Grupales</h2>
-        <div class="table-responsive">
+        <div class="table-responsive ajuste-footer-2">
             <div id="myGrid" class="ag-theme-alpine justify-content-center"></div>
             <div><button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addMeasurementModal">Agregar Clase</button></div>
         </div>
-
     </div>
 
     <!-- Modal para Agendar Clase -->
-    <div class="modal fade" id="addMeasurementModal" tabindex="-1" aria-labelledby="addMeasurementModal" aria-hidden="true">
+    <div class="modal fade" id="addMeasurementModal2" tabindex="-1" aria-labelledby="addMeasurementModal" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
@@ -55,5 +54,14 @@
         </div>
     </div>
 
+    <!-- Tabla donde aparecen registrados los usuarios-->
+    <div class="my-5">
+        <h2 class="text-center">Clases Grupales</h2>
+        <div class="table-responsive">
+            <div id="myGrid2" class="ag-theme-alpine justify-content-center"></div>
+            <div><button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addMeasurementModal2">Agregar usuario a la clase</button></div>
+        </div>
+    </div>
+    <!-- Modal para asignar la clase al usuario cliente -->
 
 </main>

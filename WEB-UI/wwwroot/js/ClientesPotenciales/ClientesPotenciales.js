@@ -9,7 +9,7 @@ function ClientesPotenciales() {
 
     this.PopulateUsuarios = function () {
         $.ajax({
-            url: "https://localhost:7253/api/Usuario/GetClientes",
+            url: "https://apirambosgym-emercdd0c8dbe0fq.eastus-01.azurewebsites.net/api/Usuario/GetClientes",
             method: "GET",
             contentType: "application/json;charset=utf-8",
             dataType: "json"
@@ -53,7 +53,7 @@ function Consultar() {
         },
         columns: ['Nombre Completo', 'Correo', 'Rol', 'Valor Membresía','Fecha Matrícula', 'Fecha de facturación', 'Estatus Pago'],
         server: {
-            url: 'https://localhost:7253/api/Usuario/GetAllUsuarios',
+            url: 'https://apirambosgym-emercdd0c8dbe0fq.eastus-01.azurewebsites.net/api/Usuario/GetAllUsuarios',
             then: data => data.data
                 .filter(result => ["ClienteStandard", "ClientePremium", "Cliente1dia"].includes(result.rol))
                 .map(result => [

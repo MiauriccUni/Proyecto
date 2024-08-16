@@ -4,18 +4,20 @@ using DTO;
 
 namespace DataAccess.Crud
 {
-    public class ClasesGrupalesCrud : CrudFactory
+    public class UsuarioClaseGrupCrud : CrudFactory
     {
-        ClasesGrupalesMapper clasesGrupalesMapper;
 
-        public ClasesGrupalesCrud() : base()
+        UsuarioClaseGrupMapper usuarioClaseGrupMapper;
+
+        public UsuarioClaseGrupCrud() : base()
         {
-            clasesGrupalesMapper = new ClasesGrupalesMapper();
+            usuarioClaseGrupMapper = new UsuarioClaseGrupMapper();
             dao = SqlDao.GetInstance();
         }
+
         public override void Create(BaseClass dto)
         {
-            SqlOperation operation = clasesGrupalesMapper.GetCreateStatement(dto);
+            SqlOperation operation = usuarioClaseGrupMapper.GetCreateStatement(dto);
             dao.ExecuteStoreProcedure(operation);
         }
 
@@ -27,12 +29,12 @@ namespace DataAccess.Crud
         public override List<T> RetrieveAll<T>()
         {
             List<T> resultList = new List<T>();
-            SqlOperation operation = clasesGrupalesMapper.GetRetrieveAllStatement();
+            SqlOperation operation = usuarioClaseGrupMapper.GetRetrieveClass();
 
             List<Dictionary<string, object>> dataResults = dao.ExecuteStoredProcedureWithQuery(operation);
             if (dataResults.Count > 0)
             {
-                var dtoList = clasesGrupalesMapper.BuildObjects(dataResults);
+                var dtoList = usuarioClaseGrupMapper.BuildObjects(dataResults);
                 foreach (var dto in dtoList)
                 {
                     resultList.Add((T)Convert.ChangeType(dto, typeof(T)));
@@ -48,7 +50,7 @@ namespace DataAccess.Crud
 
         public override void Update(BaseClass dto)
         {
-           throw new NotImplementedException();
+            throw new NotImplementedException();
         }
     }
 }
