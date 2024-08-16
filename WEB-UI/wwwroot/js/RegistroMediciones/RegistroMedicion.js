@@ -232,6 +232,12 @@ function Consultar2() {
         language: {
             search: {
                 placeholder: 'Buscar'
+            },
+            pagination: {
+                previous: 'Anterior',
+                next: 'Siguiente',
+                showing: 'Mostrando',
+                results: () => 'resultados'
             }
         },
         columns: ['Peso', 'Estatura', 'Porcentage en Grasa', 'Notas', 'Medición Espalda', 'Medición Cintura', 'Medición Pierna', 'Fecha'],

@@ -181,9 +181,20 @@ function CrearCitaMedicion() {
 function Consultar() {
     const grid = new gridjs.Grid({
         search: true,
+        sort: true,
+        resizable: true,
+        pagination: {
+            limit: 5
+        },
         language: {
             search: {
                 placeholder: 'Buscar'
+            },
+            pagination: {
+                previous: 'Anterior',
+                next: 'Siguiente',
+                showing: 'Mostrando',
+                results: () => 'resultados'
             }
         },
         columns: ['Nombre del Cliente', 'Correo Cliente', 'Fecha'],
