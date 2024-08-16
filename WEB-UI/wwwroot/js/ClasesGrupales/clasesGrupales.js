@@ -58,6 +58,10 @@
             }).then(function () {
                 var view = new CrearClaseGrupal();
                 view.LimpiarForm();
+                setTimeout(() => {
+                    location.reload();
+
+                }, 1000);
             });
         }).fail(function (error) {
             Swal.fire({

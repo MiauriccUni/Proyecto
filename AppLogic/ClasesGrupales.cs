@@ -17,12 +17,5 @@ namespace AppLogic
             ClasesGrupalesCrud crud = new ClasesGrupalesCrud();
             return crud.RetrieveAll<ClasesGrupales>();
         }
-
-        public string UpdateClasesGrupalesManager(ClasesGrupales clasesGrupales)
-        {
-            ClasesGrupalesCrud crud = new ClasesGrupalesCrud();
-            crud.Update(clasesGrupales);
-            return "OK";
-        }
     }
 }

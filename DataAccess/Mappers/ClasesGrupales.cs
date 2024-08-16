@@ -50,16 +50,6 @@ namespace DataAccess.Mappers
             return operation;
 
         }
-        public SqlOperation GetUpdateStatement(BaseClass dto)
-        {
-            ClasesGrupales clasesGrupales = (ClasesGrupales)dto;
-            SqlOperation operation = new SqlOperation();
-            operation.ProcedureName = "SP_UPDATE_CLASES_GRUPALES";
-
-            operation.AddIntegerParam("@id_clase", clasesGrupales.Id);
-            operation.AddIntegerParam("@cupos_disponibles", clasesGrupales.CuposDisponibles);
-
-            return operation;
-        }
+     
     }
 }
