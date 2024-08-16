@@ -105,13 +105,24 @@ function Consultar() {
         headerVisible: false,
         server: {
             url: 'https://apirambosgym-emercdd0c8dbe0fq.eastus-01.azurewebsites.net/api/ClasesGrupales/GetAllClasesGrupales',
-            then: data => data.data.map(result => [
-                result.nombreClase,
-                result.horarios,
-                result.cuposDisponibles,
-                result.id,
-            ])
-        },
+            then: data => data.data.map(result => {
+                const originalDate = new Date(result.horarios);
+
+                const formatteDate =
+                    `${(originalDate.getMonth() + 1).toString().padStart(2, '0')}/` +
+                    `${originalDate.getDate().toString().padStart(2, '0')}/` +
+                    `${originalDate.getFullYear()} ` +
+                    `${originalDate.getHours().toString().padStart(2, '0')}:` +
+                    `${originalDate.getMinutes().toString().padStart(2, '0')}`;
+
+                return [
+                    result.nombreClase,
+                    formatteDate,
+                    result.cuposDisponibles,
+                    result.id,
+                ]
+            }),
+        }
     }).render(document.getElementById('myGrid'));
 }
 
