@@ -112,7 +112,7 @@ function CrearCitaMedicion() {
                 'Content-Type': "application/json"
             },
             method: "POST",
-            url: "https://localhost:7253/api/CitasMedicion/CrearCitaMedicion",
+            url: "https://apirambosgym-emercdd0c8dbe0fq.eastus-01.azurewebsites.net/api/CitasMedicion/CrearCitaMedicion",
             contentType: "application/json;charset=utf-8",
             dataType: "json",
             data: JSON.stringify(citas),
@@ -142,7 +142,7 @@ function CrearCitaMedicion() {
 
     this.PopulateUsuarios = function () {
         $.ajax({            
-            url: "https://localhost:7253/api/Usuario/GetClientes",
+            url: "https://apirambosgym-emercdd0c8dbe0fq.eastus-01.azurewebsites.net/api/Usuario/GetClientes",
             method: "GET",
             contentType: "application/json;charset=utf-8",
             dataType: "json"
@@ -181,14 +181,25 @@ function CrearCitaMedicion() {
 function Consultar() {
     const grid = new gridjs.Grid({
         search: true,
+        sort: true,
+        resizable: true,
+        pagination: {
+            limit: 5
+        },
         language: {
             search: {
                 placeholder: 'Buscar'
+            },
+            pagination: {
+                previous: 'Anterior',
+                next: 'Siguiente',
+                showing: 'Mostrando',
+                results: () => 'resultados'
             }
         },
         columns: ['Nombre del Cliente', 'Correo Cliente', 'Fecha'],
         server: {
-            url: 'https://localhost:7253/api/CitasMedicion/GetAllUsuarios',
+            url: 'https://apirambosgym-emercdd0c8dbe0fq.eastus-01.azurewebsites.net/api/CitasMedicion/GetAllUsuarios',
             then: data => data.data.map(result => {
 
                 const originalDate = new Date(result.fecha);
