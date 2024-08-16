@@ -10,47 +10,31 @@ namespace API.Controllers
     [ApiController]
     public class ClasesGrupalesController : ControllerBase
     {
-        private ClasesGrupalesManager manager;
-
-        public ClasesGrupalesController()
-        {
-            manager = new ClasesGrupalesManager();
-        }
-
         [HttpPost]
-        public IActionResult CrearClasesGrupales(ClasesGrupales clasesGrupales)
+        public string CreateClasesGrupales(ClasesGrupales clases)
         {
-            int id = manager.CreateClasesGrupalesManager(clasesGrupales);
-            return CreatedAtAction(nameof(GetAllClasesGrupales), new { id = id }, clasesGrupales);
+            ClasesGrupalesManager cru = new ClasesGrupalesManager();
+            cru.CreateClasesGrupalesManager(clases);
+            return "Ok";
         }
-
         [HttpGet]
-        public IActionResult GetAllClasesGrupales()
+        public API_Response GetClasesGrupales() 
         {
+            API_Response response = new API_Response();
             try
             {
-                List<ClasesGrupales> clasesGrupales = manager.GetAllClasesGrupalesManager();
-                return Ok(clasesGrupales);
-            }
-            catch (Exception ex)
+                ClasesGrupalesManager manager = new ClasesGrupalesManager();
+                response.Data = manager.GetClasesGrupalesManager();
+                response.Result = "OK";
+            }catch(Exception ex)
             {
-                return StatusCode(500, ex.Message);
+                response.Result = "ERROR";
+                response.Message = ex.Message;
             }
-        }
+            return response;
+        } 
 
-        [HttpPut]
-        public IActionResult UpdateCuposDisponibles(ClasesGrupales clasesGrupales)
-        {
-            try
-            {
-                manager.UpdateCuposDisponiblesManager(clasesGrupales);
-                return Ok();
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, ex.Message);
-            }
-        }
+
 
     }
 }
