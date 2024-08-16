@@ -54,6 +54,12 @@ namespace DataAccess.Mappers
             return operation;
         }
 
-
+        //public SqlOperation GetByCorreoStatement(string correo)
+        //{
+        //    SqlOperation operation = new SqlOperation();
+        //    operation.ProcedureName = "GET_CITA_BY_CORREO";
+        //    operation.AddVarCharParam("correo", correo);
+        //    return operation;
+        //}
     }
 }

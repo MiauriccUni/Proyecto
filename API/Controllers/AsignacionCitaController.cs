@@ -1,4 +1,5 @@
 ﻿using AppLogic;
+using DataAccess.Crud;
 using DTO;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
@@ -39,6 +40,13 @@ namespace API.Controllers
         {
             AsignacionCitaManager manager = new AsignacionCitaManager();
             return manager.GetAsignacions();
+        }
+
+        [HttpGet]
+        public List<AsignacionCita> GetAsignacionCitaByCorreo(string correo)
+        {
+            AsignacionCitaCrud crud = new AsignacionCitaCrud();
+            return crud.RetrieveByCorreo(correo);
         }
     }
 }

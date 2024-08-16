@@ -11,6 +11,8 @@
     <script src="~/js/AdminList/ListaUsuarios.js"></script>
     <script src="~/js/planesmensuales/vistafacturas.js"></script>
     <script src="~/js/logout.js"></script>
+    <script src="~/js/ClasesGrupales/clasesGrupales.js"></script>
+   
 }
 <!-- Main Section -->
 <div>
@@ -21,38 +23,21 @@
 </section>
 <!-- Imagen Lateral -->
 <img src="https://res.cloudinary.com/testcenfotecdsd/image/upload/v1722367620/imagen_2024-07-30_132657783_jzlges.png" alt="Imagen Lateral" class="side-image-clientes">
-<main class="container">
-    <div class="ajuste-footer-clientedia1">
-        <div class="row info-cliente">
-            <div class="col-8">
-                <div class="card">
-                    <div class="card-body">
-                        <h3 class="card-title"> Datos Personales </h3>
-                        <hr />
-                        <ul class="li_Cliente">
-                            <li id="datoNombre">Nombre: </li>
-                            <li id="datoCorreo">Correo contacto: </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h3 class="card-title"> Factura </h3>
-                        <hr />
-                        <ul class="li_Cliente">
-                            <li id="datoPrecio">Precio Plan: </li>
-                            <li id="datoDescuento">Descuento: </li>
-                            <hr />
-                            <li id="datoTotalPagar">Total a Pagar: </li>
-                        </ul>
-                        <br />
-                        <div id="paypal-button-container"></div>
-                    </div>
-                </div>
-            </div>
+<main class="container my-2" style="padding:30px 20px;">
+    <!-- Tabla de Citas para Medición /// ESTE USUARIO NO LO NECESITA -->
+@*     <div class="my-5">
+        <h2 class="text-center">Citas para Medición</h2>
+        <div class="table-responsive">
+            <div id="GridCitasMediciones" class="ag-theme-alpine justify-content-center"></div>
         </div>
+
+    </div> *@
+    <!-- Tabla de Clases -->
+    <div class="my-5">
+        <h2 class="text-center">Clases Grupales</h2>
+        <div class="table-responsive">
+            <div id="myGrid" class="ag-theme-alpine justify-content-center"></div>
+        </div>
+
     </div>
 </main>

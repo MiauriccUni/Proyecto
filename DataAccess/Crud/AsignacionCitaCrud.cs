@@ -41,6 +41,24 @@ namespace DataAccess.Crud
             return resultList;
         }
 
+        public List<AsignacionCita> RetrieveByCorreo(string correo)
+        {
+            List<AsignacionCita> resultList = new List<AsignacionCita>();
+            SqlOperation operation = asignacionCitaMapper.GetByCorreoStatement(correo);
+
+            List<Dictionary<string, object>> dataResults = dao.ExecuteStoredProcedureWithQuery(operation);
+            if (dataResults.Count > 0)
+            {
+                var dtoList = asignacionCitaMapper.BuildObjects(dataResults);
+                foreach (var dto in dtoList)
+                {
+                    resultList.Add((AsignacionCita)Convert.ChangeType(dto, typeof(AsignacionCita)));
+                }
+            }
+            return resultList;
+        }
+
+
         public override T RetrieveById<T>(int id)
         {
             throw new NotImplementedException();

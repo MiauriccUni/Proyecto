@@ -50,5 +50,22 @@ namespace DataAccess.Crud
         {
             throw new NotImplementedException();
         }
+
+        //public List<T> RetrievebyCorreo<T>(string correo)
+        //{
+        //    List<T> resultList = new List<T>();
+        //    SqlOperation operation = citasMedicionMapper.GetByCorreoStatement(correo);
+
+        //    List<Dictionary<string, object>> dataResults = dao.ExecuteStoredProcedureWithQuery(operation);
+        //    if (dataResults.Count > 0)
+        //    {
+        //        var dtoList = citasMedicionMapper.BuildObjects(dataResults);
+        //        foreach (var dto in dtoList)
+        //        {
+        //            resultList.Add((T)Convert.ChangeType(dto, typeof(T)));
+        //        }
+        //    }
+        //    return resultList;
+        //}
     }
 }

@@ -176,8 +176,6 @@ function CrearCitaMedicion() {
 
 }
 
-
-
 function Consultar() {
     const grid = new gridjs.Grid({
         search: true,
@@ -201,6 +199,7 @@ function Consultar() {
         server: {
             url: 'https://apirambosgym-emercdd0c8dbe0fq.eastus-01.azurewebsites.net/api/CitasMedicion/GetAllUsuarios',
             then: data => data.data.map(result => {
+                console.log(data)
 
                 const originalDate = new Date(result.fecha);
                

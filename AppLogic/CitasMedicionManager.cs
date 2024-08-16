@@ -21,5 +21,11 @@ namespace AppLogic
             CitasMedicionCrud crud = new CitasMedicionCrud();
             return crud.RetrieveAll<CitasMedicion>();
         }
+
+        //public List<CitasMedicion> GetCitabyCorreo(string correo)
+        //{
+        //    CitasMedicionCrud crud = new CitasMedicionCrud();
+        //    return crud.RetrievebyCorreo<CitasMedicion>(correo);
+        //}
     }
 }
