@@ -27,7 +27,7 @@ namespace DataAccess.Crud
         public override List<T> RetrieveAll<T>()
         {
             List<T> resultList = new List<T>();
-            SqlOperation operation = clasesGrupalesMapper.GetRetrieveAllStatement();
+            SqlOperation operation = clasesGrupalesMapper.RetrieveAllStatement;
 
             List<Dictionary<string, object>> dataResults = dao.ExecuteStoredProcedureWithQuery(operation);
             if (dataResults.Count > 0)
@@ -48,7 +48,8 @@ namespace DataAccess.Crud
 
         public override void Update(BaseClass dto)
         {
-            throw new NotImplementedException();
+            SqlOperation operation = clasesGrupalesMapper.GetUpdateCuposDisponiblesStatement(dto);
+            dao.ExecuteStoreProcedure(operation);
         }
     }
 }

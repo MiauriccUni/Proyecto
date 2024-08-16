@@ -86,15 +86,24 @@ function Consultar() {
             search: {
                 placeholder: 'Buscar'
             },
-        
-        pagination: {
-            previous: 'Anterior',
-            next: 'Siguiente',
-            showing: 'Mostrando',
-            results: () => 'resultados'
+            pagination: {
+                previous: 'Anterior',
+                next: 'Siguiente',
+                showing: 'Mostrando',
+                results: () => 'resultados'
             }
         },
-        columns: ['Nombre de la Clase', 'Horarios', 'Cupos Disponibles',],
+        columns: [
+            'Nombre de la Clase',
+            'Horarios',
+            'Cupos Disponibles',
+            {
+                name: 'Matricular',
+                formatter: (cell, row) => {
+                    return gridjs.html(`<button class="btn btn-primary" onclick="takeSpace(${row[3]})">Tomar un espacio</button>`);
+                }
+            }
+        ],
         headerVisible: false,
         server: {
             url: 'https://localhost:7253/api/ClasesGrupales/GetAllClasesGrupales',
@@ -107,6 +116,32 @@ function Consultar() {
         },
     }).render(document.getElementById('myGrid'));
 }
+
+//function takeSpace(id) {
+//    // Get the current value of cuposDisponibles for the row with the given ID
+//    fetch(`https://localhost:7253/api/ClasesGrupales/GetClasesGrupalesById/${id}`)
+//        .then(response => response.json())
+//        .then(data => {
+//            const currentCuposDisponibles = data.cuposDisponibles;
+//            const newCuposDisponibles = currentCuposDisponibles - 1;
+
+//            // Update the database with the new value
+//            fetch(`https://localhost:7253/api/ClasesGrupales/UpdateCuposDisponibles`, {
+//                method: 'POST',
+//                headers: { 'Content-Type': 'application/json' },
+//                body: JSON.stringify({ id, newCuposDisponibles }),
+//            })
+//                .then(response => response.json())
+//                .then(data => {
+//                    console.log(`Cupos Disponibles Actualizado: ${newCuposDisponibles}`);
+//                    // Refresh the grid to reflect the updated value
+//                    Consultar();
+//                })
+//                .catch(error => console.error(error));
+//        })
+//        .catch(error => console.error(error));
+//}
+
 
 generatedIds = [];
 
