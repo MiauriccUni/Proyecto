@@ -12,38 +12,40 @@
 </section>
 
 <main class="container contendor-facturas">
-    <div class="row">
-        <div class="col-4">
-            <div class="container mt-5">
-                <form id="registroForm" class="facturas-container">
-                    <div class="mb-3">
-                        <label for="numeroFactura" class="form-label">Numero de Factura</label>
-                        <input type="text" class="form-control" id="numeroFactura" name="numeroFactura" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="fechaFactura" class="form-label">Día de la factura</label>
-                        <input type="date" class="form-control" id="fechaFactura" name="fechaFactura" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="descuento" class="form-label">Descuento</label>
-                        <div>
-                            <input type="radio" id="si" name="descuento" value="si" required>
-                            <label for="si">Sí</label>
-                            <input type="radio" id="no" name="descuento" value="no" required>
-                            <label for="no">No</label>
+    <div class="footer-registrar-facturas">
+        <div class="row">
+            <div class="col-4">
+                <div class="container mt-5">
+                    <form id="registroForm" class="facturas-container">
+                        <div class="mb-3">
+                            <label for="numeroFactura" class="form-label">Numero de Factura</label>
+                            <input type="text" class="form-control" id="numeroFactura" name="numeroFactura" required>
                         </div>
-                    </div>
-                    <div class="mb-3">
-                        <label for="montoPagado" class="form-label">Monto cancelado</label>
-                        <input type="text" class="form-control" id="montoPagado" name="montoPagado" required>
-                    </div>
-                    <button type="button" class="btn btn-primary" id="registroFactura">Registrar Factura</button>
-                </form>
+                        <div class="mb-3">
+                            <label for="fechaFactura" class="form-label">Día de la factura</label>
+                            <input type="date" class="form-control" id="fechaFactura" name="fechaFactura" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="descuento" class="form-label">Descuento</label>
+                            <div>
+                                <input type="radio" id="si" name="descuento" value="si" required>
+                                <label for="si">Sí</label>
+                                <input type="radio" id="no" name="descuento" value="no" required>
+                                <label for="no">No</label>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="montoPagado" class="form-label">Monto cancelado</label>
+                            <input type="text" class="form-control" id="montoPagado" name="montoPagado" required>
+                        </div>
+                        <button type="button" class="btn btn-primary" id="registroFactura">Registrar Factura</button>
+                    </form>
+                </div>
             </div>
-        </div>
-        <div class="col-8">
-            <div class="container tabla-facturas">
-                <div id="myGrid" style="height: 430px; width: 800px;" class="ag-theme-alpine justify-content-center justify-content-sm-start"></div>
+            <div class="col-8">
+                <div class="container tabla-facturas">
+                    <div id="myGrid" style="height: 430px; width: 800px;" class="ag-theme-alpine justify-content-center justify-content-sm-start"></div>
+                </div>
             </div>
         </div>
     </div>

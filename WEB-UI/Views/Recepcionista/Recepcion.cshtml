@@ -8,60 +8,88 @@
 }
 <main class="container my-5" style="padding:50px 20px;">
     <!-- New Section -->
-    <div class="page position-absolute" style="top: -4884px; left: 6796px; width: 1925px; height: 1080px; background: #FFFFFF;">
-        <!-- Your content here -->
-    </div>
+    <div class="footer-recepcion-clases">
+        <div class="container-fluid">
+            <div class="row content">
+                <div class="col-sm-3 sidenav">
+                    <h4>Recepcionista 1</h4>
+                    <ul class="nav nav-pills nav-stacked">
+                    </ul><br>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" id="searchInput" placeholder="Buscar Cliente">
+                        <button class="btn btn-primary" type="button" onclick="searchClient()">
+                            Buscar
+                        </button>
+                    </div>
+                    <!-- Contenedor para la información del cliente -->
+                    <div id="clientInfo" class="mt-3"></div>
+                    <button class="btn btn-success mt-3" onclick="updateCustomer()">Actualizar</button>
+                    <a href="RegistroRecep.html" class="btn btn-success mt-3">Nuevo Cliente</a>
 
-    <div class="container-fluid">
-        <div class="row content">
-            <div class="col-sm-3 sidenav">
-                <h4>Recepcionista 1</h4>
-                <ul class="nav nav-pills nav-stacked">
-                </ul><br>
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" id="searchInput" placeholder="Buscar Cliente">
-                    <button class="btn btn-primary" type="button" onclick="searchClient()">
-                        Buscar
-                    </button>
                 </div>
-                <!-- Contenedor para la información del cliente -->
-                <div id="clientInfo" class="mt-3"></div>
-                <button class="btn btn-success mt-3" onclick="updateCustomer()">Actualizar</button>
-                <a href="RegistroRecep.html" class="btn btn-success mt-3">Nuevo Cliente</a>
-
             </div>
         </div>
-    </div>
-    <!-- Tabla de Clases -->
-    <div class="my-5">
-        <h2 class="text-center">Próximas Clases</h2>
-        <div class="table-responsive">
-            <table class="table table-bordered" id="classTable">
-                <thead class="table-dark">
-                    <tr>
-                        <th scope="col">Hora</th>
-                        <th scope="col">Clase</th>
-                        <th scope="col">Instructor</th>
-                        <th scope="col">Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Ejemplo de una fila -->
-                    <tr>
-                        <td>Hora de la Clase</td>
-                        <td>Tipo de Clase</td>
-                        <td>Instructor</td>
-                        <td>
-                            <!-- Botones de Editar y Eliminar -->
-                            <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editarClaseModal">Editar</button>
-                            <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#eliminarClaseModal">Eliminar</button>
-                        </td>
-                    </tr>
-                    <!-- Otras filas dinámicas se agregarían aquí -->
-                </tbody>
-            </table>
+        <!-- Tabla de Clases -->
+        <div class="my-5">
+            <h2 class="text-center">Próximas Clases</h2>
+            <div class="table-responsive">
+                <table class="table table-bordered" id="classTable">
+                    <thead class="table-dark">
+                        <tr>
+                            <th scope="col">Hora</th>
+                            <th scope="col">Clase</th>
+                            <th scope="col">Instructor</th>
+                            <th scope="col">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Ejemplo de una fila -->
+                        <tr>
+                            <td>Hora de la Clase</td>
+                            <td>Tipo de Clase</td>
+                            <td>Instructor</td>
+                            <td>
+                                <!-- Botones de Editar y Eliminar -->
+                                <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editarClaseModal">Editar</button>
+                                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#eliminarClaseModal">Eliminar</button>
+                            </td>
+                        </tr>
+                        <!-- Otras filas dinámicas se agregarían aquí -->
+                    </tbody>
+                </table>
+            </div>
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addClassModal">Agregar Clase</button>
         </div>
-        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addClassModal">Agregar Clase</button>
+
+        <!-- Tabla de Citas para Medición -->
+        <div class="my-5">
+            <h2 class="text-center">Citas para Medición</h2>
+            <div class="table-responsive">
+                <table class="table table-bordered" id="measurementTable">
+                    <thead class="table-dark">
+                        <tr>
+                            <th scope="col">Nombre del Cliente</th>
+                            <th scope="col">Hora de la Medición</th>
+                            <th scope="col">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Ejemplo de una fila -->
+                        <tr>
+                            <td>Nombre del Cliente</td>
+                            <td>Hora de la Medición</td>
+                            <td>
+                                <!-- Botones de Editar y Eliminar -->
+                                <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editarMedicionModal">Editar</button>
+                                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#eliminarMedicionModal">Eliminar</button>
+                            </td>
+                        </tr>
+                        <!-- Otras filas dinámicas se agregarían aquí -->
+                    </tbody>
+                </table>
+            </div>
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addMeasurementModal">Agendar Medición</button>
+        </div>
     </div>
 
     <!-- Modal para Agregar Clase -->
@@ -141,35 +169,7 @@
         </div>
     </div>
 
-    <!-- Tabla de Citas para Medición -->
-    <div class="my-5">
-        <h2 class="text-center">Citas para Medición</h2>
-        <div class="table-responsive">
-            <table class="table table-bordered" id="measurementTable">
-                <thead class="table-dark">
-                    <tr>
-                        <th scope="col">Nombre del Cliente</th>
-                        <th scope="col">Hora de la Medición</th>
-                        <th scope="col">Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Ejemplo de una fila -->
-                    <tr>
-                        <td>Nombre del Cliente</td>
-                        <td>Hora de la Medición</td>
-                        <td>
-                            <!-- Botones de Editar y Eliminar -->
-                            <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editarMedicionModal">Editar</button>
-                            <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#eliminarMedicionModal">Eliminar</button>
-                        </td>
-                    </tr>
-                    <!-- Otras filas dinámicas se agregarían aquí -->
-                </tbody>
-            </table>
-        </div>
-        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addMeasurementModal">Agendar Medición</button>
-    </div>
+    
 
     <!-- Modal para Agendar Medición -->
     <div class="modal fade" id="addMeasurementModal" tabindex="-1" aria-labelledby="addMeasurementModalLabel" aria-hidden="true">
