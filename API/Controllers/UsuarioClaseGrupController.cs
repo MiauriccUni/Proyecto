@@ -19,10 +19,28 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        public List<UsuarioClaseGrup> GetAllUsuarioClaseGr()
+        public List<UsuarioClaseGrup> GetUsuarioClaseGr()
         {
             UsuarioClaseGrupManager manager = new UsuarioClaseGrupManager();
             return manager.GetUsuarioClaseGrupManagers();
+        }
+
+        [HttpGet]
+        public API_Response GetAllUsuarioClaseGr()
+        {
+            API_Response response = new API_Response();
+            try
+            {
+                UsuarioClaseGrupManager manager = new UsuarioClaseGrupManager();
+                response.Data = manager.GetUsuarioClaseGrupManagers();
+                response.Result = "OK";
+            }
+            catch (Exception ex)
+            {
+                response.Result = "ERROR";
+                response.Message = ex.Message;
+            }
+            return response;
         }
     }
 }

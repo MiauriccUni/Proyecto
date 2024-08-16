@@ -10,5 +10,6 @@ namespace DTO
     {
         public int IdUsuario {  get; set; }
         public int IdClase { get; set; }
+
     }
 }

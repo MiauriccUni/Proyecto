@@ -101,12 +101,6 @@ function Consultar() {
             'Nombre de la Clase',
             'Horarios',
             'Cupos Disponibles',
-            {
-                name: 'Matricular',
-                formatter: (cell, row) => {
-                    return gridjs.html(`<button class="btn btn-primary" onclick="takeSpace(${row[3]})">Registrar</button>`);
-                }
-            }
         ],
         headerVisible: false,
         server: {
