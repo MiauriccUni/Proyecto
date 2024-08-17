@@ -109,7 +109,7 @@ function UsuariosList() {
                 'Content-Type': "application/json"
             },
             method: "POST",
-            url: "https://localhost:7253/api/PlanesMensuales/CrearPlanesMensuales",
+            url: "https://apirambosgym-emercdd0c8dbe0fq.eastus-01.azurewebsites.net/api/PlanesMensuales/CrearPlanesMensuales",
             contentType: "application/json;charset=utf-8",
             dataType: "json",
             data: JSON.stringify(plan), // Asegúrate de que el objeto 'plan' contiene todas las propiedades necesarias
@@ -139,7 +139,7 @@ function UsuariosList() {
     
     this.PopulateUsuarios = function () {
         $.ajax({
-            url: "https://localhost:7253/api/Usuario/GetClientes",
+            url: "https://apirambosgym-emercdd0c8dbe0fq.eastus-01.azurewebsites.net/api/Usuario/GetClientes",
             method: "GET",
             contentType: "application/json;charset=utf-8",
             dataType: "json"
@@ -169,7 +169,7 @@ function UsuariosList() {
 
     this.PopulateCupones = function () {
         $.ajax({
-            url: "https://localhost:7253/api/Cupones/GetCupones",
+            url: "https://apirambosgym-emercdd0c8dbe0fq.eastus-01.azurewebsites.net/api/Cupones/GetCupones",
             method: "GET",
             contentType: "application/json;charset=utf-8",
             dataType: "json"
@@ -269,7 +269,7 @@ function UsuariosList() {
                 'Content-Type': "application/json"
             },
             method: "PUT",
-            url: `https://localhost:7253/api/PlanesMensuales/UpdateCupon?CuponDescuentoId=${cuponDescuentoId}&UsuarioID=${idUsuario}`, // URL con parámetros en la query string
+            url: `https://apirambosgym-emercdd0c8dbe0fq.eastus-01.azurewebsites.net/api/PlanesMensuales/UpdateCupon?CuponDescuentoId=${cuponDescuentoId}&UsuarioID=${idUsuario}`, // URL con parámetros en la query string
             contentType: "application/json;charset=utf-8",
             dataType: "text",
         }).done(function (result) {
@@ -368,7 +368,7 @@ function UsuariosList() {
             Gracias por tu preferencia.
             `;
 
-        const apiUrl = `https://localhost:7253/api/Email/SendEmail?correo=${email}&cuerpo=${encodeURIComponent(cuerpo)}&asunto=Factura Generada`;
+        const apiUrl = `https://apirambosgym-emercdd0c8dbe0fq.eastus-01.azurewebsites.net/api/Email/SendEmail?correo=${email}&cuerpo=${encodeURIComponent(cuerpo)}&asunto=Factura Generada`;
 
         $.ajax({
             url: apiUrl,
@@ -438,7 +438,7 @@ function Consultar() {
         },
         columns: ['Nombre', 'Rol', 'Membresía', 'Correo', 'Cupón' , 'Nombre Cupón'],
         server: {
-            url: 'https://localhost:7253/api/Usuario/GetAllUsuarios',
+            url: 'https://apirambosgym-emercdd0c8dbe0fq.eastus-01.azurewebsites.net/api/Usuario/GetAllUsuarios',
             then: data => data.data
                 .filter(result => ["Cliente1dia"].includes(result.rol))
                 .map(result => {
@@ -497,7 +497,7 @@ function Consultar2() {
             }
         ],
         server: {
-            url: 'https://localhost:7253/api/PlanesMensuales/GetAllPlanesMensuales',
+            url: 'https://apirambosgym-emercdd0c8dbe0fq.eastus-01.azurewebsites.net/api/PlanesMensuales/GetAllPlanesMensuales',
             then: data => data.data
                 .filter(result => result.usuariosList[0].rol === "Cliente1dia")
                 .map(result => {

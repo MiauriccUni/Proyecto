@@ -41,7 +41,7 @@ function AsignarClase(){
         }
 
         $.ajax({
-            url: "https://localhost:7253/api/ClasesGrupales/GetClasesGrupalesByID?id=" + i,
+            url: "https://apirambosgym-emercdd0c8dbe0fq.eastus-01.azurewebsites.net/api/ClasesGrupales/GetClasesGrupalesByID?id=" + i,
             method: "GET",
             contentType: "application/json;charset=utf-8",
             dataType: "json"
@@ -65,7 +65,7 @@ function AsignarClase(){
                         'Content-Type': "application/json"
                     },
                     method: "POST",
-                    url: "https://localhost:7253/api/UsuarioClaseGrup/CreateUsuarioClaseGrup",
+                    url: "https://apirambosgym-emercdd0c8dbe0fq.eastus-01.azurewebsites.net/api/UsuarioClaseGrup/CreateUsuarioClaseGrup",
                     contentType: "application/json;charset=utf-8",
                     dataType: "json",
                     data: JSON.stringify(agregar),
@@ -77,7 +77,7 @@ function AsignarClase(){
                         text: "Se ha completado el registro",
                     }).then(function () { 
                         $.ajax({
-                            url: "https://localhost:7253/api/ClasesGrupales/UpdateCupos?id=" + i + "&cupos=" + c,
+                            url: "https://apirambosgym-emercdd0c8dbe0fq.eastus-01.azurewebsites.net/api/ClasesGrupales/UpdateCupos?id=" + i + "&cupos=" + c,
                             method: "PUT",
                             contentType: "application/json;charset=utf-8",
                             dataType: "json",
@@ -104,7 +104,7 @@ function AsignarClase(){
 
     this.PopulateClientes = function () {
         $.ajax({
-            url: "https://localhost:7253/api/Usuario/GetClientes",
+            url: "https://apirambosgym-emercdd0c8dbe0fq.eastus-01.azurewebsites.net/api/Usuario/GetClientes",
             method: "GET",
             contentType: "application/json;charset=utf-8",
             dataType: "json"
@@ -131,7 +131,7 @@ function AsignarClase(){
 
     this.PopulateClases = function () {
         $.ajax({
-            url: "https://localhost:7253/api/ClasesGrupales/GetClasesGrupales",
+            url: "https://apirambosgym-emercdd0c8dbe0fq.eastus-01.azurewebsites.net/api/ClasesGrupales/GetClasesGrupales",
             method: "GET",
             contentType: "application/json;charset=utf-8",
             dataType: "json"
@@ -192,7 +192,7 @@ function Consultar1() {
         ],
         headerVisible: false,
         server: {
-            url: 'https://localhost:7253/api/UsuarioClaseGrup/GetAllUsuarioClaseGr',
+            url: 'https://apirambosgym-emercdd0c8dbe0fq.eastus-01.azurewebsites.net/api/UsuarioClaseGrup/GetAllUsuarioClaseGr',
             then: data => data.data.map(result => {
                 const originalDate = new Date(result.clasesGrupalesList[0].horarios);
 
