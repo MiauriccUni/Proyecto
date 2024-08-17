@@ -68,7 +68,7 @@ function Consultar() {
         sort: true,
         resizable: true,
         pagination: {
-            limit: 3
+            limit: 1
         },
         columns: ['Nombre del ejercicio', 'Tipo de ejercicio', 'Repeticiones', 'Serires', 'Usuario', 'Maquina'],
         server: {

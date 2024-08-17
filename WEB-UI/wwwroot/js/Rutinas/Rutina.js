@@ -142,10 +142,13 @@ function AgregarRutina() {
 function Consultar() {
     const grid = new gridjs.Grid({
         search: true,
+        search: {
+            placeholder: 'Buscar'
+        },
         sort: true,
         resizable: true,
         pagination: {
-            limit:3
+            limit:1
         },
         columns: ['Nombre del ejercicio', 'Tipo de ejercicio','Repeticiones','Serires','Usuario','Maquina'],
         server: {
