@@ -42,5 +42,9 @@ namespace WEB_UI.Controllers
         {
             return View();
         }
+        public IActionResult RutinaPremium()
+        {
+            return View();
+        }
     }
 }
