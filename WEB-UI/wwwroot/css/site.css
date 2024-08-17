@@ -392,11 +392,11 @@ header nav ul li a {
 }*/
 
 .ajuste-footer-clienteStandard {
-    padding-bottom: 100px;
+    padding-bottom: 430px;
 }
 
 .ajuste-footer-clientePremium {
-    padding-bottom: 110px;
+    padding-bottom: 430px;
 }
 
 
@@ -463,4 +463,10 @@ header nav ul li a {
 
 .disenoFacturastop {
     padding-top: 120px;
+}
+
+/* Rutinas table */
+
+.rutinas-table {
+    padding-bottom: 460px;
 }
