@@ -1,7 +1,7 @@
 ﻿var correo = sessionStorage.getItem('correo');
 
 function Consultar() {
-    fetch('https://localhost:7253/api/PlanesMensuales/GetPlanMensualByCorreo?Correo=' + correo)
+    fetch('https://apirambosgym-emercdd0c8dbe0fq.eastus-01.azurewebsites.net/api/PlanesMensuales/GetPlanMensualByCorreo?Correo=' + correo)
         .then(response => response.json())
         .then(data => {
             const result = data[0];
