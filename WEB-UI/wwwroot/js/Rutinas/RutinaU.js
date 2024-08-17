@@ -72,7 +72,7 @@ function Consultar() {
         },
         columns: ['Nombre del ejercicio', 'Tipo de ejercicio', 'Repeticiones', 'Serires', 'Usuario', 'Maquina'],
         server: {
-            url: 'https://localhost:7253/api/Rutina/GetRutinasBYCorreo?Correo=' + correo,
+            url: 'https://apirambosgym-emercdd0c8dbe0fq.eastus-01.azurewebsites.net/api/Rutina/GetRutinasBYCorreo?Correo=' + correo,
             then: data => data.map(result => [
                 result.nombreEjercicio,
                 result.tipoEjercicio,
