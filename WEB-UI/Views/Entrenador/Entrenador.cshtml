@@ -2,117 +2,24 @@
     Layout = "_LayoutvistaEntrenadorTest";
 }
 @section Scripts {
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="~/js/registro/registro.js"></script>
+    <script src="https://unpkg.com/gridjs/dist/gridjs.umd.js"></script>
+
+    <script src="~/js/Rutinas/Rutina.js"></script>
 }
 <main class="container my-5 pt-5">
-    <div class="footer-entrenador">
-        <section id="datos-usuario cedula-buscar" class="my-5">
-            <div class="container">
-                <h2 class="text-center">Datos del Usuario</h2>
-                <div class="mb-3">
-                    <label for="cedula" class="form-label">Número de Cédula</label>
-                    <input type="text" class="form-control cedula-dato" id="cedula" placeholder="Ingrese el número de cédula">
-                </div>
-                <button type="button" class="btn btn-primary" onclick="buscarUsuario()">Buscar</button>
-                <div id="usuario-info" class="mt-4">
-                    <!-- Información del usuario se mostrará aquí -->
-                </div>
-            </div>
-        </section>
 
-        <section id="citas" class="my-5">
-            <div class="container">
-                <h2 class="text-center">Citas Agendadas</h2>
-                <div class="table-responsive">
-                    <table class="table table-bordered">
-                        <thead class="table-dark">
-                            <tr>
-                                <th scope="col">Fecha</th>
-                                <th scope="col">Hora</th>
-                                <th scope="col">Cliente</th>
-                                <th scope="col">Servicio</th>
-                                <th scope="col">Acciones</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <!-- Ejemplo de fila de cita -->
-                            <tr>
-                                <td>2024-07-17</td>
-                                <td>10:00 AM</td>
-                                <td>Carlos Martínez</td>
-                                <td>Entrenamiento Personalizado</td>
-                                <td>
-                                    <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editarCitaModal">Editar</button>
-                                    <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#eliminarCitaModal">Eliminar</button>
-                                </td>
-                            </tr>
-                            <!-- Otras filas de citas se agregarán dinámicamente aquí -->
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </section>
 
-        <section id="clases" class="my-5">
-            <div class="container">
-                <h2 class="text-center">Clases del Día</h2>
-                <div class="table-responsive">
-                    <table class="table table-bordered">
-                        <thead class="table-dark">
-                            <tr>
-                                <th scope="col">Hora</th>
-                                <th scope="col">Clase</th>
-                                <th scope="col">Instructor</th>
-                                <th scope="col">Sala</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <!-- Ejemplo de fila de clase -->
-                            <tr>
-                                <td>08:00 AM</td>
-                                <td>Yoga</td>
-                                <td>Laura Pérez</td>
-                                <td>Sala 1</td>
-                            </tr>
-                            <!-- Otras filas de clases se agregarán dinámicamente aquí -->
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </section>
-
-        <section id="rutina-ejercicios" class="my-5">
-            <div class="container">
-                <h2 class="text-center">Rutina de Ejercicios</h2>
-                <div class="table-responsive">
-                    <table class="table table-bordered">
-                        <thead class="table-dark">
-                            <tr>
-                                <th scope="col">Nombre del Ejercicio</th>
-                                <th scope="col">Repeticiones</th>
-                                <th scope="col">Series</th>
-                                <th scope="col">Número de Máquina</th>
-                                <th scope="col">Foto</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <!-- Ejemplo de fila de ejercicio -->
-                            <tr>
-                                <td>Press de Banca</td>
-                                <td>10</td>
-                                <td>4</td>
-                                <td>Máquina 3</td>
-                                <td><img src="ruta/a/la/foto.jpg" alt="Press de Banca" width="100"></td>
-                            </tr>
-                            <!-- Otras filas de ejercicios se agregarán dinámicamente aquí -->
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </section>
-    </div>
+    <section id="rutina-ejercicios" class="my-5">
+        <div class="container">
+            <h2 class="text-center">Rutina de Ejercicios</h2>
+            <div id="myGrid" style="height: 430px; width: 1225px;" class="ag-theme-alpine justify-content-center"></div>
+            <!----  <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editarCitaModal">Editar</button> -->
+            <button type="button" class="btn btn-success btn-sm" id="Rutina" data-bs-toggle="modal" data-bs-target="#AgregarCitaModal">Agregar</button>
+        </div>
+    </section>
 </main>
 
 <!-- Modales -->
@@ -149,19 +56,49 @@
         </div>
     </div>
 </div>
-
-<!-- Modal para Eliminar Cita -->
-<div class="modal fade" id="eliminarCitaModal" tabindex="-1" aria-labelledby="eliminarCitaModalLabel" aria-hidden="true">
+<!-- Modal para Editar Cita -->
+<div class="modal fade" id="AgregarCitaModal" tabindex="-1" aria-labelledby="AgregarCitaModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="eliminarCitaModalLabel">Eliminar Cita</h5>
+                <h5 class="modal-title" id="AgregarCitaModalLabel">Agregar</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <p>¿Está seguro que desea eliminar esta cita?</p>
-                <button type="button" class="btn btn-danger">Eliminar</button>
+                <!-- Formulario de edición de cita -->
+                <form id="AgregarCitaForm">
+                    <div class="mb-3">
+                        <label for="AgregarNombre" class="form-label">Nombre del ejercicio</label>
+                        <input type="text" class="form-control" id="AgregarNombre" name="AgregarEjercicio" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="AgregarTipoEjer" class="form-label">Tipo de ejercicio</label>
+                        <input type="text" class="form-control" id="AgregarTipoEjer" name="AgregarEjercicio" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="AgregarTipoEjer" class="form-label">Repeticiones</label>
+                        <input type="number" class="form-control" id="AgregarReps" name="AgregarEjercicio" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="AgregarTipoEjer" class="form-label">Series</label>
+                        <input type="number" class="form-control" id="AgregarSeries" name="AgregarEjercicio" required>
+                    </div>
+                    <div>
+                        <label for="idMaquina" class="container">Maquina:</label>
+                        <select id="idMaquina" class="form-control">
+                            <option value="" disabled selected>Seleccione la maquina</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="idUsuario" class="container">Cliente:</label>
+                        <select id="idusuario" class="form-control">
+                            <option id="ss" value="" disabled selected>Seleccione al cliente para la asignacion de la rutina</option>
+                        </select>
+                    </div>
+                    <button type="button" id="Rutinas" class="btn btn-primary">Guardar Cambios</button>
+                </form>
             </div>
         </div>
     </div>
 </div>
+
