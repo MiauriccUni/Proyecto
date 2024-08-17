@@ -26,10 +26,26 @@ namespace AppLogic
             RutinaCrud rutinasCrud = new RutinaCrud();
             return rutinasCrud.RetrieveBynombre_ejercicio <rutinas>(NombreEjercicio);
         }
+
+
         public List<rutinas> GetRetrieveTiposEjercicio(string TipoEjercicio)
         {
             RutinaCrud rutinasCrud = new RutinaCrud();
             return rutinasCrud.RetrieveBytipos_de_ejercicio<rutinas>(TipoEjercicio);
+        }
+         public List<rutinas> GetRetrieveRepeticiones(int Repeticiones)
+        {
+            RutinaCrud rutinasCrud = new RutinaCrud();
+            return rutinasCrud.RetrieveByRepeticiones<rutinas>(Repeticiones);
+        }
+         public List<rutinas> GetRetrieveSeries(int Series)
+        {
+            RutinaCrud rutinasCrud = new RutinaCrud();
+            return rutinasCrud.RetrieveBySeries<rutinas>(Series);
+        }   public List<rutinas> GetRetrieveCorreo(string Correo)
+        {
+            RutinaCrud rutinasCrud = new RutinaCrud();
+            return rutinasCrud.RetrieveBycorreo<rutinas>(Correo);
         }
 
     }

@@ -9,7 +9,7 @@ namespace DataAccess.Mappers
     {
         public BaseClass BuildObject(Dictionary<string, object> row)
         {
-            maquina user = new maquina();
+           Maquina user = new Maquina();
 
             user.Id = int.Parse(row["id_maquina"].ToString());
             user.NombreMaquina = row["nombre_maquina"].ToString();
@@ -35,7 +35,7 @@ namespace DataAccess.Mappers
             SqlOperation operation = new SqlOperation();
             operation.ProcedureName = "SP_INSERT_MAQUINA"; 
 
-            maquina user = (maquina)dto;
+            Maquina user = (Maquina)dto;
             operation.AddIntegerParam("id_maquina", user.Id);
             operation.AddVarCharParam("nombre_maquina", user.NombreMaquina);
            
