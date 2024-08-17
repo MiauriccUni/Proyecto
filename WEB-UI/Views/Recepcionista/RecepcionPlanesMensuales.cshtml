@@ -5,12 +5,59 @@
     <script src="https://unpkg.com/gridjs/dist/gridjs.umd.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="~/js/planesmensuales/planesmensuales.js"></script>
+    <script src="~/js/planesmensuales/listausuariosfacturacion.js"></script>
 }
 <main class="container my-5" style="padding:50px 20px;">
-    <!-- New Section -->
-    <div class="page position-absolute" style="top: -4884px; left: 6796px; width: 1925px; height: 1080px; background: #FFFFFF;">
-        <!-- Your content here -->
+    <div class="row my-5">
+        <div class="col-3 crear-factura">
+            <div class="container">
+                <h3 class="text-center">Facturación</h3>
+                <br />
+                <form id="registroForm" class="facturas-container">
+                    <label for="idusuario" class="container">Usuario a facturar:</label>
+                    <select id="idusuario" class="form-control">
+                        <option value="" disabled selected>Seleccione un usuario</option>
+                    </select>
+
+                    <!-- Campos dinámicos que se llenarán al seleccionar un usuario -->
+                    <div id="user-info" style="display: none;">
+                        <div class="mb-3">
+                            <label for="nombreCliente" class="form-label">Nombre del Cliente</label>
+                            <input type="text" class="form-control" id="nombreCliente" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label for="correoCliente" class="form-label">Correo del Cliente</label>
+                            <input type="text" class="form-control" id="correoCliente" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label for="rolCliente" class="form-label">Rol del Cliente</label>
+                            <input type="text" class="form-control" id="rolCliente" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label for="membresiaCliente" class="form-label">Membresía</label>
+                            <input type="text" class="form-control" id="membresiaCliente" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label for="nombreCupon" class="form-label">Nombre del Cupón</label>
+                            <input type="text" class="form-control" id="nombreCupon" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label for="descuentoCupon" class="form-label">Descuento</label>
+                            <input type="text" class="form-control" id="descuentoCupon" readonly>
+                        </div>
+                    </div>
+
+                    <br />
+                    <button type="button" class="btn btn-success boton-cupon" id="registrarFactura">Registrar Factura</button>
+                </form>
+            </div>
+        </div>
+        <div class="col-9 clientes-registrados-table">
+            <h2 class="text-center">Clientes Registrados</h2>
+            <div class="table-responsive">
+                <div id="myGridClientesGuardados" class="ag-theme-alpine"></div>
+            </div>
+        </div>
     </div>
 
     <!-- Tabla de Citas para Medición -->
@@ -18,32 +65,54 @@
         <h2 class="text-center">Planes Mensuales</h2>
         <div class="table-responsive">
             <div id="myGrid" class="ag-theme-alpine justify-content-center"></div>
-            @*  <div><button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addMeasurementModal">Actualizar Plan</button></div> *@
         </div>
+        <br />
+        <div class="container">
+            <h3 class="text-center">Agregar Cupón</h3>
+            <form id="registroForm" class="facturas-container">
+                <label for="idusuario2" class="container">Seleccionar usuario:</label>
+                <select id="idusuario2" class="form-control">
+                    <option value="" disabled selected>Seleccione un usuario</option>
+                </select>
 
+                <!-- Campos dinámicos que se llenarán al seleccionar un usuario -->
+                <div id="user-info2" style="display: none;">
+                    <div class="mb-3">
+                        <label for="nombreCliente2" class="form-label">Nombre del Cliente</label>
+                        <input type="text" class="form-control" id="nombreCliente2" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="correoCliente2" class="form-label">Correo del Cliente</label>
+                        <input type="text" class="form-control" id="correoCliente2" readonly>
+                    </div>
+                </div>
+                <br />
+                <div>
+                    <h3>Registrar Cupón</h3>
+                    <form id="formRegistrarCupon">
+                        <label for="nombreCuponRegistrar">Nombre del cupón:</label>
+                        <input type="text" id="nombreCuponRegistrar" name="nombreCupon">
+                        <button type="button" id="registrarCupon">Registrar Cupón</button>
+                    </form>
+                </div>
+            </form>
+        </div>
     </div>
 
-    <!-- Modal para Crear Medición -->
-    <div class="modal fade" id="addMeasurementModal" tabindex="-1" aria-labelledby="addMeasurementModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
+    <!-- Modal para Mostrar Factura -->
+    <div class="modal fade" id="facturaModal" tabindex="-1" aria-labelledby="facturaModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="addMeasurementModalLabel">Actualizar Plan</h5>
+                    <h5 class="modal-title" id="facturaModalLabel">Factura</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    <form id="addMeasurementForm">
-                        <form action="">
-                            <label for="txtPlan">Estado Plan</label>
-                            <select class="form-select" name="planSelect" id="planSelect">
-                                <option value="" disabled selected>Seleccione estado del plan</option>
-                                <option value="activo">Activo</option>
-                                <option value="vencido">Vencido</option>
-                            </select>
-                        </form>
-
-                        <button type="button" class="btn btn-primary" id="citaPlanMensual">Agendar Medición</button>
-                    </form>
+                <div class="modal-body" id="facturaContent">
+                    <div id="facturaContent">Datos de la factura aparecerán aquí...</div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-success" data-bs-dismiss="modal" id="enviarFactura">Enviar factura</button>
                 </div>
             </div>
         </div>

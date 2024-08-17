@@ -28,7 +28,7 @@
         }
 
         $.ajax({
-            url: "https://localhost:7253/api/Usuario/GetUserByEmail?correo=" + correo,
+            url: "https://apirambosgym-emercdd0c8dbe0fq.eastus-01.azurewebsites.net/api/Usuario/GetUserByEmail?correo=" + correo,
             method: "GET",
             contentType: "application/json;charset=utf-8",
             dataType: "json"
@@ -49,7 +49,7 @@
                 sessionStorage.setItem('timestamp', newtime);
 
                 $.ajax({
-                    url: "https://localhost:7253/api/Usuario/UpdateOTP?correo=" + correo + "&OTP=" + newOTP,
+                    url: "https://apirambosgym-emercdd0c8dbe0fq.eastus-01.azurewebsites.net/api/Usuario/UpdateOTP?correo=" + correo + "&OTP=" + newOTP,
                     method: "PUT",
                     contentType: "application/json;charset=utf-8",
                     dataType: "json"
@@ -71,7 +71,7 @@
                                 "Ten en cuenta que el código expirará en un dos minutos." + "<br><br>" +
                                 "Gimnasio Rambo's Gym."
 
-                            var apiUrl = "https://localhost:7253/api/Email/SendEmail?correo=" + correo + "&cuerpo=" + cuerpo + "&asunto=Verificación de cuenta";
+                            var apiUrl = "https://apirambosgym-emercdd0c8dbe0fq.eastus-01.azurewebsites.net/api/Email/SendEmail?correo=" + correo + "&cuerpo=" + cuerpo + "&asunto=Verificación de cuenta";
 
                             $.ajax({
                                 url: apiUrl,
@@ -115,7 +115,7 @@
         otp1 = $('#otp').val();
         
         $.ajax({
-            url: "https://localhost:7253/api/Usuario/GetUserByEmail?correo=" + correo,
+            url: "https://apirambosgym-emercdd0c8dbe0fq.eastus-01.azurewebsites.net/api/Usuario/GetUserByEmail?correo=" + correo,
             method: "GET",
             contentType: "application/json;charset=utf-8",
             dataType: "json"

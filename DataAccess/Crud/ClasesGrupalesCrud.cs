@@ -4,18 +4,18 @@ using DTO;
 
 namespace DataAccess.Crud
 {
-    public class PlanesMensualesCrud : CrudFactory
+    public class ClasesGrupalesCrud : CrudFactory
     {
-        PlanesMensualesMapper planesMensualesMapper;
+        ClasesGrupalesMapper clasesGrupalesMapper;
 
-        public PlanesMensualesCrud() : base()
+        public ClasesGrupalesCrud() : base()
         {
-            planesMensualesMapper = new PlanesMensualesMapper();
+            clasesGrupalesMapper = new ClasesGrupalesMapper();
             dao = SqlDao.GetInstance();
         }
         public override void Create(BaseClass dto)
         {
-            SqlOperation operation = planesMensualesMapper.GetCreateStatement(dto);
+            SqlOperation operation = clasesGrupalesMapper.GetCreateStatement(dto);
             dao.ExecuteStoreProcedure(operation);
         }
 
@@ -27,12 +27,28 @@ namespace DataAccess.Crud
         public override List<T> RetrieveAll<T>()
         {
             List<T> resultList = new List<T>();
-            SqlOperation operation = planesMensualesMapper.GetRetrieveAllStatement();
+            SqlOperation operation = clasesGrupalesMapper.RetrieveAllStatement();
 
             List<Dictionary<string, object>> dataResults = dao.ExecuteStoredProcedureWithQuery(operation);
             if (dataResults.Count > 0)
             {
-                var dtoList = planesMensualesMapper.BuildObjects(dataResults);
+                var dtoList = clasesGrupalesMapper.BuildObjects(dataResults);
+                foreach (var dto in dtoList)
+                {
+                    resultList.Add((T)Convert.ChangeType(dto, typeof(T)));
+                }
+            }
+            return resultList;
+        }
+
+        public List<T> RetrieveByID<T>(int id)
+        {
+            List<T> resultList = new List<T>();
+            SqlOperation operation = clasesGrupalesMapper.GetRetrieveByID(id);
+            List<Dictionary<string, object>> dataResults = dao.ExecuteStoredProcedureWithQuery(operation);
+            if (dataResults.Count > 0)
+            {
+                var dtoList = clasesGrupalesMapper.BuildObjects(dataResults);
                 foreach (var dto in dtoList)
                 {
                     resultList.Add((T)Convert.ChangeType(dto, typeof(T)));
@@ -46,42 +62,15 @@ namespace DataAccess.Crud
             throw new NotImplementedException();
         }
 
-        public void UpdateCuponCrud(int CuponDescuentoId, int UsuarioID)
-        {
-            SqlOperation operation = planesMensualesMapper.UpdateCupon(CuponDescuentoId, UsuarioID);
-            dao.ExecuteStoreProcedure(operation);
-        }
-
-        // RetreiveByCorreo
-        public List<T> RetrieveByCorreoCrud<T>(string Correo)
-        {
-            List<T> resultList = new List<T>();
-            SqlOperation operation = planesMensualesMapper.GetRetriveByCorreo(Correo);
-
-            List<Dictionary<string, object>> dataResults = dao.ExecuteStoredProcedureWithQuery(operation);
-
-            if (dataResults.Count > 0)
-            {
-                var dtoList = planesMensualesMapper.BuildObjects(dataResults);
-                foreach (var dto in dtoList)
-                {
-                    resultList.Add((T)Convert.ChangeType(dto, typeof(T)));
-                }
-            }
-            return resultList;
-        }
-
-
-        // Revisar
         public override void Update(BaseClass dto)
         {
-            SqlOperation operation = planesMensualesMapper.GetCreateStatement(dto);
-            dao.ExecuteStoreProcedure(operation);
+           throw new NotImplementedException();
         }
 
-        public List<PlanesMensuales> RetrieveBycorreo<T>(string correo)
+        public void UpdateCupos(int id, int cupos)
         {
-            throw new NotImplementedException();
+            SqlOperation operation = clasesGrupalesMapper.UpdateCupos(id, cupos);
+            dao.ExecuteStoreProcedure(operation);
         }
     }
 }

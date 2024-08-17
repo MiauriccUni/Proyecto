@@ -37,18 +37,46 @@ namespace DataAccess.Mappers
             ClasesGrupales user = (ClasesGrupales)dto;
             operation.AddIntegerParam("id_clase", user.Id);
             operation.AddVarCharParam("nombre_clase", user.NombreClase);
-            operation.AddDatetimeParam("horarios", user.Horarios); 
+            operation.AddDatetimeParam("horarios", user.Horarios);
             operation.AddIntegerParam("cupos_disponibles", user.CuposDisponibles);
 
             return operation;
         }
 
-        public SqlOperation GetRetrieveAllStatement()
+        public SqlOperation RetrieveAllStatement()
         {
+            
             SqlOperation operation = new SqlOperation();
             operation.ProcedureName = "GET_ALL_CLASES_GRUPALES";
             return operation;
+            
+        }
 
+        public SqlOperation GetUpdateCuposDisponiblesStatement(BaseClass dto)
+        {
+            SqlOperation operation = new SqlOperation();
+            operation.ProcedureName = "SP_UPDATE_CLASES_GRUPALES";
+
+            ClasesGrupales user = (ClasesGrupales)dto;
+            operation.AddIntegerParam("id_clase", user.Id);
+            operation.AddIntegerParam("cupos_disponibles", user.CuposDisponibles);
+
+            return operation;
+        }
+        public SqlOperation GetRetrieveByID(int id)
+        {
+            SqlOperation operation = new SqlOperation();
+            operation.ProcedureName = "GET_CLASES_GRUPALES_BY_ID";
+            operation.AddIntegerParam("id_clase", id);
+            return operation;
+        }
+        public SqlOperation UpdateCupos(int id, int cupos)
+        {
+            SqlOperation operation = new SqlOperation();
+            operation.ProcedureName = "SP_UPDATE_CUPOS_CLASES";
+            operation.AddIntegerParam("id_clase", id);
+            operation.AddIntegerParam("cupos_disponibles", cupos);
+            return operation;
         }
     }
 }

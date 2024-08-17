@@ -68,12 +68,20 @@ namespace DataAccess.Mappers
             return operation;
         }
 
-        public SqlOperation UpdateCupon(int CuponDescuentoId, int id)
+        public SqlOperation UpdateCupon(int CuponDescuentoId, int UsuarioID)
         {
             SqlOperation operation = new SqlOperation();
             operation.ProcedureName = "SP_UPDATE_USUARIO_CUPON";
             operation.AddIntegerParam("cupones_descuentos_id_cupones", CuponDescuentoId);
-            operation.AddIntegerParam("id_usuarios", id);
+            operation.AddIntegerParam("id_usuarios", UsuarioID);
+            return operation;
+        }
+
+        // Ver info de factura en cliente
+        public SqlOperation GetRetriveByCorreo(string Correo) {
+            SqlOperation operation = new SqlOperation();
+            operation.ProcedureName = "GET_PLAN_MENSUAL_BY_CORREO";
+            operation.AddVarCharParam("correo", Correo);
             return operation;
         }
 

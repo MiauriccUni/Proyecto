@@ -4,20 +4,40 @@
 @section Scripts {
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://unpkg.com/gridjs/dist/gridjs.umd.js"></script>
-    <script src="~/js/Rutinas/RutinaU.js"></script>
+    <script src="~/js/registro/registro.js"></script>
 }
 
 <!-- Main Content -->
 <main class="container my-5 pt-5">
-    <section id="rutina-ejercicios" class="my-5">
-        <div class="container">
-
-            <h2 class="text-center">Rutina de Ejercicios</h2>
-            
-                <div id="myGrid" style="height: 430px; width: 1225px;" class="ag-theme-alpine justify-content-center"></div>
-
-
-        </div>
-    </section>
+    <div class="footer-rutinas">
+        <section id="rutina-ejercicios" class="my-5">
+            <div class="container">
+                <h2 class="text-center">Rutina de Ejercicios</h2>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead class="table-dark">
+                            <tr>
+                                <th scope="col">Nombre del Ejercicio</th>
+                                <th scope="col">Repeticiones</th>
+                                <th scope="col">Series</th>
+                                <th scope="col">Número de Máquina</th>
+                                <th scope="col">Foto</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Ejemplo de fila de ejercicio -->
+                            <tr>
+                                <td>Press de Banca</td>
+                                <td>10</td>
+                                <td>4</td>
+                                <td>Máquina 3</td>
+                                <td><img src="ruta/a/la/foto.jpg" alt="Press de Banca" width="100"></td>
+                            </tr>
+                            <!-- Otras filas de ejercicios se agregarán dinámicamente aquí -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </div>
 </main>

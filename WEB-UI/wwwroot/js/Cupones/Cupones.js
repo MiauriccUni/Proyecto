@@ -99,7 +99,7 @@ function Consultar() {
         },
         columns: ['Nombre', 'Valor Descuento %', 'Fecha de Validez'],
         server: {
-            url: 'https://localhost:7253/api/Cupones/GetAllCupones',
+            url: 'https://apirambosgym-emercdd0c8dbe0fq.eastus-01.azurewebsites.net/api/Cupones/GetAllCupones',
             then: data => data.data.map(result => [
                 result.nombreCupon,
                 result.descuento,

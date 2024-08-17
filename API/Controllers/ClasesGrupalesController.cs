@@ -11,28 +11,49 @@ namespace API.Controllers
     public class ClasesGrupalesController : ControllerBase
     {
         [HttpPost]
-        public string CrearClasesGrupales(ClasesGrupales clasesGrupales)
+        public string CreateClasesGrupales(ClasesGrupales clases)
         {
-            ClasesGrupalesManager manager = new ClasesGrupalesManager();
-            return manager.CreateClasesGrupalesManager(clasesGrupales);
+            ClasesGrupalesManager cru = new ClasesGrupalesManager();
+            cru.CreateClasesGrupalesManager(clases);
+            return "Ok";
         }
 
         [HttpGet]
-        public API_Response GetAllClasesGrupales()
+        public API_Response GetAllClasesGrupales() 
         {
             API_Response response = new API_Response();
             try
             {
                 ClasesGrupalesManager manager = new ClasesGrupalesManager();
-                response.Data = manager.GetAllClasesGrupalesManager();
+                response.Data = manager.GetClasesGrupalesManager();
                 response.Result = "OK";
-            }
-            catch (Exception ex)
+            }catch(Exception ex)
             {
                 response.Result = "ERROR";
                 response.Message = ex.Message;
             }
             return response;
+        }
+
+        [HttpGet]
+        public List<ClasesGrupales> GetClasesGrupales()
+        {
+            ClasesGrupalesManager manager = new ClasesGrupalesManager();
+            return manager.GetClasesGrupalesManager();
+        }
+
+        [HttpGet]
+        public List<ClasesGrupales> GetClasesGrupalesByID(int id)
+        {
+            ClasesGrupalesManager manager = new ClasesGrupalesManager();
+            return manager.GetRetrieveByID(id);
+        }
+
+        [HttpPut]
+        public void UpdateCupos(int id, int cupos)
+        {
+            ClasesGrupalesManager manager = new ClasesGrupalesManager();
+            manager.UpdateCuposManager(id, cupos);
         }
     }
 }

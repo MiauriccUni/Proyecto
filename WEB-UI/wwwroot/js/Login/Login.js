@@ -31,7 +31,7 @@
         }
 
         $.ajax({
-            url: "https://localhost:7253/api/Usuario/GetUserByEmail?correo=" + email,
+            url: "https://apirambosgym-emercdd0c8dbe0fq.eastus-01.azurewebsites.net/api/Usuario/GetUserByEmail?correo=" + email,
             method: "GET",
             contentType: "application/json;charset=utf-8",
             dataType: "json"
@@ -74,13 +74,13 @@
                             window.location = "/Entrenador/PanelEntrenador";
                             break;
                         case "ClientePremium":
-                            window.location = "/Clientes/ClienteDia";
-                            break;
-                        case "ClienteStandard":
                             window.location = "/Clientes/ClientePremium";
                             break;
-                        case "Cliente1dia":
+                        case "ClienteStandard":
                             window.location = "/Clientes/ClienteStandard";
+                            break;
+                        case "Cliente1dia":
+                            window.location = "/Clientes/ClienteDia"; 
                             break;
                         default:
                             Swal.fire({

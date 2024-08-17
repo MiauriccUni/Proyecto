@@ -7,7 +7,3 @@
         public int CuposDisponibles { get; set; }
     }
 }
-
-
-//comentario rambo nuevo
-

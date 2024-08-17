@@ -164,6 +164,33 @@ header nav ul li a {
     font-size: 35px;
 }
 
+.ultima-tarjeta-admin {
+    padding-bottom: 140px;
+}
+
+.ajuste-footer {
+    padding-bottom: 200px;
+}
+
+.ajuste-footer-2 {
+    padding-bottom: 260px;
+}
+
+.ajuste-footer-3 {
+    padding-bottom: 260px;
+}
+
+.ajuste-footer-4 {
+    padding-bottom: 240px;
+}
+
+.ajuste-footer-5 {
+    padding-bottom: 240px;
+}
+
+.ajuste-footer-6 {
+    padding-bottom: 260px;
+}
 /* Estilos para la tabla generada por Grid.js */
 .gridjs-table {
     width: 100%;
@@ -208,6 +235,15 @@ header nav ul li a {
 /* facturas */
 .contendor-facturas {
     margin-bottom: 150px;
+}
+
+.diseno-factura {
+    border: 3px;
+    border-style: double;
+    border-color: #E74C3C;
+
+    /*background-color: #2C3E50;
+    color: #FFFFFF;*/
 }
 
 .tabla-facturas {
@@ -335,8 +371,8 @@ header nav ul li a {
 
 /* Recepción */
 
-.repecion-panel {
-    margin-bottom: 360px;
+.ultima-tarjeta-recepcion {
+    padding-bottom: 460px;
 }
 
 /* Planes Mensuales */
@@ -345,6 +381,131 @@ header nav ul li a {
     margin-bottom: 330px;
 }
 
-.crear-factura {
-    
+
+/* footers clientes */
+
+/*.ajuste-footer-clientedia1 {
+    padding-bottom: 0px;
+}*/
+
+.ajuste-footer-clienteStandard {
+    padding-bottom: 100px;
+}
+
+.ajuste-footer-clientePremium {
+    padding-bottom: 110px;
+}
+
+
+/* footers Entrenador */
+
+.footer-panel-entrenador {
+    padding-top: 80px;
+    padding-bottom: 600px;
+}
+
+.footer-rutinas {
+    padding-bottom: 700px;
+}
+
+.footer-maquinas {
+    padding-bottom: 180px;
+}
+
+.footer-entrenador {
+    padding-bottom: 90px;
+}
+
+/* footers OTP */
+
+.footer-recuperar-otp {
+    padding-bottom: 240px;
+}
+
+.footer-psw-otp {
+    padding-bottom: 240px;
+}
+
+.footer-otp {
+    padding-bottom: 240px;
+}
+
+/* footers Recepcionista */
+
+.footer-datos-recepcionista {
+    padding-bottom: 190px;
+}
+
+.recepcionista-cupones {
+    padding-bottom: 250px;
+}
+
+.footer-recepcion-clases {
+    padding-bottom: 190px;
+}
+
+.recepcion-manager {
+    padding-bottom: 260px;
+}
+
+.footer-registrar {
+    padding-bottom: 300px;
+}
+
+.footer-registrar-facturas {
+    padding-bottom: 240px;
+}
+
+/* disenos facturas */
+
+.disenoFacturastop {
+    padding-top: 120px;
+}
+
+.diseno-factura1 {
+    border: 10px;
+    border-style: double;
+    border-color: #E74C3C;
+    /*background-color: #2C3E50;
+    color: #FFFFFF;*/
+}
+
+.diseno-factura2 {
+    border: 10px;
+    border-style: dotted;
+    border-color: #E74C3C;
+    /*background-color: #2C3E50;
+    color: #FFFFFF;*/
+}
+
+.diseno-factura3 {
+    border: 10px;
+    border-style: groove;
+    border-color: #E74C3C;
+    /*background-color: #2C3E50;
+    color: #FFFFFF;*/
+}
+
+.diseno-factura4 {
+    border: 10px;
+    border-style: outset;
+    border-color: #E74C3C;
+    /*background-color: #2C3E50;
+    color: #FFFFFF;*/
+}
+
+.diseno-factura5 {
+    border: 10px;
+    border-style: ridge;
+    border-color: #E74C3C;
+    /*background-color: #2C3E50;
+    color: #FFFFFF;*/
+}
+
+.diseno-factura6 {
+    border: 10px;
+    border-style: solid;
+    border-color: #E74C3C;
+    /*background-color: #2C3E50;
+    color: #FFFFFF;*/
 }
