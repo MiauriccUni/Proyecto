@@ -62,7 +62,7 @@ function AgregarRutina() {
                 'Content-Type': "application/json"
             },
             method: "POST",
-            url: "https://localhost:7253/api/Rutina/CreateRutina",
+            url: "https://apirambosgym-emercdd0c8dbe0fq.eastus-01.azurewebsites.net/api/Rutina/CreateRutina",
             contentType: "application/json;charset=utf-8",
             dataType: "json",
             data: JSON.stringify(rutina),
@@ -88,7 +88,7 @@ function AgregarRutina() {
 
     this.PopulateUsuarios = function () {
         $.ajax({
-            url: "https://localhost:7253/api/Usuario/GetClientes",
+            url: "https://apirambosgym-emercdd0c8dbe0fq.eastus-01.azurewebsites.net/api/Usuario/GetClientes",
             method: "GET",
             contentType: "application/json;charset=utf-8",
             dataType: "json"
@@ -114,7 +114,7 @@ function AgregarRutina() {
 
     this.PopulateMaquina = function () {
         $.ajax({
-            url: "https://localhost:7253/api/Maquina/Getmaquina",
+            url: "https://apirambosgym-emercdd0c8dbe0fq.eastus-01.azurewebsites.net/api/Maquina/Getmaquina",
             method: "GET",
             contentType: "application/json;charset=utf-8",
             dataType: "json"
@@ -152,7 +152,7 @@ function Consultar() {
         },
         columns: ['Nombre del ejercicio', 'Tipo de ejercicio','Repeticiones','Serires','Usuario','Maquina'],
         server: {
-            url: 'https://localhost:7253/api/Rutina/Getrutina',
+            url: 'https://apirambosgym-emercdd0c8dbe0fq.eastus-01.azurewebsites.net/api/Rutina/Getrutina',
             then: data => data.map(result => [
                 result.nombreEjercicio,
                 result.tipoEjercicio,
