@@ -7,23 +7,24 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="~/js/Maquinas/GridDefinition.js"></script>
-    <script src="~/js/Maquinas/ListaUsuarios.js"></script>
+    <script src="~/js/maquinas/listamaquinas.js"></script>
 }
 <!-- Main Section -->
-<main class="container my-5" style="padding:50px 20px;">
-    <div class="footer-maquinas">
-        <div class="container mt-5">
+<main class="container" style="padding:50px 20px;">
+    <div class="ajuste-footer-5">
+        <div class="container">
             <h1 class="text-center">Registro de Máquinas</h1>
             <form id="registroForm" class="maquinas-container">
                 <div class="mb-3">
                     <label for="nombreMaquina" class="form-label">Nombre de la máquina</label>
                     <input type="text" class="form-control" id="nombre" name="nombre" required>
                 </div>
-                <button type="submit" class="btn btn-primary">Registrar Máquina</button>
+                <button type="button" class="btn btn-primary" id="registromaquina">Registrar Máquina</button>
             </form>
         </div>
-        <div class="container tabla-usuarios">
-            <div id="myGrid" style="height: 430px; width: 800px;" class="ag-theme-alpine justify-content-center"></div>
+        <div class="container tabla-maquinas">
+            <div id="myGrid" style="height: 430px; width: 500px;" class="ag-theme-alpine justify-content-center justify-content-sm-start"></div>
         </div>
     </div>
+
 </main>
