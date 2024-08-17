@@ -1,0 +1,30 @@
+﻿
+.form-control {
+    border-radius: 5px;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    width: 100%;
+    border: none;
+    margin-bottom: 0.3%;
+    text-decoration: dashed;
+    background-image: linear-gradient(to bottom right, rgb(0, 0, 0), rgb(98, 93, 93));
+    color: white;
+}
+
+.form-control::placeholder {
+    color: azure
+}
+
+
+select {
+    width: 20%;
+    text-align: center;
+    position: relative;
+}
+
+select {
+    background-color: rgb(18, 16, 16);
+    color: white;
+    border: none;
+    outline: none;
+}

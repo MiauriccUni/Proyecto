@@ -10,21 +10,21 @@ namespace AppLogic
 {
     public class maquinaManager
     {
-        public string Createmaquina(maquina maquinas)
+        public string Createmaquina(Maquina maquinas)
         {
            maquinaCrud crud = new maquinaCrud();
             crud.Create(maquinas);
             return "Ok";
         }
-        public List<maquina> GetAllmaquina()
+        public List<Maquina> GetAllmaquina()
         {
             maquinaCrud crud = new maquinaCrud();
-            return crud.RetrieveAll<maquina>();
+            return crud.RetrieveAll<Maquina>();
         }
-        public List<maquina> GetRetrieveNombreMaquina(string NombreMaquina)
+        public List<Maquina> GetRetrieveNombreMaquina(string NombreMaquina)
         {
             maquinaCrud maquinasCrud = new maquinaCrud();
-            return maquinasCrud.RetrieveBynombre_maquina<maquina>(NombreMaquina);
+            return maquinasCrud.RetrieveBynombre_maquina<Maquina>(NombreMaquina);
         }
 
       
