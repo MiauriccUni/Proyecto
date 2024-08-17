@@ -173,7 +173,7 @@ header nav ul li a {
 }
 
 .ajuste-footer-2 {
-    padding-bottom: 260px;
+    padding-bottom: 230px;
 }
 
 .ajuste-footer-3 {
@@ -237,14 +237,14 @@ header nav ul li a {
     margin-bottom: 150px;
 }
 
-.diseno-factura {
+/*.diseno-factura {
     border: 3px;
     border-style: double;
-    border-color: #E74C3C;
+    border-color: #E74C3C;*/
 
     /*background-color: #2C3E50;
     color: #FFFFFF;*/
-}
+/*}*/
 
 .tabla-facturas {
     margin-top: 90px;
@@ -368,9 +368,11 @@ header nav ul li a {
 .admin-panel {
     margin-bottom: 120px;
 }
-
+.tabla-abajo-clases-grupales {
+    padding-top: 160px;
+    padding-bottom: 100px;
+}
 /* Recepción */
-
 .ultima-tarjeta-recepcion {
     padding-bottom: 460px;
 }
@@ -460,52 +462,4 @@ header nav ul li a {
 
 .disenoFacturastop {
     padding-top: 120px;
-}
-
-.diseno-factura1 {
-    border: 10px;
-    border-style: double;
-    border-color: #E74C3C;
-    /*background-color: #2C3E50;
-    color: #FFFFFF;*/
-}
-
-.diseno-factura2 {
-    border: 10px;
-    border-style: dotted;
-    border-color: #E74C3C;
-    /*background-color: #2C3E50;
-    color: #FFFFFF;*/
-}
-
-.diseno-factura3 {
-    border: 10px;
-    border-style: groove;
-    border-color: #E74C3C;
-    /*background-color: #2C3E50;
-    color: #FFFFFF;*/
-}
-
-.diseno-factura4 {
-    border: 10px;
-    border-style: outset;
-    border-color: #E74C3C;
-    /*background-color: #2C3E50;
-    color: #FFFFFF;*/
-}
-
-.diseno-factura5 {
-    border: 10px;
-    border-style: ridge;
-    border-color: #E74C3C;
-    /*background-color: #2C3E50;
-    color: #FFFFFF;*/
-}
-
-.diseno-factura6 {
-    border: 10px;
-    border-style: solid;
-    border-color: #E74C3C;
-    /*background-color: #2C3E50;
-    color: #FFFFFF;*/
 }
